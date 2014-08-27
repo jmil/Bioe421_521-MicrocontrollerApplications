@@ -1,0 +1,119 @@
+#Bioe 421/521: Microcontroller Applications
+####Instructor: Jordan Miller<br>TA: John Sexton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+
+##Lab 1B. Getting Raspberry Pi on the Internets
+
+1. Plug in your USB WiFi module
+1. Check that you do not currently have network access:
+
+			$ sudo apt-get update
+			Err http://archive.raspberrypi.org wheezy Release.gpg
+			   Could not resolve 'archive.raspberrypi.org'
+			...
+
+
+1. Edit the wpa_supplicant.conf file:
+
+		$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+		
+
+1. Make the contents of your file to be this exactly:
+
+		ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+		update_config=1
+
+		network={
+			ssid="BIOE_421_521"
+			key_mgmt=NONE
+			auth_alg=OPEN
+		}
+
+
+1. Save the file and exit
+1. Reboot the computer
+		
+		$ sudo shutdown -r now
+
+1. During reboot, you should notice some lines of text referencing the USB wireless LAN (WLAN) adapter:
+
+		...
+		[     4.485488] usb 1-1.5: Product: 802.11n WLAN Adapter
+		[     4.506962] usb 1-1.5: Manufacturer: Realtex
+		...
+
+
+1. Login, and check if you have an IP address (look for **inet addr**, your Internet Address):
+
+		$ ifconfig wlan0
+		wlan0     Link encap:Ethernet  HWaddr 00:5F:21:98:6C:5B  
+          inet addr:192.168.2.7  Bcast:192.168.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:196 errors:0 dropped:39 overruns:0 frame:0
+          TX packets:71 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:38054 (37.1 KiB)  TX bytes:7976 (7.7 KiB)
+
+
+1. Check if you can ping internet servers
+
+		$ ping rice.edu
+		PING rice.edu (128.42.204.44) 56(84) bytes of data.
+		64 bytes from 128.42.204.44: icmp_req=1 tt1=244 time=30.7 ms
+		...
+
+	###Welcome to the Internet!
+
+1. ####Let's upgrade your system and all its software to the latest OS version.
+
+	Grab the complete list of all the latest software programs and packages:
+
+			$ sudo apt-get update
+			Hit http://repository.wolfram.com stable Release.gpg
+			Hit http://repository.wolfram.com stable Release
+			Get :1 http://archive.raspberrypi.org wheezy Release.gpg [490 B]
+			Get :2 http://raspberrypi.collabora.com wheezy Release.gpg [836 B]
+			...
+
+
+1. We need to uninstall wolfram-engine because there seems to be a bug in the update process of this particular package
+
+		$ sudo apt-get autoremove wolfram-engine
+		...
+		Do you want to continue [Y/n]?
+		...
+		Processing triggers for man-db ...
+
+1. Upgrade your system.
+
+		$ sudo apt-get dist-upgrade
+		Reading package lists... Done
+		Building dependency tree
+		Reading state information... Done
+		Calculating upgrade... Done
+		The following packages will be upgraded:
+		...
+		Need to get 38.8 MB of archives.
+		After this operation, 151 kB of additional disk space will be used.
+		Do you want to continue [Y/n]?
+		
+	This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.
+
+1. Install some games
+
+		$ sudo apt-get install bsdgames
+
+1. Install the Arduino environment
+
+		$ sudo apt-get install arduino
+
+1. You can install wolfram-engine now if you like, but it will take 454 MB of space. It probably won't be used in class, but might be fun for you to explore.
+
+		$ sudo apt-get install wolfram-engine
+
+1. Reboot to use your new software
+
+		$ sudo shutdown -r now
+
+
+
+

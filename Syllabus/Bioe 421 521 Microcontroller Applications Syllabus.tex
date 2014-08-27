@@ -1,0 +1,139 @@
+% XeLaTeX can use any Mac OS X font. See the setromanfont command below.
+% Input to XeLaTeX is full Unicode, so Unicode characters can be typed directly into the source.
+
+% The next lines tell TeXShop to typeset with xelatex, and to open and save the source with Unicode encoding.
+
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[10pt]{article}
+\usepackage[letterpaper, margin=0.75in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+% \geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{setspace}
+
+% Will Robertson's fontspec.sty can be used to simplify font choices.
+% To experiment, open /Applications/Font Book to examine the fonts provided on Mac OS X,
+% and change "Hoefler Text" to any of these choices.
+
+\usepackage{fontspec,xltxtra,xunicode}
+\usepackage{outline}
+
+\usepackage{lipsum}
+\usepackage{titlesec}
+
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+
+
+\defaultfontfeatures{Mapping=tex-text}
+\setromanfont[Mapping=tex-text]{Optima}
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Optima}
+\setmonofont[Scale=MatchLowercase]{Andale Mono}
+
+\title{\textbf{BIOE 421/521 Microcontroller Applications}}
+\date{\textbf{Fall 2014, Tues. 3--4 pm BRC 285; Thurs. 1--5 pm OEDK Computing Classroom}}                                           % Activate to display a given date or no date
+\author{Instructor: Jordan Miller, Office: BRC 415, Contact: \href{mailto:jmil@rice.edu}{jmil@rice.edu} \\ TA: John Sexton, Contact: \href{mailto:john.t.sexton@rice.edu}{john.t.sexton@rice.edu}}
+
+
+\newcounter{LectureCounter}
+\newcommand{\lecture}{%
+        \stepcounter{LectureCounter}%
+        \theLectureCounter}
+
+\newcounter{QuizCounter}
+\newcommand{\quiz}{%
+        \stepcounter{QuizCounter}%
+        \theQuizCounter}
+
+\newcounter{TestCounter}
+\newcommand{\test}{%
+        \stepcounter{TestCounter}%
+        \theTestCounter}
+
+
+
+\begin{document}
+\maketitle
+
+\section*{Overview}
+This class covers the usage of microcontrollers in a laboratory setting. We will start with basic software and command-line interfaces and design, program, and build systems utilizing widely-available microcontrollers (e.g. Arduino, Raspberry Pi). Units in motion control, sensors (light, temperature, humidity, UV/Vis absorbance), and actuation (pneumatics, gears, and motors) will provide students with functional knowledge to design and prototype their own experimental systems for laboratory-scale automation. \textbf{BIOE 521 students will be expected to complete a term paper.}
+
+\section*{Register for OEDK Access}
+\textbf{From OEDK Staff:}\\
+You \textbf{MUST register} for OEDK access by the first day of lab. It is very important for students go through the access process, so we are assured that they have watched the safety video and agreed to the terms of use of OEDK. Ringing the doorbell to gain access is unacceptable and strains the OEDK staff.  
+
+To register for OEDK access, students should go to: \href{http://oedk.rice.edu/access}{http://oedk.rice.edu/access}, watch the video, take the quiz and pass it. We will then process their access request.
+
+Keep in mind that it may take a few days for their access to be activated, especially during the beginning of each semester.
+
+\section*{Office Hours}
+Contact Prof. Miller ahead of time if you would like to make use of office hours. Generally these will be the hour immediately before lectures, but I may be able to accommodate other times if you need.
+
+\section*{Textbooks}
+A common theme with open source hardware is that by the time books are published they are already out of date. Instead, we will be making extensive use of installed documentation as well as web tutorials. So, no need to order books unless you want a lot more detailed background and perspective. O'Reilly has some decent ones on Arduino and Raspberry Pi. Our primary electronics for class are:
+
+Raspberry Pi B+:\\
+\href{http://www.adafruit.com/products/1914}{http://www.adafruit.com/products/1914}
+
+Arduino Uno R3:\\
+\href{http://www.adafruit.com/products/50}{http://www.adafruit.com/products/50}
+
+RAMBo 1.3:\\
+\href{http://ultimachine.com/content/rambo-13}{http://ultimachine.com/content/rambo-13}
+
+
+\section*{Grading}
+
+Regrade requests can be submitted to Prof. Miller within one week of receiving graded items, but keep in mind that the assignment/quiz/test will be regraded in its entirety (so additional points may be taken off if initial grading is deemed too lenient).
+
+\begin{table}[ht]
+\begin{tabular}{c c c}
+\hline\hline
+\\[-1ex]
+\textbf{Assignment} & \textbf{BIOE 421} & \textbf{BIOE 521} \\ [0.5ex]
+\hline
+\\[-1ex]
+Homework				&	30\%	&	25\%	\\[1ex]
+5 Quizzes				&	30\%	&	25\%	\\[1ex]
+Labwork					&	30\%	&	30\%	\\[1ex]
+Project Presentation	&	10\%	&	10\%	\\[1ex]
+Term Paper				&	N/A		&	10\%	\\ [1ex]\hline
+\end{tabular}
+\label{table:nonlin}
+\end{table}
+
+
+\subsection*{Homework}
+Homework will be lab focused. You will generally be provided worksheets with instructions to follow, or tasks to achieve, during the lab component of the course. To receive credit, you may be asked to turn in worksheets or submit the code you have developed for grading.
+
+\subsection*{Quizzes}
+Quizzes will be in-class and will help hone your skills with Microcontroller Applications and your ability to interpret written code, code management, work presented in class, and lessons learned from lab activities and assignments.
+
+
+\subsection*{Labwork}
+Labwork entails the effort you put into the lab component of the class and the results you achieve. With 24/7 access to OEDK, you should have ample time to achieve the weekly lab tasks and submit your homework. Your conduct in lab, and professionalism, will also affect the Labwork grade. Don't be afraid to ask questions, though. Questions are one of the best ways to 1) indicate to the instructor areas that need improvement and 2) get a deeper insight into the tasks at hand.
+
+\subsection*{Lab Partner}
+The lab portion of class will be completed in pairs of 2 people. By the first day of class you must submit your \textbf{top 3 ranked} lab partner request to the Instructor. I will keep this confidential. Undergrads will be matched with undergrads, and grad students will be matched with grad students. This separation will help undergrads to overlap their final project with their Senior Design Project if they choose to do so, and may help grad students to focus their final project specific to their individual research projects (and because BIOE 521 students have an extra final project assignment).
+
+\subsection*{Tests}
+There is no Final exam.
+
+\subsection*{Project Presentation}
+The final project for the class will be to design and develop your own use of the hardware and software we have in class. Your final project \textbf{MUST BE NON-DESTRUCTIVE} to lab hardware -- we need to use this hardware in future years! The topic you have selected (title and abstract) must be approved by Prof. Miller \textbf{by October 28th}. Final presentations involving both teammates will be during the last week in front of the class and should be no more than 15-minutes including time for questions. You should adequately explain background and approach. Your peers in the class will assist in discussion as well as with evaluating your presentation with formalized constructive feedback. You will be graded on the quality of your presentation, the scope of your work, and your results. \textbf{More information will be given mid-semester.} 
+
+\subsection*{BIOE 521: Term Paper}
+The Term Paper, required for Bioe 521 students only, \textbf{(due November 25th)} will be detailed documentation of your final project sufficient for others to reproduce your work. Your written report should follow the paradigms we developed for AMRI Fellowships: Define, Describe, and Develop; Quantify and Qualify; Document and Deploy.
+
+\subsection*{Special Needs}
+Any student with a documented special need which may impact the above should speak to Prof. Miller within the first two weeks of class; discussions will remain confidential. Students should also contact Disability Support Services in the Ley Student Center.
+
+\end{document}
