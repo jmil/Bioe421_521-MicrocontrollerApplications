@@ -28,13 +28,13 @@
 		$ man man
 
 	The screen will be cleared and you will be presented with the manual. Note that the manual continues off the screen. For getting help on using man pages, use the \<h> key ('h' for 'help'). To scroll down one line at a time, use the \<enter> key. To scroll down one entire page at a time, use the \<space bar>. To go to the previous page, press the \<b> key ('b' for 'back'). To exit out of the man pages, press the \<q> key ('q' for 'quit').
-	
+		
 	#####NOTE: Many man pages have a very helpful section way at their bottom entitled "EXAMPLES". This section often shows written commands with their explained output. Very handy!	
 	
 ## Assignment
 
 
-1. Read some more man pages and take detailed notes. Use the Markdown format since it can be read easily by humans and easily converted into HTML by computers for nice rendered viewing online.
+1. Read some more man pages (for the programs listed below), and take detailed notes. Use the Markdown format since it can be read easily by humans and easily converted into HTML by computers for nice rendered viewing online.
 
 	On the Windows computer next to your Raspberry Pi, have your lab partner use the free editor with live rendering at:
 	http://dillinger.io
@@ -42,7 +42,7 @@
 	###CRITICAL NOTE: Anything you save to the desktop on the Windows computer will be deleted after you logout (Rice IT default setup for the Windows computers). So it's best to use online text editing to save your file. Email it to yourself for now so that you have a backup.
 
 
-	As you read, write down some general and specific usage notes about each command using Markdown format (*.md). This will help you figure out which commands can help you complete assigned tasks:
+	As you read, write down general and specific usage notes about each command using Markdown format (*.md). Feel free to use a web browser on the neighboring PC to help you work through understanding these programs and how they are commonly used:
 
 		man
 
@@ -94,18 +94,23 @@
 		ping
 		apt-get
 		git
+		python
 		
 		shutdown
 		
 		
-1. Using your notes, answer the following questions. In your answers be sure to indicate the command(s) you used to arrive at your answer. One lab partner should run the Pi while the other helps advise using the notes you generated. Switch roles mid-way through these NOTE: 
+1. Using your notes, answer the following questions. In your answers be sure to indicate the command(s) you used to arrive at your answer. One lab partner should run the Pi while the other helps advise using the notes you generated. Switch roles mid-way through these questions.
 
 	1. What is your username?<br><br><br>
 	1. What is your short hostname?<br><br><br>
 	1. What is your IP Address?<br><br><br>
+	1. What is the full path of your current working directory?<br><br><br>
 	1. How long has your Pi been turned on?<br><br><br>
-	1. How long does it take to get a **ping** from google.com?<br><br><br>
+	1. What version of **python** is installed on your Pi?<br><br><br>
+	1. How long does it take to get a **ping** from google.com? How many bytes did you get back?<br><br><br>
 	1. Where is the **man** command located on your hard drive?<br><br><br>
 	1. What is the serial number of your Pi? (hint: it's stored in the /proc/cpuinfo file)<br><br><br>
 	1. What percentage of the CPU does the **top** command utilize?<br><br><br>
+
+###Make sure you show your work to an Instructor before you leave for the day.
 
