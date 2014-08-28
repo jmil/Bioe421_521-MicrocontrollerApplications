@@ -61,6 +61,7 @@
 		chown
 		chmod
 		chgrp
+		crontab
 		nano
 		
 		pwd
@@ -73,6 +74,8 @@
 		mv
 		rm
 
+		bash
+		dash
 		sh
 		ssh
 		which
@@ -95,11 +98,13 @@
 		apt-get
 		git
 		python
+		raspistill
+		raspivid
 		
 		shutdown
 		
 		
-1. Using your notes, answer the following questions. In your answers be sure to indicate the command(s) you used to arrive at your answer. One lab partner should run the Pi while the other helps advise using the notes you generated. Switch roles mid-way through these questions.
+1. Using your notes, answer the following questions. In your answers **be sure to indicate** the command(s) you used to arrive at your answer. One lab partner should run the Pi while the other helps advise using the notes you generated. Switch roles mid-way through these questions so you each get a feel for the terminal.
 
 	1. What is your username?<br><br><br>
 	1. What is your short hostname?<br><br><br>
@@ -110,6 +115,8 @@
 	1. How long does it take to get a **ping** from google.com? How many bytes did you get back?<br><br><br>
 	1. Where is the **man** command located on your hard drive?<br><br><br>
 	1. What is the serial number of your Pi? (hint: it's stored in the /proc/cpuinfo file)<br><br><br>
+	1. You want your Pi to take a photograph every hour. What program could you use to take the photograph? What program could schedule this command?<br><br><br>
+	1. What command will let you reboot the Pi?<br><br><br>
 	1. What percentage of the CPU does the **top** command utilize?<br><br><br>
 
 ###Make sure you show your work to an Instructor before you leave for the day.
