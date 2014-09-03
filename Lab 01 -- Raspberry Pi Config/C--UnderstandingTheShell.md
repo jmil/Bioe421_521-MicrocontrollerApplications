@@ -112,7 +112,7 @@
 	1. What is the full path of your current working directory?<br><br><br>
 	1. How long has your Pi been turned on?<br><br><br>
 	1. What version of **python** is installed on your Pi?<br><br><br>
-	1. How long does it take to get a **ping** from google.com? How many bytes did you get back?<br><br><br>
+	1. How long does it take to get a **ping** from google.com? How many bytes did you get back? NOTE: you can quit pinging with \<ctrl-C><br><br><br>
 	1. Where is the **man** command located on your hard drive?<br><br><br>
 	1. What is the serial number of your Pi? (hint: it's stored in the /proc/cpuinfo file)<br><br><br>
 	1. You want your Pi to take a photograph every hour. What program could you use to take the photograph? What program could schedule this command?<br><br><br>
