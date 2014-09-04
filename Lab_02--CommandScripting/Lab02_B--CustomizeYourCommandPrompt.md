@@ -87,9 +87,10 @@ http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
   
  Make backups of your edits in case you type something incorrectly along the way.
  
- Let's do something more complicated -- we want our command prompt to show the current time. So each time **$PS1** is called, we want the current time to be updated.
+ Let's do something more complicated -- we want our command prompt to show the current time. So each time **$PS1** is called, we want the current time to be updated. Check out the BashRCGenerator to help you customize your prompt:
+http://bashrcgenerator.com/
  
- Here we can use the backtick "`", which is located just under the **\<esc>** key on your keyboard. Backtick escapes you into it's own temporary shell mid-stream, and takes the **STDOUT** from that command to insert. For example, in:
+To add other commands here into your prompt, you might consider using the backtick "`", which is located just under the **\<esc>** key on your keyboard. Backtick escapes you into it's own temporary shell mid-stream, and takes the **STDOUT** from that command to insert. For example, in:
  
 	case `id -u`
 

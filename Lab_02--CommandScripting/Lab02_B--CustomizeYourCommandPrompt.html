@@ -529,9 +529,10 @@ esac
 
 <p>Make backups of your edits in case you type something incorrectly along the way.</p>
 
-<p>Let&#39;s do something more complicated -- we want our command prompt to show the current time. So each time <strong>$PS1</strong> is called, we want the current time to be updated.</p>
+<p>Let&#39;s do something more complicated -- we want our command prompt to show the current time. So each time <strong>$PS1</strong> is called, we want the current time to be updated. Check out the BashRCGenerator to help you customize your prompt:<br>
+<a href="http://bashrcgenerator.com/">http://bashrcgenerator.com/</a></p>
 
-<p>Here we can use the backtick <q>`</q>, which is located just under the <strong>&lt;esc&gt;</strong> key on your keyboard. Backtick escapes you into it&#39;s own temporary shell mid-stream, and takes the <strong>STDOUT</strong> from that command to insert. For example, in:</p>
+<p>To add other commands here into your prompt, you might consider using the backtick <q>`</q>, which is located just under the <strong>&lt;esc&gt;</strong> key on your keyboard. Backtick escapes you into it&#39;s own temporary shell mid-stream, and takes the <strong>STDOUT</strong> from that command to insert. For example, in:</p>
 
 <pre><code>case `id -u`
 </code></pre>
