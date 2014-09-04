@@ -149,15 +149,6 @@ You can also grab files from the internet and process them via pipe without havi
 
 	$ wget -qO- http://www.google.com/robots.txt
 
-Write a single-line program to output a line of text which tells you the line number where **palm** is Disallowed in Google's robots.txt file
-
-	$
-	
-
-Write a single-line program to output a line of text containing your "inet addr". Hint: use quotes to pass a longer search string to the **grep** command.
-	
-	$
-
 
 #### Crossing the Streams
 
@@ -165,11 +156,20 @@ Often it's helpful to have a way to save some of these data streams along the wa
 
 	$ man tee
 
-Insert the **tee** command in some of your single-line commands. How can you check if the file was created? What were its contents?
+	
+ 
+#### Assignments
+
+Write a single-line program to output a line of text which tells you the line number where **palm** is Disallowed in Google's robots.txt file
 
 	$
 	
- 
- 
+
+Making use of **ifconfig**, write a single-line program to output a line of text containing your "inet addr". Hint: use quotes to pass a longer search string to the **grep** command.
+	
+	$
 
 
+Insert the **tee** command in some of your single-line commands. How can you check if the file was created? What were its contents?
+
+	$
