@@ -21,9 +21,9 @@ Check out the man page for the **wc** command. Please add this command to your t
 
 	$ man wc
 
-Let's check how many bytes are in the **hello.txt** file. Can you count the bytes based on our discussion in class?
+Let's check how many bytes are in the **hi.txt** file. Can you count the bytes based on our discussion in class?
 
-	$ wc -c hello.txt
+	$ wc -c hi.txt
 
 The **>** directive functions by writing an entire file, so it will overwrite whatever file is already there (you can use the **ls** command to see what files are there in your current working directory).
 
