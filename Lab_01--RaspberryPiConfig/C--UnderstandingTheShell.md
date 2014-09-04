@@ -90,6 +90,7 @@
 		tail
 		
 		tar
+		unzip
 		wget
 		ifconfig
 		hostname
