@@ -89,10 +89,14 @@ http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
  
  Let's do something more complicated -- we want our command prompt to show the current time. So each time **$PS1** is called, we want the current time to be updated.
  
- Here we can use the backtick "`", which is located just under the **\<esc>** key on your keyboard.
+ Here we can use the backtick "`", which is located just under the **\<esc>** key on your keyboard. Backtick escapes you into it's own temporary shell mid-stream, and takes the **STDOUT** from that command to insert. For example, in:
  
- See if you can change your PS1 command to include the current time.
+	case `id -u`
+
+The shell effectively runs **"id -u"**, and sends the output from this command to the **case** command in this line for evaluation. It's a simple way to have nested commands simply by encasing your command within some backticks.
+	 	
+See if you can change your PS1 command to include the current time.
  
- Show your new command prompt to your Instructor!
+Show your new command prompt to your Instructor!
  
  

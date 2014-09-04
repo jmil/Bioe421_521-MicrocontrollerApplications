@@ -531,7 +531,12 @@ esac
 
 <p>Let&#39;s do something more complicated -- we want our command prompt to show the current time. So each time <strong>$PS1</strong> is called, we want the current time to be updated.</p>
 
-<p>Here we can use the backtick <q>`</q>, which is located just under the <strong>&lt;esc&gt;</strong> key on your keyboard.</p>
+<p>Here we can use the backtick <q>`</q>, which is located just under the <strong>&lt;esc&gt;</strong> key on your keyboard. Backtick escapes you into it&#39;s own temporary shell mid-stream, and takes the <strong>STDOUT</strong> from that command to insert. For example, in:</p>
+
+<pre><code>case `id -u`
+</code></pre>
+
+<p>The shell effectively runs <strong><q>id -u</q></strong>, and sends the output from this command to the <strong>case</strong> command in this line for evaluation. It&#39;s a simple way to have nested commands simply by encasing your command within some backticks.</p>
 
 <p>See if you can change your PS1 command to include the current time.</p>
 
