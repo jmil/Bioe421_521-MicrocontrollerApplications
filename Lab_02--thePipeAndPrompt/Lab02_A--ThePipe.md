@@ -76,16 +76,16 @@ Let's look at the contents of the web2 file.
 	
 You will see all 234,936 words scroll by. Type **\<ctrl-C>** to halt and get back to the command prompt.
 
-You can also open only part of the file, especially easy to do if you just want to check the first few lines or last few lines of a file without having to read everything into memory
+You can also open only part of the file, especially easy to do if you just want to check the first few lines or last few lines of a file without having to read everything into memory:
 
-	# head web2
-	# tail web2
+	$ head web2
+	$ tail web2
 
 What was your output?
 
 It would also be nice to look in detail at this file, similar to the functionality we saw when using man pages. We might want to be able to inspect the file live, one screen at a time.
 
-	# more web2
+	$ more web2
 	
 You can use the \<spacebar> to go down one screen at a time, and the \<b> key to go back a page at a time.
 
