@@ -139,12 +139,13 @@ What's the last line of this file?
 
 	$ cat some_dog_words.txt | tail -1
 	
-So, now it should make sense how **on a single line** we can rapidly search through a giant text file and rapidly output the answer to our question: how many words in the dictionary contain the text string **dog**. Write out your single line command here:
+So, now it should make sense how **on a single line** we can search through a giant text file and rapidly output the answer to our question: how many words in the dictionary contain the text string **dog**. Write out your single line command here:
 
 	$ 
 
 
 You can also grab files from the internet and process them via pipe without having to save any data files on your hard drive. This is great for large files you want to process on a small hard drive. Just edit the stream, you don't need to go through the hassle of saving it all to hard drive, then opening the file again for processing.
+**NOTE:** we use the capital letter O below as a flag. Remember you can check the wget man page if you aren't sure what each flag does.
 
 
 	$ wget -qO- http://www.google.com/robots.txt
