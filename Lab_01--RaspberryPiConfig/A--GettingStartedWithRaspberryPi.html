@@ -453,20 +453,19 @@ pre[class*="language-"] {
 <li><p><strong>CAREFULLY</strong> plug in the microSD card. Make sure you interface the metal contacts on the microSD card properly to the metal contacts on the Raspberry Pi. Press in to lock: the card holder on the Raspberry Pi has a nice press-to-lock and press-to-release click functionality (like many retractable ballpoint pens) to keep the microSD card locked in place. <strong>Be careful</strong>, this microSD card <strong><em>is your hard drive</em></strong>.</p></li>
 <li><p>Finally, plug in Raspberry Pi power supply to AC power, and use the micro USB cable to give power to your Pi. The screen should become live and your computer should now be booting up.</p>
 
-<h5 id="toc_6">After successfully booting, you will be greeted with a blue screen and the Raspberry Pi Software Configuration Tool (raspi-config). This is a keyboard-based navigation menu (arrow keys and &lt;tab&gt; key to navigate, &lt;enter&gt; to select).</h5></li>
+<h5 id="toc_6">After successfully booting, you will be greeted with a blue screen and the Raspberry Pi Software Configuration Tool (<code>raspi-config</code>). This is a keyboard-based navigation menu (use the <code>arrow keys</code> and <code>&lt;tab&gt;</code> key to navigate, use <code>&lt;enter&gt;</code> or <code>&lt;spacebar&gt;</code> to select).</h5></li>
 <li><p>The Operating System (OS) on Raspberry Pi assumes we have a 4 GB microSD card. Our card is 32 GB, so the first thing we need to do is expand the Raspberry Pi hard drive partition to fill up our whole card:</p>
 
 <ol>
-<li>Navigate to and select option 1 Expand Filesystem</li>
+<li>Navigate to and select option <code>1 Expand Filesystem</code></li>
 <li>You should get a prompt telling you the file system will be expanded on next reboot</li>
-<li>Select &lt;OK&gt;</li>
+<li>Select <strong><code>&lt;Ok&gt;</code></strong></li>
 </ol></li>
-<li><p>Raspberry Pi is designed in UK. Therefore, all defaults are for Britain (and you may notice some British spelling and grammar here and there). Here, we will reconfigure Raspberry Pi to fit us here in Houston TX with US Keyboard layout.</p>
+<li><p>Raspberry Pi is designed in UK. Therefore, all defaults are for Britain (and you may notice some British spelling and grammar here and there). Here, we will reconfigure Raspberry Pi for Houston, TX with US Keyboard layout.</p>
 
 <ol>
 <li> The default is a British Keyboard Layout. We need to change this to US Keyboard Layout so that everything will match our hardware.</li>
-<li>Navigate to and select option 4 Internationalisation Options</li>
-<li><p>Select 13 Change Keyboard Layout, and select the following on successive menus:</p>
+<li><p>Select option <code>4 Internationalisation Options</code> then <code>13 Change Keyboard Layout</code>. Configure successive options as follows:</p>
 
 <pre><code>Generic 104-key PC
 Other
@@ -478,43 +477,42 @@ Select &lt;YES&gt; for Use Control+Alt+Backspace to terminate the X server
 </code></pre>
 
 <p>You will be taken back to the main raspi-config menu.</p></li>
-<li><p>Select option 4 Internationalisation Options ---&gt; configure option 12 Change Timezone; select the following on successive menus:</p>
+<li><p>Select option <code>4 Internationalisation Options</code> then <code>12 Change Timezone</code>. configure successive options as follows:</p>
 
 <pre><code>US
 Central
-</code></pre></li>
-<li><p>Under Internationalisation Options, configure option 11 Change Locale</p>
+</code></pre>
 
-<p>You will see a LONG list of Locales to be generated, with mostly empty brackets such as:</p>
+<p>You will be taken back to the main raspi-config menu.</p></li>
+<li><p>Select option <code>4 Internationalisation Options</code> then <code>11 Change Locale</code>. You will see a LONG list of Locales to be generated, with mostly empty brackets such as:</p>
 
 <pre><code>    [ ] All locales
     [ ] aa.DJ ISO-8859-1
     ...
 </code></pre>
 
-<p>Use the arrow keys to navigate, and use the &lt;spacebar&gt; to enable individual locales. Here we need to do <strong>two Steps together</strong>:</p>
+<p>Use the arrow keys to navigate, and use the <strong><code>&lt;spacebar&gt;</code></strong> to enable individual locales. Here we need to do <strong>two Steps together</strong>:</p>
 
 <ol>
-<li><p>&lt;SELECT&gt; the en_US.UTF-8 UTF-8 option using the &lt;spacebar&gt;</p>
+<li><p>The <code>en_US.UTF-8 UTF-8</code> option is empty. <strong><code>&lt;SELECT&gt;</code></strong> it using the <strong><code>&lt;spacebar&gt;</code></strong> so it will show an asterisk:</p>
 
 <pre><code>[*] en_US.UTF-8 UTF-8
 </code></pre></li>
-<li><p>&lt;DESELECT&gt; the en_GB.UTF-8 UTF-8 option containing the asterisk using the &lt;spacebar&gt;</p>
+<li><p>The <code>en_GB.UTF-8 UTF-8</code> option contains an asterisk. <strong><code>&lt;DESELECT&gt;</code></strong> it using the <strong><code>&lt;spacebar&gt;</code></strong>:</p>
 
 <pre><code>[ ] en_US.UTF-8 UTF-8
 </code></pre></li>
-<li><p>Select &lt;Ok&gt;</p></li>
-<li><p>On the next screen, select your new config en_US.UTF-8 as the Default locale for the system environment</p></li>
+<li><p>Select <strong><code>Ok</code></strong>.</p></li>
+<li><p>On the next screen, select your new config <code>en_US.UTF-8</code> as the Default locale for the system environment.</p></li>
 </ol>
 
 <p>You will be taken back to the main raspi-config menu.</p></li>
 </ol></li>
-<li><p>You will be taken back to the main raspi-config menu.</p></li>
-<li><p>Select option 8 Advanced Options ---&gt; A4 SSH.</p>
+<li><p>Select option <code>8 Advanced Options</code> ---&gt; <code>A4 SSH</code>.</p>
 
 <ol>
-<li>Select &lt;Enable&gt; to enable the SSH server.</li>
-<li>When completed, Select &lt;Ok&gt;</li>
+<li>Select <strong><code>Enable</code></strong> to enable the SSH server.</li>
+<li>When completed, Select <strong><code>Ok</code></strong>.</li>
 </ol>
 
 <p>You will be taken back to the main raspi-config menu.</p></li>

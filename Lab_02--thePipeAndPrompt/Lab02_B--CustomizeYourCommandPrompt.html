@@ -443,11 +443,11 @@ pre[class*="language-"] {
 
 <h3 id="toc_3">A Note about Your Shell History</h3>
 
-<p>From: <a href="http://www.raspberrypi.org/documentation/usage/">http://www.raspberrypi.org/documentation/usage/</a></p>
+<p>From: <a href="http://www.raspberrypi.org/documentation/usage/terminal/README.md">http://www.raspberrypi.org/documentation/usage/terminal/README.md</a></p>
 
 <blockquote>
 <p>HISTORY AND AUTO-COMPLETE<br>
-Rather than type every command, the terminal allows you to scroll through previous commands that you&#39;ve run by pressing the <strong>&lt;up&gt;</strong> or <strong>&lt;down&gt;</strong> keys on your keyboard. If you are writing the name of a file or directory as part of a command then pressing tab will attempt to auto-complete the name of what you are typing. For example, if you have a file in a directory called <strong><u>aLongFileName</u></strong> then pressing tab after typing <strong><u>a</u></strong> will allow you to choose from all file and directory names beginning with <strong><u>a</u></strong> in the current directory, allowing you to choose <strong><u>aLongFileName</u></strong>.     </p>
+Rather than type every command, the terminal allows you to scroll through previous commands that you&#39;ve run by pressing the <strong><code>&lt;up&gt;</code></strong> or <strong><code>&lt;down&gt;</code></strong> keys on your keyboard. If you are writing the name of a file or directory as part of a command then pressing <strong><code>&lt;tab&gt;</code></strong> will attempt to auto-complete the name of what you are typing. For example, if you have a file in a directory called <strong><u>aLongFileName</u></strong> then pressing <strong><code>&lt;tab&gt;</code></strong> after typing <strong><u>a</u></strong> will allow you to choose from all file and directory names beginning with <strong><u>a</u></strong> in the current directory, allowing you to choose <strong><u>aLongFileName</u></strong>.       </p>
 </blockquote>
 
 <h3 id="toc_4">The Command Prompt</h3>
@@ -459,7 +459,7 @@ Rather than type every command, the terminal allows you to scroll through previo
 
 <p>Here we will see where the instructions for how to display the command prompt are located, and you will work to customize your prompt to be more informative.</p>
 
-<p>Look at the contents of your <strong>.bashrc</strong> file located at /home/pi/.bashrc. This is the configuration file for your login. We can customize your command prompt by editing this file.</p>
+<p>Look at the contents of your <code>.bashrc</code> file located at <code>/home/pi/.bashrc</code>. This is the configuration file for your login. We can customize your command prompt by editing this file.</p>
 
 <pre><code>$ cd ~
 $ pwd
@@ -467,9 +467,9 @@ $ ls -la
 $ cat ~/.bashrc
 </code></pre>
 
-<p>The lines that start with a <strong><q>#</q></strong> are comments, made for humans to read and ignored by the computer. You can make comments for yourself in this file, or append the <strong><q>#</q></strong> to a line of code to <q>comment it out</q>, or turn the code into a comment so it will be ignored by the computer, and therefore disabled.</p>
+<p>The lines that start with a <strong><code>#</code></strong> are comments, made for humans to read and ignored by the computer. You can make comments for yourself in this file <strong>one line at a time</strong> by starting the line with the <strong><code>#</code></strong> character. The computer will ignore everything on that text line. If you have a command you want to temporarily disable, you can simply append the <strong><code>#</code></strong> to the beginning of that line of code to <q>comment it out</q>; you have effectively turned the line of code into a comment so it will be ignored by the computer, and therefore disabled.</p>
 
-<p>Let&#39;s make a backup of this file, in case we make a mistake, hopefully we will be able to revert it.</p>
+<p>Using the <code>cp</code> command, let&#39;s make a backup of this file. That way if we make a mistake we should be able to revert it.</p>
 
 <pre><code>$ cp ~/.bashrc ~/.bashrc-BACKUP
 </code></pre>
@@ -480,7 +480,7 @@ $ cat ~/.bashrc
 $
 </code></pre>
 
-<p>Now we will edit the .bashrc file and change the command prompt.</p>
+<p>Now we will use <code>nano</code> to edit the <code>.bashrc</code> file and change the command prompt.</p>
 
 <pre><code>$ nano ~/.bashrc
 </code></pre>
@@ -494,10 +494,10 @@ esac
 ...
 </code></pre>
 
-<p>Insert the following text from an awesome command prompt from:<br>
+<p>Insert the following text for an awesome command prompt from:<br>
 <a href="http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html">http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html</a></p>
 
-<h5 id="toc_5">HINT: You can use the wget command to grab this file from github, then insert it into your .bashrc file.</h5>
+<h5 id="toc_5">HINT: You can use the wget command to grab this text snippet from the .md file on github for this lab, then insert it into your <code>.bashrc</code> file using <code>&lt;ctrl-R&gt;</code> from within the <code>nano</code> editor.</h5>
 
 <pre><code>...
 esac
@@ -519,27 +519,27 @@ esac
 ...
 </code></pre>
 
-<p>Here we see that variables can be created by starting a line with a variable name, then assigning a value to it with the <strong>=</strong> sign. We later can call the value of this variable by using the <q>$</q> sign before the variable name (which you see down where it says <q>export PS1=</q>).</p>
+<p>Here we see that variables can be created by starting a line with a variable name, then assigning a value to it with the <code>=</code> sign. We later can call the value of this variable by using the <code>$</code> sign before the variable name (which you see down where it says <code>export PS1=</code>).</p>
 
-<p>To see the changes in your command prompt, you need to logout and then login again. This will cause the ~/.bashrc file to be read back in.</p>
+<p>To see the changes in your command prompt, you need to logout and then login again. This will cause the <code>~/.bashrc</code> file to be read back in.</p>
 
 <p>What did you get?</p>
 
-<p>Next, edit the command prompt and customize it to show your team name. Look online for a color lookup table and for how to change the colors used in this prompt.</p>
+<p>Next, edit the command prompt and customize it to show your team name.</p>
 
 <p>Make backups of your edits in case you type something incorrectly along the way.</p>
 
-<p>Let&#39;s do something more complicated -- we want our command prompt to show the current time. So each time <strong>$PS1</strong> is called, we want the current time to be updated. Check out the BashRCGenerator to help you customize your prompt:<br>
+<p>Let&#39;s do something more complicated -- we want our command prompt to show the current time. So each time <code>$PS1</code> is called, we want the current time to be updated. Check out the BashRCGenerator to help you customize your prompt:<br>
 <a href="http://bashrcgenerator.com/">http://bashrcgenerator.com/</a></p>
 
-<p>To add other commands here into your prompt, you might consider using the backtick <q>`</q>, which is located just under the <strong>&lt;esc&gt;</strong> key on your keyboard. Backtick escapes you into it&#39;s own temporary shell mid-stream, and takes the <strong>STDOUT</strong> from that command to insert. For example, in:</p>
+<p>Update your command prompt with the current time and some custom colors for your team name or other sections.</p>
+
+<p>To add other commands here into your prompt, you might consider using the backtick <code>`</code> character, which is located just under the <strong><code>&lt;esc&gt;</code></strong> key on your keyboard. Backtick escapes you into it&#39;s own temporary shell mid-stream, and takes the <strong>STDOUT</strong> from that command to insert. For example, in the line:</p>
 
 <pre><code>case `id -u`
 </code></pre>
 
-<p>The shell effectively runs <strong><q>id -u</q></strong>, and sends the output from this command to the <strong>case</strong> command in this line for evaluation. It&#39;s a simple way to have nested commands simply by encasing your command within some backticks.</p>
-
-<p>See if you can change your PS1 command to include the current time.</p>
+<p>The shell effectively runs <code>id -u</code>, and sends the output from this command to the <code>case</code> operator in this line for evaluation. It&#39;s a simple way to have nested commands simply by encasing your command within some backticks. What do you get when you run <code>id -u</code> from the command line? Check the man page for the <code>id</code> command to learn more.</p>
 
 <p>Show your new command prompt to your Instructor!</p>
 

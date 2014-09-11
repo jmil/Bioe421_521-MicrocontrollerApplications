@@ -5,29 +5,27 @@
 
 
 
-######Wikipedia: A shell manages the user–system interaction by prompting users for input, interpreting their input, and then handling an output from the underlying operating system.
+######From Wikipedia: A shell manages the user–system interaction by prompting users for input, interpreting their input, and then handling an output from the underlying operating system.
 
 #####The text-only command-line interface (CLI), commonly shortened to "command-line", is the simplest shell we will use in class.
 
-1. Boot up your Pi and login
-
-	Command-line utilizes a keyboard and video screen as the human-computer interface. It is also known as a terminal (think of the very ends of the cables connected to the computer), or shell (think of a wrapper -- a shell is a program which wraps or runs other programs).
+Command-line utilizes a keyboard and video screen as the human-computer interface. It is also known as a terminal (think of the very ends of the cables connected to the computer), or shell (think of a wrapper -- a shell is a program which wraps or runs other programs).
 	
-	You get a blinking prompt where you can enter commands, you submit the commands by typing \<enter>. Often you will get text sent back to you by the shell, as the output of your command.
+You get a blinking prompt where you can enter commands, you submit the commands by typing \<enter>. Often you will get text sent back to you by the shell, as the output of your command.
 
-	The string of characters next to your blinking cursor is called the command prompt. It is the computer asking you for input in the form of a command and syntax that it has been programmed to recognize. Default on Pi for the command prompt is to show your username, the '@' symbol, and your short hostname, followed by the (abbreviated where possible) current directory in which your shell is located:
+The string of characters next to your blinking cursor is called the command prompt. It is the computer asking you for input in the form of a command and syntax that it has been programmed to recognize. Default on Pi for the command prompt is to show your username, the '@' symbol, and your short hostname, followed by the (abbreviated where possible) current directory in which your shell is located:
 
-		pi@raspberrypi ~ $ _
+	pi@raspberrypi ~ $ _
 		
-	The default command prompt will show a dollar sign ('$') if you are a regular user, and a pound sign ('#') sign if you are a superuser.
+The default command prompt will show a dollar sign (`$`) if you are a regular user, and a pound sign (`#`) sign if you are a superuser. We'll get to explain the superuser later.
 
-	One of the most important aspects of the shell, especially for new users, is that it has built in help files. You access help files for a given command using the 'man' command. As an 'argument' to this command, you need to submit the name of the command whose manual pages you would like to lookup, and then press \<enter> to submit your command for processing. Thankfully, the 'man' command has it's own helpfiles. Let's read them.
+One of the most important aspects of the shell, especially for new users, is that it has built in help files. You access help files for a given command using the 'man' command. As an 'argument' to this command, you need to submit the name of the command whose manual pages you would like to lookup, and then press \<enter> to submit your command for processing. Thankfully, the 'man' command has it's own helpfiles. Let's read them.
 
 1. Using the command prompt, bring up the manual pages (often abbreviated as the 'man pages') for the man command itself:
 
 		$ man man
 
-	The screen will be cleared and you will be presented with the manual. Note that the manual continues off the screen. For getting help on using man pages, use the \<h> key ('h' for 'help'). To scroll down one line at a time, use the \<enter> key. To scroll down one entire page at a time, use the \<space bar>. To go to the previous page, press the \<b> key ('b' for 'back'). To exit out of the man pages, press the \<q> key ('q' for 'quit').
+	The screen will be cleared and you will be presented with the manual. Note that the manual continues off the screen. For getting help on using man pages, use the **`<h>`** key ('h' for 'help'). To scroll down one line at a time, use the **`<enter>`** key. To scroll down one entire page at a time, use the **`<space bar>`**. To go to the previous page, press the **`<b>`** key ('b' for 'back'). To exit out of the man pages, press the **`<q>`** key ('q' for 'quit').
 		
 	#####NOTE: Many man pages have a very helpful section way at their bottom entitled "EXAMPLES". This section often shows written commands with their explained output. Very handy!	
 	
@@ -112,13 +110,13 @@
 	1. What is your IP Address?<br><br><br>
 	1. What is the full path of your current working directory?<br><br><br>
 	1. How long has your Pi been turned on?<br><br><br>
-	1. What version of **python** is installed on your Pi?<br><br><br>
-	1. How long does it take to get a **ping** from google.com? How many bytes did you get back? NOTE: you can quit pinging with \<ctrl-C><br><br><br>
-	1. Where is the **man** command located on your hard drive?<br><br><br>
-	1. What is the serial number of your Pi? (hint: it's stored in the /proc/cpuinfo file)<br><br><br>
+	1. What version of `python` is installed on your Pi?<br><br><br>
+	1. How long does it take to get a `ping` from google.com? How many bytes did you get back? NOTE: you can quit pinging with **`<ctrl-C>`**<br><br><br>
+	1. Where is the `man` command located on your hard drive?<br><br><br>
+	1. What is the serial number of your Pi? (hint: it's stored in the `/proc/cpuinfo` file)<br><br><br>
 	1. You want your Pi to take a photograph every hour. What program could you use to take the photograph? What program could schedule this command?<br><br><br>
 	1. What command will let you reboot the Pi?<br><br><br>
-	1. What percentage of the CPU does the **top** command utilize?<br><br><br>
+	1. What percentage of the CPU does the `top` command utilize?<br><br><br>
 
 ###Make sure you show your work to an Instructor before you leave for the day.
 

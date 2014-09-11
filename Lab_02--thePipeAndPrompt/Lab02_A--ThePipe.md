@@ -12,22 +12,22 @@ The command prompt serves as a source of standard input **(STDIN)**, and your co
 What was the output to your screen?
 
 
-We can send the streamed output directly to a new file, instead of to the computer screen, using the **>** instruction. Think of this as an arrow pointing to where you want **STDOUT** to go.
+We can send the streamed output directly to a new file, instead of to the computer screen, using the **`>`** operator. Think of this bracket as an arrow pointing the stream on the left to a new file where you want **STDOUT** to go.
 
 	$ echo 'Hello World!' > hi.txt
 	$ cat hi.txt
 
-Check out the man page for the **wc** command. Please add this command to your team's man page descriptions.
+Check out the man page for the `wc` command. Please add this command to your team's man page descriptions.
 
 	$ man wc
 
-Let's check how many bytes are in the **hi.txt** file. Can you count the bytes based on our discussion in class?
+Let's check how many bytes are in the `hi.txt` file. Can you count the bytes based on our discussion in class?
 
 	$ wc -c hi.txt
 
-The **>** directive functions by writing an entire file, so it will overwrite whatever file is already there (you can use the **ls** command to see what files are there in your current working directory).
+The **`>`** directive functions by writing an entire file, so it will overwrite whatever file is already there (you can use the `ls` command to see what files are there in your current working directory).
 
-Another useful **STDOUT** redirector is the **>>** directive. If a file doesn't exist yet, it will be created. If the file already exists, it will **append** your output to that file.
+Another useful **STDOUT** redirector is the **`>>`** operator. If a file doesn't exist yet, it will be created. If the file already exists, it will **append** your output to that file.
 
 	$ echo 'The stream editor works' >> stream.txt
 	$ echo 'by allowing you to process' >> stream.txt
@@ -38,7 +38,7 @@ Another useful **STDOUT** redirector is the **>>** directive. If a file doesn't 
 ### Looking at Long Streams
 
 
-Grab the dict.zip dictionary file:
+Grab the `dict.zip` dictionary file:
 
 	$ cd ~
 	$ mkdir Lab02
@@ -49,9 +49,9 @@ Grab the dict.zip dictionary file:
 	$ ls
 	$ cat README
 	
-This package was written for FreeBSD in 1993. The web2 file is an ASCII text file containing 234,936 words from Webster's Second International dictionary.
+This package was written for FreeBSD in 1993. The `web2` file is an ASCII text file containing 234,936 words from Webster's Second International dictionary.
 
-Pay careful attention to the note in this README file:
+Pay careful attention to the note in the `README` file:
 	
 	The wordlist makes a dandy 'grep' victim.
 	
@@ -59,7 +59,7 @@ What wordlist are they talking about? Let's see what's there:
 
 	$ ls -la
 
-You will see a formatted list of everything in this directory. The "." and ".." entries refer to the current directory, and the parent directory. You can use this to navigate up one directory:
+You will see a formatted list of everything in this directory. The `.` and `..` entries refer to the current directory, and the parent directory, respectively. You can use this fact to navigate up one directory:
 	
 	$ pwd
 	$ cd ..
@@ -68,15 +68,15 @@ You will see a formatted list of everything in this directory. The "." and ".." 
 	$ pwd	
 	$ ls -la
 
-Next to the filenames in the directory, you will also see the last date the file was modified, and a column of integers showing how many bytes are in each file. The web2 file shows 2493109 bytes! That is ~2.5 MB.
+Next to the filenames in the directory, you will also see the last date the file was modified, and a column of integers showing how many bytes are in each file. The `web2` file shows 2493109 bytes! That is ~2.5 MB.
 
-Let's look at the contents of the web2 file.
+Let's look at the contents of the `web2` file.
 	
 	$ cat web2
 	
-You will see all 234,936 words scroll by. Type **\<ctrl-C>** to halt and get back to the command prompt.
+You will see all 234,936 words scroll by (it will take a while!). Type **`<ctrl-C>`** to halt and get back to the command prompt.
 
-You can also open only part of the file, especially easy to do if you just want to check the first few lines or last few lines of a file without having to read everything into memory:
+You can view a file a small portion at a time, making it especially easy to check the first few lines or last few lines of a file without having to read everything into memory or dump it to the monitor:
 
 	$ head web2
 	$ tail web2
@@ -87,43 +87,46 @@ It would also be nice to look in detail at this file, similar to the functionali
 
 	$ more web2
 	
-You can use the \<spacebar> to go down one screen at a time, and the \<b> key to go back a page at a time.
+You can use the **`<spacebar>`** to go down one screen at a time, and the **`<b>`** key to go 'back' a page at a time. The **`<q>`** key will 'quit' you back to the command prompt.
 
 
 ### Using the Pipe
 
-The **web2** file is being read out on the standard output stream, which is going to stream everything to your monitor. Streaming the data to render as text on your monitor is slow, so it will take a while.
+The `web2` file is being read out on the standard output stream, which is going to stream everything to your monitor. Streaming the data to render as text on your monitor is slow, so it will take a while.
 
-It would be helpful if we could process this datastream **as it's going by**. This is exactly what the **pipe** (**|**) is for. The pipe is located immediately under the \<backspace> key on your keyboard, and you have to hold down the \<shift> key to type it.
+It would be helpful if we could process this datastream **as it's going by**. This is exactly what the **pipe** (**`|`**) is for. The pipe is located immediately under the **`<backspace>`** key on your keyboard, and you have to hold down the **`<shift>`** key to type it.
 
-Think of the pipe as a very simple way of connecting two commands together, and sending a datastream through this connection.
+Think of the **pipe** as a very simple way of connecting two commands together, and sending a datastream through this connection. Mario would be proud of you.
 
-We can pipe the output of the **cat** command to the **more** command, like so:
+We can **pipe** the output of the `cat` command to the `more` command, like so:
 
 	$ cat web2 | more
 	
 This is a simple variation on when we used the more command directly, above. Remember the mantra "there's more than one way to do it". There are many ways to achieve the same task.
 
 #### Grep
-Let's add **grep** into the mix. Recall what **grep** is for:
+Let's add `grep` into the mix. Recall what `grep` is for:
 
 	$ man grep
 	
-We can use **grep** to take the output from **cat** as its input stream. It will then output via **STDOUT** to your screen.
+We can use `grep` to take the output from `cat` as its input stream. It will then output via **STDOUT** to your screen.
 
-Show all the words in the web2 file that have the text string "dog" in them:
+Show all the words in the `web2` file that have the text string "dog" in them:
 
 	$ cat web2 | grep dog
 	
-That went by really fast. Take this **STDOUT** and pass it as **STDIN** to the **more** command:
+That went by really fast. Take this **STDOUT** and pass it as **STDIN** to the `more` command:
 
 	$ cat web2 | grep dog | more
 	
-Now **more** is the last command in the chain. So it's output gets sent to **STDOUT** which is still the computer screen.
+Now `more` is the last command in the chain. So it's output gets sent to **STDOUT** which is still, of course, the computer screen.
 
 Let's output this shortened list to a new file:
 
 	$ cat web2 | grep dog > some_dog_words.txt
+	
+Check your work:
+
 	$ cat some_dog_words.txt | more
 	
 It would be better if we had some line numbers auto-incrementing with each line, so that we have an easier way to count this list.
@@ -139,13 +142,13 @@ What's the last line of this file?
 
 	$ cat some_dog_words.txt | tail -1
 	
-So, now it should make sense how **on a single line** we can search through a giant text file and rapidly output the answer to our question: how many words in the dictionary contain the text string **dog**. Write out your single line command here:
+So, now it should make sense how **on a single line** we can search through a giant text file and rapidly output the answer to our question: how many words in the dictionary contain the text string **dog**. There's more than one way to do it... if you just want a number output, you can use the `wc` command in your pipe. Write out your single line command here:
 
 	$ 
 
 
 You can also grab files from the internet and process them via pipe without having to save any data files on your hard drive. This is great for large files you want to process on a small hard drive. Just edit the stream, you don't need to go through the hassle of saving it all to hard drive, then opening the file again for processing.
-**NOTE:** we use the capital letter O below as a flag. Remember you can check the wget man page if you aren't sure what each flag does.
+**NOTE:** we use the capital letter **`O`** below as a flag. Remember you can check the `wget` man page if you aren't sure what each flag does.
 
 
 	$ wget -qO- http://www.google.com/robots.txt
@@ -153,7 +156,7 @@ You can also grab files from the internet and process them via pipe without havi
 
 #### Crossing the Streams
 
-Often it's helpful to have a way to save some of these data streams along the way. The **tee** command helps us do that.
+Often it's helpful to have a way to save some of these data streams along the way. The `tee` command helps us do that. Think of the `tee` command functioning like, well, the letter **T**... one input stream, but **TWO** output streams (one of which can be written directly to a file without interrupting the other output).
 
 	$ man tee
 
@@ -161,16 +164,16 @@ Often it's helpful to have a way to save some of these data streams along the wa
  
 #### Assignments
 
-Write a single-line program to output a line of text which tells you the line number where **palm** is Disallowed in Google's robots.txt file
+Write a single-line program to output a line of text which tells you the line number where **`palm`** is Disallowed in Google's `robots.txt` file:
 
 	$
 	
 
-Making use of **ifconfig**, write a single-line program to output a line of text containing your "inet addr". Hint: use quotes to pass a longer search string to the **grep** command.
+Making use of `ifconfig`, write a single-line program to output a line of text containing your "inet addr" (this is your **i**nter**net** **addr**ess, or IP (**I**nternet **P**rotocol) address). Hint: use quotes to pass a longer search string to the `grep` command.
 	
 	$
 
 
-Insert the **tee** command in some of your single-line commands. How can you check if the file was created? What were its contents?
+Insert the `tee` command into some of your single-line commands. How can you check if your file was created? What were its contents?
 
 	$

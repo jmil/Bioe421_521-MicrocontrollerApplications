@@ -12,7 +12,7 @@
 			...
 
 
-1. Edit the wpa_supplicant.conf file:
+1. Edit the `wpa_supplicant.conf` file:
 
 		$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 		
@@ -29,7 +29,7 @@
 		}
 
 
-1. Save the file and exit
+1. Save the file and exit. To do this, you can try to exit with **`<ctrl-X>`**, at which point you will be asked if you want to save the modified buffer (you do! press **`<y>`** then **`<enter>`**). You will be asked to name the file. You want to overwrite the previous file, so you can just press **`<enter>`** again when you see this.
 1. Reboot the computer
 		
 		$ sudo shutdown -r now
@@ -54,7 +54,7 @@
           RX bytes:38054 (37.1 KiB)  TX bytes:7976 (7.7 KiB)
 
 
-1. Check if you can ping internet servers
+1. Check if you can `ping` internet servers. **NOTE:** use **`<ctrl-C>`** to cancel the `ping`.
 
 		$ ping rice.edu
 		PING rice.edu (128.42.204.44) 56(84) bytes of data.
@@ -75,7 +75,7 @@
 			...
 
 
-1. We need to uninstall wolfram-engine because there seems to be a bug in the update process of this particular package
+1. We need to uninstall `wolfram-engine` because there seems to be a bug in the update process of this particular package:
 
 		$ sudo apt-get autoremove wolfram-engine
 		...
@@ -98,19 +98,19 @@
 		
 	This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.
 
-1. Install some games
+1. Install some games:
 
 		$ sudo apt-get install bsdgames
 
-1. Install the Arduino environment
+1. Install the Arduino environment:
 
 		$ sudo apt-get install arduino
 
-1. You can install wolfram-engine now if you like, but it will take 454 MB of space. It probably won't be used in class, but might be fun for you to explore.
+1. You can install `wolfram-engine` now if you like, but it will take 454 MB of space (and some time to download and process the update). It might be fun for you to explore at some point:
 
 		$ sudo apt-get install wolfram-engine
 
-1. Reboot to use your new software
+1. Reboot to use your new software:
 
 		$ sudo shutdown -r now
 

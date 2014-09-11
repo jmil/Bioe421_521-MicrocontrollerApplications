@@ -2,7 +2,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>B--GettingOnTheInternets</title>
+<title>Lab03_A--TheRaspberryPiCamera</title>
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -439,115 +439,168 @@ pre[class*="language-"] {
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: John Sexton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
 
-<h2 id="toc_2">Lab 1B. Getting Raspberry Pi on the Internets</h2>
+<h2 id="toc_2">Lab 3A. The Raspberry Pi Camera</h2>
+
+<h6 id="toc_3">Adapted from <a href="http://www.raspberrypi.org/documentation/usage/camera/README.md">http://www.raspberrypi.org/documentation/usage/camera/README.md</a></h6>
+
+<h3 id="toc_4">Hardware: Connecting your Raspberry Pi Camera</h3>
+
+<hr>
+
+<p><strong>NOTE: BEFORE giving any power to your Raspberry Pi computer:</strong></p>
+
+<hr>
+
+<p>On the PC, watch the video and follow the instructions to plug in your Raspberry Pi Camera module. You only need to watch the video here to understand how the plug works:<br>
+<a href="http://www.raspberrypi.org/documentation/usage/camera/README.md">http://www.raspberrypi.org/documentation/usage/camera/README.md</a></p>
+
+<p><strong>NOTE:</strong> you probably want to use the extra 24&quot; ribbon cable in your hardware crate for the camera so you have an easier time manuevering the camera where you want. Disconnect the ribbon cable that came with the camera <strong>CAREFULLY</strong>.</p>
+
+<p>From <a href="http://RaspberryPi.org/">http://RaspberryPi.org/</a>:</p>
+
+<blockquote>
+<p><strong>Warning</strong>: Cameras are static sensitive. Earth yourself prior to handling the PCB. A sink tap or similar should suffice if you don’t have an earthing strap.</p>
+
+<p>The camera board attaches to the Raspberry Pi via a 15-way ribbon cable. There are only two connections to make: the ribbon cable needs to be attached to the camera PCB, and to the Raspberry Pi itself. You need to get the cable the right way round, or the camera will not work. On the camera PCB, the blue backing on the cable should face away from the PCB, and on the Raspberry Pi it should face towards the Ethernet connection (or where the Ethernet connector would be if you are using a model A).</p>
+
+<p>Although the connectors on the PCB and the Pi are different, they work in a similar way. On the Raspberry Pi itself, pull up the tabs on each end of the connector. It should slide up easily, and be able to pivot around slightly. Fully insert the ribbon cable into the slot, ensuring it is set straight, then gently press down the tabs to clip it into place. The camera PCB connector also requires you to pull the tabs away from the board, gently insert the cable, then push the tabs back. The PCB connector can be a little more awkward than the one on the Pi itself. </p>
+</blockquote>
+
+<h3 id="toc_5">Software: Enable your Raspberry Pi Camera</h3>
 
 <ol>
-<li>Plug in your USB WiFi module</li>
-<li><p>Check that you do not currently have network access:</p>
+<li>Once your camera is plugged in, boot up your RaspberryPi and login.</li>
+<li><p>Open the <code>raspi-config</code> tool from the Terminal:</p>
 
-<pre><code>    $ sudo apt-get update
-    Err http://archive.raspberrypi.org wheezy Release.gpg
-       Could not resolve &#39;archive.raspberrypi.org&#39;
-    ...
-</code></pre></li>
-<li><p>Edit the <code>wpa_supplicant.conf</code> file:</p>
-
-<pre><code>$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
-</code></pre></li>
-<li><p>Make the contents of your file to be this exactly:</p>
-
-<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-
-network={
-    ssid=&quot;BIOE_421_521&quot;
-    key_mgmt=NONE
-    auth_alg=OPEN
-}
-</code></pre></li>
-<li><p>Save the file and exit. To do this, you can try to exit with <strong><code>&lt;ctrl-X&gt;</code></strong>, at which point you will be asked if you want to save the modified buffer (you do! press <strong><code>&lt;y&gt;</code></strong> then <strong><code>&lt;enter&gt;</code></strong>). You will be asked to name the file. You want to overwrite the previous file, so you can just press <strong><code>&lt;enter&gt;</code></strong> again when you see this.</p></li>
-<li><p>Reboot the computer</p>
-
-<pre><code>$ sudo shutdown -r now
-</code></pre></li>
-<li><p>During reboot, you should notice some lines of text referencing the USB wireless LAN (WLAN) adapter:</p>
-
-<pre><code>...
-[     4.485488] usb 1-1.5: Product: 802.11n WLAN Adapter
-[     4.506962] usb 1-1.5: Manufacturer: Realtex
-...
-</code></pre></li>
-<li><p>Login, and check if you have an IP address (look for <strong>inet addr</strong>, your Internet Address):</p>
-
-<pre><code>$ ifconfig wlan0
-wlan0     Link encap:Ethernet  HWaddr 00:5F:21:98:6C:5B  
-  inet addr:192.168.2.7  Bcast:192.168.2.255  Mask:255.255.255.0
-  UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-  RX packets:196 errors:0 dropped:39 overruns:0 frame:0
-  TX packets:71 errors:0 dropped:0 overruns:0 carrier:0
-  collisions:0 txqueuelen:1000 
-  RX bytes:38054 (37.1 KiB)  TX bytes:7976 (7.7 KiB)
-</code></pre></li>
-<li><p>Check if you can <code>ping</code> internet servers. <strong>NOTE:</strong> use <strong><code>&lt;ctrl-C&gt;</code></strong> to cancel the <code>ping</code>.</p>
-
-<pre><code>$ ping rice.edu
-PING rice.edu (128.42.204.44) 56(84) bytes of data.
-64 bytes from 128.42.204.44: icmp_req=1 tt1=244 time=30.7 ms
-...
+<pre><code>$ sudo raspi-config
 </code></pre>
 
-<h3 id="toc_3">Welcome to the Internet!</h3></li>
-<li><h4 id="toc_4">Let&#39;s upgrade your system and all its software to the latest OS version.</h4>
+<p>Select <code>5 Enable Camera</code> and hit the <strong><code>&lt;enter&gt;</code></strong> key. Select <code>&lt;Enable&gt;</code>, then on the main <code>raspi-config</code> page select <code>&lt;Finish&gt;</code> and choose <code>&lt;Yes&gt;</code> to reboot.</p>
 
-<p>Grab the complete list of all the latest software programs and packages:</p>
+<p>From <a href="http://RaspberryPi.org/">http://RaspberryPi.org/</a>:</p>
 
-<pre><code>    $ sudo apt-get update
-    Hit http://repository.wolfram.com stable Release.gpg
-    Hit http://repository.wolfram.com stable Release
-    Get :1 http://archive.raspberrypi.org wheezy Release.gpg [490 B]
-    Get :2 http://raspberrypi.collabora.com wheezy Release.gpg [836 B]
-    ...
-</code></pre></li>
-<li><p>We need to uninstall <code>wolfram-engine</code> because there seems to be a bug in the update process of this particular package:</p>
-
-<pre><code>$ sudo apt-get autoremove wolfram-engine
-...
-Do you want to continue [Y/n]?
-...
-Processing triggers for man-db ...
-</code></pre></li>
-<li><p>Upgrade your system.</p>
-
-<pre><code>$ sudo apt-get dist-upgrade
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Calculating upgrade... Done
-The following packages will be upgraded:
-...
-Need to get 38.8 MB of archives.
-After this operation, 151 kB of additional disk space will be used.
-Do you want to continue [Y/n]?
-</code></pre>
-
-<p>This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.</p></li>
-<li><p>Install some games:</p>
-
-<pre><code>$ sudo apt-get install bsdgames
-</code></pre></li>
-<li><p>Install the Arduino environment:</p>
-
-<pre><code>$ sudo apt-get install arduino
-</code></pre></li>
-<li><p>You can install <code>wolfram-engine</code> now if you like, but it will take 454 MB of space (and some time to download and process the update). It might be fun for you to explore at some point:</p>
-
-<pre><code>$ sudo apt-get install wolfram-engine
-</code></pre></li>
-<li><p>Reboot to use your new software:</p>
-
-<pre><code>$ sudo shutdown -r now
-</code></pre></li>
+<blockquote>
+<p>The enable option will ensure that on reboot the correct GPU firmware will be running (with the camera driver and tuning), and the GPU memory split is sufficient to allow the camera to acquire enough memory to run correctly.</p>
+</blockquote></li>
 </ol>
+
+<h3 id="toc_6">Using the Camera</h3>
+
+<p>We will utilize the <code>raspistill</code> command. Unfortunately, as of this writing there is no man page. You can learn more at:<br>
+<a href="http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md">http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md</a></p>
+
+<p>You can also see a list of all commands by running <code>raspistill</code> with no options. It will scroll by fast, and you won&#39;t be able to <strong>pipe</strong> it to <code>more</code>:</p>
+
+<pre><code>$ raspistill | more
+</code></pre>
+
+<p>What&#39;s going on? <code>raspistill</code> returns an error if you run it with no options, and by default <code>raspistill</code> is setup to print it&#39;s helpfile <em>as</em> the error message. Error messages are pretty necessary, as you might imagine. So this is actully known as <strong>STDERR</strong> (<strong>st</strong>an<strong>d</strong>ard <strong>err</strong>or). We need to redirect <strong>STDERR</strong> (called simply with the integer <code>2</code>) to <strong>STDOUT</strong> (called simply with the integer <code>1</code>) before we can <strong>pipe</strong> it to <code>more</code>:</p>
+
+<pre><code>$ raspistill 2&gt;&amp;1 | more
+</code></pre>
+
+<p>Test if the camera is working by snapping a pic via command-line:</p>
+
+<pre><code>$ cd ~
+$ mkdir raspicam
+$ cd raspicam
+$ raspistill -v -o smile.jpg
+</code></pre>
+
+<p>What do the <code>-v</code> and <code>-o</code> options do?</p>
+
+<p>Was an image file generated? How many bytes is it?</p>
+
+<pre><code>$ ls -la
+</code></pre>
+
+<p>It&#39;s fine to take an image, but how do we know if it was a good one? The <code>raspistill</code> command follows our stated convention of being a single-purpose utility -- it only takes pictures, it can&#39;t view or edit them. Kinda dissapointing in this case...</p>
+
+<p>To view the picture you just took, you need a command line frame buffer image viewer. Enter the Linux <strong>F</strong>rame<strong>B</strong>uffer <strong>I</strong>mageviewer... let&#39;s install <code>fbi</code> on your Raspberry Pi:</p>
+
+<blockquote>
+<p>hat-tip to <a href="http://claychaplin.com/workshop-lecture-demo/raspberry-pi-image-viewer/">http://claychaplin.com/workshop-lecture-demo/raspberry-pi-image-viewer/</a></p>
+</blockquote>
+
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install fbi
+</code></pre>
+
+<p>Don&#39;t worry, Linux is case sensitive (<code>fbi</code> is different than <code>FBI</code>).</p>
+
+<pre><code>$ sudo apt-get install FBI
+...
+E: Unable to locate package FBI
+</code></pre>
+
+<p>phew!</p>
+
+<p>Let&#39;s look at what the <code>fbi</code> can do for us:</p>
+
+<pre><code>$ man fbi
+</code></pre>
+
+<p>You can display an image simply by passing your filename as input to <code>fbi</code>:</p>
+
+<pre><code>$ fbi smile.jpg
+</code></pre>
+
+<p>Type a capital letter <strong><code>&lt;H&gt;</code></strong> to show keyboard commands (noting that <strong><code>&lt;q&gt;</code></strong> or <strong><code>&lt;esc&gt;</code></strong> will quit <code>fbi</code>). Test out some of these options.</p>
+
+<p>If you happen to be remotely connected to your Raspberry Pi, like through SSH, you may need to enter which framebuffer you want to display the image on (with <code>-d</code>). Let&#39;s say you also want to autoscale the image (with <code>-a</code>), and suppress the textual display. You might enter something like:</p>
+
+<pre><code>$ sudo fbi -noverbose -d /dev/fb0 -a -T 2 smile.jpg
+</code></pre>
+
+<p>Snap a few more pics. You can display a slideshow of all your <code>.jpg</code> files in this directory (simply entered as <code>*.jpg</code>) with a 5 sec delay between images with:</p>
+
+<pre><code>$ fbi -a -t 5 *.jpg
+</code></pre>
+
+<p>If your image is upside down, consider utilizing the <code>-vf</code> and <code>-hf</code> options of <code>raspistill</code>. What do they do?</p>
+
+<pre><code>$ raspistill -v -vf -hf -o smile2.jpg
+</code></pre>
+
+<h4 id="toc_7">Congratulations, you&#39;re now a professional geek photographer!</h4>
+
+<h3 id="toc_8">Recording a Video</h3>
+
+<p>We will utilize the <code>raspivid</code> command. Unfortunately, there is no man page. You can learn more at:<br>
+<a href="http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md">http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md</a></p>
+
+<p>You can also see a list of all commands by running <code>raspivid</code> with no options. Best to <strong>pipe</strong> it to <code>more</code> so you can scroll the long list:</p>
+
+<pre><code>$ raspivid 2&gt;&amp;1 | more
+</code></pre>
+
+<p>Make a test video by running:</p>
+
+<pre><code>$ raspivid -o video.h264
+</code></pre>
+
+<p>Just like <code>raspistill</code> could only take a pic and couldn&#39;t view it, <code>raspivid</code> cannot playback the video we just took. Instead we use <code>omxplayer</code> which should already be installed.</p>
+
+<pre><code>$ man omxplayer
+</code></pre>
+
+<p>Try to playback your video file with:</p>
+
+<pre><code>$ omxplayer video.h264
+</code></pre>
+
+<p>If that doesn&#39;t work, try the more complete:</p>
+
+<pre><code>$ omxplayer -o hdmi video.h264
+</code></pre>
+
+<h4 id="toc_9">Congratulations, you&#39;re now a professional geek videographer!</h4>
+
+<h3 id="toc_10">Kiosk Assignment</h3>
+
+<p>Make your Raspberry Pi into a kiosk which cycles through a series of images you snap with the camera or pull down from the internet. Topics like XKCD, imgur, lolcats, and doge are fair game, as long as you use good taste. You will want to use the <code>-noverbose</code> and <code>-a</code> flags of <code>fbi</code>.</p>
+
+<p>Call over your Instructor to show off your kiosk.</p>
 
 <script type="text/javascript">
 self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);

@@ -17,20 +17,19 @@
 
 1. Finally, plug in Raspberry Pi power supply to AC power, and use the micro USB cable to give power to your Pi. The screen should become live and your computer should now be booting up.
 
-	#####After successfully booting, you will be greeted with a blue screen and the Raspberry Pi Software Configuration Tool (raspi-config). This is a keyboard-based navigation menu (arrow keys and \<tab> key to navigate, \<enter> to select).
+	#####After successfully booting, you will be greeted with a blue screen and the Raspberry Pi Software Configuration Tool (`raspi-config`). This is a keyboard-based navigation menu (use the `arrow keys` and `<tab>` key to navigate, use `<enter>` or `<spacebar>` to select).
 
 1. The Operating System (OS) on Raspberry Pi assumes we have a 4 GB microSD card. Our card is 32 GB, so the first thing we need to do is expand the Raspberry Pi hard drive partition to fill up our whole card:
-	1. Navigate to and select option 1 Expand Filesystem
+	1. Navigate to and select option `1 Expand Filesystem`
 	1. You should get a prompt telling you the file system will be expanded on next reboot
-	1. Select \<OK>
+	1. Select **`<Ok>`**
 
 
-1. Raspberry Pi is designed in UK. Therefore, all defaults are for Britain (and you may notice some British spelling and grammar here and there). Here, we will reconfigure Raspberry Pi to fit us here in Houston TX with US Keyboard layout.
+1. Raspberry Pi is designed in UK. Therefore, all defaults are for Britain (and you may notice some British spelling and grammar here and there). Here, we will reconfigure Raspberry Pi for Houston, TX with US Keyboard layout.
 
 	1.  The default is a British Keyboard Layout. We need to change this to US Keyboard Layout so that everything will match our hardware.
 
-	1. Navigate to and select option 4 Internationalisation Options
-	1. Select 13 Change Keyboard Layout, and select the following on successive menus:
+	1. Select option `4 Internationalisation Options` then `13 Change Keyboard Layout`. Configure successive options as follows:
 
 			Generic 104-key PC
 			Other
@@ -43,40 +42,38 @@
 		You will be taken back to the main raspi-config menu.
 
 
-	1. Select option 4 Internationalisation Options ---> configure option 12 Change Timezone; select the following on successive menus:
+	1. Select option `4 Internationalisation Options` then `12 Change Timezone`. configure successive options as follows:
 
 			US
 			Central
-				
-	1. Under Internationalisation Options, configure option 11 Change Locale
+		
+		You will be taken back to the main raspi-config menu.
 
-		You will see a LONG list of Locales to be generated, with mostly empty brackets such as:
+				
+	1. Select option `4 Internationalisation Options` then `11 Change Locale`. You will see a LONG list of Locales to be generated, with mostly empty brackets such as:
 		
 				[ ] All locales
 				[ ] aa.DJ ISO-8859-1
 				...
 				
-		 Use the arrow keys to navigate, and use the \<spacebar> to enable individual locales. Here we need to do **two Steps together**:
+		 Use the arrow keys to navigate, and use the **`<spacebar>`** to enable individual locales. Here we need to do **two Steps together**:
 		 
-		1. \<SELECT> the en_US.UTF-8 UTF-8 option using the \<spacebar>
+		1. The `en_US.UTF-8 UTF-8` option is empty. **`<SELECT>`** it using the **`<spacebar>`** so it will show an asterisk:
 
 		 		[*] en_US.UTF-8 UTF-8
 		 		
-		1. \<DESELECT> the en_GB.UTF-8 UTF-8 option containing the asterisk using the \<spacebar>
+		1. The `en_GB.UTF-8 UTF-8` option contains an asterisk. **`<DESELECT>`** it using the **`<spacebar>`**:
 
 		 		[ ] en_US.UTF-8 UTF-8
 
-		1. Select \<Ok>
-		1. On the next screen, select your new config en_US.UTF-8 as the Default locale for the system environment
-		
+		1. Select **`Ok`**.
+		1. On the next screen, select your new config `en_US.UTF-8` as the Default locale for the system environment.
+	
 		You will be taken back to the main raspi-config menu.
 
-
-1. You will be taken back to the main raspi-config menu.
-
-1. Select option 8 Advanced Options ---> A4 SSH.
-	1. Select \<Enable> to enable the SSH server.
-	1. When completed, Select \<Ok>
+1. Select option `8 Advanced Options` ---> `A4 SSH`.
+	1. Select **`Enable`** to enable the SSH server.
+	1. When completed, Select **`Ok`**.
 
 	You will be taken back to the main raspi-config menu.
 

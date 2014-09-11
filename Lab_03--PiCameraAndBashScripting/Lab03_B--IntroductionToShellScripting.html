@@ -2,7 +2,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>B--GettingOnTheInternets</title>
+<title>Lab03_B--IntroductionToShellScripting</title>
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -439,115 +439,192 @@ pre[class*="language-"] {
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: John Sexton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
 
-<h2 id="toc_2">Lab 1B. Getting Raspberry Pi on the Internets</h2>
+<h2 id="toc_2">Lab 3B. Introduction to Shell Scripting</h2>
+
+<p>So far, we&#39;ve learned about the command-line terminal (a.k.a. the <strong>shell</strong>), and how to run basic commands like <code>cp</code> and <code>pwd</code> (you remember what those stand for, right? How could you look them up?). We&#39;ve also covered using the <strong>pipe</strong> character (<strong><code>|</code></strong>) to make more complicated logical programs by passing <strong>STDOUT</strong> from one command as <strong>STDIN</strong> to the next one. However, what&#39;s the point of having a computer if we have to manually type each program each time we want to run it?</p>
+
+<p>It would be <strong>MUCH</strong> better if we had a way to save our most cleverly devised commands and single-line programs. Even better, we&#39;d like to be able to save programs in a way that makes it easy to re-use our programs later and run them without much hassle.</p>
+
+<p>If you think about it carefully, we already have a solution. As we learned in lecture, each character of each command you type at the command prompt may appear to be English to you, but the computer understands things at the most fundamental, binary level (remember learning about the <strong>ASCII</strong> text format?). And... you already know how to create and save text files using the <code>nano</code> command.</p>
+
+<p>So, all we need to do is create a text file in <code>nano</code> with a list of your commands, and then have your <strong>shell</strong> call that list of commands, in order. You want to start a <strong>dialogue</strong> between the computer and your text file. Thus, this type of file is conventionally known as a <strong>script</strong>. A carriage-return at the command-prompt is akin to a newline in a text file. So if we have one command per line, then each command will be executed in order from top to bottom of our <strong>script</strong>.</p>
+
+<p>As we learned in class, the best command-line programs are <em>narrow</em> in task or goal, allowing for easy testing and debugging, as well as maximal modularity and re-use.</p>
+
+<p>So today we will learn how to write a <strong>script</strong> to store our programs.</p>
+
+<p>But first we need to say a bit about syntax.</p>
+
+<h3 id="toc_3">The Bang! The Bash! The Whole Shebang!</h3>
+
+<p>You already saw hints of shell scripting in the previous Lab, where we had to edit the <code>.bashrc</code> file. There were lots of commands in there! Let&#39;s take a look again:</p>
+
+<pre><code>$ cat ~/.bashrc | more
+</code></pre>
+
+<p>So, our <strong>script</strong> will be a flat list of commands written in plain <strong>ASCII</strong> text. But how will the computer know what text files on our computer are just text and which are commands? It would take a long time to run the <code>web2</code> file as a <strong>script</strong>! We need to make it easy for the computer to notice that our file is a <strong>script</strong> and not strictly a text file. We want our <strong>script</strong> to be <em>interpreted as a program</em>. </p>
+
+<p>To do this, we use what&#39;s called the <strong>shebang</strong> at the very beginning of our text file:<br>
+<a href="http://en.wikipedia.org/wiki/Shebang_(Unix)">http://en.wikipedia.org/wiki/Shebang_(Unix)</a></p>
+
+<blockquote>
+<p>In computing, a shebang is the character sequence consisting of the characters number sign and exclamation mark (that is, <strong><code>#!</code></strong>) at the beginning of a script.</p>
+
+<p>Under Unix-like operating systems, when a script with a shebang is run as a program, the program loader parses the rest of the script&#39;s initial line as an interpreter directive; the specified interpreter program is run instead, passing to it as an argument the path that was initially used when attempting to run the script.</p>
+</blockquote>
+
+<p>So... you start a text file (usually given the file extension <code>.sh</code> to denote a <strong>sh</strong>ell script) with the following line:</p>
+
+<pre><code>    #! /bin/bash
+</code></pre>
+
+<p>The <strong><code>#</code></strong> sign denotes the line is a comment, <strong>BUT</strong> the <strong><q>bang</q></strong> (<strong><code>!</code></strong>) indicates to the shell interpreter that the file should be processed as a series of commands, in this case interpreted by the <code>bash</code> shell. Together, the <strong><code>#!</code></strong> is called the <strong>shebang</strong>.</p>
+
+<p>Read this carefully, it can be confusing. An advantage of putting the whole <strong>shebang</strong> at the beginning of your file is that it communicates to other people, as well as to computers, exactly the syntax that will be followed in your script. There is more than one type of <strong>shell</strong>, so we need to know which one to use to run our <strong>script</strong>.</p>
+
+<p>Let&#39;s learn by example. A <code>bash</code> script you should use as a template is available here:<br>
+<a href="https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh">https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh</a></p>
+
+<p>Do you remember how to pull down this file using <code>wget</code>?</p>
+
+<p>Grab the template file and run it. You will have to change permissions on the file in order to execute it:</p>
+
+<pre><code>$ chmod +x bash-script.sh
+$ ./bash-script.sh
+</code></pre>
+
+<p>What happened when you ran the script?</p>
+
+<h3 id="toc_4">Your \$PATH to Success</h3>
+
+<p>If you look at the sample <code>bash-script.sh</code> you will notice a lot is going on:</p>
+
+<pre><code>$ cat bash-script.sh | more
+</code></pre>
+
+<p>Some variables are built-in to the <strong>shell</strong> already, such as <code>$USER</code> and <code>$PATH</code> (they don&#39;t have to be defined in your script). You can check with:</p>
+
+<pre><code>$ echo $USER
+$ echo $PATH
+</code></pre>
+
+<p>Other variables can be set with simple assignment using the <strong><code>=</code></strong> character as you did when editing your prompt. You can also have variable variables, which are not set until the script is run. Recall: these are set with the backtick <strong><code>`</code></strong> character to escape you to a temporary <strong>shell</strong> to run the command and set its <strong>STDOUT</strong> as input to the variable. This allows you to, for example, set a variable for the exact time the script was run and splice that output into your commands as plain text. Check the <code>bash-script.sh</code> carefully to find this section.</p>
+
+<h3 id="toc_5">More Input</h3>
+
+<p>Another useful part of the shell -- you can take user input as text to be used in your script. User input options will be assigned to integer variables in numerical order. So if you ran the script:</p>
+
+<pre><code>$ ./user-input.sh value1 value2
+</code></pre>
+
+<p>Then the text could be accessed within your script by calling <code>$1</code> and <code>$2</code> to access <q>value1</q> and <q>value2</q>, respectively.</p>
+
+<h2 id="toc_6">Assignment: Generate the following Scripts</h2>
+
+<h3 id="toc_7">Generate the <code>scripts</code> folder to contain everything</h3>
+
+<pre><code>$ cd ~
+$ mkdir scripts
+$ cd scripts
+</code></pre>
+
+<h4 id="toc_8">get_script.sh</h4>
 
 <ol>
-<li>Plug in your USB WiFi module</li>
-<li><p>Check that you do not currently have network access:</p>
+<li><p>Use <code>nano</code> to write a <code>bash</code> script to grab the <code>bash-script.sh</code> template file located at:</p>
 
-<pre><code>    $ sudo apt-get update
-    Err http://archive.raspberrypi.org wheezy Release.gpg
-       Could not resolve &#39;archive.raspberrypi.org&#39;
-    ...
-</code></pre></li>
-<li><p>Edit the <code>wpa_supplicant.conf</code> file:</p>
-
-<pre><code>$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
-</code></pre></li>
-<li><p>Make the contents of your file to be this exactly:</p>
-
-<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-
-network={
-    ssid=&quot;BIOE_421_521&quot;
-    key_mgmt=NONE
-    auth_alg=OPEN
-}
-</code></pre></li>
-<li><p>Save the file and exit. To do this, you can try to exit with <strong><code>&lt;ctrl-X&gt;</code></strong>, at which point you will be asked if you want to save the modified buffer (you do! press <strong><code>&lt;y&gt;</code></strong> then <strong><code>&lt;enter&gt;</code></strong>). You will be asked to name the file. You want to overwrite the previous file, so you can just press <strong><code>&lt;enter&gt;</code></strong> again when you see this.</p></li>
-<li><p>Reboot the computer</p>
-
-<pre><code>$ sudo shutdown -r now
-</code></pre></li>
-<li><p>During reboot, you should notice some lines of text referencing the USB wireless LAN (WLAN) adapter:</p>
-
-<pre><code>...
-[     4.485488] usb 1-1.5: Product: 802.11n WLAN Adapter
-[     4.506962] usb 1-1.5: Manufacturer: Realtex
-...
-</code></pre></li>
-<li><p>Login, and check if you have an IP address (look for <strong>inet addr</strong>, your Internet Address):</p>
-
-<pre><code>$ ifconfig wlan0
-wlan0     Link encap:Ethernet  HWaddr 00:5F:21:98:6C:5B  
-  inet addr:192.168.2.7  Bcast:192.168.2.255  Mask:255.255.255.0
-  UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-  RX packets:196 errors:0 dropped:39 overruns:0 frame:0
-  TX packets:71 errors:0 dropped:0 overruns:0 carrier:0
-  collisions:0 txqueuelen:1000 
-  RX bytes:38054 (37.1 KiB)  TX bytes:7976 (7.7 KiB)
-</code></pre></li>
-<li><p>Check if you can <code>ping</code> internet servers. <strong>NOTE:</strong> use <strong><code>&lt;ctrl-C&gt;</code></strong> to cancel the <code>ping</code>.</p>
-
-<pre><code>$ ping rice.edu
-PING rice.edu (128.42.204.44) 56(84) bytes of data.
-64 bytes from 128.42.204.44: icmp_req=1 tt1=244 time=30.7 ms
-...
+<pre><code>https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
 </code></pre>
 
-<h3 id="toc_3">Welcome to the Internet!</h3></li>
-<li><h4 id="toc_4">Let&#39;s upgrade your system and all its software to the latest OS version.</h4>
+<p><strong>NOTE:</strong> You probably only need the first 15 lines of this file to use as a template.</p></li>
+<li><p>Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive.</p></li>
+<li><p>Modify your script to run the command <code>chmod +x</code> on your new script file to make it executable right after it&#39;s created. This will save you some gotchas later.</p></li>
+</ol>
 
-<p>Grab the complete list of all the latest software programs and packages:</p>
+<h4 id="toc_9">user_input.sh</h4>
 
-<pre><code>    $ sudo apt-get update
-    Hit http://repository.wolfram.com stable Release.gpg
-    Hit http://repository.wolfram.com stable Release
-    Get :1 http://archive.raspberrypi.org wheezy Release.gpg [490 B]
-    Get :2 http://raspberrypi.collabora.com wheezy Release.gpg [836 B]
-    ...
-</code></pre></li>
-<li><p>We need to uninstall <code>wolfram-engine</code> because there seems to be a bug in the update process of this particular package:</p>
+<ol>
+<li><p>Use <code>nano</code> to write a <code>bash</code> script that takes three user-input text strings at the command prompt and outputs them in reverse order. The syntax should be:</p>
 
-<pre><code>$ sudo apt-get autoremove wolfram-engine
-...
-Do you want to continue [Y/n]?
-...
-Processing triggers for man-db ...
-</code></pre></li>
-<li><p>Upgrade your system.</p>
-
-<pre><code>$ sudo apt-get dist-upgrade
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Calculating upgrade... Done
-The following packages will be upgraded:
-...
-Need to get 38.8 MB of archives.
-After this operation, 151 kB of additional disk space will be used.
-Do you want to continue [Y/n]?
-</code></pre>
-
-<p>This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.</p></li>
-<li><p>Install some games:</p>
-
-<pre><code>$ sudo apt-get install bsdgames
-</code></pre></li>
-<li><p>Install the Arduino environment:</p>
-
-<pre><code>$ sudo apt-get install arduino
-</code></pre></li>
-<li><p>You can install <code>wolfram-engine</code> now if you like, but it will take 454 MB of space (and some time to download and process the update). It might be fun for you to explore at some point:</p>
-
-<pre><code>$ sudo apt-get install wolfram-engine
-</code></pre></li>
-<li><p>Reboot to use your new software:</p>
-
-<pre><code>$ sudo shutdown -r now
+<pre><code>$ ./user_input.sh value1 value2 value3
+OUTPUT:
+value3, value2, value1
 </code></pre></li>
 </ol>
+
+<h3 id="toc_10">weather.sh</h3>
+
+<ol>
+<li><p>Use <code>nano</code> to write a <code>bash</code> script that grabs the current local weather. You will need to install the <code>weather-util</code> command:</p>
+
+<pre><code>$ sudo apt-get install weather-util
+</code></pre>
+
+<p>Using the <code>KHOU</code> location you can run something like:</p>
+
+<pre><code>$ weather -i KHOU
+</code></pre>
+
+<p>This will take some time. Be patient!</p></li>
+<li><p>Modify your script to have the weather data saved to a file named with the current time and located at <code>/home/pi/weather/</code>.<br>
+<strong>Hints:</strong> You will want to use the <code>date</code> command and look at it&#39;s formatting options:</p>
+
+<pre><code>$ man date
+</code></pre>
+
+<p>You likely also want to use the <code>-p</code> flag of the <code>mkdir</code> command.</p></li>
+<li><p>You might get a warning when running <code>weather -i</code>. Modify your script to suppress this <strong>STDERR</strong> by sending it to <strong>STDOUT</strong> and then using a piped <code>tail</code> to show output starting at the 4th line. You will want to check the man page for <code>tail</code> to see how to show output relative to the beginning of the input.</p></li>
+</ol>
+
+<h3 id="toc_11">robots.sh</h3>
+
+<ol>
+<li>Use <code>nano</code> to write a <code>bash</code> script that grabs the <code>http://www.google.com/robots.txt</code> file and sends the output to <strong>STDOUT</strong>.</li>
+<li>Modify your script to take input from the user, and use this user input to constrain the output (<strong>hint:</strong> think about constraining which line numbers are output).</li>
+</ol>
+
+<h3 id="toc_12">word.sh</h3>
+
+<ol>
+<li>Use <code>nano</code> to write a <code>bash</code> script to <code>grep</code> the <code>web2</code> dictionary for the string <code>wow</code>.</li>
+<li>Modify your script to take input from the user, and use this user input as the pattern used by the <code>grep</code> command to find a match.</li>
+</ol>
+
+<h3 id="toc_13">selfie.sh</h3>
+
+<ol>
+<li>Use <code>nano</code> to write a <code>bash</code> script that uses the RaspberryPi Camera to take a selfie of you and your teammate. Name the image after your team name. You will want to hardcode the location where images should be stored to be <code>/home/pi/raspicam/</code>.
+<strong>HINT:</strong> You likely want to use the <code>-p</code> flag of the <code>mkdir</code> command.</li>
+<li>To have good camera functionality, you won&#39;t want to overwrite your previous images every time a photo is taken. Modify your <code>selfie.sh</code> script to append the current timestamp to your filename so they won&#39;t be overwritten.</li>
+</ol>
+
+<h3 id="toc_14">Homework Submission</h3>
+
+<ol>
+<li><p>move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention. Note the trailing <code>/</code> characters here have specific meaning... don&#39;t forget them!</p>
+
+<pre><code>$ cd ~
+$ mkdir team01-LightBender_Lab03
+$ mv raspicam team-01-LightBender_Lab03/
+$ mv scripts team01-LightBender_Lab03/
+$ mv weather team01-LightBender_Lab03/
+</code></pre></li>
+<li><p>Zip up the folder to make a single .zip file</p>
+
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install zip
+$ zip team01-LightBender_Lab03 team01-LightBender_Lab03.zip
+</code></pre></li>
+<li><p><code>scp</code> your team&#39;s homework .zip file to your Instructor&#39;s RaspberryPi. Your Instructor will provide you with the value to enter for <strong>IP_ADDRESS</strong>. Use your same <code>raspberry</code> password (note that you are logging in as user <code>student</code>):</p>
+
+<pre><code>$ man scp
+$ scp team01-LightBender_Lab03.zip student@IP_ADDRESS:/home/student/
+</code></pre></li>
+</ol>
+
+<h2 id="toc_15">Cleanup</h2>
+
+<h3 id="toc_16">After you shut down your RaspberryPi for the day, be sure you securely reconnect your computer monitor to the PC at your station.</h3>
 
 <script type="text/javascript">
 self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
