@@ -145,7 +145,7 @@ Then the text could be accessed within your script by calling `$1` and `$2` to a
 
 		$ sudo apt-get update
 		$ sudo apt-get install zip
-		$ zip team01-LightBender_Lab03 team01-LightBender_Lab03.zip
+		$ zip -r team01-LightBender_Lab03.zip team01-LightBender_Lab03
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
