@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<pre>
+PMID- 16299475
+OWN - NLM
+STAT- MEDLINE
+DA  - 20051121
+DCOM- 20060117
+LR  - 20071115
+IS  - 1548-7091 (Print)
+IS  - 1548-7091 (Linking)
+VI  - 2
+IP  - 12
+DP  - 2005 Dec
+TI  - A guide to choosing fluorescent proteins.
+PG  - 905-9
+AB  - The recent explosion in the diversity of available fluorescent proteins (FPs)
+      promises a wide variety of new tools for biological imaging. With no unified
+      standard for assessing these tools, however, a researcher is faced with difficult
+      questions. Which FPs are best for general use? Which are the brightest? What
+      additional factors determine which are best for a given experiment? Although in
+      many cases, a trial-and-error approach may still be necessary in determining the 
+      answers to these questions, a unified characterization of the best available FPs 
+      provides a useful guide in narrowing down the options.
+FAU - Shaner, Nathan C
+AU  - Shaner NC
+AD  - Department of Pharmacology, University of California at San Diego, 9500 Gilman
+      Drive, La Jolla, CA 92093, USA.
+FAU - Steinbach, Paul A
+AU  - Steinbach PA
+FAU - Tsien, Roger Y
+AU  - Tsien RY
+LA  - eng
+GR  - GM72033/GM/NIGMS NIH HHS/United States
+GR  - NS27177/NS/NINDS NIH HHS/United States
+PT  - Journal Article
+PT  - Research Support, N.I.H., Extramural
+PT  - Research Support, Non-U.S. Gov't
+PT  - Review
+PL  - United States
+TA  - Nat Methods
+JT  - Nature methods
+JID - 101215604
+RN  - 0 (Fluorescent Dyes)
+RN  - 0 (Luminescent Proteins)
+SB  - IM
+MH  - Animals
+MH  - Fluorescent Dyes/*chemistry
+MH  - Guidelines as Topic
+MH  - Humans
+MH  - Luminescent Proteins/*chemistry
+MH  - Microscopy, Fluorescence/methods
+RF  - 31
+EDAT- 2005/11/22 09:00
+MHDA- 2006/01/18 09:00
+CRDT- 2005/11/22 09:00
+AID - nmeth819 [pii]
+AID - 10.1038/nmeth819 [doi]
+PST - ppublish
+SO  - Nat Methods. 2005 Dec;2(12):905-9.
+
+PMID- 15558047
+OWN - NLM
+STAT- MEDLINE
+DA  - 20041207
+DCOM- 20050412
+LR  - 20071114
+IS  - 1087-0156 (Print)
+IS  - 1087-0156 (Linking)
+VI  - 22
+IP  - 12
+DP  - 2004 Dec
+TI  - Improved monomeric red, orange and yellow fluorescent proteins derived from
+      Discosoma sp. red fluorescent protein.
+PG  - 1567-72
+AB  - Fluorescent proteins are genetically encoded, easily imaged reporters crucial in 
+      biology and biotechnology. When a protein is tagged by fusion to a fluorescent
+      protein, interactions between fluorescent proteins can undesirably disturb
+      targeting or function. Unfortunately, all wild-type yellow-to-red fluorescent
+      proteins reported so far are obligately tetrameric and often toxic or disruptive.
+      The first true monomer was mRFP1, derived from the Discosoma sp. fluorescent
+      protein "DsRed" by directed evolution first to increase the speed of maturation, 
+      then to break each subunit interface while restoring fluorescence, which
+      cumulatively required 33 substitutions. Although mRFP1 has already proven widely 
+      useful, several properties could bear improvement and more colors would be
+      welcome. We report the next generation of monomers. The latest red version
+      matures more completely, is more tolerant of N-terminal fusions and is over
+      tenfold more photostable than mRFP1. Three monomers with distinguishable hues
+      from yellow-orange to red-orange have higher quantum efficiencies.
+FAU - Shaner, Nathan C
+AU  - Shaner NC
+FAU - Campbell, Robert E
+AU  - Campbell RE
+FAU - Steinbach, Paul A
+AU  - Steinbach PA
+FAU - Giepmans, Ben N G
+AU  - Giepmans BN
+FAU - Palmer, Amy E
+AU  - Palmer AE
+FAU - Tsien, Roger Y
+AU  - Tsien RY
+LA  - eng
+SI  - GENBANK/AY678264
+SI  - GENBANK/AY678265
+SI  - GENBANK/AY678266
+SI  - GENBANK/AY678267
+SI  - GENBANK/AY678268
+SI  - GENBANK/AY678269
+SI  - GENBANK/AY678270
+SI  - GENBANK/AY678271
+GR  - NS27177/NS/NINDS NIH HHS/United States
+GR  - RR04050/RR/NCRR NIH HHS/United States
+PT  - Comparative Study
+PT  - Evaluation Studies
+PT  - Letter
+PT  - Research Support, U.S. Gov't, Non-P.H.S.
+PT  - Research Support, U.S. Gov't, P.H.S.
+DEP - 20041121
+PL  - United States
+TA  - Nat Biotechnol
+JT  - Nature biotechnology
+JID - 9604648
+RN  - 0 (Luminescent Proteins)
+RN  - 0 (Recombinant Proteins)
+RN  - 0 (red fluorescent protein)
+SB  - IM
+CIN - Nat Biotechnol. 2004 Dec;22(12):1524-5. PMID: 15583657
+MH  - Amino Acid Sequence
+MH  - Amino Acid Substitution
+MH  - Animals
+MH  - Anthozoa/*genetics/metabolism
+MH  - Genetic Enhancement/*methods
+MH  - Luminescent Proteins/biosynthesis/*chemistry/*genetics
+MH  - Molecular Sequence Data
+MH  - Mutagenesis, Site-Directed
+MH  - Protein Engineering/*methods
+MH  - Recombinant Proteins/biosynthesis/chemistry
+MH  - Spectrometry, Fluorescence/*methods
+EDAT- 2004/11/24 09:00
+MHDA- 2005/04/13 09:00
+CRDT- 2004/11/24 09:00
+PHST- 2004/07/07 [received]
+PHST- 2004/10/05 [accepted]
+PHST- 2004/11/21 [aheadofprint]
+AID - nbt1037 [pii]
+AID - 10.1038/nbt1037 [doi]
+PST - ppublish
+SO  - Nat Biotechnol. 2004 Dec;22(12):1567-72. Epub 2004 Nov 21.
+
+PMID- 18454154
+OWN - NLM
+STAT- MEDLINE
+DA  - 20080530
+DCOM- 20080624
+LR  - 20140913
+IS  - 1548-7105 (Electronic)
+IS  - 1548-7091 (Linking)
+VI  - 5
+IP  - 6
+DP  - 2008 Jun
+TI  - Improving the photostability of bright monomeric orange and red fluorescent
+      proteins.
+PG  - 545-51
+LID - 10.1038/nmeth.1209 [doi]
+AB  - All organic fluorophores undergo irreversible photobleaching during prolonged
+      illumination. Although fluorescent proteins typically bleach at a substantially
+      slower rate than many small-molecule dyes, in many cases the lack of sufficient
+      photostability remains an important limiting factor for experiments requiring
+      large numbers of images of single cells. Screening methods focusing solely on
+      brightness or wavelength are highly effective in optimizing both properties, but 
+      the absence of selective pressure for photostability in such screens leads to
+      unpredictable photobleaching behavior in the resulting fluorescent proteins. Here
+      we describe an assay for screening libraries of fluorescent proteins for enhanced
+      photostability. With this assay, we developed highly photostable variants of
+      mOrange (a wavelength-shifted monomeric derivative of DsRed from Discosoma sp.)
+      and TagRFP (a monomeric derivative of eqFP578 from Entacmaea quadricolor) that
+      maintain most of the beneficial qualities of the original proteins and perform as
+      reliably as Aequorea victoria GFP derivatives in fusion constructs.
+FAU - Shaner, Nathan C
+AU  - Shaner NC
+AD  - Department of Pharmacology, University of California at San Diego, 9500 Gilman
+      Drive, La Jolla, California 92093, USA.
+FAU - Lin, Michael Z
+AU  - Lin MZ
+FAU - McKeown, Michael R
+AU  - McKeown MR
+FAU - Steinbach, Paul A
+AU  - Steinbach PA
+FAU - Hazelwood, Kristin L
+AU  - Hazelwood KL
+FAU - Davidson, Michael W
+AU  - Davidson MW
+FAU - Tsien, Roger Y
+AU  - Tsien RY
+LA  - eng
+SI  - GENBANK/DQ336159
+SI  - GENBANK/DQ336160
+SI  - GENBANK/EU582019
+GR  - GM72033/GM/NIGMS NIH HHS/United States
+GR  - NS27177/NS/NINDS NIH HHS/United States
+GR  - P20 GM072033/GM/NIGMS NIH HHS/United States
+GR  - P20 GM072033-04/GM/NIGMS NIH HHS/United States
+GR  - R01 NS027177/NS/NINDS NIH HHS/United States
+GR  - R01 NS027177-18/NS/NINDS NIH HHS/United States
+GR  - Howard Hughes Medical Institute/United States
+PT  - Journal Article
+PT  - Research Support, N.I.H., Extramural
+PT  - Research Support, Non-U.S. Gov't
+DEP - 20080504
+PL  - United States
+TA  - Nat Methods
+JT  - Nature methods
+JID - 101215604
+RN  - 0 (Fluorescent Dyes)
+RN  - 0 (Luminescent Proteins)
+RN  - 0 (red fluorescent protein)
+RN  - 147336-22-9 (Green Fluorescent Proteins)
+SB  - IM
+CIN - Nat Methods. 2008 Jun;5(6):472-3. PMID: 18511915
+MH  - Animals
+MH  - Biophysics/*methods
+MH  - Escherichia coli/metabolism
+MH  - Fluorescent Dyes/pharmacology
+MH  - Green Fluorescent Proteins/metabolism
+MH  - Kinetics
+MH  - Light
+MH  - Luminescent Proteins/*chemistry
+MH  - Molecular Sequence Data
+MH  - Mutagenesis
+MH  - Mutation
+MH  - Optics and Photonics
+MH  - Photobleaching
+MH  - Photochemistry/*methods
+PMC - PMC2853173
+MID - NIHMS180998
+OID - NLM: NIHMS180998
+OID - NLM: PMC2853173
+EDAT- 2008/05/06 09:00
+MHDA- 2008/06/25 09:00
+CRDT- 2008/05/06 09:00
+PHST- 2007/11/21 [received]
+PHST- 2008/04/01 [accepted]
+PHST- 2008/05/04 [aheadofprint]
+AID - nmeth.1209 [pii]
+AID - 10.1038/nmeth.1209 [doi]
+PST - ppublish
+SO  - Nat Methods. 2008 Jun;5(6):545-51. doi: 10.1038/nmeth.1209. Epub 2008 May 4.
+
+PMID- 19423828
+OWN - NLM
+STAT- MEDLINE
+DA  - 20090508
+DCOM- 20090521
+LR  - 20140616
+IS  - 1095-9203 (Electronic)
+IS  - 0036-8075 (Linking)
+VI  - 324
+IP  - 5928
+DP  - 2009 May 8
+TI  - Mammalian expression of infrared fluorescent proteins engineered from a bacterial
+      phytochrome.
+PG  - 804-7
+LID - 10.1126/science.1168683 [doi]
+AB  - Visibly fluorescent proteins (FPs) from jellyfish and corals have revolutionized 
+      many areas of molecular and cell biology, but the use of FPs in intact animals,
+      such as mice, has been handicapped by poor penetration of excitation light. We
+      now show that a bacteriophytochrome from Deinococcus radiodurans, incorporating
+      biliverdin as the chromophore, can be engineered into monomeric,
+      infrared-fluorescent proteins (IFPs), with excitation and emission maxima of 684 
+      and 708 nm, respectively; extinction coefficient &gt;90,000 M(-1) cm(-1); and
+      quantum yield of 0.07. IFPs express well in mammalian cells and mice and
+      spontaneously incorporate biliverdin, which is ubiquitous as the initial
+      intermediate in heme catabolism but has negligible fluorescence by itself.
+      Because their wavelengths penetrate tissue well, IFPs are suitable for whole-body
+      imaging. The IFPs developed here provide a scaffold for further engineering.
+FAU - Shu, Xiaokun
+AU  - Shu X
+AD  - Howard Hughes Medical Institute, University of California at San Diego, 9500
+      Gilman Drive, La Jolla, CA 92093-0647, USA.
+FAU - Royant, Antoine
+AU  - Royant A
+FAU - Lin, Michael Z
+AU  - Lin MZ
+FAU - Aguilera, Todd A
+AU  - Aguilera TA
+FAU - Lev-Ram, Varda
+AU  - Lev-Ram V
+FAU - Steinbach, Paul A
+AU  - Steinbach PA
+FAU - Tsien, Roger Y
+AU  - Tsien RY
+LA  - eng
+GR  - R01 CA158448/CA/NCI NIH HHS/United States
+GR  - R01 GM086197/GM/NIGMS NIH HHS/United States
+GR  - R01 GM086197/GM/NIGMS NIH HHS/United States
+GR  - R01 GM086197-01/GM/NIGMS NIH HHS/United States
+GR  - Howard Hughes Medical Institute/United States
+GR  - Howard Hughes Medical Institute/United States
+PT  - Journal Article
+PT  - Research Support, N.I.H., Extramural
+PT  - Research Support, Non-U.S. Gov't
+PL  - United States
+TA  - Science
+JT  - Science (New York, N.Y.)
+JID - 0404511
+RN  - 0 (Luminescent Proteins)
+RN  - 0 (Recombinant Fusion Proteins)
+RN  - 11121-56-5 (Phytochrome)
+RN  - O9MIA842K9 (Biliverdine)
+SB  - IM
+EIN - Science. 2009 Dec 11;326(5959):1482
+MH  - Adenoviridae/genetics
+MH  - Amino Acid Sequence
+MH  - Animals
+MH  - *Biliverdine/chemistry/metabolism
+MH  - Cell Line
+MH  - Deinococcus/*chemistry
+MH  - Diagnostic Imaging
+MH  - Fluorescence
+MH  - Humans
+MH  - Liver/anatomy &amp; histology
+MH  - *Luminescent Proteins/chemistry/metabolism
+MH  - Mice
+MH  - Molecular Sequence Data
+MH  - *Phytochrome/chemistry/genetics/metabolism
+MH  - *Protein Engineering
+MH  - Recombinant Fusion Proteins/chemistry/metabolism
+MH  - Spectrophotometry, Infrared
+MH  - Whole Body Imaging
+PMC - PMC2763207
+MID - NIHMS130201
+OID - NLM: NIHMS130201
+OID - NLM: PMC2763207
+EDAT- 2009/05/09 09:00
+MHDA- 2009/05/22 09:00
+CRDT- 2009/05/09 09:00
+AID - 324/5928/804 [pii]
+AID - 10.1126/science.1168683 [doi]
+PST - ppublish
+SO  - Science. 2009 May 8;324(5928):804-7. doi: 10.1126/science.1168683.
+</pre>
