@@ -1,0 +1,364 @@
+
+<!-- saved from url=(0052)http://flockhart.virtualave.net/RBIF0100/regexp.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Python Regular Expressions by Example</title>
+    <link rel="stylesheet" type="text/css" href="./Python Regular Expressions by Example_files/re_styles.css">
+  <style type="text/css"></style></head>
+
+  <body>
+
+    <table width="100%" cellpadding="4" cellspacing="2" class="box">
+      <tbody><tr><td align="center" class="box">
+          <h2>Regular Expressions by Example</h2>
+      </td></tr>
+    </tbody></table>
+
+    <br>
+
+    <table width="100%" cellpadding="4" cellspacing="2" class="box">
+      <tbody><tr><th class="box" align="center">Python Specific Examples</th></tr>
+      <tr><td class="box" align="center">
+
+        <p>This section is lifted from
+        Wikipedia's
+          <a href="http://en.wikipedia.org/wiki/Regular_expression_examples">Regular expression examples</a> page.  All I've done is
+            translate the code from Perl to Python 2.  For this
+            version, assume that the "<code>import re</code>" command
+            has already been issued.</p>
+
+        <table cellpadding="4" cellspacing="2" class="box2">
+
+          <tbody><tr class="box2">
+            <th>Metacharacter(s)</th>
+            <th>Description</th>
+            <th>Example<br>
+              Note that all the if statements return a TRUE value</th>
+          </tr>
+
+          <tr class="box2">
+            <th><code><font size="+1"><b>.</b></font></code></th>
+            <td>Normally matches any character except a newline. Within square brackets the dot is literal.</td>
+            <td align="left">
+<pre>
+string1 = "Hello, world."
+if re.search(r".....", string1):
+    print string1 + " has length &gt;= 5"
+</pre></td>
+          </tr>
+
+          <tr class="box2">
+            <th><code><font size="+1">( )</font></code></th>
+            <td>Groups a series of pattern elements to a single element. When you match a pattern within parentheses, you can use any of $1, $2, ... later to refer to the previously matched pattern.</td>
+            <td align="left">
+<pre>string1 = "Hello, world."
+m_obj = re.search(r"(H..).(o..)", string1)
+if m_obj:
+    print "We matched '" + m_obj.group(1) +\
+          "' and '" + m_obj.group(2) + "'"
+
+</pre>
+<b>Output:</b>
+<pre><br>We matched 'Hel' and 'o, ';
+
+
+</pre></td>
+          </tr>
+
+<tr class="box2">
+<th><code><font size="+1">+</font></code></th>
+<td>Matches the preceding pattern element one or more times.</td>
+<td align="left">
+<pre>string1 = "Hello, world."
+if re.search(r"l+", string1):
+    print 'There are one or more consecutive letter "l"' +\
+          "'s in " + string1
+</pre>
+<b>Output:</b>
+<pre><br>There are one or more consecutive letter "l"'s in Hello World
+
+</pre></td>
+</tr>
+
+<tr class="box2">
+<th><code><font size="+1">?</font></code></th>
+<td>Matches the preceding pattern element zero or one times.</td>
+<td align="left">
+<pre>string1 = "Hello, world."
+if re.search(r"H.?e", string1):
+    print "There is an 'H' and a 'e' separated by " +\
+          "0-1 characters (Ex: He Hoe)\n"
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">?</font></code></th>
+<td>Modifies the *, +, or {M,N}'d regexp that comes before to match as few times as possible.</td>
+<td align="left">
+<pre>
+string1 = "Hello, world."
+if re.search(r"l.+?o", string1):
+    print "The non-greedy match with 'l' followed by\n" +\
+          "one or more characters is 'llo' rather than\n" +\
+          "'llo wo'."
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">*</font></code></th>
+<td>Matches the preceding pattern element zero or more times.</td>
+<td align="left">
+<pre>string1 = "Hello, world."
+if re.search(r"el*o", string1):
+    print "There is an 'e' followed by zero to many\n" +\
+          "'l' followed by 'o' (eo, elo, ello, elllo)"
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">{M,N}</font></code></th>
+<td>Denotes the minimum M and the maximum N match count.</td>
+
+<td align="left">
+<pre>string1 = "Hello, world."
+if re.search(r"l{1,2}", string1):
+    print "There exists a substring with at least 1\n" +\
+          "and at most 2 l's in " + string1
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">[...]</font></code></th>
+<td>Denotes a set of possible character matches.</td>
+<td align="left">
+<pre>string1 = "Hello, world."
+if re.search(r"[aeiou]+", string1):
+    print string1 + " contains one or more vowels."
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">|</font></code></th>
+
+<td>Separates alternate possibilities.</td>
+<td align="left">
+<pre>string1 = "Hello, world."
+if re.search(r"(Hello|Hi|Pogo)", string1):
+    print "At least one of Hello, Hi, or Pogo is " +\
+          "contained in " + string1
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">\b</font></code></th>
+<td>Matches a word boundary.</td>
+<td align="left">
+<pre>string1 = "Hello World"
+if re.search(r"llo\b", string1):
+    print "There is a word that ends with 'llo'"
+else:
+    print "There are no words that end with 'llo'"
+</pre></td>
+</tr>
+
+<tr class="box2">
+<th><code><font size="+1">\w</font></code></th>
+<td>Matches an alphanumeric character, including "_".</td>
+<td align="left">
+<pre>string1 = "Hello World"
+m_obj = re.search(r"(\w\w)", string1)
+if m_obj:
+    print "The first two adjacent alphanumeric characters"
+    print "(A-Z, a-z, 0-9, _) in", string1, "were",
+    print m_obj.group(1)
+</pre>
+<b>Output:</b>
+<pre><br>The first two adjacent alphanumeric characters
+(A-Z, a-z, 0-9, _) in Hello World were He
+
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">\W</font></code></th>
+<td>Matches a non-alphanumeric character, excluding "_".</td>
+<td align="left">
+<pre>string1 = "Hello World"
+if re.search(r"\W", string1):
+    print "The space between Hello and " +\
+          "World is not alphanumeric"
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">\s</font></code></th>
+<td>Matches a whitespace character (space, tab, newline, form feed)</td>
+<td align="left">
+<pre>string1 = "Hello World\n"
+if re.search(r"\s.*\s", string1):
+    print "There are TWO whitespace characters, which may"
+    print "be separated by other characters, in", string1
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">\S</font></code></th>
+<td>Matches anything BUT a whitespace.</td>
+
+<td align="left">
+<pre>string1 = "Hello World\n"
+m_obj = re.search(r"(\S*)\s*(\S*)", string1)
+if m_obj:
+    print "The first two groups of NON-whitespace characters"
+    print "are '%s' and '%s'." % m_obj.groups()
+</pre>
+<b>Output:</b>
+<pre><br>
+The first two groups of NON-whitespace characters
+are 'Hello' and 'World'.
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">\d</font></code></th>
+<td>Matches a digit, same as [0-9].</td>
+<td align="left">
+<pre>string1 = "99 bottles of beer on the wall."
+m_obj = re.search(r"(\d+)", string1)
+if m_obj:
+    print m_obj.group(1), "is the first number in '" +\
+                          string1 + "'"
+
+</pre>
+<b>Output:</b>
+<pre>
+<br>99 is the first number in '99 bottles of beer on the wall.'
+
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">\D</font></code></th>
+<td>Matches a non-digit.</td>
+<td align="left">
+<pre>string1 = "Hello World"
+if re.search(r"\D", string1):
+    print "There is at least one character in", string1,
+    print "that is not a digit."
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">^</font></code></th>
+<td>Matches the beginning of a line or string.</td>
+
+<td align="left">
+<pre>string1 = "Hello World"
+if re.search(r"^He", string1):
+    print string1, "starts with the characters 'He'"
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">$</font></code></th>
+<td>Matches the end of a line or string.</td>
+<td align="left">
+<pre>string1 = "Hello World"
+if re.search(r"rld$", string1):
+    print string1, "is a line or string " +\
+          "that ends with 'rld'"
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">\A</font></code></th>
+
+<td>Matches the beginning of a string (but not an internal line).</td>
+<td align="left">
+<pre>string1 = "Hello\nWorld\n"
+if re.search(r"\AH", string1):
+    print string1, "is a string",
+    print "that starts with 'H'"
+
+</pre>
+<b>Output:</b>
+<pre>
+<br>Hello
+World
+is a string that starts with 'H'
+</pre></td>
+</tr>
+<tr class="box2">
+<th><code><font size="+1">\Z</font></code></th>
+<td>Matches the end of a string (but not an internal line).</td>
+<td align="left">
+<pre>string1 = "Hello\nWorld\n"
+if re.search(r"d\n\Z", string1):
+    print string1, "is a string",
+    print "that ends with 'd\\n'"
+</pre></td>
+</tr>
+
+<tr class="box2">
+<th><code><font size="+1">[^...]</font></code>
+</th><td>Matches every character except the ones inside brackets.</td>
+<td align="left">
+<pre>string1 = "Hello World\n"
+if re.search(r"[^abc]", string1):
+    print string1 + " contains a character other than " +\
+          "a, b, and c"
+</pre></td>
+</tr>
+</tbody></table>
+
+      </td></tr>
+    </tbody></table>
+
+    <br>
+
+    <table width="100%" cellpadding="4" cellspacing="2" class="box">
+      <tbody><tr><th class="box" align="center">Other Examples</th></tr>
+      <tr><td class="box">
+
+        <p>In this section I will present different regular
+        expressions followed by strings with the area that matched
+        highlighted in yellow, followed by any commentary.  In order
+        to make it clear when there are any spaces at the end of a
+        multiline string, the background of the nonmatched portions of
+        the strings are set to white.</p>
+
+        <p>I'll probably add examples here in the future as they
+        occure to me or I see them elsewhere.</p>
+
+        <hr width="75%">
+
+        <p><u>Regex:</u> <b><code>ATG</code></b></p>
+
+        <p><u>String:</u></p><pre><span style="background-color:white">TGCGTAGGCCAGACGGCAGTCCCGCGGCGGGATCCTGGTAAGGTGAAATA
+TGGGACACGCAAATTGGCGGCAGGGGCAACGCTACTACGGCAAACACACT
+TAGACAGACGTGACATACTTCATC</span><span style="background-color:yellow">ATG</span><span style="background-color:white">TCGTTCGGGGCCATAATTCCCCG
+ACGCTGAGTAGATCAATGTATCATAGGTTTACGTCATTTCAATCTAGTGC
+CGGGTTAGCTGACTACGACCCCCTGCCCCTCTAACGTGTGGGTAATCTTG</span></pre>
+
+        <hr width="75%">
+
+        <p><u>Regex:</u> <b><code>A\s?T\s?G</code></b></p>
+
+        <p><u>String:</u></p><pre><span style="background-color:white">TGCGTAGGCCAGACGGCAGTCCCGCGGCGGGATCCTGGTAAGGTGAAAT</span><span style="background-color:yellow">A
+TG</span><span style="background-color:white">GGACACGCAAATTGGCGGCAGGGGCAACGCTACTACGGCAAACACACT
+TAGACAGACGTGACATACTTCATCATGTCGTTCGGGGCCATAATTCCCCG
+ACGCTGAGTAGATCAATGTATCATAGGTTTACGTCATTTCAATCTAGTGC
+CGGGTTAGCTGACTACGACCCCCTGCCCCTCTAACGTGTGGGTAATCTTG</span></pre><p></p>
+
+        <p><u>Comments:</u> Notice how the second regex matches an
+          ATG much earlier in the sequence.  The first ATG is
+          interupted by a newline, but the second regular expression
+          is tolerant of whitespace in between the letters it is
+          looking for.  This is an ok technique for small search
+          strings, but it can get cumbersome for larger strings.  To
+          allow for multiple whitespace characters,
+          use <code>\s*</code> instead of <code>\s?</code></p>
+
+        <hr width="75%">
+
+        <p><u>Regex:</u> <b><code>CG\S|AG(A|G)</code></b></p>
+
+        <p><u>String:</u></p><pre><span style="background-color:white">AAA AAC AAG AAT ACA ACC ACG ACT </span><span style="background-color:yellow">AGA</span><span style="background-color:white"> AGC </span><span style="background-color:yellow">AGG</span><span style="background-color:white"> AGT ATA ATC ATG ATT
+CAA CAC CAG CAT CCA CCC CCG CCT </span><span style="background-color:yellow">CGA</span><span style="background-color:white"> </span><span style="background-color:yellow">CGC</span><span style="background-color:white"> </span><span style="background-color:yellow">CGG</span><span style="background-color:white"> </span><span style="background-color:yellow">CGT</span><span style="background-color:white"> CTA CTC CTG CTT
+GAA GAC GAG GAT GCA GCC GCG GCT GGA GGC GGG GGT GTA GTC GTG GTT
+TAA TAC TAG TAT TCA TCC TCG TCT TGA TGC TGG TGT TTA TTC TTG TTT</span>
+        </pre><p></p>
+
+        <p><u>Comments:</u> Those are the six DNA codons that code for Arginine.  this expression illustrates the global nature of the '|' metacharacter.  The second '|' is not necessary, as it is separating single characters.  It would work exactly the same way if we used <b><code>CG\S|AG[AG]</code></b> instead.
+        </p>
+
+      </td></tr>
+    </tbody></table>
+  
+
+</body></html>

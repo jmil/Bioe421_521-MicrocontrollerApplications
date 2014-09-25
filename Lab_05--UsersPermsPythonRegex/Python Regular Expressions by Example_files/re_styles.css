@@ -1,0 +1,14 @@
+body {background: #98FF98;  /* background color outside boxes */
+      color: #005000} /* general text color */
+
+h1, h2, h3, form {margin: 0in} /* compatability */
+
+a:link {color: #55ddcc} /* text color for unvisitted links */
+a:active {color: #00dd99}              /* active links */
+a:visited {color: #399B79}             /* visitted links */
+
+table.box {background: #228B22} /* border color for boxes */
+td.box,th.box,tr.box {background: #e0ffe0} /* background color for boxes */
+
+table.box2 {background: #00668B}
+td.box2,th.box2,tr.box2 {background: #efefff; color: #000050}
