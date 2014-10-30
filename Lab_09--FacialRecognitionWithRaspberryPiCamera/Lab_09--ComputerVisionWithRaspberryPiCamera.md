@@ -160,14 +160,16 @@ We need to wrap this raw `.h264` file into a more standard `.mp4` or `.avi` cont
 	$ which MP4Box
 	$ MP4Box -fps 30 -add find_our_faces.h264 find_our_faces.mp4
 	$ omxplayer find_our_faces.mp4
-	$ sudo apt-get install ffmpeg
-	$ which ffmpeg
-	$ ffmpeg -i find_our_faces.h264 -vcodec mjpeg -qscale 1 -an find_our_faces.avi
 
 This will take a bit.
 
 See if you can figure out how to save a video or save images out from your recorded video so that they can be analyzed for face recognition.
 
+If the `.mp4` doesn't work, you could try:
+
+	$ sudo apt-get install ffmpeg
+	$ which ffmpeg
+	$ ffmpeg -i find_our_faces.h264 -vcodec mjpeg -qscale 1 -an find_our_faces.avi
 
 
 

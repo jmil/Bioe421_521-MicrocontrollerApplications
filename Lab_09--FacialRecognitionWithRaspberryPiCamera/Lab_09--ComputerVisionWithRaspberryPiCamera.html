@@ -604,14 +604,18 @@ $ sudo fbi -d /dev/fb0 -a -T 2 -t 3 *.png
 $ which MP4Box
 $ MP4Box -fps 30 -add find_our_faces.h264 find_our_faces.mp4
 $ omxplayer find_our_faces.mp4
-$ sudo apt-get install ffmpeg
-$ which ffmpeg
-$ ffmpeg -i find_our_faces.h264 -vcodec mjpeg -qscale 1 -an find_our_faces.avi
 </code></pre>
 
 <p>This will take a bit.</p>
 
 <p>See if you can figure out how to save a video or save images out from your recorded video so that they can be analyzed for face recognition.</p>
+
+<p>If the <code>.mp4</code> doesn&#39;t work, you could try:</p>
+
+<pre><code>$ sudo apt-get install ffmpeg
+$ which ffmpeg
+$ ffmpeg -i find_our_faces.h264 -vcodec mjpeg -qscale 1 -an find_our_faces.avi
+</code></pre>
 
 <h2 id="toc_6">Learn More</h2>
 
