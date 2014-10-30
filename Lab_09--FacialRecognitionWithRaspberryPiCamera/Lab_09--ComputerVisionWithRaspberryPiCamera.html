@@ -439,7 +439,7 @@ pre[class*="language-"] {
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: John Sexton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
 
-<h2 id="toc_2">Lab 8B. Computer Vision with Raspberry Pi Camera</h2>
+<h2 id="toc_2">Lab 9. Computer Vision with Raspberry Pi Camera</h2>
 
 <p>Oftentimes, to execute a particular plan it might be more efficient to make an analogy between your current task and what someone else has already achieved and posted online. If they posted their ideas and their code under a liberal, legal, free and open-source license, you might be able to both benefit from and become a potential benefactor of a source project or success story you find online.</p>
 
@@ -569,7 +569,10 @@ print width
     captured_frame_number=captured_frame_number+1
 </code></pre>
 
-<p>Finally, we need to create a folder to save out our computed image overlays.</p>
+<p>Finally, note that the files will be output to the following location:</p>
+
+<pre><code>cv2.imwrite(&quot;../data/saved_images/{0:d}.png&quot;.format(captured_frame_number),vis)
+</code></pre>
 
 <p>Save and exit. Let&#39;s run it:</p>
 

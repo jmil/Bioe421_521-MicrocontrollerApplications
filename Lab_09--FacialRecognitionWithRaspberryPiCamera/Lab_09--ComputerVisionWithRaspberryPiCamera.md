@@ -2,7 +2,7 @@
 ####Instructor: Jordan Miller<br>TA: John Sexton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
-##Lab 8B. Computer Vision with Raspberry Pi Camera
+##Lab 9. Computer Vision with Raspberry Pi Camera
 
 Oftentimes, to execute a particular plan it might be more efficient to make an analogy between your current task and what someone else has already achieved and posted online. If they posted their ideas and their code under a liberal, legal, free and open-source license, you might be able to both benefit from and become a potential benefactor of a source project or success story you find online.
 
@@ -125,8 +125,9 @@ Later on, we have the processing loop, which runs while `cap` is being read, whi
         captured_frame_number=captured_frame_number+1
 
 
-Finally, we need to create a folder to save out our computed image overlays.
+Finally, note that the files will be output to the following location:
 
+	cv2.imwrite("../data/saved_images/{0:d}.png".format(captured_frame_number),vis)
 
 Save and exit. Let's run it:
 
