@@ -150,9 +150,9 @@ Use **`<shift-Q>`** to terminate, and be patient!
 
 ##Record and Analyze your Own Video
 
-Now let's make your own video to analyze and find your faces. Recall the `raspivid` command:
+Now let's make your own video to analyze and find your faces. Recall the `raspivid` command. We will take a video that's lower resolution than HD so it's faster to process by the Pi when searching for faces:
 
-	$ raspivid -o find_our_faces.h264
+	$ raspivid -o find_our_faces.h264 -w 640 -h 480
 
 We need to wrap this raw `.h264` file into a more standard `.mp4` or `.avi` container so that `OpenCV` can process it:
 

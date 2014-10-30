@@ -593,9 +593,9 @@ $ sudo fbi -d /dev/fb0 -a -T 2 -t 3 *.png
 
 <h2 id="toc_5">Record and Analyze your Own Video</h2>
 
-<p>Now let&#39;s make your own video to analyze and find your faces. Recall the <code>raspivid</code> command:</p>
+<p>Now let&#39;s make your own video to analyze and find your faces. Recall the <code>raspivid</code> command. We will take a video that&#39;s lower resolution than HD so it&#39;s faster to process by the Pi when searching for faces:</p>
 
-<pre><code>$ raspivid -o find_our_faces.h264
+<pre><code>$ raspivid -o find_our_faces.h264 -w 640 -h 480
 </code></pre>
 
 <p>We need to wrap this raw <code>.h264</code> file into a more standard <code>.mp4</code> or <code>.avi</code> container so that <code>OpenCV</code> can process it:</p>
