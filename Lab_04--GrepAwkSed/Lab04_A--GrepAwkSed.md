@@ -1,5 +1,5 @@
 #Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: John Sexton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ##Lab 4A. Grep, Sed, and Awk
 
@@ -10,7 +10,16 @@ http://www-users.york.ac.uk/~mijp1/teaching/2nd_year_Comp_Lab/guides/grep_awk_se
 
 You will want to create the 'a_file' he mentions at the beginning of the tutorial. Here's the source text:
 
-	boot	book	booze	machine	boots	bungie	bark	aardvark	broken$tuff	robots
+	boot
+	book
+	booze
+	machine
+	boots
+	bungie
+	bark
+	aardvark
+	broken$tuff
+	robots
 
 
 

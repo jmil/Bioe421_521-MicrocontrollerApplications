@@ -1,5 +1,5 @@
 #Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: John Sexton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ##Lab 6A. Getting Started with Arduino
 

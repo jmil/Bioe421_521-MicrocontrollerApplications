@@ -1,5 +1,5 @@
 #Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: John Sexton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
 ##Lab 10. Git Workflows
@@ -13,7 +13,8 @@ http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 
 Get started at the terminal at the section **First-Time Git Setup**. You want your commit messages to make sense and attribute author info correctly, so this section is very important:
 
-	￼$ git config --global user.name "Jane Doe"	$ git config --global user.email janedoe@example.com
+	￼$ git config --global user.name "Jane Doe"
+	$ git config --global user.email janedoe@example.com
 	$ git config --list
 
 ###Using Github for your Final Project
