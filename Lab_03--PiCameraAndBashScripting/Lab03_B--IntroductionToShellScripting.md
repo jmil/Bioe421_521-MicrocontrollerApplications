@@ -152,5 +152,10 @@ Then the text could be accessed within your script by calling `$1` and `$2` to a
 		$ man scp
 		$ scp team01-LightBender_Lab03.zip student@IP_ADDRESS:/home/student/
 
-##Cleanup
-###After you shut down your RaspberryPi for the day, be sure you securely reconnect your computer monitor to the PC at your station.
+## Shutdown Procedure
+
+1. Shutdown your Pi properly:
+
+		$ sudo shutdown -h now
+
+ Unplug everthing and restore the Windows desktop computer to a working state.

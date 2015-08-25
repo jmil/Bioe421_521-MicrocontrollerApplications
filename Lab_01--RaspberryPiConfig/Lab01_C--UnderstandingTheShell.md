@@ -118,5 +118,13 @@ One of the most important aspects of the shell, especially for new users, is tha
 	1. What command will let you reboot the Pi?<br><br><br>
 	1. What percentage of the CPU does the `top` command utilize?<br><br><br>
 
+## Shutdown Procedure
+
+1. Shutdown your Pi properly:
+
+		$ sudo shutdown -h now
+
+ Unplug everthing and restore the Windows desktop computer to a working state.
+
 ###Make sure you show your work to an Instructor before you leave for the day.
 

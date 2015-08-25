@@ -7,6 +7,8 @@
 
 #####Raspberry Pi is a complete computer system under $40. It uses a processor similar to what is found in many smartphones: a Broadcom BCM2836 with a 900 MHz quad-core ARM Cortex-A7: https://en.wikipedia.org/wiki/ARM_Cortex-A7. It can run many OSs and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage (600 mA, 3 W) make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
 
+####Hardware: We supply a complete Raspberry Pi, power cable, video cable, keyboard and mouse. We will utilize the computer displays already available at OEDK Computing Classroom and disconnect the desktop Windows PCs from those monitors to work with Raspberry Pi.
+
 ####Raspberry Pi, like many microcontrollers, are sensitive to static. Avoid charging yourself up with static as it could damage your device (not usually a huge problem in Houston, but be careful). Let's get started.
 
 1. Plug in the Keyboard and Mouse to the Raspberry Pi

@@ -20,8 +20,7 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 
 			$ ifconfig eth0
 			eth0	Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
-		          inet addr:10.69.254.6  Bcast:10.69.254.1  Mask:255.255.255.0
-					UP BROADCAST MULTICAST  MTU:1500  Metric:1
+					inet addr:10.69.254.6  Bcast:10.69.254.1  Mask:255.255.255.0
 			...
 
 1. To check if you are on the Internet, see if you can `ping` internet servers. **NOTE:** use **`<ctrl-C>`** to cancel the `ping`.
@@ -82,7 +81,7 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 		$ sudo apt-get install arduino
 
 
-1. Your new software should be loaded and ready to go. But you can reboot to use your new software:
+1. Your new software should be loaded and ready to go. But let's reboot just to be safe:
 
 		$ sudo shutdown -r now
 

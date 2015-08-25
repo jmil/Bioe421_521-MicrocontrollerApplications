@@ -87,5 +87,10 @@ You will want to create the 'a_file' he mentions at the beginning of the tutoria
 1. Zip and SSH your results to your Instructor's Raspberry Pi using the instructions from last time.
 
 
-##Cleanup
-###After you shut down your RaspberryPi for the day, be sure you securely reconnect your computer monitor to the PC at your station.
+## Shutdown Procedure
+
+1. Shutdown your Pi properly:
+
+		$ sudo shutdown -h now
+
+ Unplug everthing and restore the Windows desktop computer to a working state.

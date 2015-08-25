@@ -75,8 +75,13 @@ Figure out and replace the byte codes in `ledCharSet` that lets you light up, pr
 
 
 
-##Cleanup
-###After you shut down your RaspberryPi for the day, be sure you securely reconnect your computer monitor to the PC at your station.
+## Shutdown Procedure
+
+1. Shutdown your Pi properly:
+
+		$ sudo shutdown -h now
+
+ Unplug everthing and restore the Windows desktop computer to a working state.
 
 
 

@@ -146,8 +146,13 @@ Work on your final project in your **`~/421_521_final_project`** `git` repo. As 
 
 1. Submit the URL of your repo on Owlspace for today's Assignment, and **be sure to include** the github username of you and your teammate (you each need your own personal github account!).
 
-##Cleanup
-###After you shut down your RaspberryPi for the day, be sure you securely reconnect your computer monitor to the PC at your station.
+## Shutdown Procedure
+
+1. Shutdown your Pi properly:
+
+		$ sudo shutdown -h now
+
+ Unplug everthing and restore the Windows desktop computer to a working state.
 
 
 
