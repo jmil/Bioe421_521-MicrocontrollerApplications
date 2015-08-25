@@ -5,7 +5,7 @@
 
 ######We will use Raspberry Pi 2 - Model B - ARMv7 with 1G RAM: https://www.adafruit.com/products/2358
 
-#####Raspberry Pi is a complete computer system under $40. It uses a processor similar to what is found in early smartphones (Broadcom SoC with 700 MHz ARM1176JZF-S core). It can run many OSs and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage (600 mA, 3 W) make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
+#####Raspberry Pi is a complete computer system under $40. It uses a processor similar to what is found in many smartphones: a Broadcom BCM2836 with a 900 MHz quad-core ARM Cortex-A7: https://en.wikipedia.org/wiki/ARM_Cortex-A7. It can run many OSs and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage (600 mA, 3 W) make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
 
 ####Raspberry Pi, like many microcontrollers, are sensitive to static. Avoid charging yourself up with static as it could damage your device (not usually a huge problem in Houston, but be careful). Let's get started.
 
