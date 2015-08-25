@@ -14,6 +14,6 @@ In this repo you will find instructions and assigments for class.
 
 1. Make use of tags to mark your work, turn in your homework each week using a single pull request. Your homework branch needs to use the following naming convention:
 		
-	team01-LightBender  (use your own team number and team name)
+	Team09-LambdaFTW  (use your own team number and team name)
 
 1. Commit early and often!

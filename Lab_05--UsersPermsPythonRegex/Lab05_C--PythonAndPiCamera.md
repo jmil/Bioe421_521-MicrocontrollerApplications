@@ -56,12 +56,12 @@ Why might you want to run a timelapse capture via a system `cron` job instead of
 
 1. Zip up the folder for Today's lab to make a single .zip file
 
-		$ zip -r team01-LightBender_Lab05.zip team01-LightBender_Lab05
+		$ zip -r Team09-LambdaFTW_Lab05.zip Team09-LambdaFTW_Lab05
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
 		$ man scp
-		$ scp team01-LightBender_Lab05.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-LambdaFTW_Lab05.zip student@IP_ADDRESS:/home/student/
 
 
 

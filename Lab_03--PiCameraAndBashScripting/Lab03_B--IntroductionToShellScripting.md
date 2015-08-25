@@ -136,21 +136,21 @@ Then the text could be accessed within your script by calling `$1` and `$2` to a
 1. move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention. Note the trailing `/` characters here have specific meaning... don't forget them!
 
 		$ cd ~
-		$ mkdir team01-LightBender_Lab03
-		$ mv raspicam team-01-LightBender_Lab03/
-		$ mv scripts team01-LightBender_Lab03/
-		$ mv weather team01-LightBender_Lab03/
+		$ mkdir Team09-LambdaFTW_Lab03
+		$ mv raspicam Team09-LambdaFTW_Lab03/
+		$ mv scripts Team09-LambdaFTW_Lab03/
+		$ mv weather Team09-LambdaFTW_Lab03/
 		
 1. Zip up the folder to make a single .zip file
 
 		$ sudo apt-get update
 		$ sudo apt-get install zip
-		$ zip -r team01-LightBender_Lab03.zip team01-LightBender_Lab03
+		$ zip -r Team09-LambdaFTW_Lab03.zip Team09-LambdaFTW_Lab03
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
 		$ man scp
-		$ scp team01-LightBender_Lab03.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-LambdaFTW_Lab03.zip student@IP_ADDRESS:/home/student/
 
 ## Shutdown Procedure
 

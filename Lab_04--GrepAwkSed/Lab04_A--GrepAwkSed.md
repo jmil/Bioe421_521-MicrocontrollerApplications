@@ -27,8 +27,8 @@ You will want to create the 'a_file' he mentions at the beginning of the tutoria
 
 1. Let's apply what you've learned from Matt's awesome tutorial by working with the NIH Pubmed Database. NIH allows you to query their servers for specific formats of scientific publication data that you can then process via command line.
 
-		$ mkdir team01-LightBender_Lab04
-		$ cd team01-LightBender_Lab04
+		$ mkdir Team09-LambdaFTW_Lab04
+		$ cd Team09-LambdaFTW_Lab04
 		$ wget -O tsien.txt "http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,18454154,19423828?report=medline&format=text" 
 		$ cat tsien.txt | more
 

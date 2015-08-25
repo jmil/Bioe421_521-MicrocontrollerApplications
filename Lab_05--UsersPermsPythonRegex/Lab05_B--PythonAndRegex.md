@@ -20,8 +20,8 @@ It's a great language you will want to become familiar with this semester.
 As the `pi` user back on your team's Raspberry Pi, create a new folder to store python code you generate today:
 
 	$ cd ~
-	$ mkdir team01-LightBender_Lab05
-	$ cd team01-LightBender_Lab05
+	$ mkdir Team09-LambdaFTW_Lab05
+	$ cd Team09-LambdaFTW_Lab05
 
 Let's make a new `python` file that can be processed by the `python` program. This is a very similar process to how we made **shell scripts (\*.sh)** to be processed by the `bash` shell. `Python` scripts should be given the **.py** suffix.
 
