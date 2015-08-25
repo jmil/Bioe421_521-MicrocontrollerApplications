@@ -3,13 +3,104 @@
 
 ##Lab 1B. Getting Raspberry Pi on the Internets
 
+### Ethernet Access
+
+
+1. Check that you do not currently have network access. You should NOT see an entry for `inet addr` on the second line of output:
+
+			$ ifconfig eth0
+			eth0	Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
+					UP BROADCAST MULTICAST  MTU:1500  Metric:1
+			...
+
+
+Ask your Instructor for help disconnecting ethernet from a desktop computer in OEDK classroom, connect the female-to-female coupler and ethernet extension cord, and plug the ethernet cord into the ethernet port on your Raspberry Pi. 
+
+Once connected, you should see the LED on the Ethernet port light up. Your Pi should have auto-requested an IP address from the network. Check that you now have an `inet addr` on the second line:
+
+			$ ifconfig eth0
+			eth0	Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
+		          inet addr:10.69.254.6  Bcast:10.69.254.1  Mask:255.255.255.0
+					UP BROADCAST MULTICAST  MTU:1500  Metric:1
+			...
+
+1. To check if you are on the Internet, see if you can `ping` internet servers. **NOTE:** use **`<ctrl-C>`** to cancel the `ping`.
+
+		$ ping rice.edu
+		PING rice.edu (128.42.204.44) 56(84) bytes of data.
+		64 bytes from 128.42.204.44: icmp_req=1 tt1=244 time=30.7 ms
+		...
+
+
+
+###Welcome to the Internet!
+
+
+1. ####Let's upgrade your system and all its software to the latest OS version.
+
+	Grab the complete list of all the latest software programs and packages:
+
+			$ sudo apt-get update
+			Get :1 http://archive.raspberrypi.org wheezy Release.gpg [473 B]
+			Get :2 http://mirrordirector.raspbian.org wheezy Release.gpg [490 B]
+			...
+
+
+1. Upgrade your system.
+
+		$ sudo apt-get dist-upgrade
+		Reading package lists... Done
+		Building dependency tree
+		Reading state information... Done
+		Calculating upgrade... Done
+		The following packages will be upgraded:
+		...
+		Need to get 38.8 MB of archives.
+		After this operation, 151 kB of additional disk space will be used.
+		Do you want to continue [Y/n]?
+		
+	Note that we will use `dist-upgrade` as the recommended upgrade command instead of simply `upgrade` to make sure that we have an intelligently loaded set of software that is known to work well together. From the manual:
+			
+			dist-upgrade in addition to performing the function of upgrade,
+			also intelligently handles changing dependencies with new versions
+			of packages; apt-get has a "smart" conflict resolution system, and
+			it will attempt to upgrade the most important packages at the
+			expense of less important ones if necessary. So, dist-upgrade
+			command may remove some packages. The /etc/apt/sources.list file
+			contains a list of locations from which to retrieve desired package
+			files. See also apt_preferences(5) for a mechanism for overriding
+			the general settings for individual packages. 
+			
+	This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.
+
+1. Install some games:
+
+		$ sudo apt-get install bsdgames
+
+1. Install the Arduino environment:
+
+		$ sudo apt-get install arduino
+
+
+1. Your new software should be loaded and ready to go. But you can reboot to use your new software:
+
+		$ sudo shutdown -r now
+
+
+1. Move on to **Lab 1C**. **NOTE:** WiFi instructions below will **NOT** work for Fall 2015 (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.
+
+
+
+___
+
+### WiFi Access
+
+**NOTE:** WiFi instructions below will **NOT** work for Fall 2015 (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.
+
 1. Plug in your USB WiFi module
 1. Check that you do not currently have network access:
 
-			$ sudo apt-get update
-			Err http://archive.raspberrypi.org wheezy Release.gpg
-			   Could not resolve 'archive.raspberrypi.org'
-			...
+			$ ifconfig wlan0
 
 
 1. Edit the `wpa_supplicant.conf` file:
@@ -42,7 +133,7 @@
 		...
 
 
-1. Login, and check if you have an IP address (look for **inet addr**, your Internet Address):
+1. Login, and check if you have an IP address (look for `inet addr`, your Internet Address):
 
 		$ ifconfig wlan0
 		wlan0     Link encap:Ethernet  HWaddr 00:5F:21:98:6C:5B  
@@ -54,66 +145,9 @@
           RX bytes:38054 (37.1 KiB)  TX bytes:7976 (7.7 KiB)
 
 
-1. Check if you can `ping` internet servers. **NOTE:** use **`<ctrl-C>`** to cancel the `ping`.
+1. To check if you are on the Internet, see if you can `ping` internet servers. **NOTE:** use **`<ctrl-C>`** to cancel the `ping`.
 
 		$ ping rice.edu
 		PING rice.edu (128.42.204.44) 56(84) bytes of data.
 		64 bytes from 128.42.204.44: icmp_req=1 tt1=244 time=30.7 ms
 		...
-
-	###Welcome to the Internet!
-
-1. ####Let's upgrade your system and all its software to the latest OS version.
-
-	Grab the complete list of all the latest software programs and packages:
-
-			$ sudo apt-get update
-			Hit http://repository.wolfram.com stable Release.gpg
-			Hit http://repository.wolfram.com stable Release
-			Get :1 http://archive.raspberrypi.org wheezy Release.gpg [490 B]
-			Get :2 http://raspberrypi.collabora.com wheezy Release.gpg [836 B]
-			...
-
-
-1. We need to uninstall `wolfram-engine` because there seems to be a bug in the update process of this particular package:
-
-		$ sudo apt-get autoremove wolfram-engine
-		...
-		Do you want to continue [Y/n]?
-		...
-		Processing triggers for man-db ...
-
-1. Upgrade your system.
-
-		$ sudo apt-get dist-upgrade
-		Reading package lists... Done
-		Building dependency tree
-		Reading state information... Done
-		Calculating upgrade... Done
-		The following packages will be upgraded:
-		...
-		Need to get 38.8 MB of archives.
-		After this operation, 151 kB of additional disk space will be used.
-		Do you want to continue [Y/n]?
-		
-	This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.
-
-1. Install some games:
-
-		$ sudo apt-get install bsdgames
-
-1. Install the Arduino environment:
-
-		$ sudo apt-get install arduino
-
-1. You can install `wolfram-engine` now if you like, but it will take 454 MB of space (and some time to download and process the update). It might be fun for you to explore at some point:
-
-		$ sudo apt-get install wolfram-engine
-
-1. Reboot to use your new software:
-
-		$ sudo shutdown -r now
-
-
-
-

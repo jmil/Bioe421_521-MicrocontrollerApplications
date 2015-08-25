@@ -441,14 +441,105 @@ pre[class*="language-"] {
 
 <h2 id="toc_2">Lab 1B. Getting Raspberry Pi on the Internets</h2>
 
+<h3 id="toc_3">Ethernet Access</h3>
+
+<ol>
+<li><p>Check that you do not currently have network access. You should NOT see an entry for <code>inet addr</code> on the second line of output:</p>
+
+<pre><code>    $ ifconfig eth0
+    eth0    Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
+            UP BROADCAST MULTICAST  MTU:1500  Metric:1
+    ...
+</code></pre></li>
+</ol>
+
+<p>Ask your Instructor for help disconnecting ethernet from a desktop computer in OEDK classroom, connect the female-to-female coupler and ethernet extension cord, and plug the ethernet cord into the ethernet port on your Raspberry Pi. </p>
+
+<p>Once connected, you should see the LED on the Ethernet port light up. Your Pi should have auto-requested an IP address from the network. Check that you now have an <code>inet addr</code> on the second line:</p>
+
+<pre><code>        $ ifconfig eth0
+        eth0    Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
+              inet addr:10.69.254.6  Bcast:10.69.254.1  Mask:255.255.255.0
+                UP BROADCAST MULTICAST  MTU:1500  Metric:1
+        ...
+</code></pre>
+
+<ol>
+<li><p>To check if you are on the Internet, see if you can <code>ping</code> internet servers. <strong>NOTE:</strong> use <strong><code>&lt;ctrl-C&gt;</code></strong> to cancel the <code>ping</code>.</p>
+
+<pre><code>$ ping rice.edu
+PING rice.edu (128.42.204.44) 56(84) bytes of data.
+64 bytes from 128.42.204.44: icmp_req=1 tt1=244 time=30.7 ms
+...
+</code></pre></li>
+</ol>
+
+<h3 id="toc_4">Welcome to the Internet!</h3>
+
+<ol>
+<li><h4 id="toc_5">Let&#39;s upgrade your system and all its software to the latest OS version.</h4>
+
+<p>Grab the complete list of all the latest software programs and packages:</p>
+
+<pre><code>    $ sudo apt-get update
+    Get :1 http://archive.raspberrypi.org wheezy Release.gpg [473 B]
+    Get :2 http://mirrordirector.raspbian.org wheezy Release.gpg [490 B]
+    ...
+</code></pre></li>
+<li><p>Upgrade your system.</p>
+
+<pre><code>$ sudo apt-get dist-upgrade
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Calculating upgrade... Done
+The following packages will be upgraded:
+...
+Need to get 38.8 MB of archives.
+After this operation, 151 kB of additional disk space will be used.
+Do you want to continue [Y/n]?
+</code></pre>
+
+<p>Note that we will use <code>dist-upgrade</code> as the recommended upgrade command instead of simply <code>upgrade</code> to make sure that we have an intelligently loaded set of software that is known to work well together. From the manual:</p>
+
+<pre><code>    dist-upgrade in addition to performing the function of upgrade,
+    also intelligently handles changing dependencies with new versions
+    of packages; apt-get has a &quot;smart&quot; conflict resolution system, and
+    it will attempt to upgrade the most important packages at the
+    expense of less important ones if necessary. So, dist-upgrade
+    command may remove some packages. The /etc/apt/sources.list file
+    contains a list of locations from which to retrieve desired package
+    files. See also apt_preferences(5) for a mechanism for overriding
+    the general settings for individual packages. 
+</code></pre>
+
+<p>This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.</p></li>
+<li><p>Install some games:</p>
+
+<pre><code>$ sudo apt-get install bsdgames
+</code></pre></li>
+<li><p>Install the Arduino environment:</p>
+
+<pre><code>$ sudo apt-get install arduino
+</code></pre></li>
+<li><p>Your new software should be loaded and ready to go. But you can reboot to use your new software:</p>
+
+<pre><code>$ sudo shutdown -r now
+</code></pre></li>
+<li><p>Move on to <strong>Lab 1C</strong>. <strong>NOTE:</strong> WiFi instructions below will <strong>NOT</strong> work for Fall 2015 (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.</p></li>
+</ol>
+
+<hr>
+
+<h3 id="toc_6">WiFi Access</h3>
+
+<p><strong>NOTE:</strong> WiFi instructions below will <strong>NOT</strong> work for Fall 2015 (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.</p>
+
 <ol>
 <li>Plug in your USB WiFi module</li>
 <li><p>Check that you do not currently have network access:</p>
 
-<pre><code>    $ sudo apt-get update
-    Err http://archive.raspberrypi.org wheezy Release.gpg
-       Could not resolve &#39;archive.raspberrypi.org&#39;
-    ...
+<pre><code>    $ ifconfig wlan0
 </code></pre></li>
 <li><p>Edit the <code>wpa_supplicant.conf</code> file:</p>
 
@@ -477,7 +568,7 @@ network={
 [     4.506962] usb 1-1.5: Manufacturer: Realtex
 ...
 </code></pre></li>
-<li><p>Login, and check if you have an IP address (look for <strong>inet addr</strong>, your Internet Address):</p>
+<li><p>Login, and check if you have an IP address (look for <code>inet addr</code>, your Internet Address):</p>
 
 <pre><code>$ ifconfig wlan0
 wlan0     Link encap:Ethernet  HWaddr 00:5F:21:98:6C:5B  
@@ -488,64 +579,12 @@ wlan0     Link encap:Ethernet  HWaddr 00:5F:21:98:6C:5B
   collisions:0 txqueuelen:1000 
   RX bytes:38054 (37.1 KiB)  TX bytes:7976 (7.7 KiB)
 </code></pre></li>
-<li><p>Check if you can <code>ping</code> internet servers. <strong>NOTE:</strong> use <strong><code>&lt;ctrl-C&gt;</code></strong> to cancel the <code>ping</code>.</p>
+<li><p>To check if you are on the Internet, see if you can <code>ping</code> internet servers. <strong>NOTE:</strong> use <strong><code>&lt;ctrl-C&gt;</code></strong> to cancel the <code>ping</code>.</p>
 
 <pre><code>$ ping rice.edu
 PING rice.edu (128.42.204.44) 56(84) bytes of data.
 64 bytes from 128.42.204.44: icmp_req=1 tt1=244 time=30.7 ms
 ...
-</code></pre>
-
-<h3 id="toc_3">Welcome to the Internet!</h3></li>
-<li><h4 id="toc_4">Let&#39;s upgrade your system and all its software to the latest OS version.</h4>
-
-<p>Grab the complete list of all the latest software programs and packages:</p>
-
-<pre><code>    $ sudo apt-get update
-    Hit http://repository.wolfram.com stable Release.gpg
-    Hit http://repository.wolfram.com stable Release
-    Get :1 http://archive.raspberrypi.org wheezy Release.gpg [490 B]
-    Get :2 http://raspberrypi.collabora.com wheezy Release.gpg [836 B]
-    ...
-</code></pre></li>
-<li><p>We need to uninstall <code>wolfram-engine</code> because there seems to be a bug in the update process of this particular package:</p>
-
-<pre><code>$ sudo apt-get autoremove wolfram-engine
-...
-Do you want to continue [Y/n]?
-...
-Processing triggers for man-db ...
-</code></pre></li>
-<li><p>Upgrade your system.</p>
-
-<pre><code>$ sudo apt-get dist-upgrade
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Calculating upgrade... Done
-The following packages will be upgraded:
-...
-Need to get 38.8 MB of archives.
-After this operation, 151 kB of additional disk space will be used.
-Do you want to continue [Y/n]?
-</code></pre>
-
-<p>This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.</p></li>
-<li><p>Install some games:</p>
-
-<pre><code>$ sudo apt-get install bsdgames
-</code></pre></li>
-<li><p>Install the Arduino environment:</p>
-
-<pre><code>$ sudo apt-get install arduino
-</code></pre></li>
-<li><p>You can install <code>wolfram-engine</code> now if you like, but it will take 454 MB of space (and some time to download and process the update). It might be fun for you to explore at some point:</p>
-
-<pre><code>$ sudo apt-get install wolfram-engine
-</code></pre></li>
-<li><p>Reboot to use your new software:</p>
-
-<pre><code>$ sudo shutdown -r now
 </code></pre></li>
 </ol>
 
