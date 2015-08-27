@@ -114,7 +114,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 	1. Where is the `man` command located on your hard drive?<br><br><br>
 	1. What is the serial number of your Pi? (hint: it's stored in the `/proc/cpuinfo` file)<br><br><br>
 	1. You want your Pi to take a photograph every hour. What program could you use to take the photograph? What program could schedule this command?<br><br><br>
-	1. What command will let you reboot the Pi?<br><br><br>
+	1. What command will let you reboot the Pi immediately?<br><br><br>
 	1. What percentage of the CPU does the `top` command utilize?<br><br><br>
 
 ## Shutdown Procedure
