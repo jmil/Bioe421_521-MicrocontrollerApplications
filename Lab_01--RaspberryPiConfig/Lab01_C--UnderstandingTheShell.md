@@ -91,7 +91,6 @@ One of the most important aspects of the shell, especially for new users, is tha
 		unzip
 		wget
 		ifconfig
-		hostname
 		mount
 		ping
 		apt-get
