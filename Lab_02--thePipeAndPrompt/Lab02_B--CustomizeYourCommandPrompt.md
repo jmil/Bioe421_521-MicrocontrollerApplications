@@ -52,10 +52,7 @@ Scroll down to put the cursor just **BETWEEN** these two lines:
 	...
 	
 
-Insert the following text for an awesome command prompt from:
-http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
-
-#####HINT: You can use the wget command to grab this text snippet from the .md file on github for this lab, then insert it into your `.bashrc` file using `<ctrl-R>` from within the `nano` editor.
+The following shows some text we want to insert into our `.bashrc` file to make an awesome command prompt. However, you may notice some characters that will be very difficult to type:
 
 	...
 	esac
@@ -75,6 +72,12 @@ http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
 
 	# enable color support of ls and also add handy aliases
 	...
+
+
+So, here's a complicated shortcut to do this a bit faster. Follow carefully: Let's use the `wget` command to grab this text snippet from the `.md` file on github **for this lab,** then insert it into your `.bashrc` file using `<ctrl-R>` from within the `nano` editor.
+
+Thanks to the source Matthew Holt for this awesome command prompt code:
+http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
 
 
  Here we see that variables can be created by starting a line with a variable name, then assigning a value to it with the `=` sign. We later can call the value of this variable by using the `$` sign before the variable name (which you see down where it says `export PS1=`).
