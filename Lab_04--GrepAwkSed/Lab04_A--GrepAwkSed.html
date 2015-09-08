@@ -507,7 +507,7 @@ echo &quot;$line&quot;
 done &lt;PMIDs.txt
 </code></pre></li>
 <li><p>Modify this function to pull down the article data for every PMID listed in your PMIDs.txt file.</p></li>
-<li><p>Now you should see where we are going with this... Pubmed allows us to query they database and return a list of PMIDs. Use the following syntax:</p>
+<li><p>Now you should see where we are going with this... Pubmed allows us to query the database and return a list of PMIDs. Use the following syntax:</p>
 
 <pre><code>http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&amp;term=cancer&amp;reldate=60&amp;datetype=edat
 </code></pre>
@@ -524,10 +524,26 @@ ABSTRACT</p></li>
 <li>All citations for &#39;GFP&#39; in the last year</li>
 <li>All citations for &#39;3D Print&#39; in each of the last year 5 years</li>
 </ol></li>
-<li><p>Zip and SSH your results to your Instructor&#39;s Raspberry Pi using the instructions from last time.</p></li>
 </ol>
 
-<h2 id="toc_5">Shutdown Procedure</h2>
+<h3 id="toc_5">Homework Submission</h3>
+
+<ol>
+<li><p>Zip up your folder from today to make a single .zip file</p>
+
+<pre><code>$ cd ~
+$ sudo apt-get update
+$ sudo apt-get install zip
+$ zip -r Team09-LambdaFTW_Lab04.zip Team09-LambdaFTW_Lab04
+</code></pre></li>
+<li><p><code>scp</code> your team&#39;s homework .zip file to your Instructor&#39;s RaspberryPi. Your Instructor will provide you with the value to enter for <strong>IP_ADDRESS</strong>. Use your same <code>raspberry</code> password (note that you are logging in as user <code>student</code>):</p>
+
+<pre><code>$ man scp
+$ scp Team09-LambdaFTW_Lab04.zip student@IP_ADDRESS:/home/student/
+</code></pre></li>
+</ol>
+
+<h2 id="toc_6">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>

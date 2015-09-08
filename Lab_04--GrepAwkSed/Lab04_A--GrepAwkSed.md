@@ -67,7 +67,7 @@ You will want to create the 'a_file' he mentions at the beginning of the tutoria
 
 1. Modify this function to pull down the article data for every PMID listed in your PMIDs.txt file.
 
-1. Now you should see where we are going with this... Pubmed allows us to query they database and return a list of PMIDs. Use the following syntax:
+1. Now you should see where we are going with this... Pubmed allows us to query the database and return a list of PMIDs. Use the following syntax:
 
 		http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=cancer&reldate=60&datetype=edat
 	
@@ -84,7 +84,20 @@ You will want to create the 'a_file' he mentions at the beginning of the tutoria
 	1. All citations for 'GFP' in the last year
 	1. All citations for '3D Print' in each of the last year 5 years
 	
-1. Zip and SSH your results to your Instructor's Raspberry Pi using the instructions from last time.
+### Homework Submission
+
+		
+1. Zip up your folder from today to make a single .zip file
+
+		$ cd ~
+		$ sudo apt-get update
+		$ sudo apt-get install zip
+		$ zip -r Team09-LambdaFTW_Lab04.zip Team09-LambdaFTW_Lab04
+
+1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
+
+		$ man scp
+		$ scp Team09-LambdaFTW_Lab04.zip student@IP_ADDRESS:/home/student/
 
 
 ## Shutdown Procedure
