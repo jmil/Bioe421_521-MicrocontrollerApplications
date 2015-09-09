@@ -123,7 +123,7 @@ Make sure you are working inside your `scripts` folder:
 
 
 #### get_script.sh
-Let's start by making a script that will help you make more scripts: you want it to create a new file based on an online template, write out the template into a new user-specified file , and `chmod +x` this new file so it will immediately be executable.
+Let's start by making a script that will help you make more scripts: you want it to create a new file based on an online template, write out the template into a new user-specified file, and `chmod +x` this new file so it will immediately be executable.
 
 Given that the **next** assignment below will be to make a `weather.sh` script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this `get_script.sh`, we want the user to be able to run:
 
