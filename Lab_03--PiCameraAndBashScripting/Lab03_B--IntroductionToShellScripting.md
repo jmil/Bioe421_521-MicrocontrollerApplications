@@ -129,7 +129,7 @@ Given that the **next** assignment below will be to make a `weather.sh` script, 
 
 	$ ./get_script.sh weather.sh
 
-And have it generate
+And have it generate `weather.sh` ready to be edited and then immediately executed.
 
 Let's get started. I put a script template you should use at:
 
