@@ -135,12 +135,11 @@ Let's get started. I put a script template you should use at:
 
 		https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
 
-Write a one-line program to put the contents of the file at this URL into a new file named `get-script.sh`. Write the program (after you're sure it works!) here:
+1. Write a one-line program to put the contents of the file at this URL into a new file named `get-script.sh`. Write the program (after you're sure it works!) here:
 
-	$ 
+		$ 
 
-**NOTE:** You probably only need the first 15 lines of this file to use as a template.
-
+	**NOTE:** You probably only need the first 15 lines of this file to use as a template.
 
 1. Use `nano` to edit `get-script.sh` to, itself, grab the `bash-script.sh` template from github and output it to `STDOUT`. Of course, you will have to `chmod +x` this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:
 
