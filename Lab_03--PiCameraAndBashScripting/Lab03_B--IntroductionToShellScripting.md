@@ -63,39 +63,103 @@ Some variables are built-in to the **shell** already, such as `$USER` and `$PATH
 Other variables can be set with simple assignment using the **`=`** character as you did when editing your prompt. You can also have variable variables, which are not set until the script is run. Recall: these are set with the backtick **``` ` ```** character to escape you to a temporary **shell** to run the command and set its **STDOUT** as input to the variable. This allows you to, for example, set a variable for the exact time the script was run and splice that output into your commands as plain text. Check the `bash-script.sh` carefully to find this section.
 
 ### More Input
-Another useful part of the shell -- you can take user input as text to be used in your script. User input options will be assigned to integer variables in numerical order. So if you ran the script:
+Another useful part of the shell -- you can take user input as text to be used directly in your script. But how can you use user input **from the future** in a script you are writing right now? Instead of using variables with the `$` prefix on the command prompt, we can use them in our script.
 
-	$ ./user-input.sh value1 value2
-
-Then the text could be accessed within your script by calling `$1` and `$2` to access "value1" and "value2", respectively.
-
-
-
-## Assignment: Generate the following Scripts
-
-### Generate the `scripts` folder to contain everything
-
-	$ cd ~
-	$ mkdir scripts
-	$ cd scripts
-
-
-#### get_script.sh
-1. Use `nano` to write a `bash` script to grab the `bash-script.sh` template file located at:
-
-		https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
-		
-	**NOTE:** You probably only need the first 15 lines of this file to use as a template.
-	
-1. Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive.
-1. Modify your script to run the command `chmod +x` on your new script file to make it executable right after it's created. This will save you some gotchas later.
-
-#### user_input.sh
-1. Use `nano` to write a `bash` script that takes three user-input text strings at the command prompt and outputs them in reverse order. The syntax should be:
+User input options will be assigned to integer variables in numerical order. We will use `nano` to write a `bash` script that takes three user-input text strings at the command prompt and outputs them in reverse order. The syntax we want to achieve should be:
 
 		$ ./user_input.sh value1 value2 value3
 		OUTPUT:
 		value3, value2, value1
+
+Let's begin.
+
+1. Generate the `scripts` folder to contain everything:
+
+		$ cd ~
+		$ mkdir scripts
+		$ cd scripts
+
+1. Create a new file `user_input.sh` and edit it with `nano`:
+
+		$ nano user_input.sh
+	
+	Make the file contents to be the following:
+	
+		#! /bin/bash
+		
+		echo "$3, $2, $1"
+
+1. Save and exit.
+
+	Now try it out!
+
+		$ chmod +x user-input.sh
+		$ ./user-input.sh value1 value2 value3
+
+	What was the script output?
+
+		:
+
+	How did that happen? The magic happens at this line of your script:
+	
+		echo "$3, $2, $1"
+
+	The bash shell automagically creates variables for you when you run a script, and assigns the first word to `$1`, the second to `$2`, and the third to `$3`. It's ***as if*** your script actually read as:
+		
+		#! /bin/bash
+		
+		$1="value1"
+		$2="value2"
+		$3="value3"
+		echo "$3, $2, $1"
+	
+	But it happens dynamically, and takes the user input as the value to assign to the numbered variables.
+
+## Assignment: Generate the following Scripts
+
+Make sure you are working inside your `scripts` folder:
+
+	$ cd ~/scripts
+
+
+#### get_script.sh
+Let's start by making a script that will help you make more scripts: you want it to create a new file based on an online template, write out the template into a new user-specified file , and `chmod +x` this new file so it will immediately be executable.
+
+Given that the **next** assignment below will be to make a `weather.sh` script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this `get_script.sh`, we want the user to be able to run:
+
+	$ ./get_script.sh weather.sh
+
+And have it generate
+
+Let's get started. I put a script template you should use at:
+
+		https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
+
+Write a one-line program to put the contents of the file at this URL into a new file named `get-script.sh`. Write the program (after you're sure it works!) here:
+
+	$ 
+
+**NOTE:** You probably only need the first 15 lines of this file to use as a template.
+
+
+1. Use `nano` to edit `get-script.sh` to, itself, grab the `bash-script.sh` template from github and output it to `STDOUT`. Of course, you will have to `chmod +x` this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:
+
+		$ ./get_script.sh
+	Describe the output:
+	
+		:
+ 
+1. Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive that will be generated from a live copy of the `bash-script.sh` file on github. What happens when you now run:
+
+		$ ./get_script.sh weather.sh
+
+	Describe the result:
+
+		:
+
+1. Next, modify `get-script.sh` to also run the command `chmod +x` on your newly created `weather.sh` script file to make it executable right after it's created. Describe the result and how you checked it if the new `weather.sh` was executable:
+
+		:
 
 
 ### weather.sh

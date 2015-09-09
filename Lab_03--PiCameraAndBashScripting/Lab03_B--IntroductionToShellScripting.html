@@ -515,47 +515,122 @@ $ echo $PATH
 
 <h3 id="toc_5">More Input</h3>
 
-<p>Another useful part of the shell -- you can take user input as text to be used in your script. User input options will be assigned to integer variables in numerical order. So if you ran the script:</p>
+<p>Another useful part of the shell -- you can take user input as text to be used directly in your script. But how can you use user input <strong>from the future</strong> in a script you are writing right now? Instead of using variables with the <code>$</code> prefix on the command prompt, we can use them in our script.</p>
 
-<pre><code>$ ./user-input.sh value1 value2
+<p>User input options will be assigned to integer variables in numerical order. We will use <code>nano</code> to write a <code>bash</code> script that takes three user-input text strings at the command prompt and outputs them in reverse order. The syntax we want to achieve should be:</p>
+
+<pre><code>    $ ./user_input.sh value1 value2 value3
+    OUTPUT:
+    value3, value2, value1
 </code></pre>
 
-<p>Then the text could be accessed within your script by calling <code>$1</code> and <code>$2</code> to access <q>value1</q> and <q>value2</q>, respectively.</p>
+<p>Let&#39;s begin.</p>
 
-<h2 id="toc_6">Assignment: Generate the following Scripts</h2>
-
-<h3 id="toc_7">Generate the <code>scripts</code> folder to contain everything</h3>
+<ol>
+<li><p>Generate the <code>scripts</code> folder to contain everything:</p>
 
 <pre><code>$ cd ~
 $ mkdir scripts
 $ cd scripts
+</code></pre></li>
+<li><p>Create a new file <code>user_input.sh</code> and edit it with <code>nano</code>:</p>
+
+<pre><code>$ nano user_input.sh
 </code></pre>
 
-<h4 id="toc_8">get_script.sh</h4>
+<p>Make the file contents to be the following:</p>
 
-<ol>
-<li><p>Use <code>nano</code> to write a <code>bash</code> script to grab the <code>bash-script.sh</code> template file located at:</p>
+<pre><code>#! /bin/bash
 
-<pre><code>https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
+echo &quot;$3, $2, $1&quot;
+</code></pre></li>
+<li><p>Save and exit.</p>
+
+<p>Now try it out!</p>
+
+<pre><code>$ chmod +x user-input.sh
+$ ./user-input.sh value1 value2 value3
 </code></pre>
 
-<p><strong>NOTE:</strong> You probably only need the first 15 lines of this file to use as a template.</p></li>
-<li><p>Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive.</p></li>
-<li><p>Modify your script to run the command <code>chmod +x</code> on your new script file to make it executable right after it&#39;s created. This will save you some gotchas later.</p></li>
+<p>What was the script output?</p>
+
+<pre><code>:
+</code></pre>
+
+<p>How did that happen? The magic happens at this line of your script:</p>
+
+<pre><code>echo &quot;$3, $2, $1&quot;
+</code></pre>
+
+<p>The bash shell automagically creates variables for you when you run a script, and assigns the first word to <code>$1</code>, the second to <code>$2</code>, and the third to <code>$3</code>. It&#39;s <strong><em>as if</em></strong> your script actually read as:</p>
+
+<pre><code>#! /bin/bash
+
+$1=&quot;value1&quot;
+$2=&quot;value2&quot;
+$3=&quot;value3&quot;
+echo &quot;$3, $2, $1&quot;
+</code></pre>
+
+<p>But it happens dynamically, and takes the user input as the value to assign to the numbered variables.</p></li>
 </ol>
 
-<h4 id="toc_9">user_input.sh</h4>
+<h2 id="toc_6">Assignment: Generate the following Scripts</h2>
+
+<p>Make sure you are working inside your <code>scripts</code> folder:</p>
+
+<pre><code>$ cd ~/scripts
+</code></pre>
+
+<h4 id="toc_7">get_script.sh</h4>
+
+<p>Let&#39;s start by making a script that will help you make more scripts: you want it to create a new file based on an online template, write out the template into a new user-specified file , and <code>chmod +x</code> this new file so it will immediately be executable.</p>
+
+<p>Given that the <strong>next</strong> assignment below will be to make a <code>weather.sh</code> script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this <code>get_script.sh</code>, we want the user to be able to run:</p>
+
+<pre><code>$ ./get_script.sh weather.sh
+</code></pre>
+
+<p>And have it generate</p>
+
+<p>Let&#39;s get started. I put a script template you should use at:</p>
+
+<pre><code>    https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
+</code></pre>
+
+<p>Write a one-line program to put the contents of the file at this URL into a new file named <code>get-script.sh</code>. Write the program (after you&#39;re sure it works!) here:</p>
+
+<pre><code>$ 
+</code></pre>
+
+<p><strong>NOTE:</strong> You probably only need the first 15 lines of this file to use as a template.</p>
 
 <ol>
-<li><p>Use <code>nano</code> to write a <code>bash</code> script that takes three user-input text strings at the command prompt and outputs them in reverse order. The syntax should be:</p>
+<li><p>Use <code>nano</code> to edit <code>get-script.sh</code> to, itself, grab the <code>bash-script.sh</code> template from github and output it to <code>STDOUT</code>. Of course, you will have to <code>chmod +x</code> this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:</p>
 
-<pre><code>$ ./user_input.sh value1 value2 value3
-OUTPUT:
-value3, value2, value1
+<pre><code>$ ./get_script.sh
+</code></pre>
+
+<p>Describe the output:</p>
+
+<pre><code>:
+</code></pre></li>
+<li><p>Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive that will be generated from a live copy of the <code>bash-script.sh</code> file on github. What happens when you now run:</p>
+
+<pre><code>$ ./get_script.sh weather.sh
+</code></pre>
+
+<p>Describe the result:</p>
+
+<pre><code>:
+</code></pre></li>
+<li><p>Next, modify <code>get-script.sh</code> to also run the command <code>chmod +x</code> on your newly created <code>weather.sh</code> script file to make it executable right after it&#39;s created. Describe the result and how you checked it if the new <code>weather.sh</code> was executable:</p>
+
+<pre><code>:
 </code></pre></li>
 </ol>
 
-<h3 id="toc_10">weather.sh</h3>
+<h3 id="toc_8">weather.sh</h3>
 
 <ol>
 <li><p>Use <code>nano</code> to write a <code>bash</code> script that grabs the current local weather. You will need to install the <code>weather-util</code> command:</p>
@@ -579,21 +654,21 @@ value3, value2, value1
 <li><p>You might get a warning when running <code>weather -i</code>. Modify your script to suppress this <strong>STDERR</strong> by sending it to <strong>STDOUT</strong> and then using a piped <code>tail</code> to show output starting at the 4th line. You will want to check the man page for <code>tail</code> to see how to show output relative to the beginning of the input.</p></li>
 </ol>
 
-<h3 id="toc_11">robots.sh</h3>
+<h3 id="toc_9">robots.sh</h3>
 
 <ol>
 <li>Use <code>nano</code> to write a <code>bash</code> script that grabs the <code>http://www.google.com/robots.txt</code> file and sends the output to <strong>STDOUT</strong>.</li>
 <li>Modify your script to take input from the user, and use this user input to constrain the output (<strong>hint:</strong> think about constraining which line numbers are output).</li>
 </ol>
 
-<h3 id="toc_12">word.sh</h3>
+<h3 id="toc_10">word.sh</h3>
 
 <ol>
 <li>Use <code>nano</code> to write a <code>bash</code> script to <code>grep</code> the <code>web2</code> dictionary for the string <code>wow</code>.</li>
 <li>Modify your script to take input from the user, and use this user input as the pattern used by the <code>grep</code> command to find a match.</li>
 </ol>
 
-<h3 id="toc_13">selfie.sh</h3>
+<h3 id="toc_11">selfie.sh</h3>
 
 <ol>
 <li>Use <code>nano</code> to write a <code>bash</code> script that uses the RaspberryPi Camera to take a selfie of you and your teammate. Name the image after your team name. You will want to hardcode the location where images should be stored to be <code>/home/pi/raspicam/</code>.
@@ -601,7 +676,7 @@ value3, value2, value1
 <li>To have good camera functionality, you won&#39;t want to overwrite your previous images every time a photo is taken. Modify your <code>selfie.sh</code> script to append the current timestamp to your filename so they won&#39;t be overwritten.</li>
 </ol>
 
-<h3 id="toc_14">Homework Submission</h3>
+<h3 id="toc_12">Homework Submission</h3>
 
 <ol>
 <li><p>move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention. Note the trailing <code>/</code> characters here have specific meaning... don&#39;t forget them!</p>
@@ -625,7 +700,7 @@ $ scp Team09-LambdaFTW_Lab03.zip student@IP_ADDRESS:/home/student/
 </code></pre></li>
 </ol>
 
-<h2 id="toc_15">Shutdown Procedure</h2>
+<h2 id="toc_13">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>
