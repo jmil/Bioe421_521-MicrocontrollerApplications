@@ -5,7 +5,8 @@
 
 
 
-######From Wikipedia: A shell manages the user–system interaction by prompting users for input, interpreting their input, and then handling an output from the underlying operating system.
+From [Wikipedia, Shell (computing):](https://en.wikipedia.org/wiki/Shell_(computing))
+> A shell manages the user–system interaction by prompting users for input, interpreting their input, and then handling an output from the underlying operating system.
 
 #####The text-only command-line interface (CLI), commonly shortened to "command-line", is the simplest shell we will use in class.
 

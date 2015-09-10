@@ -1,8 +1,10 @@
 #Bioe 421/521: Microcontroller Applications
 ####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 4A. Grep, Sed, and Awk
+##Lab 4A. Parsing with `Grep`, `Awk`, and `Sed`
 
+From [Wikipedia, Parsing:](https://en.wikipedia.org/wiki/Parsing)
+> Parsing or syntactic analysis is the process of analysing a string of symbols, either in natural language or in computer languages, conforming to the rules of a formal grammar.
 
 ### Tutorial from Matt Probert, University of New York
 Work through the tutorials on Grep, Sed and Awk handed out to you and available here:
@@ -25,12 +27,21 @@ You will want to create the 'a_file' he mentions at the beginning of the tutoria
 
 ### Awk-ward
 
-1. Let's apply what you've learned from Matt's awesome tutorial by working with the NIH Pubmed Database. NIH allows you to query their servers for specific formats of scientific publication data that you can then process via command line.
+Let's apply what you've learned from Matt's awesome tutorial by working with the National Institutes of Health (NIH) Pubmed Database. NIH allows you to query their servers for specific formats of scientific publication data that you can then process via command line. Each publication in their database has a unique ID number (in the form of an integer), called a **PMID** (PubMed ID). We can use the **PMID**, or **multiple PMIDs delimited by a `,`**, as the search string in a URL to request the data on the **PMID**(s).
 
+
+From [Wikipedia, Roger Y. Tsien:](https://en.wikipedia.org/wiki/Roger_Y._Tsien) 
+	>[Roger Tsien] was awarded the 2008 Nobel Prize in Chemistry "for his discovery and development of the Green Fluorescent Protein (GFP)..."
+
+1. Sounds interesting. Let's learn some more about his work. Make a new directory for today, and query the NIH database for some of Roger Tsien's publications, identified here by specific **PMIDs**.
+	
 		$ mkdir Team09-LambdaFTW_Lab04
 		$ cd Team09-LambdaFTW_Lab04
-		$ wget -O tsien.txt "http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,18454154,19423828?report=medline&format=text" 
-		$ cat tsien.txt | more
+		$ wget -O tsien.txt "http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,18454154,19423828?report=MEDLINE&format=text" 
+
+	Let's look at the file you created:
+	
+		$ cat tsien.txt | less
 
 	You should see the following file:
 
@@ -39,50 +50,120 @@ You will want to create the 'a_file' he mentions at the beginning of the tutoria
 		<pre>
 		PMID- 16299475
 		OWN - NLM
-		STAT- MEDLINE
 		...
-		SO  - Nat Methods. 2005 Dec;2(12):905-9.
-		</pre>
+		AID - 324/5928/804 [pii]
+		AID - 10.1126/science.1168683 [doi]
+		PST - ppublish
+		SO  - Science. 2009 May 8;324(5928):804-7. doi: 10.1126/science.1168683.
 
+1. Next, write a piped command line program to process `tsien.txt` and output a new file `tsien_PMIDs.txt` which contains a list of the PMID contained in this file. You will probably want to use what you learned about `grep`, `awk`, and/or `sed`. Just like most things we've learned so far, there is more than one way to do it ([TIMTOWTDI, pronounced *Tim Toady*](https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it))!
 
-1. Next, write a piped command line program to process `tsien.txt` and output a new file `PMIDs.txt` which contains a list of the PMID contained in this file. When you're done, the contents of your file should be:
+	**Hint:** You may want to start by doing a simple `grep` for "PMID":
+	
+		$ cat tsien.txt | grep "PMID"
+		PMID- 16299475
+		PMID- 15558047
+		CIN - Nat Biotechnol. 2004 Dec;22(12):1524-5. PMID: 15583657
+		PMID- 18454154
+		CIN - Nat Methods. 2008 Jun;5(6):472-3. PMID: 18511915
+		PMID- 19423828
+
+	When you're done, the contents of your file should be:
 
 		16299475
 		15558047
 		18454154
 		19423828
+	
+	What was the one-line program you wrote to do this?
+	
+		$
 
-1. Next, create a function inside a new bash script titled `parsePMIDs.sh` to help us process lists of PMIDs. Don't forget to modify the file to make it executable.
-
-		$ chmod +x parsePMIDs.sh
-
-1. You want to use a `while` function like this:
+1. Next, create a function inside a new bash script titled `parsePMIDs.sh` to help us process lists of PMIDs. You want to use a `while` function like this:
 
 		#! /bin/bash
 		
 		while read line           
 		do           
 		echo "$line"
-		done <PMIDs.txt
+		done <tsien_PMIDs.txt
 
-1. Modify this function to pull down the article data for every PMID listed in your PMIDs.txt file.
+1. Do you remember how to modify `parsePMIDs.sh` to make it executable? Write the command you used here:
 
-1. Now you should see where we are going with this... Pubmed allows us to query the database and return a list of PMIDs. Use the following syntax:
+		:
+
+1. Modify this function to pull down the article data for every PMID listed in your PMIDs.txt file and append it to a new file, `Tsien_result.txt`.
+
+### Fetch, Parse, Repeat
+
+Now you should see where we are going with this... Pubmed allows us to query the database with a search term, such as "cancer", and return a list of PMIDs. Retrieve text from the following link into a new file `cancer_refs.txt`:
 
 		http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=cancer&reldate=60&datetype=edat
+		
+**NOTE:** You will likely need to put this URL within quotes to get it to download correctly. Or a URL shortener website could help you.
 	
-	Your returned PMIDs will have to be parsed out from between the `<Id>` `</Id>` tags.
+Check the contents of your file:
+
+	$ cat cancer_refs.txt | less
+
+What's going on here? Let's look at the syntax for the URL fields defined for NIH e-utilities: [http://www.ncbi.nlm.nih.gov/books/NBK25499/](http://www.ncbi.nlm.nih.gov/books/NBK25499/)
+
+>**term**
+>Entrez text query. All special characters must be URL encoded. Spaces may be replaced by '+' signs. For very long queries (more than several hundred characters long), consider using an HTTP POST call. See the PubMed or Entrez help for information about search field descriptions and tags. Search fields and tags are database specific.
+
+>**reldate**
+>When reldate is set to an integer n, the search returns only those items that have a date specified by datetype within the last n days.
+
+>**mindate, maxdate**
+>Date range used to limit a search result by the date specified by datetype. These two parameters (mindate, maxdate) must be used together to specify an arbitrary date range. The general date format is YYYY/MM/DD, and these variants are also allowed: YYYY, YYYY/MM.
+
+>**retmax**
+>Total number of UIDs from the retrieved set to be shown in the XML output (default=20). By default, ESearch only includes the first 20 UIDs retrieved in the XML output. If usehistory is set to 'y', the remainder of the retrieved set will be stored on the History server; otherwise these UIDs are lost. Increasing retmax allows more of the retrieved UIDs to be included in the XML output, up to a maximum of 100,000 records. To retrieve more than 100,000 UIDs, submit multiple esearch requests while incrementing the value of retstart (see Application 3).
+
+Can you identify the delimiter for these fields in the URL? Write it here:
+
+	: 
+
 	
-1. Now generate a final script called `PMID_query.sh` that will take user input on the command line as input to a PMID query. Format the output `PMID_result.txt` to be the following:
+You will want to take this `cancer_refs.txt` result file, and parse out the PMIDs into a new file, `cancer_PMIDs.txt`. Note that the PMIDs will have to be parsed out from between the `<Id>` and `</Id>` tags.
 	
-	AUTHORS
-	Nat Methods. 2005 Dec;2(12):905-9.
-	ABSTRACT
+1. Generate a script called `PMID_query.sh`. We want the **use case** to be:
+
+		$ ./PMID_query.sh cancer_PMIDs.txt cancer_bibliography.txt
+
+The first user-input value `cancer_PMIDs.txt` should be processed line by line to generate a PMID query, and **append** a formatted bibliography for that PMID to a new cancer_bibliography.txt
+
+		AUTHORS LIST
+		Nat Methods. 2005 Dec;2(12):905-9.
+		ABSTRACT
 	
+
+Let's apply this file for the following querys:
+
+#### GFP
+
+1. Design a URL to get the PMIDs of up to 1,000 publications for 'GFP' in the last year. What URL did you come up with?
 	
-1. Now generate several output files for the following querys:
-	1. All citations for 'GFP' in the last year
-	1. All citations for '3D Print' in each of the last year 5 years
+		:
+	
+1. Put the result of this query into the file `GFP-PMIDs.txt`.
+
+1. User your `PMID_query.sh` file to parse this file output formatted citations about GFP to `GFP_bibliography.txt`. What is the command you ran to do this?
+
+		$
+
+#### 3D Print
+
+1. Design a URL to get the PMIDs of up to 1,000 publications for '3D Print' in the last year. What URL did you come up with?
+	
+		:
+	
+1. Put the result of this query into the file `3D_print-PMIDs.txt`.
+
+1. User your `PMID_query.sh` file to parse this file output formatted citations about GFP to `3D_print_bibliography.txt`. What is the command you ran to do this?
+
+		$
+
 	
 ### Homework Submission
 
@@ -90,13 +171,10 @@ You will want to create the 'a_file' he mentions at the beginning of the tutoria
 1. Zip up your folder from today to make a single .zip file
 
 		$ cd ~
-		$ sudo apt-get update
-		$ sudo apt-get install zip
 		$ zip -r Team09-LambdaFTW_Lab04.zip Team09-LambdaFTW_Lab04
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
-		$ man scp
 		$ scp Team09-LambdaFTW_Lab04.zip student@IP_ADDRESS:/home/student/
 
 

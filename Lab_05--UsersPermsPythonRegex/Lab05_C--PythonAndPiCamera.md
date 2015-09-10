@@ -20,13 +20,13 @@ Follow the tutorials here:
 http://picamera.readthedocs.org/en/release-1.8/recipes1.html
 
 Create and run the following files:
-capture-file.py
-capture-stream.py
-capture-resized.py
-capture-consistent.py
-capture-timelapse.py
-capture-lowlight.py
-record-video.py
+`capture-file.py`
+`capture-stream.py`
+`capture-resized.py`
+`capture-consistent.py`
+`capture-timelapse.py`
+`capture-lowlight.py`
+`record-video.py`
 
 Make sure you use the header for each of your files:
 
@@ -60,7 +60,6 @@ Why might you want to run a timelapse capture via a system `cron` job instead of
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
-		$ man scp
 		$ scp Team09-LambdaFTW_Lab05.zip student@IP_ADDRESS:/home/student/
 
 
