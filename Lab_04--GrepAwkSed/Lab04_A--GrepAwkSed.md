@@ -31,7 +31,7 @@ Let's apply what you've learned from Matt's awesome tutorial by working with the
 
 
 From [Wikipedia, Roger Y. Tsien:](https://en.wikipedia.org/wiki/Roger_Y._Tsien) 
-	>[Roger Tsien] was awarded the 2008 Nobel Prize in Chemistry "for his discovery and development of the Green Fluorescent Protein (GFP)..."
+>[Roger Tsien] was awarded the 2008 Nobel Prize in Chemistry "for his discovery and development of the Green Fluorescent Protein (GFP)..."
 
 1. Sounds interesting. Let's learn some more about his work. Make a new directory for today, and query the NIH database for some of Roger Tsien's publications, identified here by specific **PMIDs**.
 	
