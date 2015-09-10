@@ -543,7 +543,12 @@ done &lt;tsien_PMIDs.txt
 
 <pre><code>:
 </code></pre></li>
-<li><p>Modify this function to pull down the article data for every PMID listed in your PMIDs.txt file and append it to a new file, <code>Tsien_result.txt</code>.</p></li>
+<li><p>Let&#39;s modify this script to be more useful. Given a file that contains a list of PMIDs, it would be ideal if, for each PMID, you could go to pubmed and download the article information. You will want to use the URL of the following form, where you will substitute each unique PMID, line by line, for the <q>########</q> section:</p>
+
+<pre><code>http://www.ncbi.nlm.nih.gov/pubmed/########?report=MEDLINE&amp;format=text
+</code></pre>
+
+<p>So your <code>parsePMIDs.sh</code> file  should read your <code>PMIDs.txt</code> file, grab the article information for each PMID, and append it to a new file, <code>Tsien_result.txt</code>.</p></li>
 </ol>
 
 <h3 id="toc_5">Fetch, Parse, Repeat</h3>
@@ -587,19 +592,20 @@ Total number of UIDs from the retrieved set to be shown in the XML output (defau
 <li><p>Generate a script called <code>PMID_query.sh</code>. We want the <strong>use case</strong> to be:</p>
 
 <pre><code>$ ./PMID_query.sh cancer_PMIDs.txt cancer_bibliography.txt
-</code></pre></li>
-</ol>
-
-<p>The first user-input value <code>cancer_PMIDs.txt</code> should be processed line by line to generate a PMID query, and <strong>append</strong> a formatted bibliography for that PMID to a new cancer_bibliography.txt</p>
-
-<pre><code>    AUTHORS LIST
-    Nat Methods. 2005 Dec;2(12):905-9.
-    ABSTRACT
 </code></pre>
 
-<p>Let&#39;s apply this file for the following querys:</p>
+<p>The first user-input value <code>cancer_PMIDs.txt</code> should be processed line by line to generate a PMID query, and <strong>append</strong> a formatted bibliography for that PMID to a new <code>cancer_bibliography.txt</code> file using the style:</p>
 
-<h4 id="toc_6">GFP</h4>
+<pre><code>AUTHORS LIST
+Nat Methods. 2005 Dec;2(12):905-9.
+ABSTRACT
+</code></pre></li>
+<li><p>Now, get it working for your <code>cancer_PMIDs.txt</code> file.</p></li>
+</ol>
+
+<h3 id="toc_6">Now, Let&#39;s apply this file for the following querys:</h3>
+
+<h4 id="toc_7">GFP</h4>
 
 <ol>
 <li><p>Design a URL to get the PMIDs of up to 1,000 publications for &#39;GFP&#39; in the last year. What URL did you come up with?</p>
@@ -613,7 +619,7 @@ Total number of UIDs from the retrieved set to be shown in the XML output (defau
 </code></pre></li>
 </ol>
 
-<h4 id="toc_7">3D Print</h4>
+<h4 id="toc_8">3D Print</h4>
 
 <ol>
 <li><p>Design a URL to get the PMIDs of up to 1,000 publications for &#39;3D Print&#39; in the last year. What URL did you come up with?</p>
@@ -627,7 +633,7 @@ Total number of UIDs from the retrieved set to be shown in the XML output (defau
 </code></pre></li>
 </ol>
 
-<h3 id="toc_8">Homework Submission</h3>
+<h3 id="toc_9">Homework Submission</h3>
 
 <ol>
 <li><p>Zip up your folder from today to make a single .zip file</p>
@@ -641,7 +647,7 @@ $ zip -r Team09-LambdaFTW_Lab04.zip Team09-LambdaFTW_Lab04
 </code></pre></li>
 </ol>
 
-<h2 id="toc_9">Shutdown Procedure</h2>
+<h2 id="toc_10">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>

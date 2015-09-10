@@ -92,7 +92,12 @@ From [Wikipedia, Roger Y. Tsien:](https://en.wikipedia.org/wiki/Roger_Y._Tsien)
 
 		:
 
-1. Modify this function to pull down the article data for every PMID listed in your PMIDs.txt file and append it to a new file, `Tsien_result.txt`.
+1. Let's modify this script to be more useful. Given a file that contains a list of PMIDs, it would be ideal if, for each PMID, you could go to pubmed and download the article information. You will want to use the URL of the following form, where you will substitute each unique PMID, line by line, for the "########" section:
+
+		http://www.ncbi.nlm.nih.gov/pubmed/########?report=MEDLINE&format=text
+	
+
+	So your `parsePMIDs.sh` file  should read your `PMIDs.txt` file, grab the article information for each PMID, and append it to a new file, `Tsien_result.txt`.
 
 ### Fetch, Parse, Repeat
 
@@ -131,14 +136,16 @@ You will want to take this `cancer_refs.txt` result file, and parse out the PMID
 
 		$ ./PMID_query.sh cancer_PMIDs.txt cancer_bibliography.txt
 
-The first user-input value `cancer_PMIDs.txt` should be processed line by line to generate a PMID query, and **append** a formatted bibliography for that PMID to a new cancer_bibliography.txt
+	The first user-input value `cancer_PMIDs.txt` should be processed line by line to generate a PMID query, and **append** a formatted bibliography for that PMID to a new `cancer_bibliography.txt` file using the style:
 
 		AUTHORS LIST
 		Nat Methods. 2005 Dec;2(12):905-9.
 		ABSTRACT
 	
+1. Now, get it working for your `cancer_PMIDs.txt` file.
 
-Let's apply this file for the following querys:
+ 
+###Now, Let's apply this file for the following querys:
 
 #### GFP
 
