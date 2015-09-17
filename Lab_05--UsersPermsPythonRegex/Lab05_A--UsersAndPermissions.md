@@ -17,7 +17,7 @@ The first thing we need to do is to change your password. We do this using the `
 
 	$ man passwd
 
-Carefully choose a new password with your partner. If you forget this password, your Instructor may not be able to help you get access to your system again. Let's now set your password. You will be asked to enter your current password, and then enter the new password twice (for confirmation). You typed password characters will not show up on the display (this is a security feature):
+Carefully choose a new password with your partner. If you forget this password, your Instructor may not be able to help you get access to your system again. Let's now set your password. You will be asked to enter your current password, and then enter the new password twice (for confirmation). Your typed password characters will not show up on the display (this is a security feature):
 
 	$ passwd
 	Changing password for pi.
