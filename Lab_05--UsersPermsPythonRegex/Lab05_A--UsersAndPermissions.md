@@ -103,7 +103,12 @@ Now you can login to your neighbor's Pi using their IP address:
 	$ ls -la
 	$ id
 
-What are the permissions for the /home account?
+Let's inspect the top-level `/` directory of the hard drive:
+
+	$ cd /
+	$ ls -la
+
+What are the full permissions for `home`? Is it a file or folder (and how can you tell?)? Be sure to specify who is the owner and group who has those permissions:
 
 	:
 
