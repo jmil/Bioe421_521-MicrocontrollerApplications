@@ -450,18 +450,44 @@ pre[class*="language-"] {
 
 <p>We want to install the <code>python-picamera</code> command. Run <code>apt-get</code> as the superuser with <code>sudo</code>:</p>
 
-<pre><code>$ sudo apt-get install python-picamera
+<pre><code>$ sudo apt-get update
+$ sudo apt-get dist-upgrade
+$ sudo apt-get install python-picamera
 $ sudo apt-get install python-imaging     # this includes PIL
+$ sudo apt-get install python-setuptools     # this includes PIL
 </code></pre>
 
-<p>We are using v1.8-1 of python-picamera.</p>
+<p>We are using v1.10 of python-picamera. Let&#39;s check to make sure, with code from here:<br>
+<a href="https://picamera.readthedocs.org/en/release-1.10/faq.html#how-can-i-tell-what-version-of-picamera-i-have-installed">https://picamera.readthedocs.org/en/release-1.10/faq.html#how-can-i-tell-what-version-of-picamera-i-have-installed</a></p>
+
+<p>We will do this in the interactive CLI <code>python</code> interface, which has three angle brackets <code>&gt;&gt;&gt;</code> as the python command prompt, so type what you see below after the <code>&gt;&gt;&gt;</code>. Note it has familiar and very similar behavior to the <code>bash</code> shell&#39;s <strong>STDIN</strong> and <strong>STDOUT</strong>.</p>
+
+<pre><code>$ python --version
+Python 2.7.3
+$ python
+Python 2.7.3 (default, Mar 18 2014.....
+...
+&gt;&gt;&gt; from pkg_resources import require
+&gt;&gt;&gt; require(&#39;picamera&#39;)
+[picamera 1.10 (/usr/lib/lib/python2.7/dist-packages)]
+&gt;&gt;&gt; require(&#39;picamera&#39;)[0].version
+&#39;1.10&#39;
+</code></pre>
+
+<p>To exit the CLI python interface, you will need to use <code>exit()</code> or <code>&lt;CTRL-D&gt;</code> as shown by the following error message. Either of these will take you back to your <code>bash</code> shell:</p>
+
+<pre><code>&gt;&gt;&gt; exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+&gt;&gt;&gt; exit()
+$
+</code></pre>
 
 <h3 id="toc_4">External Tutorial</h3>
 
-<p>Follow the tutorials here:<br>
-<a href="http://picamera.readthedocs.org/en/release-1.8/recipes1.html">http://picamera.readthedocs.org/en/release-1.8/recipes1.html</a></p>
+<p>We will be using a selection of the tutorials here:<br>
+<a href="http://picamera.readthedocs.org/en/release-1.10/recipes1.html">http://picamera.readthedocs.org/en/release-1.10/recipes1.html</a></p>
 
-<p>Create and run the following files:<br>
+<p>Create and run the following files based on the sample code provided on the webpage:<br>
 <code>capture-file.py</code><br>
 <code>capture-stream.py</code><br>
 <code>capture-resized.py</code><br>
@@ -470,10 +496,11 @@ $ sudo apt-get install python-imaging     # this includes PIL
 <code>capture-lowlight.py</code><br>
 <code>record-video.py</code></p>
 
-<p>Make sure you use the header for each of your files:</p>
+<p>Feel free to add your own modifications and demonstrate to your Instructor! Make sure you use the correct <strong>shebang</strong> and commented header for each of your files:</p>
 
 <pre><code>#! /usr/bin/python
-# TEAM-INFO-HERE
+# Team09-LambdaFTW
+# TEAM MEMBER NAMES
 </code></pre>
 
 <p>Recall -- you may want to use <code>fbi</code> to look at the images you&#39;ve saved.</p>
@@ -491,7 +518,29 @@ $ sudo apt-get install python-imaging     # this includes PIL
 
 <p>Why might you want to run a timelapse capture via a system <code>cron</code> job instead of just having a <code>sleep</code> directive in a single python file?</p>
 
+<pre><code>:
+:
+:
+:
+:
+</code></pre>
+
 <h4 id="toc_6">Congratulations, you&#39;re now an über professional geek videographer!</h4>
+
+<h3 id="toc_7">Optional/Bonus: Try some more of the Tutorials</h3>
+
+<p>We will be using a selection of the tutorials here:<br>
+<a href="http://picamera.readthedocs.org/en/release-1.10/recipes1.html">http://picamera.readthedocs.org/en/release-1.10/recipes1.html</a></p>
+
+<p>Create and run the following files based on the sample code provided on that webpage:<br>
+<code>capture-PIL-image.py</code><br>
+<code>capture-openCV-object.py</code><br>
+<code>capture-consistent-images.py</code><br>
+<code>record-circular-stream.py</code><br>
+<code>overlay-text-output.py</code><br>
+<code>control-the-LED.py</code></p>
+
+<h2 id="toc_8">Turn in Homework</h2>
 
 <ol>
 <li><p>Zip up the folder for Today&#39;s lab to make a single .zip file</p>
@@ -504,7 +553,7 @@ $ sudo apt-get install python-imaging     # this includes PIL
 </code></pre></li>
 </ol>
 
-<h2 id="toc_7">Shutdown Procedure</h2>
+<h2 id="toc_9">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>

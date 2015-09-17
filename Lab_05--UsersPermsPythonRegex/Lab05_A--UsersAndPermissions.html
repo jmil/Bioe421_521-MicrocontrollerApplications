@@ -510,7 +510,8 @@ Done.
 
 <p>What is your new group name? What is your new group ID (hint: it should be an integer)?</p>
 
-<p><br \><br \><br \></p>
+<pre><code>:
+</code></pre>
 
 <h3 id="toc_4">Collaborate</h3>
 
@@ -535,13 +536,14 @@ $ _
 
 <p>Why might you want to create and then join a group between two user accounts?</p>
 
-<p><br /> <br /> <br /></p>
+<pre><code>:
+</code></pre>
 
 <h3 id="toc_5">Connect Remotely</h3>
 
-<p>Now with each group being given a working user account on another Pi, you can ssh into your neighbor&#39;s Pi to get <strong>shell access</strong>. Make sure you trade IP address info too (recall this is your <code>inet addr</code> for the wireless receiver):</p>
+<p>Now with each group being given a working user account on another Pi, you can ssh into your neighbor&#39;s Pi to get <strong>shell access</strong>. Make sure you trade IP address info too (recall this is your <code>inet addr</code> for either the ethernet connection <code>eth0</code> or the WiFi receiver <code>wlan0</code> depending on how you are currently connecting to the internet). If you&#39;re not sure just run <code>ifconfig</code> with no options. Here we will use <code>eth0</code>:</p>
 
-<pre><code>$ ifconfig wlan0
+<pre><code>$ ifconfig eth0
 </code></pre>
 
 <p>Now you can login to your neighbor&#39;s Pi using their IP address:</p>
@@ -554,9 +556,25 @@ $ ls -la
 $ id
 </code></pre>
 
-<p>What are the permissions for the /home account? What is your <code>uid</code> and <code>gid</code> for your neighbor&#39;s Pi? What groups is this user in? You can disconnect from your neighbor&#39;s pi using:</p>
+<p>What are the permissions for the /home account?</p>
 
-<pre><code>$ exit
+<pre><code>:
+</code></pre>
+
+<p>What is your <code>uid</code> and <code>gid</code> for your neighbor&#39;s Pi?</p>
+
+<pre><code>:
+</code></pre>
+
+<p>What groups is this user in?</p>
+
+<pre><code>:
+</code></pre>
+
+<p>You can disconnect from your neighbor&#39;s pi using <code>exit</code> which will close that shell:</p>
+
+<pre><code>$ man exit
+$ exit
 </code></pre>
 
 <h4 id="toc_6">We are running the Raspian OS, which is a <strong>Rasp</strong>berry Pi customized version of Deb<strong>ian</strong> Linux. So, you can learn more about how users and permissions work on your Raspberry Pi by visiting here:</h4>

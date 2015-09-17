@@ -1,7 +1,7 @@
 #Bioe 421/521: Microcontroller Applications
 ####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 5B. Python and Regex
+##Lab 5B. `Python` and Regex
 
 Previously in Lab we have done text-based search using the `grep`, `sed`, and `awk` commands. Often text searching can be done with much more complicated logic. We briefly looked at expanding the complexity of text searching that looked at the principles behind regular expressions (often abbreviated `regex` or `regexp`; plurals: `regexes` or `regexps`). We looked at the wonderful handout/explanation behind regular expressions from:
 http://www.regular-expressions.info
@@ -27,15 +27,16 @@ Let's make a new `python` file that can be processed by the `python` program. Th
 
 
 ####Assignment
-Go to the following webpage:
+Go to the following webpage (or use the handout):
 http://flockhart.virtualave.net/RBIF0100/regexp.html
 
 For each row in the table, generate a new `python` script which follows the example. Let's do the first one together. First we need to find out where `python` is on our hard drive, then make a new `python` file:
 	
 	$ which python
+	/usr/bin/python
 	$ nano python-dot.py
 
-I've named the file based on the 'metacharacter' column so we can keep track easily. The basic contents of a python file which can execute regular expression pattern matching is:
+I've named the file based on the "Metacharacter(s)" column so we can keep track easily. The basic contents of a python file which can execute regular expression pattern matching is:
 
 	#! /usr/bin/python
 	
@@ -43,11 +44,15 @@ I've named the file based on the 'metacharacter' column so we can keep track eas
 	
 	string1 = "Hello, world."
 	if re.search(r".....", string1):
-    	print string1 + " has length >= 5"	
+    	print string1 + " has length >= 5"
 
 Save the file. NOTE: In Python the indentation is **critical** to get correct to emphasize the structure of `for` and `if` statements. If you have incorrect code indentation then you will likely get syntax errors or have the code do things you did not expect.
 
-There are a couple ways to run the command and test if it worked.
+Why did you need to use the output from `which python` in order to write your python script?
+
+	:
+
+There are a couple ways to run the python script and test if it worked.
 
 You can either pass the file name to `python` as an argument:
 
@@ -62,7 +67,7 @@ Or you can use `chmod` to make the file executable, then launch it directly:
 
 What result did you get?
 
-<br \>	<br \>	<br \>	
+	:
 
 
 Note that this simple example shows you the syntax for printing text to **STDOUT** and for text string concatenation between hard-coded and variable text (using the `+` operand). Note that `python` is also more forgiving of some whitespace here and there, such as between a variable name and the string contents it should be set to contain.
@@ -86,8 +91,12 @@ Try running the command again:
 
 What was your output? Was it different than you expected? How so?
 
-<br \>	<br \>	<br \>	
+	:
 
 
-Using this basic structure for `python` regex searching taking text from command-line as the argument, follow the rest of the tutorial by creating a new file for each row in the tutorial. Did you figure out a way to suppress the very first `arg` so that the script-name itself is not taken as an input?
+Using this basic structure for `python` regex searching taking text from command-line as the argument, follow the rest of the tutorial by creating a new file for each row in the tutorial.
+
+Figure out a way to suppress the very first `arg` so that the script-name itself is not taken as an input. Explain:
+
+	:
 

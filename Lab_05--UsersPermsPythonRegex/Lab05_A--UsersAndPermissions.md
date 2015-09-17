@@ -64,7 +64,7 @@ Logout and login again to update the user info.
 
 What is your new group name? What is your new group ID (hint: it should be an integer)?
 
-<br \><br \><br \>
+	:
 
 
 ###Collaborate
@@ -87,12 +87,12 @@ Wow, that was almost too easy! Now, add your `friendly-neighbor` user account to
 
 Why might you want to create and then join a group between two user accounts?
 
-<br /> <br /> <br />
+	:
 
 ###Connect Remotely
-Now with each group being given a working user account on another Pi, you can ssh into your neighbor's Pi to get **shell access**. Make sure you trade IP address info too (recall this is your `inet addr` for the wireless receiver):
+Now with each group being given a working user account on another Pi, you can ssh into your neighbor's Pi to get **shell access**. Make sure you trade IP address info too (recall this is your `inet addr` for either the ethernet connection `eth0` or the WiFi receiver `wlan0` depending on how you are currently connecting to the internet). If you're not sure just run `ifconfig` with no options. Here we will use `eth0`:
 	
-	$ ifconfig wlan0
+	$ ifconfig eth0
 
 Now you can login to your neighbor's Pi using their IP address:
 
@@ -103,8 +103,21 @@ Now you can login to your neighbor's Pi using their IP address:
 	$ ls -la
 	$ id
 
-What are the permissions for the /home account? What is your `uid` and `gid` for your neighbor's Pi? What groups is this user in? You can disconnect from your neighbor's pi using:
+What are the permissions for the /home account?
+
+	:
+
+What is your `uid` and `gid` for your neighbor's Pi?
+
+	:
 	
+What groups is this user in?
+
+	:
+
+You can disconnect from your neighbor's pi using `exit` which will close that shell:
+	
+	$ man exit
 	$ exit
 
 

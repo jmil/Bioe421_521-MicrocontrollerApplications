@@ -442,7 +442,7 @@ pre[class*="language-"] {
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
 
-<h2 id="toc_2">Lab 5B. Python and Regex</h2>
+<h2 id="toc_2">Lab 5B. <code>Python</code> and Regex</h2>
 
 <p>Previously in Lab we have done text-based search using the <code>grep</code>, <code>sed</code>, and <code>awk</code> commands. Often text searching can be done with much more complicated logic. We briefly looked at expanding the complexity of text searching that looked at the principles behind regular expressions (often abbreviated <code>regex</code> or <code>regexp</code>; plurals: <code>regexes</code> or <code>regexps</code>). We looked at the wonderful handout/explanation behind regular expressions from:<br>
 <a href="http://www.regular-expressions.info">http://www.regular-expressions.info</a></p>
@@ -470,16 +470,17 @@ $ cd Team09-LambdaFTW_Lab05
 
 <h4 id="toc_4">Assignment</h4>
 
-<p>Go to the following webpage:<br>
+<p>Go to the following webpage (or use the handout):<br>
 <a href="http://flockhart.virtualave.net/RBIF0100/regexp.html">http://flockhart.virtualave.net/RBIF0100/regexp.html</a></p>
 
 <p>For each row in the table, generate a new <code>python</code> script which follows the example. Let&#39;s do the first one together. First we need to find out where <code>python</code> is on our hard drive, then make a new <code>python</code> file:</p>
 
 <pre><code>$ which python
+/usr/bin/python
 $ nano python-dot.py
 </code></pre>
 
-<p>I&#39;ve named the file based on the &#39;metacharacter&#39; column so we can keep track easily. The basic contents of a python file which can execute regular expression pattern matching is:</p>
+<p>I&#39;ve named the file based on the <q>Metacharacter(s)</q> column so we can keep track easily. The basic contents of a python file which can execute regular expression pattern matching is:</p>
 
 <pre><code>#! /usr/bin/python
 
@@ -487,12 +488,17 @@ import re
 
 string1 = &quot;Hello, world.&quot;
 if re.search(r&quot;.....&quot;, string1):
-    print string1 + &quot; has length &gt;= 5&quot;  
+    print string1 + &quot; has length &gt;= 5&quot;
 </code></pre>
 
 <p>Save the file. NOTE: In Python the indentation is <strong>critical</strong> to get correct to emphasize the structure of <code>for</code> and <code>if</code> statements. If you have incorrect code indentation then you will likely get syntax errors or have the code do things you did not expect.</p>
 
-<p>There are a couple ways to run the command and test if it worked.</p>
+<p>Why did you need to use the output from <code>which python</code> in order to write your python script?</p>
+
+<pre><code>:
+</code></pre>
+
+<p>There are a couple ways to run the python script and test if it worked.</p>
 
 <p>You can either pass the file name to <code>python</code> as an argument:</p>
 
@@ -509,7 +515,8 @@ $ ./python-dot.py
 
 <p>What result did you get?</p>
 
-<p><br \>  <br \>  <br \>  </p>
+<pre><code>:
+</code></pre>
 
 <p>Note that this simple example shows you the syntax for printing text to <strong>STDOUT</strong> and for text string concatenation between hard-coded and variable text (using the <code>+</code> operand). Note that <code>python</code> is also more forgiving of some whitespace here and there, such as between a variable name and the string contents it should be set to contain.</p>
 
@@ -534,9 +541,15 @@ for arg in sys.argv:
 
 <p>What was your output? Was it different than you expected? How so?</p>
 
-<p><br \>  <br \>  <br \>  </p>
+<pre><code>:
+</code></pre>
 
-<p>Using this basic structure for <code>python</code> regex searching taking text from command-line as the argument, follow the rest of the tutorial by creating a new file for each row in the tutorial. Did you figure out a way to suppress the very first <code>arg</code> so that the script-name itself is not taken as an input?</p>
+<p>Using this basic structure for <code>python</code> regex searching taking text from command-line as the argument, follow the rest of the tutorial by creating a new file for each row in the tutorial.</p>
+
+<p>Figure out a way to suppress the very first <code>arg</code> so that the script-name itself is not taken as an input. Explain:</p>
+
+<pre><code>:
+</code></pre>
 
 <script type="text/javascript">
 self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
