@@ -44,17 +44,24 @@ Use the included USB A->B cable to connect Arduino UNO to your Raspberry Pi. You
 
 		$ sudo apt-get install arduino-core arduino-mk
 
-1. We need to make sure that our user account is a member of the `dialout` group so that we are authorized by the OS to communicate with the Arduino:
+1. We need to make sure that our user account is a member of the `dialout` group **AND** the `tty` group so that we are authorized by the OS to communicate with the Arduino:
 	
 		$ id
 		$ man usermod
 		$ sudo usermod -a -G dialout pi
+		$ sudo usermod -a -G tty pi
 
-1. Logout and then login again to make sure the changes took effect. Verify it worked:
+1. Reboot your Pi to make sure the changes took effect:
+
+		$ sudo shutdown -r now
+
+1. Verify it worked:
 
 		$ id
 
-	Is your user account now a member of the `dialout` group?
+	Is your user account now a member of the `dialout` group **AND** the `tty` group?
+	
+		:
 
 
 1. To do a test upload of software to our Arduino board, we will need to use a combination of `git`, `python`, and `ino` *(hat-tip http://openenergymonitor.blogspot.com/2013/12/developing-for-arduino-remotely-on.html)*.
@@ -85,10 +92,59 @@ Use the included USB A->B cable to connect Arduino UNO to your Raspberry Pi. You
 		$ sudo apt-get install picocom
 		$ which picocom
 		/usr/bin/picocom
+		
+		
+1. 	Finally, we need to check if the system can now recognize the Arduino device so that we can program it. With your Arduino connected to your Raspberry Pi, let's see which port the system sees it as:
+
+		$ dmesg | grep tty
+		...
+		...
+		... ttyAMA0: USB ACM device
+	You should see a message with `ttyAMA0` or something like it. What `tty` string is used to connect to your Arduino?
+	
+		:
+	
+ 
+	Additionally, we have a minor problem with Arduino with the current version of Raspbian *(hat-tip: http://openmicros.org/index.php/articles/94-ciseco-product-documentation/raspberry-pi/288-programming-an-arduino-from-your-raspberry-pi-with-ciseco-hardware)*:
+	
+	> The serial port on the GPIO that we want to use to communicate with the Arduino ... is /dev/ttyAMA0. Unfortunately, the Arduino IDE does not recognise this port. It prefers to use /dev/ttyS0. To get round this we link /dev/ttyS0 to /dev/ttyAMA0 and make sure this link is permanent. To do this, we need to create a file called `/etc/udev/rules.d/99-tty.rules` using a text editor.
+
+
+	So, use nano to open and create this new file:
+	
+		$ sudo nano /etc/udev/rules.d/99-tty.rules
+
+	Set the contents of the file to be the following:
+	
+		KERNEL==”ttyAMA0″,SYMLINK+=”ttyS0″ GROUP=”dialout”
+		KERNEL==”ttyAMA0″,SYMLINK+=”ttyS1″ GROUP=”dialout”
+
+	Save and exit.
+		
+1. We should now reboot again:
+	
+		$ sudo shutdown -r now
+	
+1. Now let's check which permissions are set for the Arduino:
+
+		$ cd /dev
+		$ ls -la | grep ttyA
+	
+	What are the full permissions set for these tty ports?
+	
+		:
+		:
+		:
+		:
+		
+	**Show this to your Instructor.**
+	
+	Now we should be all set to program your Arduino with Raspberry Pi.
+
 	
 ### Blink!
 	
-Ok, it's time to create and install your first Arduino program, called a **sketch**. Arduino is written in it's own programming language, which is C-like but has some abbreviations and conventions we will learn about.
+Ok, it's time to create and install your first Arduino program, called a **sketch**. Arduino is written in it's own unique programming language, which is C-like but has some abbreviations and conventions we will learn about.
 
 1. We will use the `ino` command to generate a lot of the template files for us, and compile the ASCII-based **sketch** into a binary `.hex` file that the Arduino can natively use. `ino` will call the `picocom` program in the background to actually do the upload of the `.hex` file to the Arduino over the emulated USB-serial connection.
 
@@ -135,6 +191,10 @@ Ok, it's time to create and install your first Arduino program, called a **sketc
 	
 	That's all there is to a basic Arduino **sketch**. The `#define` command sets a global variable `LED_PIN` to the integer `13`. Next, the `setup()` loop gets called once immediately after the Arduino is powered on. You use the `setup()` loop to, you guessed it, setup your variables. Here we set the `LED_PIN` to respond to our commands with an output. The `loop()` is continously run as long as the Arduino has power. Inside this loop, we successively set the `LED_PIN` to be `HIGH` or `LOW`, corresponding to on and off in this case. We also have to insert delays in milliseconds between the on/off switches so that we can observe a change with our eyes. Although the Arduino might be considered "slow" by the standard of modern computers, it's now slouch! With the processor running at 16 MHz, if we don't pause the LED light, we won't see a change.
 	
+	Why don't we need a **shebang** in this Arduino sketch?
+	
+		:
+	
 1. Let's build the **sketch** into a binary file:
 		
 		$ cd ~/arduino/blink/
@@ -158,7 +218,7 @@ Ok, it's time to create and install your first Arduino program, called a **sketc
 	
 		$ cd ~/arduino/blink/
 		$ ino upload
-		Guessing serial port ... /dev/ttpACM0
+		Guessing serial port ... /dev/ttyACM0
 		
 		avrdude: AVR device initialized and ready to accept instructions
 		...
@@ -167,16 +227,26 @@ Ok, it's time to create and install your first Arduino program, called a **sketc
 	
 	Your Arduino UNO should now have a heartbeat. Is your LED blinking?
 	
-	#### NOTE: Arduino has a tiny amount of solid-state memory, meaning that even if you disconnect it, your uploaded `.hex` file will be saved and immediately run again (as if it were being run for the first time) when power is restored.
 	
-	#### NOTE: If you have trouble connecting, check that the USB ACM device is recognized by the system:
+	#### TROUBLESHOOTING
 	
-			$ dmesg | grep tty
-			...
-			...
-			... ttyACM0: USB ACM device
-	You should see a message with ttyACM0 or something like it.
+	If you have trouble connecting, carefully check which permissions are set for the Arduino:
+
+		$ cd /dev
+		$ ls -la | grep ttyA
+ 
+	You can also tell `ino` to utilize a specific port of your choosing with the `-p` flag:
 	
+		$ cd ~/arduino/blink/
+		$ ino upload -p /dev/ttyACM0
+		Guessing serial port ... /dev/ttyACM0
+		
+		avrdude: AVR device initialized and ready to accept instructions
+		...
+		
+		avrdude done.   Thank you.
+
+	#### TECHNICAL NOTE: Arduino has a tiny amount of solid-state memory, meaning that even if you disconnect it, your uploaded `.hex` file will be saved and immediately run again (as if it were being run for the first time) when power is restored.
 
 ### Assignments
 

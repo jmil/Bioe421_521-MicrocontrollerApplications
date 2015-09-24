@@ -1,0 +1,4 @@
+crw-rw---T  1 root dialout 166,   0 Sep 24 10:07 ttyACM0
+crw-rw----  1 root tty     204,  64 Sep 24 09:53 ttyAMA0
+lrwxrwxrwx  1 root root           7 Dec 31  1969 ttyS0 -> ttyAMA0
+lrwxrwxrwx  1 root root           7 Dec 31  1969 ttyS1 -> ttyACM0
