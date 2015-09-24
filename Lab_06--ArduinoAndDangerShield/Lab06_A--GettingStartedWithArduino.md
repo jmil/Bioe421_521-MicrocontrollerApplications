@@ -70,7 +70,6 @@ Use the included USB A->B cable to connect Arduino UNO to your Raspberry Pi. You
 	
 	`git` is an extremely powerful tool... but for right now, you can think of `git` simply as a a way to store and track all changes to files and easily transmit them over the Internet (it has compression, version control, and internet protocols all built-in). It's a convenient way to download and install software from other people. Here, we use `git` to download the software, and a `python` script will help us install it in the system.
 	
-	#### SECURITY NOTE: we will be downloading software over the internet, then running these installation programs as the root user. Raspberry Pi is easy enough to reinstall, but be aware of where you download software from, and which scripts you choose to give root access to as you progress in class.
 
 		$ sudo apt-get install python-dev
 		$ sudo apt-get install python-setuptools
@@ -82,6 +81,8 @@ Use the included USB A->B cable to connect Arduino UNO to your Raspberry Pi. You
 		$ ls -la 			# WOW, that's a lot of stuff!
 		$ sudo python setup.py install
 		
+	#### SECURITY NOTE: we will be downloading software over the internet, then running these installation programs as the root user. Raspberry Pi is easy enough to reinstall, but be aware of where you download software from, and which scripts you choose to give root access to as you progress in class.
+
 	Check if your software was installed correctly:
 	
 		$ which ino
@@ -117,7 +118,7 @@ Use the included USB A->B cable to connect Arduino UNO to your Raspberry Pi. You
 	Set the contents of the file to be the following:
 	
 		KERNEL==”ttyAMA0″,SYMLINK+=”ttyS0″ GROUP=”dialout”
-		KERNEL==”ttyAMA0″,SYMLINK+=”ttyS1″ GROUP=”dialout”
+		KERNEL==”ttyACM0″,SYMLINK+=”ttyS1″ GROUP=”dialout”
 
 	Save and exit.
 		

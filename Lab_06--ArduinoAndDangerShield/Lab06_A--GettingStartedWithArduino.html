@@ -515,8 +515,6 @@ $ sudo usermod -a -G tty pi
 
 <p><code>git</code> is an extremely powerful tool... but for right now, you can think of <code>git</code> simply as a a way to store and track all changes to files and easily transmit them over the Internet (it has compression, version control, and internet protocols all built-in). It&#39;s a convenient way to download and install software from other people. Here, we use <code>git</code> to download the software, and a <code>python</code> script will help us install it in the system.</p>
 
-<h4 id="toc_5">SECURITY NOTE: we will be downloading software over the internet, then running these installation programs as the root user. Raspberry Pi is easy enough to reinstall, but be aware of where you download software from, and which scripts you choose to give root access to as you progress in class.</h4>
-
 <pre><code>$ sudo apt-get install python-dev
 $ sudo apt-get install python-setuptools
 $ cd ~
@@ -527,6 +525,8 @@ $ cd ino
 $ ls -la            # WOW, that&#39;s a lot of stuff!
 $ sudo python setup.py install
 </code></pre>
+
+<h4 id="toc_5">SECURITY NOTE: we will be downloading software over the internet, then running these installation programs as the root user. Raspberry Pi is easy enough to reinstall, but be aware of where you download software from, and which scripts you choose to give root access to as you progress in class.</h4>
 
 <p>Check if your software was installed correctly:</p>
 
@@ -567,7 +567,7 @@ $ which picocom
 <p>Set the contents of the file to be the following:</p>
 
 <pre><code>KERNEL==”ttyAMA0″,SYMLINK+=”ttyS0″ GROUP=”dialout”
-KERNEL==”ttyAMA0″,SYMLINK+=”ttyS1″ GROUP=”dialout”
+KERNEL==”ttyACM0″,SYMLINK+=”ttyS1″ GROUP=”dialout”
 </code></pre>
 
 <p>Save and exit.</p></li>
