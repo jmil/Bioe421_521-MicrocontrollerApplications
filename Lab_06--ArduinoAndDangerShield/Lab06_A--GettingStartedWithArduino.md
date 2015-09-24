@@ -9,7 +9,7 @@ Today we add the **Arduino**  microcontroller (pronounced `Ar du ween Oh`), to o
 
 > Introduced in 2005, the Arduino's designers sought to provide an inexpensive and easy way for hobbyists, students, and professionals to create devices that interact with their environment using sensors and actuators. Common examples for beginner hobbyists include simple robots, thermostats and motion detectors. It comes with a simple integrated development environment (IDE) that runs on regular personal computers and allows users to write programs for Arduino using C or C++.
 
-Arduino almost immediately became a favorite among tinkerers and hobbyists for the ease with which you can rapidly prototyping integrated devices. It's programmed with an open-source and cross-platform (Linux, Mac, Windows) software kit. And it's an extremely extensible system. In fact, Arduino microcontrollers power most of the open-source 3D printers you can buy today. You can read all about Arduino and see it's amazingly vibrant community here:
+Arduino almost immediately became a favorite among tinkerers and hobbyists for the ease with which you can rapidly prototype integrated devices. It's programmed with an open-source and cross-platform (Linux, Mac, Windows) software kit. And it's an extremely extensible system. In fact, Arduino microcontrollers power most of the open-source 3D printers you can buy today. You can read all about Arduino and see it's amazingly vibrant community here:
 http://www.arduino.cc/
 
 
