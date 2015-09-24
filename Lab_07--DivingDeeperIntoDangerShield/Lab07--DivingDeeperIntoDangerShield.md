@@ -3,10 +3,10 @@
 
 ##Lab 7. Diving Deeper into the Danger Shield
 
-Since we were delayed by the Internet last time (sorry!) the first step is to finish all of Lab 6. After you finish Lab 6, and based on what we discussed in lecture, use your knowledge of Danger Shield to complete the following Assignments.
+Use your knowledge of Danger Shield to complete the following Assignments.
 
 
-####Procedure: Recall you have used `ino` to setup the proper set of directories and files for each of your Arduino scripts. So, for EACH of the following assignments, you should repeat this setup procedure to create a clean directory to work in:
+####General Procedure: Recall you have used `ino` to setup the proper set of directories and files for each of your Arduino scripts. So, for EACH of the following assignments, you should repeat this setup procedure to create a clean directory to work in:
 
 		$ cd ~
 		$ mkdir -p arduino/ASSIGNMENT-NAME
