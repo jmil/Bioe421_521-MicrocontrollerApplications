@@ -95,4 +95,10 @@ Although currently connected by USB, Arduino is an independent computer. So we c
 	:
 	:
 
+### `ino` serial
 
+1. Finally, `ino` itself has it's own serial mode which you can use to directly dump serial prints to the monitor. Try this out with:
+
+		$ ino serial
+		
+	Use `<CTRL-A><CTRL-X>` to exit back to the command prompt.
