@@ -717,15 +717,27 @@ avrdude done.   Thank you.
 <h4 id="toc_10">~/arduino/strobe</h4>
 
 <ol>
-<li>Experiment with different frequencies for blinking LED (try very long and very short durations). Find one that you like. Note that very short durations of the LED set <code>HIGH</code> will appear, to your eye, to be a very dim LED.</li>
+<li><p>Experiment with different frequencies for blinking LED (try very long and very short durations). Find one that you like. Note that very short durations of the LED set <code>HIGH</code> will appear, to your eye, to be a very dim LED.</p>
+
+<p><strong>Show your Arduino&#39;s strobing LED to your Instructor.</strong></p></li>
 </ol>
 
 <h4 id="toc_11">~/arduino/pulse</h4>
 
 <ol>
-<li><p>Upload a <strong>sketch</strong> where the LED will appear to slowly and smoothly brighten over 5 seconds, then dim again over 5 seconds.</p>
+<li><p>Make a <strong>sketch</strong> where the LED will appear to slowly and smoothly brighten over 5 seconds, then dim again over 5 seconds. While we <u>could</u> use the basic <strong>blink</strong> or <strong>strobe</strong> code above, we would benefit from a more advanced workflow. Enter <strong>Blink Without Delay</strong>:<br>
+<a href="https://www.arduino.cc/en/Tutorial/BlinkWithoutDelay">https://www.arduino.cc/en/Tutorial/BlinkWithoutDelay</a></p>
 
-<h4 id="toc_12">Show your Arduino&#39;s pulse to your Instructor.</h4></li>
+<blockquote>
+<p>Blink Without Delay</p>
+
+<p>Sometimes you need to do two things at once. For example you might want to blink an LED while reading a button press. In this case, you can&#39;t use delay(), because Arduino pauses your program during the delay(). If the button is pressed while Arduino is paused waiting for the delay() to pass, your program will miss the button press.</p>
+
+<p>This sketch demonstrates how to blink an LED without using delay(). It turns on the LED on and then makes note of the time. Then, each time through loop(), it checks to see if the desired blink time has passed. If it has, it toggles the LED on or off and makes note of the new time. In this way the LED blinks continuously while the sketch execution never lags on a single instruction.</p>
+</blockquote>
+
+<p>You can grab the <code>BlinkWithoutDelay.ino</code> file from:<br>
+<a href="https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/BlinkWithoutDelay.ino">https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/BlinkWithoutDelay.ino</a></p></li>
 </ol>
 
 <script type="text/javascript">

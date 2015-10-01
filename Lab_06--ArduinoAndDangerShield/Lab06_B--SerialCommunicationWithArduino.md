@@ -11,6 +11,9 @@ Although currently connected by USB, Arduino is an independent computer. So we c
 		$ mkdir -p arduino/ascii
 		$ cd arduino/ascii
 	
+	What does the `-p` option of `mkdir` do?
+	
+		:
 
 1. Use `ino` to make a default sketch based on the blink template. We'd like to replace the contents of the `sketch.ino` with the program available here: http://arduino.cc/en/Tutorial/ASCIITable
 	

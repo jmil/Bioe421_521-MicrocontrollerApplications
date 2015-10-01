@@ -258,8 +258,52 @@ For each Assignment below, make a new directory sketch based on the **blink** te
 #### ~/arduino/strobe 
 1. Experiment with different frequencies for blinking LED (try very long and very short durations). Find one that you like. Note that very short durations of the LED set `HIGH` will appear, to your eye, to be a very dim LED.
 
-#### ~/arduino/pulse
-1. Upload a **sketch** where the LED will appear to slowly and smoothly brighten over 5 seconds, then dim again over 5 seconds.
 
-	#### Show your Arduino's pulse to your Instructor.
+	**Show your Arduino's strobing LED to your Instructor.**
 	
+#### ~/arduino/pulse
+1. Make a **sketch** where the LED will appear to slowly and smoothly brighten over 5 seconds, then dim again over 5 seconds. While we _could_ use the basic **blink** or **strobe** code above, we would benefit from a more advanced workflow. Enter **Blink Without Delay**:
+	https://www.arduino.cc/en/Tutorial/BlinkWithoutDelay
+
+	>Blink Without Delay
+
+	>Sometimes you need to do two things at once. For example you might want to blink an LED while reading a button press. In this case, you can't use delay(), because Arduino pauses your program during the delay(). If the button is pressed while Arduino is paused waiting for the delay() to pass, your program will miss the button press.
+
+	>This sketch demonstrates how to blink an LED without using delay(). It turns on the LED on and then makes note of the time. Then, each time through loop(), it checks to see if the desired blink time has passed. If it has, it toggles the LED on or off and makes note of the new time. In this way the LED blinks continuously while the sketch execution never lags on a single instruction.
+
+
+	You can grab the `BlinkWithoutDelay.ino` file from:
+	https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/BlinkWithoutDelay.ino
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

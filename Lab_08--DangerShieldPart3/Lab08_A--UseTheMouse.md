@@ -12,7 +12,7 @@ Upt until now, we have only used a keyboard as the human-machine interface. You'
 Select option `3 Enable Boot to Desktop/Scratch` then `Desktop Log in as user 'pi' at the graphical desktop`. Then select **`<Finish>`** and then **`<Yes>`** to Reboot.
 
 
-Spend a bit poking around the desktop. Use `Midori` to browse the web. It's been optimized for Raspberry Pi. You can install Chrome, but it's slow. You can install lots of things. But this is a $35 computer, so don't expect too much without heavily optimized code.
+Spend a bit poking around the desktop. Use `Epiphany` to browse the web. It's been optimized for Raspberry Pi. You can install Chrome, but it's slow. You can install lots of things. But this is a $35 computer, so don't expect too much without heavily optimized code.
 		
 
 
