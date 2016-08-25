@@ -5,11 +5,20 @@
 
 ######We will use Raspberry Pi 3 - Model B - ARMv8 with 1G RAM: https://www.adafruit.com/products/3055 and the 2016-05-27 Installation of Raspbian Jessie Linux from: https://www.raspberrypi.org/downloads/raspbian/ with a SHA-1 checksum of: 64c7ed611929ea5178fbb69b5a5f29cc9cc7c157
 
-#####Raspberry Pi is a complete computer system under $40. It uses a processor similar to what is found in many smartphones: a Broadcom BCM2836 with a 900 MHz quad-core ARM Cortex-A7: https://en.wikipedia.org/wiki/ARM_Cortex-A7. It can run many OSs and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage (600 mA, 3 W) make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
+#####Raspberry Pi is a complete computer system under $40. It uses an ARM processor similar to what is found in many smartphones. It can run many operating systems (OSes) and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
 
-####Hardware: We supply a complete Raspberry Pi, power cable, video cable, keyboard and mouse. We will utilize the computer displays already available at OEDK Computing Classroom and disconnect the desktop Windows PCs from those monitors to work with Raspberry Pi.
+[Adafruit says](https://www.adafruit.com/products/3055):
 
-####Raspberry Pi, like many microcontrollers, is sensitive to static. Avoid charging yourself up with static as it could damage your device (not usually a huge problem in Houston, but be careful). Let's get started.
+> There are two giant upgrades in the Pi 3.  The first is a next generation Quad Core Broadcom BCM2837 64-bit ARMv8 processor, making the processor speed increase from 900 MHz on the Pi 2 to up to 1.2GHz on the Pi 3.
+
+> The second giant upgrade (and this is the one we’re personally most excited about) is the addition of a BCM43143 WiFi chip BUILT-IN to your Raspberry Pi.  No more pesky WiFi adapters - this Pi is WiFi ready.  There’s also Bluetooth Low Energy (BLE) on board making the Pi an excellent IoT solution (BLE support is still in the works, software-wise)
+
+> Lastly, there’s an upgraded switched power source that goes up to 2.5 Amps instead of just 2 Amps - allowing your Pi to power even more powerful devices over USB ports.
+
+
+#####Hardware: We supply a complete Raspberry Pi, power cable, video cable, keyboard and mouse. We will utilize the computer displays already available at OEDK Computing Classroom and disconnect the desktop Windows PCs from those monitors to work with Raspberry Pi.
+
+#####Raspberry Pi, like many microcontrollers, is sensitive to static. Avoid charging yourself up with static as it could damage your device (not usually a huge problem in Houston, but be careful). Let's get started.
 
 1. Plug in the Keyboard to the Raspberry Pi. **We will not use the mouse** until later in the semester.
 
