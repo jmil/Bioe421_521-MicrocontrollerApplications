@@ -49,11 +49,11 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 
 	Grab the complete list of all the latest software programs and packages:
 
-			$ sudo apt-get update
-			Get :1 http://archive.raspberrypi.org wheezy Release.gpg [473 B]
-			Get :2 http://mirrordirector.raspbian.org wheezy Release.gpg [490 B]
-			...
-
+		$ sudo apt-get update
+		Hit http://archive.raspberrypi.org jessie InRelease
+		Hit http://mirrordirector.raspbian.org jessie InRelease
+		...
+		Reading package lists... Done                                                                                                                                                                                                          
 
 1. Upgrade your system.
 

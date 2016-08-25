@@ -3,7 +3,7 @@
 
 ##Lab 1A. Getting Started with Raspberry Pi
 
-######We will use Raspberry Pi 2 - Model B - ARMv7 with 1G RAM: https://www.adafruit.com/products/2358 and the 2015-05-05 Installation of Raspbian Wheezy Linux from: https://www.raspberrypi.org/downloads/raspbian/ with a SHA-1 checksum of: cb799af077930ff7cbcfaa251b4c6e25b11483de
+######We will use Raspberry Pi 3 - Model B - ARMv8 with 1G RAM: https://www.adafruit.com/products/3055 and the 2016-05-27 Installation of Raspbian Jessie Linux from: https://www.raspberrypi.org/downloads/raspbian/ with a SHA-1 checksum of: 64c7ed611929ea5178fbb69b5a5f29cc9cc7c157
 
 #####Raspberry Pi is a complete computer system under $40. It uses a processor similar to what is found in many smartphones: a Broadcom BCM2836 with a 900 MHz quad-core ARM Cortex-A7: https://en.wikipedia.org/wiki/ARM_Cortex-A7. It can run many OSs and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage (600 mA, 3 W) make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
 

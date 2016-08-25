@@ -101,6 +101,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 		python
 		raspistill
 		raspivid
+		uname
 		
 		shutdown
 		reboot
@@ -151,6 +152,9 @@ One of the most important aspects of the shell, especially for new users, is tha
 			
 			:
 
+	1. What version of Raspbian Linux are you running on your Pi? (hint: it's the "pretty name" shown in the `/etc/os-release` file)
+
+			:
 
 	1. You want your Pi to take a photograph every hour. What program could you use to take the photograph? What program could schedule this command?
 
