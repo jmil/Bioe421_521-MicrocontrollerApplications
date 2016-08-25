@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>Connecting Arduino to Processing - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="./Connecting Arduino to Processing - learn.sparkfun.com_files/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Connecting Arduino to Processing - learn.sparkfun.com_files/theme.github.css" type="text/css" media="screen">    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog">
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials">
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments">
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments">
+
+    <script type="text/javascript">
+          var SFECONFIG = {
+      currencies: {"USD":{"code":"USD","title":"US Dollar","symbol_left":"$","symbol_right":"","decimal_point":".","thousands_point":",","decimal_places":"2","value":"1.0000"},"CAD":{"code":"CAD","title":"Canadian Dollar","symbol_left":"$","symbol_right":" CAD","decimal_point":".","thousands_point":",","decimal_places":"2","value":"1.3204"},"AUD":{"code":"AUD","title":"Australian Dollar","symbol_left":"$","symbol_right":" AUD","decimal_point":".","thousands_point":",","decimal_places":"2","value":"1.4091"},"GBP":{"code":"GBP","title":"British Pound","symbol_left":"&pound;","symbol_right":"","decimal_point":".","thousands_point":",","decimal_places":"2","value":"0.6552"},"EUR":{"code":"EUR","title":"Euro","symbol_left":"&euro;","symbol_right":"","decimal_point":".","thousands_point":",","decimal_places":"2","value":"0.9147"}},
+      dnt: true,
+      preferred_currency: 'USD',
+        http_server: 'http://www.sparkfun.com',
+        https_server: 'https://www.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1446062699',
+        search_key: 'qLqN6uVRKXnjHd2QapGm'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+        }
+      };
+    </script><style type="text/css"></style>
+    <script src="./Connecting Arduino to Processing - learn.sparkfun.com_files/learn-built.js"></script>
+      <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jqueryui" src="./Connecting Arduino to Processing - learn.sparkfun.com_files/jquery-ui.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="tutorial" src="./Connecting Arduino to Processing - learn.sparkfun.com_files/tutorial.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery.imagesloaded" src="./Connecting Arduino to Processing - learn.sparkfun.com_files/jquery.imagesloaded.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="rainbow" src="./Connecting Arduino to Processing - learn.sparkfun.com_files/rainbow.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="generic" src="./Connecting Arduino to Processing - learn.sparkfun.com_files/generic.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="c" src="./Connecting Arduino to Processing - learn.sparkfun.com_files/c.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="ZeroClipboard.min" src="./Connecting Arduino to Processing - learn.sparkfun.com_files/ZeroClipboard.min.js"></script></head>
+
+  <body id="learn" class="layout-default no-type tutorials-view no-touch" ontouchstart="">
+    <div class="wrapper" itemscope="" itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://www.sparkfun.com/">
+      <div class="wrapper-inner">
+
+    
+<div class="header">
+  <div class="container">
+
+<!-- Mobile Nav Button -->
+<div class="mobile-menu-container left">
+  <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#"><span>≡</span></a>
+      <a id="search_toggle" class="mobile-menu-button" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#"><span class="glyphicon glyphicon-search"></span></a>
+  </div>
+
+<nav class="top-links">
+  &nbsp;
+</nav>
+
+<!-- Logo -->
+<div class="logo-container">
+  <a class="logo" href="https://www.sparkfun.com/">
+    <span class="sfe-icon-flame"></span>
+    <span class="sfe-icon-sparkfun" data-icon="🔥">
+      <span class="visuallyhidden">sparkfun.com</span>
+    </span>
+  </a>
+</div>
+
+<!-- Tabs -->
+<!-- also edit mobile tabs in .main-nav -->
+<nav class="tabs-container">
+  <ul>
+    <li class="shop "><a href="https://www.sparkfun.com/">Shop</a></li>
+    <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+    <li class="avc "><a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"><span class="visuallyhidden">AVC</span></span></a></li>
+    <li class="forum "><a href="https://forum.sparkfun.com/">Forum</a></li>
+    <li class="data "><a href="https://data.sparkfun.com/">Data</a></li>
+  </ul>
+</nav>
+
+<!-- Cart & User -->
+<div class="user-container mobile-menu-container right">
+
+  <a id="account_toggle" class="mobile-menu-button" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#"><span class="glyphicon glyphicon-user"></span></a>
+
+  
+      <div class="user">
+      <!-- login modal trigger -->
+      <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fconnecting-arduino-to-processing%2Fall" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+      <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>    </div>
+  
+</div>
+
+<!-- Navigation / Search -->
+<div class="main-nav-container">
+
+  <nav class="main-nav">
+    <ul>
+      <li class="tab shop ">
+        <a href="https://www.sparkfun.com/">Shop</a>      </li>
+      <li class="tab learn active">
+        <a href="https://learn.sparkfun.com/">Learn</a>      </li>
+      <li class="tab forum ">
+        <a href="https://forum.sparkfun.com/">Forum</a>
+      </li>
+      <li class="tab data ">
+        <a href="https://data.sparkfun.com/">Data</a>
+      </li>
+
+      
+<li class="start-a-project ">
+  <a href="https://learn.sparkfun.com/start_a_project">Start a Project</a></li>
+<li><a href="https://learn.sparkfun.com/blog">EDU Blog</a></li>
+<li><a href="https://learn.sparkfun.com/resources">Resources</a></li>
+<li class="active"><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+<li><a href="https://learn.sparkfun.com/events">Classes</a></li>
+<li><a href="https://learn.sparkfun.com/calendar">Calendar</a></li>
+<li><a href="https://learn.sparkfun.com/workshops">Workshops</a></li>
+<li><a href="https://learn.sparkfun.com/contact">Contact</a></li>
+
+      <li class="desktop-toggle">
+        <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fconnecting-arduino-to-processing%2Fall">Desktop Site</a>      </li>
+    </ul>
+  </nav>
+
+      <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+      <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+      <div class="ui-widget">
+        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input name="term" id="global-search" class="form-control ui-autocomplete-input" type="text" value="" placeholder="search..." itemprop="query-input" autocomplete="off">
+      </div>
+    </form>
+  
+</div>
+
+  </div>
+</div>
+
+
+    
+    <div class="content">
+      <div class="container">
+
+        
+        <div class="main-title">
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>Connecting Arduino to Processing</li>
+      </ul>
+
+  <h1>
+    Connecting Arduino to Processing  </h1>
+
+</div>
+
+
+<a id="nav_toggle_pages" class="nav_toggle" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#"><span>≡</span> Pages</a>
+
+<div id="tutorial" class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/265179"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/6119b4d859e3f4e5e9b1db77e6510e8a"> b_e_n</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="69">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">4</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t69" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;googleplus&#39;);" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft69" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;tumblr&#39;);" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft69&amp;name=Connecting+Arduino+to+Processing" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;reddit&#39;);" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft69" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;twitter&#39;);" href="https://twitter.com/intent/tweet?text=Connecting+Arduino+to+Processing&amp;url=http%3A%2F%2Fsfe.io%2Ft69&amp;via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;facebook&#39;);" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft69&amp;t=Connecting+Arduino+to+Processing" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;pinterest&#39;);" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft69&amp;media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F6%2F9%2FArdPro.jpg&amp;description=Connecting+Arduino+to+Processing" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="introduction">Introduction</h2>
+        <!---
+make a pic of arduino + processing icons and a '+'
+-->
+
+
+<p>So, you’ve blinked some LEDs with <a href="http://arduino.cc/">Arduino</a>, and maybe you’ve even drawn some pretty pictures with <a href="http://processing.org/">Processing</a> - what’s next? At this point you may be thinking, ‘I wonder if there’s a way to get Arduino and Processing to communicate to each other?’. Well, guess what - there is! - and this tutorial is going to show you how.</p>
+
+<p>In this tutorial we will learn:</p>
+
+<ul>
+<li>How to send data from Arduino to Processing over the serial port</li>
+<li>How to receive data from Arduino in Processing</li>
+<li>How to send data from Processing to Arduino</li>
+<li>How to receive data from Processing in Arduino</li>
+<li>How to write a serial ‘handshake’ between Arduino and Processing to control data flow</li>
+<li>How to make a ‘Pong’ game that uses analog sensors to control the paddles</li>
+</ul>
+
+
+<p>Before we get started, there are a few things you should be certain you’re familiar with to get the most out of this tutorial:</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/what-is-an-arduino">What’s an Arduino?</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard">How to use a breadboard</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/working-with-wire">Working with wire</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/serial-communication">What is serial communication?</a></li>
+<li>Some basic familiarity with <a href="http://processing.org/">Processing</a> will be useful, but not strictly necessary.</li>
+</ul>
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="from-arduino">From Arduino...</h2>
+        <p>Let’s start with the Arduino side of things. We’ll show you the basics of how to set up your Arduino sketch to send information over serial.</p>
+
+<ul>
+<li>First things first. If you haven’t done so yet, <a href="http://arduino.cc/en/Main/Software">download and install the Arduino software</a> for your operating system. <a href="https://learn.sparkfun.com/tutorials/installing-arduino">Here’s a tutorial</a> if you get stuck.</li>
+<li>You’ll also need an Arduino-compatible microcontroller and an appropriate way to connect it to your computer (an A-to-B USB cable, micro USB, or FTDI breakout). Check <a href="https://learn.sparkfun.com/tutorials/arduino-comparison-guide">this comparison guide</a> if you’re not sure what’s right for you.</li>
+</ul>
+
+
+<p>Ok. You should by this point have the Arduino software installed, an Arduino board of some kind, and a cable. Now for some coding! Don’t worry, it’s quite straightforward.</p>
+
+<ul>
+<li>Open up the Arduino software. You should see something like this:</li>
+</ul>
+
+
+<p style="text-align:center;"> <a href="./Connecting Arduino to Processing - learn.sparkfun.com_files/51894727ce395fe854000000.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/51894727ce395fe854000000.png" alt="alt text"></a></p>
+
+<p>The nice big white space is where we are going to write our code. Click in the white area and type the following (or copy and paste if you feel lazy):</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-0" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">setup</span>() 
+{
+<span class="comment">//initialize serial communications at a 9600 baud rate</span>
+Serial.<span class="function call">begin</span>(<span class="constant numeric">9600</span>);
+}
+</code></pre><div id="code-0" class="hide">void setup() 
+{
+//initialize serial communications at a 9600 baud rate
+Serial.begin(9600);
+}
+</div>
+
+<p>This is called our setup method. It’s where we ‘set up’ our program. Here, we’re using it to start serial communication from the Arduino to our computer at a baud rate of 9600. For now, all you need to now about baud rate is that (basically) it’s the rate at which we’re sending data to the computer, and if we’re sending and receiving data at different rates, everything goes all gobbledy-gook and one side can’t understand the other. This is bad.</p>
+
+<p>After our <code>setup()</code> method, we need a method called <code>loop()</code>, which is going to repeat over and over as long as our program is running. For our first example, we’ll just send the string ‘Hello, world!’ over the serial port, over and over (and over). Type the following in your Arduino sketch, below the code we already wrote:</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-1" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">loop</span>()
+{
+<span class="comment">//send 'Hello, world!' over the serial port</span>
+Serial.<span class="function call">println</span>(<span class="string">"Hello, world!"</span>);
+<span class="comment">//wait 100 milliseconds so we don't drive ourselves crazy</span>
+<span class="function call">delay</span>(<span class="constant numeric">100</span>);
+}
+</code></pre><div id="code-1" class="hide">void loop()
+{
+//send 'Hello, world!' over the serial port
+Serial.println("Hello, world!");
+//wait 100 milliseconds so we don't drive ourselves crazy
+delay(100);
+}
+</div>
+
+<p>That’s all we need for the Arduino side of our first example. We’re setting up serial communication from the Arduino and telling it to send data every 100 milliseconds. Your Arduino sketch should now look something like this:</p>
+
+<p style="text-align:center;"> <a href="./Connecting Arduino to Processing - learn.sparkfun.com_files/51895ebece395f3b55000001.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/51895ebece395f3b55000001.png" alt="alt text"></a></p>
+
+<p>All that’s left to do is to plug in your Arduino board, select your board type (under Tools -&gt; Board Type) and your Serial port (under Tools -&gt; Serial Port) and hit the ‘upload’ button to load your code onto the Arduino.</p>
+
+<p>Now we’re ready to see if we can magically (or through code) detect the ‘Hello, world!’ string we’re sending from Processing.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="to-processing">...to Processing</h2>
+        <p>Our task now is to find a way to listen in on what our Arduino sketch is sending. Luckily, Processing comes with a Serial library designed for just this kind of thing! If you don’t have a version of Processing, make sure you go to <a href="http://processing.org/">Processing.org</a> and download the latest version for your operating system. Once Processing is installed, open it up. You should see something like this:</p>
+
+<p style="text-align:center;"> <a href="./Connecting Arduino to Processing - learn.sparkfun.com_files/518961ffce395f9d54000000.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/518961ffce395f9d54000000.png" alt="alt text"></a></p>
+
+<p>Looks a lot like Arduino, huh? The Arduino software was actually based in part off of Processing - that’s the beauty of open-source projects. Once we have an open sketch, our first step is to import the Serial library. Go to Sketch-&gt;Import Library-&gt;Serial, as shown below:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/d/2/e/5/b/5189644fce395fc86e000000.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/5189644fce395fc86e000000.png" alt="alt text"></a></p>
+
+<p>You should now see a line like <code>import processing.serial.*;</code> at the top of your sketch. Magic! Underneath our import statement we need to declare some global variables. All this means is that these variables can used anywhere in our sketch. Add these two lines beneath the import statement:</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-2" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow">Serial myPort;  <span class="comment">// Create object from Serial class</span>
+<span class="keyword">String</span> val;     <span class="comment">// Data received from the serial port</span>
+</code></pre><div id="code-2" class="hide">Serial myPort;  // Create object from Serial class
+String val;     // Data received from the serial port
+</div>
+
+<p>In order to listen to any serial communication we have to get a Serial object (we call it <code>myPort</code> but you can it whatever you like), which lets us listen in on a serial port on our computer for any incoming data. We also need a variable to recieve the actual data coming in. In this case, since we’re sending a String (the sequence of characters ‘Hello, World!’) from Arduino, we want to receive a String in Processing.
+Just like Arduino has <code>setup()</code> and <code>loop()</code>, Processing has <code>setup()</code> and <code>draw()</code> (instead of loop).</p>
+
+<p>For our <code>setup()</code> method in Processing, we’re going to find the serial port our Arduino is connected to and set up our Serial object to listen to that port.</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-3" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="comment">// I know that the first port in the serial list on my mac</span>
+<span class="comment">// is Serial.list()[0].</span>
+<span class="comment">// On Windows machines, this generally opens COM1.</span>
+<span class="comment">// Open whatever port is the one you're using.</span>
+<span class="keyword">String</span> portName <span class="keyword operator">=</span> Serial.<span class="function call">list</span>()[<span class="constant numeric">0</span>]; <span class="comment">//change the 0 to a 1 or 2 etc. to match your port</span>
+myPort <span class="keyword operator">=</span> <span class="keyword">new</span> <span class="function call">Serial</span>(<span class="keyword">this</span>, portName, <span class="constant numeric">9600</span>); 
+</code></pre><div id="code-3" class="hide">// I know that the first port in the serial list on my mac
+// is Serial.list()[0].
+// On Windows machines, this generally opens COM1.
+// Open whatever port is the one you're using.
+String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
+myPort = new Serial(this, portName, 9600); 
+</div>
+
+<p>Remember how we set <code>Serial.begin(9600)</code> in Arduino? Well, if we don’t want that gobbledy-gook I was talking about, we had better put 9600 as that last argument in our Serial object in Processing as well. This way Arduino and Processing are communicating at the same rate. Happy times!</p>
+
+<p>In our <code>draw()</code> loop, we’re going to listen in on our Serial port and we get something, stick that something in our <code>val</code> variable and print it to the console (that black area at the bottom of your Processing sketch).</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-4" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">draw</span>()
+{
+  <span class="keyword">if</span> ( myPort.<span class="function call">available</span>() <span class="keyword operator">&gt;</span> <span class="constant numeric">0</span>) 
+  {  <span class="comment">// If data is available,</span>
+  val <span class="keyword operator">=</span> myPort.<span class="function call">readStringUntil</span>(<span class="string">'\n'</span>);         <span class="comment">// read it and store it in val</span>
+  } 
+<span class="function call">println</span>(val); <span class="comment">//print it out in the console</span>
+}
+</code></pre><div id="code-4" class="hide">void draw()
+{
+  if ( myPort.available() &gt; 0) 
+  {  // If data is available,
+  val = myPort.readStringUntil('\n');         // read it and store it in val
+  } 
+println(val); //print it out in the console
+}
+</div>
+
+<p>Ta-Da! If you hit the ‘run’ button (and your Arduino is plugged in with the code on the previous page loaded up), you should see a little window pop-up, and after a sec you should see `Hello, World!‘ appear in the Processing console. Over and over. Like this:</p>
+
+<p style="text-align:center;"> <a href="./Connecting Arduino to Processing - learn.sparkfun.com_files/51ae08bace395f6f1b000000.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/51ae08bace395f6f1b000000.png" alt="alt text"></a></p>
+
+<p>Excellent! We’ve now conquered how to send data from Arduino to Processing. Our next step is figure out how go the opposite way - sending data from Processing to Arduino.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="from-processing">From Processing...</h2>
+        <p>So we’ve sent data from Arduino to Processing, but what if we want to send data the other way - from Processing to Arduino? Piece of cake!</p>
+
+<p>Let’s start with the Processing side of things.  It starts out much like our last sketch: we import the Serial library and declare a global Serial object variable for our port up top, and in our <code>setup()</code> method we find our port and initialize Serial communication on that port with our Serial variable at 9600 baud. We’re also going to use the <code>size()</code> command, to give us a little window to click in, which will trigger our sketch to send something over the Serial port to Arduino.</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-5" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">import</span> processing.serial.<span class="keyword operator">*</span>;
+
+Serial myPort;  <span class="comment">// Create object from Serial class</span>
+
+<span class="keyword">void</span> <span class="function call">setup</span>() 
+{
+  <span class="function call">size</span>(<span class="constant numeric">200</span>,<span class="constant numeric">200</span>); <span class="comment">//make our canvas 200 x 200 pixels big</span>
+  <span class="keyword">String</span> portName <span class="keyword operator">=</span> Serial.<span class="function call">list</span>()[<span class="constant numeric">0</span>]; <span class="comment">//change the 0 to a 1 or 2 etc. to match your port</span>
+  myPort <span class="keyword operator">=</span> <span class="keyword">new</span> <span class="function call">Serial</span>(<span class="keyword">this</span>, portName, <span class="constant numeric">9600</span>);
+}
+</code></pre><div id="code-5" class="hide">import processing.serial.*;
+
+Serial myPort;  // Create object from Serial class
+
+void setup() 
+{
+  size(200,200); //make our canvas 200 x 200 pixels big
+  String portName = Serial.list()[0]; //change the 0 to a 1 or 2 etc. to match your port
+  myPort = new Serial(this, portName, 9600);
+}
+</div>
+
+<p>In our <code>draw()</code> loop, we send whatever we want over the serial port by using the <code>write</code> method from the Processing Serial library. For this sketch, we will send a ‘1’ whenever we click our mouse in the Processing window. We’ll also print it out on the console, just to see that we’re actually sending something. If we aren’t clicking we’ll send a ‘0’ instead.</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-6" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">draw</span>() {
+  <span class="keyword">if</span> (mousePressed <span class="keyword operator">=</span><span class="keyword operator">=</span> <span class="constant language">true</span>) 
+  {                           <span class="comment">//if we clicked in the window</span>
+   myPort.<span class="function call">write</span>(<span class="string">'1'</span>);         <span class="comment">//send a 1</span>
+   <span class="function call">println</span>(<span class="string">"1"</span>);   
+  } <span class="keyword">else</span> 
+  {                           <span class="comment">//otherwise</span>
+  myPort.<span class="function call">write</span>(<span class="string">'0'</span>);          <span class="comment">//send a 0</span>
+  }   
+}
+</code></pre><div id="code-6" class="hide">void draw() {
+  if (mousePressed == true) 
+  {                           //if we clicked in the window
+   myPort.write('1');         //send a 1
+   println("1");   
+  } else 
+  {                           //otherwise
+  myPort.write('0');          //send a 0
+  }   
+}
+</div>
+
+<p>This is what your code should look like at this point:</p>
+
+<p style="text-align:center;"> <a href="./Connecting Arduino to Processing - learn.sparkfun.com_files/51a51ac5ce395f2a24000001.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/51a51ac5ce395f2a24000001.png" alt="alt text"></a></p>
+
+<p>If you run this code, you should see a bunch of 1’s appear in the console area whenever you click your mouse in the window. Neat! But how do we look for these 1’s from Arduino? And what can we do with them?</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="to-arduino">...to Arduino</h2>
+        <p>Ok! On this page we’re going to look for those 1’s coming in from Processing, and, if we see them, we’re going to turn on an LED on pin 13 (on some Arduinos, like the Uno, pin 13 is the on-board LED, so you don’t need an external LED to see this work).</p>
+
+<p>At the top of our Arduino sketch, we need two global variables - one for holding the data coming from Processing, and another to tell Arduino which pin our LED is hooked up to.</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-7" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"> <span class="keyword">char</span> val; <span class="comment">// Data received from the serial port</span>
+ <span class="keyword">int</span> ledPin <span class="keyword operator">=</span> <span class="constant numeric">13</span>; <span class="comment">// Set the pin to digital I/O 13</span>
+</code></pre><div id="code-7" class="hide"> char val; // Data received from the serial port
+ int ledPin = 13; // Set the pin to digital I/O 13
+</div>
+
+<p>Next, in our <code>setup()</code> method, we’ll set the LED pin to an output, since we’re powering an LED, and we’ll start Serial communication at 9600 baud.</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-8" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"> <span class="keyword">void</span> <span class="function call">setup</span>() {
+   <span class="function call">pinMode</span>(ledPin, OUTPUT); <span class="comment">// Set pin as OUTPUT</span>
+   Serial.<span class="function call">begin</span>(<span class="constant numeric">9600</span>); <span class="comment">// Start serial communication at 9600 bps</span>
+ }
+</code></pre><div id="code-8" class="hide"> void setup() {
+   pinMode(ledPin, OUTPUT); // Set pin as OUTPUT
+   Serial.begin(9600); // Start serial communication at 9600 bps
+ }
+</div>
+
+<p>Finally, in the <code>loop()</code> method, we’ll look at the incoming serial data. If we see a ‘1’, we set the LED to HIGH (or on), and if we don’t (e.g. we see a ‘0’ instead), we turn the LED off. At the end of the loop, we put in a small delay to help the Arduino keep up with the serial stream.</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-9" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"> <span class="keyword">void</span> <span class="function call">loop</span>() {
+   <span class="keyword">if</span> (Serial.<span class="function call">available</span>()) 
+   { <span class="comment">// If data is available to read,</span>
+     val <span class="keyword operator">=</span> Serial.<span class="function call">read</span>(); <span class="comment">// read it and store it in val</span>
+   }
+   <span class="keyword">if</span> (val <span class="keyword operator">=</span><span class="keyword operator">=</span> <span class="string">'1'</span>) 
+   { <span class="comment">// If 1 was received</span>
+     <span class="function call">digitalWrite</span>(ledPin, HIGH); <span class="comment">// turn the LED on</span>
+   } <span class="keyword">else</span> {
+     <span class="function call">digitalWrite</span>(ledPin, LOW); <span class="comment">// otherwise turn it off</span>
+   }
+   <span class="function call">delay</span>(<span class="constant numeric">10</span>); <span class="comment">// Wait 10 milliseconds for next reading</span>
+}
+</code></pre><div id="code-9" class="hide"> void loop() {
+   if (Serial.available()) 
+   { // If data is available to read,
+     val = Serial.read(); // read it and store it in val
+   }
+   if (val == '1') 
+   { // If 1 was received
+     digitalWrite(ledPin, HIGH); // turn the LED on
+   } else {
+     digitalWrite(ledPin, LOW); // otherwise turn it off
+   }
+   delay(10); // Wait 10 milliseconds for next reading
+}
+</div>
+
+<p>This is what your code should look like when you’re done:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/f/2/3/b/6/51a51dfcce395fe124000001.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/51a51dfcce395fe124000001.png" alt="alt text"></a></p>
+
+<p>Voila! If we load up this code onto our Arduino, and run the Processing sketch from the previous page, you should be able to turn on an LED attached to pin 13 of your Arduino, simply by clicking within the Processing canvas.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="shaking-hands-part-1">Shaking Hands (Part 1)</h2>
+        <p>So far we’ve shown that Arduino and Processing can communicate via serial when one is talking and the other is listening. Can we make a link that allows data to flow both ways, so that Arduino and Processing are both sending <em>and</em> receiving data? You bet! In the biz we call this a serial ‘handshake’, since both sides have to agree when to send and receive data.</p>
+
+<p>On this page and the next, we’re going to combine our two previous examples in such a way that Processing can both receive ‘Hello, world!’ from Arduino AND send a 1 back to Arduino to toggle an LED. Of course, this also means that Arduino has to be able to send ‘Hello, world!’ while listening for a 1 from Processing. Whew!</p>
+
+<p>Let’s start with the Arduino side of things. In order for this to run smoothly, both sides have to know what to listen for and what the other side is expecting to hear. We also want to minimize traffic over the serial port so we get more timely responses.</p>
+
+<p>Just like in our Serial read example, we need a variable for our incoming data and a variable for the LED pin we want to light up:</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-10" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">char</span> val; <span class="comment">// Data received from the serial port</span>
+<span class="keyword">int</span> ledPin <span class="keyword operator">=</span> <span class="constant numeric">13</span>; <span class="comment">// Set the pin to digital I/O 13</span>
+<span class="keyword">boolean</span> ledState <span class="keyword operator">=</span> LOW; <span class="comment">//to toggle our LED</span>
+</code></pre><div id="code-10" class="hide">char val; // Data received from the serial port
+int ledPin = 13; // Set the pin to digital I/O 13
+boolean ledState = LOW; //to toggle our LED
+</div>
+
+<p>Since we’re trying to be efficient, we’re going to change our code so that we only listen for 1’s, and each time we hear a ‘1’ we toggle the LED on or off. To do this we added a boolean (true or false) variable for the HIGH or LOW state of our LED. This means we don’t have to constantly send a 1 or 0 from Processing, which frees up our serial port quite a bit.</p>
+
+<p>Our <code>setup()</code> method looks mostly the same, with the addition of an <code>establishContact()</code> function which we’ll get to later - for now just type it in.</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-11" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">setup</span>() 
+{
+  <span class="function call">pinMode</span>(ledPin, OUTPUT); <span class="comment">// Set pin as OUTPUT</span>
+  <span class="comment">//initialize serial communications at a 9600 baud rate</span>
+  Serial.<span class="function call">begin</span>(<span class="constant numeric">9600</span>);
+  <span class="function call">establishContact</span>();  <span class="comment">// send a byte to establish contact until receiver responds </span>
+}
+</code></pre><div id="code-11" class="hide">void setup() 
+{
+  pinMode(ledPin, OUTPUT); // Set pin as OUTPUT
+  //initialize serial communications at a 9600 baud rate
+  Serial.begin(9600);
+  establishContact();  // send a byte to establish contact until receiver responds 
+}
+</div>
+
+<p>In our loop function, we’ve just combined and slimmed down the code from our two earlier sketches. Most importantly, we’ve changed our LED code to toggle based on our new boolean value. The ‘!’ means every time we see a one, we set the boolean to the opposite of what it was before (so LOW becomes HIGH or vice-versa). We also put our ‘Hello, world!’ in an else statement, so that we’re only sending it when we haven’t seen a ‘1’ come in.</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-12" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">loop</span>()
+{
+  <span class="keyword">if</span> (Serial.<span class="function call">available</span>() <span class="keyword operator">&gt;</span> <span class="constant numeric">0</span>) { <span class="comment">// If data is available to read,</span>
+    val <span class="keyword operator">=</span> Serial.<span class="function call">read</span>(); <span class="comment">// read it and store it in val</span>
+
+    <span class="keyword">if</span>(val <span class="keyword operator">=</span><span class="keyword operator">=</span> <span class="string">'1'</span>) <span class="comment">//if we get a 1</span>
+    {
+       ledState <span class="keyword operator">=</span> <span class="keyword operator">!</span>ledState; <span class="comment">//flip the ledState</span>
+       <span class="function call">digitalWrite</span>(ledPin, ledState); 
+    }
+    <span class="function call">delay</span>(<span class="constant numeric">100</span>);
+  } 
+    <span class="keyword">else</span> {
+    Serial.<span class="function call">println</span>(<span class="string">"Hello, world!"</span>); <span class="comment">//send back a hello world</span>
+    <span class="function call">delay</span>(<span class="constant numeric">50</span>);
+    }
+}
+</code></pre><div id="code-12" class="hide">void loop()
+{
+  if (Serial.available() &gt; 0) { // If data is available to read,
+    val = Serial.read(); // read it and store it in val
+
+    if(val == '1') //if we get a 1
+    {
+       ledState = !ledState; //flip the ledState
+       digitalWrite(ledPin, ledState); 
+    }
+    delay(100);
+  } 
+    else {
+    Serial.println("Hello, world!"); //send back a hello world
+    delay(50);
+    }
+}
+</div>
+
+<p>Now we get to that <code>establishContact()</code> function we put in our <code>setup()</code> method. This function just sends out a string (the same one we’ll need to look for in Processing) to see if it hears anything back - indicating that Processing is ready to receive data. It’s like saying ‘Marco’ over and over until you hear a ‘Polo’ back from somewhere.</p>
+
+<pre data-language="language:cpp
+,cpp
+"><div data-code-id="code-13" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">establishContact</span>() {
+  <span class="keyword">while</span> (Serial.<span class="function call">available</span>() <span class="keyword operator">&lt;</span><span class="keyword operator">=</span> <span class="constant numeric">0</span>) {
+  Serial.<span class="function call">println</span>(<span class="string">"A"</span>);   <span class="comment">// send a capital A</span>
+  <span class="function call">delay</span>(<span class="constant numeric">300</span>);
+  }
+}
+</code></pre><div id="code-13" class="hide">void establishContact() {
+  while (Serial.available() &lt;= 0) {
+  Serial.println("A");   // send a capital A
+  delay(300);
+  }
+}
+</div>
+
+<p>Your Arduino code should look like this:</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/f/a/1/4/6/51ae469bce395f3536000000.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/51ae469bce395f3536000000.png" alt="alt text"></a></p>
+
+<p>That’s it for the Arduino side, now on to Processing!</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="shaking-hands-part-2">Shaking Hands (Part 2)</h2>
+        <p>For the Processing side of things, we’ve got to make a few changes. We’re going to make use of the <code>serialEvent()</code> method, which gets called every time we see a specific character in the serial buffer, which acts as our delimiter - basically it tells Processing that we’re done with a specific ‘chunk’ of data - in our case, one ‘Hello, world!’.</p>
+
+<p>The beginning of our sketch is the same except for a new <code>firstContact</code> boolean, which let’s us know when we’ve made a connection to Arduino.</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-14" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">import</span> processing.serial.<span class="keyword operator">*</span>; <span class="comment">//import the Serial library</span>
+ Serial myPort;  <span class="comment">//the Serial port object</span>
+ <span class="keyword">String</span> val;
+<span class="comment">// since we're doing serial handshaking, </span>
+<span class="comment">// we need to check if we've heard from the microcontroller</span>
+<span class="keyword">boolean</span> firstContact <span class="keyword operator">=</span> <span class="constant language">false</span>;
+</code></pre><div id="code-14" class="hide">import processing.serial.*; //import the Serial library
+ Serial myPort;  //the Serial port object
+ String val;
+// since we're doing serial handshaking, 
+// we need to check if we've heard from the microcontroller
+boolean firstContact = false;
+</div>
+
+<p>Our <code>setup()</code> function is the same as it was for our serial write program, <em>except</em> we added the <code>myPort.bufferUntil('\n');</code> line. This let’s us store the incoming data into a buffer, until we see a specific character we’re looking for. In this case, it’s a carriage return (\n) because we sent a Serial.print<em>ln</em> from Arduino. The ‘ln’ at the end means the String is terminated with a carriage return, so we know that’ll be the last thing we see.</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-15" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">setup</span>() {
+  <span class="function call">size</span>(<span class="constant numeric">200</span>, <span class="constant numeric">200</span>); <span class="comment">//make our canvas 200 x 200 pixels big</span>
+  <span class="comment">//  initialize your serial port and set the baud rate to 9600</span>
+  myPort <span class="keyword operator">=</span> <span class="keyword">new</span> <span class="function call">Serial</span>(<span class="keyword">this</span>, Serial.<span class="function call">list</span>()[<span class="constant numeric">4</span>], <span class="constant numeric">9600</span>);
+  myPort.<span class="function call">bufferUntil</span>(<span class="string">'\n'</span>); 
+}
+</code></pre><div id="code-15" class="hide">void setup() {
+  size(200, 200); //make our canvas 200 x 200 pixels big
+  //  initialize your serial port and set the baud rate to 9600
+  myPort = new Serial(this, Serial.list()[4], 9600);
+  myPort.bufferUntil('\n'); 
+}
+</div>
+
+<p>Because we’re continuously sending data, our <code>serialEvent()</code> method now acts as our new <code>draw()</code> loop, so we can leave it empty:</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-16" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">draw</span>() {
+  <span class="comment">//we can leave the draw method empty, </span>
+  <span class="comment">//because all our programming happens in the serialEvent (see below)</span>
+}
+</code></pre><div id="code-16" class="hide">void draw() {
+  //we can leave the draw method empty, 
+  //because all our programming happens in the serialEvent (see below)
+}
+</div>
+
+<p>Now for the big one: <code>serialEvent()</code>. Each time we see a carriage return this method gets called. We need to do a few things each time to keep things running smoothly:</p>
+
+<ul>
+<li>read the incoming data</li>
+<li>see if there’s actually anything in it (i.e. it’s not empty or ‘null’)</li>
+<li>trim whitespace and other unimportant stuff</li>
+<li>if it’s our first time hearing the right thing, change our <code>firstContact</code> boolean and let Arduino know we’re ready for more data</li>
+<li>if it’s <em>not</em> our first run, print the data to the console and send back any valid mouse clicks (as 1’s) we got in our window</li>
+<li>finally, tell Arduino we’re ready for more data</li>
+</ul>
+
+
+<p>That’s a lot of steps, but luckily for us Processing has functions that make most of these tasks pretty easy. Let’s take a look at how it all breaks down:</p>
+
+<pre data-language="language:java
+,java
+"><div data-code-id="code-17" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">void</span> <span class="function call">serialEvent</span>( Serial myPort) {
+<span class="comment">//put the incoming data into a String - </span>
+<span class="comment">//the '\n' is our end delimiter indicating the end of a complete packet</span>
+val <span class="keyword operator">=</span> myPort.<span class="function call">readStringUntil</span>(<span class="string">'\n'</span>);
+<span class="comment">//make sure our data isn't empty before continuing</span>
+<span class="keyword">if</span> (val <span class="keyword operator">!</span><span class="keyword operator">=</span> <span class="constant language">null</span>) {
+  <span class="comment">//trim whitespace and formatting characters (like carriage return)</span>
+  val <span class="keyword operator">=</span> <span class="function call">trim</span>(val);
+  <span class="function call">println</span>(val);
+
+  <span class="comment">//look for our 'A' string to start the handshake</span>
+  <span class="comment">//if it's there, clear the buffer, and send a request for data</span>
+  <span class="keyword">if</span> (firstContact <span class="keyword operator">=</span><span class="keyword operator">=</span> <span class="constant language">false</span>) {
+    <span class="keyword">if</span> (val.<span class="function call">equals</span>(<span class="string">"A"</span>)) {
+      myPort.<span class="function call">clear</span>();
+      firstContact <span class="keyword operator">=</span> <span class="constant language">true</span>;
+      myPort.<span class="function call">write</span>(<span class="string">"A"</span>);
+      <span class="function call">println</span>(<span class="string">"contact"</span>);
+    }
+  }
+  <span class="keyword">else</span> { <span class="comment">//if we've already established contact, keep getting and parsing data</span>
+    <span class="function call">println</span>(val);
+
+    <span class="keyword">if</span> (mousePressed <span class="keyword operator">=</span><span class="keyword operator">=</span> <span class="constant language">true</span>) 
+    {                           <span class="comment">//if we clicked in the window</span>
+      myPort.<span class="function call">write</span>(<span class="string">'1'</span>);        <span class="comment">//send a 1</span>
+      <span class="function call">println</span>(<span class="string">"1"</span>);
+    }
+
+    <span class="comment">// when you've parsed the data you have, ask for more:</span>
+    myPort.<span class="function call">write</span>(<span class="string">"A"</span>);
+    }
+  }
+}
+</code></pre><div id="code-17" class="hide">void serialEvent( Serial myPort) {
+//put the incoming data into a String - 
+//the '\n' is our end delimiter indicating the end of a complete packet
+val = myPort.readStringUntil('\n');
+//make sure our data isn't empty before continuing
+if (val != null) {
+  //trim whitespace and formatting characters (like carriage return)
+  val = trim(val);
+  println(val);
+
+  //look for our 'A' string to start the handshake
+  //if it's there, clear the buffer, and send a request for data
+  if (firstContact == false) {
+    if (val.equals("A")) {
+      myPort.clear();
+      firstContact = true;
+      myPort.write("A");
+      println("contact");
+    }
+  }
+  else { //if we've already established contact, keep getting and parsing data
+    println(val);
+
+    if (mousePressed == true) 
+    {                           //if we clicked in the window
+      myPort.write('1');        //send a 1
+      println("1");
+    }
+
+    // when you've parsed the data you have, ask for more:
+    myPort.write("A");
+    }
+  }
+}
+</div>
+
+<p>Oof. That’s a lot to chew on, but if you read carefully line by line (especially the comments), it’ll start to make sense. If you’ve got your Arduino code finished and loaded onto your board, try running this sketch. You should see ‘Hello, world!’ coming in on the console, and when you click in the Processing window, you should see the LED on pin 13 turn on and off. Success! You are now a serial handshake expert.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="tips-and-tricks">Tips and Tricks</h2>
+        <p>In developing your own projects with Arduino and Processing, there are a few ‘gotchas’ that are helpful to keep in mind in case you get stuck.</p>
+
+<ul>
+<li>make sure your baud rates match</li>
+<li>make sure you’re reading off the right port in Processing - there’s a <code>Serial.list()</code> command that will show you all the available ports you can connect to.</li>
+<li>if you’re using the <code>serialEvent()</code> method, make sure to include the <code>port.bufferUntil()</code> function in your <code>setup()</code> method.</li>
+<li>also, make sure that whatever character you’re buffering until (e.g., ‘\n’) is a character that you’re actually sending from Arduino.</li>
+<li>If you want to send over a number of sensor values, it’s a good idea to count how many bytes you’re expecting so you know how to properly parse out the sensor data. (the example (shown below) that comes with Arduino gives a great example of this:</li>
+</ul>
+
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/a/7/9/0/8/51ae5ff4ce395f4836000000.png"><img src="./Connecting Arduino to Processing - learn.sparkfun.com_files/51ae5ff4ce395f4836000000.png" alt="alt text"></a></p>
+
+<p style="text-align:center;"> <em>This is the example to select for some good sensor parsing code</em></p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="resource">Resources and Going Further</h2>
+        <p>Now that you know how to send data from Arduino to Processing and back again (even simultaneously!), you’re ready for some seriously cool projects. By hooking together Arduino and Processing, you can do things like visualize sensor data in real-time, or make a glove with flex sensors in the fingers that makes penguins appear on the screen, or a command console from Processing that controls a giant array of LEDs.</p>
+
+<p>Here are a few useful links that you may find useful going forward:</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/curriculum/45">Derek Runberg’s Processing Curriculum</a></li>
+<li><a href="https://learn.sparkfun.com/curriculum/46">Arduino &amp; Processing ATLAS Curriculum</a></li>
+<li><a href="https://learn.sparkfun.com/curriculum/16">Processing the Danger Shield</a></li>
+<li><a href="https://learn.sparkfun.com/curriculum/34">Arduino, Processing, &amp; MaxMSP</a></li>
+</ul>
+      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t69" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;googleplus&#39;);" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft69" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;tumblr&#39;);" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft69&amp;name=Connecting+Arduino+to+Processing" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;reddit&#39;);" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft69" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;twitter&#39;);" href="https://twitter.com/intent/tweet?text=Connecting+Arduino+to+Processing&amp;url=http%3A%2F%2Fsfe.io%2Ft69&amp;via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;facebook&#39;);" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft69&amp;t=Connecting+Arduino+to+Processing" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;pinterest&#39;);" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft69&amp;media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F6%2F9%2FArdPro.jpg&amp;description=Connecting+Arduino+to+Processing" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix" class="affix-top">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="introduction" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#introduction">
+            Introduction          </a>
+                  <a data-pagename="from-arduino" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#from-arduino">
+            From Arduino...          </a>
+                  <a data-pagename="to-processing" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#to-processing">
+            ...to Processing          </a>
+                  <a data-pagename="from-processing" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#from-processing">
+            From Processing...          </a>
+                  <a data-pagename="to-arduino" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#to-arduino">
+            ...to Arduino          </a>
+                  <a data-pagename="shaking-hands-part-1" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#shaking-hands-part-1">
+            Shaking Hands (Part 1)          </a>
+                  <a data-pagename="shaking-hands-part-2" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#shaking-hands-part-2">
+            Shaking Hands (Part 2)          </a>
+                  <a data-pagename="tips-and-tricks" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#tips-and-tricks">
+            Tips and Tricks          </a>
+                  <a data-pagename="resource" class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#resource">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/discuss">
+          Comments
+          <span class="badge">17</span>
+        </a>
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/introduction">
+          View Paginated
+        </a>
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/arduino">Arduino</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/processing">Processing</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/programming">Programming</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/start-a-project">Start a Project</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="new">CC BY-NC-SA 3.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class="sfe-icon-flame"></span>
+          <span class="text"><span class="text-top">Sharing<br></span>Ingenuity</span>
+        </div>
+        <ul class="spew">
+          <li><a href="http://www.github.com/sparkfun" target="_blank" class="sfe-icon-github"><span class="visuallyhidden">GitHub</span></a></li>
+          <li><a href="http://www.youtube.com/sparkfun" target="_blank" class="sfe-icon-youtube"><span class="visuallyhidden">YouTube</span></a></li>
+          <li><a href="http://www.vimeo.com/sparkfun" target="_blank" class="sfe-icon-vimeo"><span class="visuallyhidden">Vimeo</span></a></li>
+          <li><a href="http://www.facebook.com/SparkFun" target="_blank" class="sfe-icon-facebook"><span class="visuallyhidden">Facebook</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class="sfe-icon-google-plus"><span class="visuallyhidden">Google Plus</span></a></li>
+          <li><a href="http://www.flickr.com/photos/sparkfun/" target="_blank" class="sfe-icon-flickr"><span class="visuallyhidden">Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class="sfe-icon-twitter"><span class="visuallyhidden">Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class="sfe-icon-feed"><span class="visuallyhidden">RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <form action="https://learn.sparkfun.com/newsletter/subscribe_email" method="post" class="form-inline" id="js-newsletter_subscribe">
+            <div class="form-group">
+              <input type="email" class="form-control" name="newsletter_email" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-default" value="Subscribe to Education Newsletter">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        <b>SparkFun</b> is an online retail store that sells the bits and pieces to
+        make your electronics projects possible. Whether it's a robot that can
+        cook your breakfast or a GPS cat tracking device, our products and
+        resources are designed to make the world of electronics more accessible.
+      </p>
+      <p>
+        In addition to products, SparkFun also offers
+        classes and online tutorials to help educate
+        individuals in the wonderful world of embedded electronics.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            </li><li><a href="https://www.sparkfun.com/static/about">About SparkFun</a></li>
+            <li><a href="https://learn.sparkfun.com/about">SparkFun Education</a></li>
+            <li><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class="sfe-icon-feed"></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+            <li><a href="https://learn.sparkfun.com/educator_discount">Educator Discount</a></li>
+            <li><a href="https://www.sparkfun.com/sponsor">Partner with SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil(&#39;mind_feedback&#39;); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required=""></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+                          <option value="edu">Education Department</option>
+                      </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address">
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">®</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fconnecting-arduino-to-processing%2Fall">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing/all#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fconnecting-arduino-to-processing%2Fall" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/connecting-arduino-to-processing/all">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name="user" id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+
+<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul><div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;">      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">         <param name="movie" value="/js/ZeroClipboard.swf?noCache=1446179980681">         <param name="allowScriptAccess" value="sameDomain">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=learn.sparkfun.com%2C%2F%2Flearn.sparkfun.com%2Chttps%3A%2F%2Flearn.sparkfun.com&amp;jsModuleId=ZeroClipboard.min">         <embed src="/js/ZeroClipboard.swf?noCache=1446179980681" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=learn.sparkfun.com%2C%2F%2Flearn.sparkfun.com%2Chttps%3A%2F%2Flearn.sparkfun.com&amp;jsModuleId=ZeroClipboard.min" scale="exactfit">                </object></div></body></html>

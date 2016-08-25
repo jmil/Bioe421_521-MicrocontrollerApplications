@@ -1,5 +1,5 @@
 #Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+####Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ##Lab 1A. Getting Started with Raspberry Pi
 
@@ -9,29 +9,63 @@
 
 ####Hardware: We supply a complete Raspberry Pi, power cable, video cable, keyboard and mouse. We will utilize the computer displays already available at OEDK Computing Classroom and disconnect the desktop Windows PCs from those monitors to work with Raspberry Pi.
 
-####Raspberry Pi, like many microcontrollers, are sensitive to static. Avoid charging yourself up with static as it could damage your device (not usually a huge problem in Houston, but be careful). Let's get started.
+####Raspberry Pi, like many microcontrollers, is sensitive to static. Avoid charging yourself up with static as it could damage your device (not usually a huge problem in Houston, but be careful). Let's get started.
 
-1. Plug in the Keyboard and Mouse to the Raspberry Pi
+1. Plug in the Keyboard to the Raspberry Pi. **We will not use the mouse** until later in the semester.
 
 1. Plug in the HDMI cable to the Raspberry Pi, disconnect the DVI video cable from your computer display, and use the HDMI->DVI converter to plug the Raspberry Pi into the computer monitor.
 
-1. **CAREFULLY** plug in the microSD card. Make sure you interface the metal contacts on the microSD card properly to the metal contacts on the Raspberry Pi. Press in to lock: the card holder on the Raspberry Pi has a nice press-to-lock and press-to-release click functionality (like many retractable ballpoint pens) to keep the microSD card locked in place. **Be careful**, this microSD card ***is your hard drive***.
+1. **CAREFULLY** plug in the microSD card. Make sure you interface the metal contacts on the microSD card properly to the metal contacts on the Raspberry Pi. Press in all the way. **Be careful**, this microSD card ***is your hard drive***. So, be mindful not to bump or disconnect the microSD card, as this is literally disconnecting your hard drive.
 
-1. Finally, plug in Raspberry Pi power supply to AC power, and use the micro USB cable to give power to your Pi. The screen should become live and your computer should now be booting up.
+1. Finally, plug in Raspberry Pi power supply to AC power, and use the micro USB cable to give power to your Pi. The screen should become live and your computer should now be booting up. You may now notice lines of text streaming by, such as:
 
-	#####After successfully booting, you will be greeted with a blue screen and the Raspberry Pi Software Configuration Tool (`raspi-config`). This is a keyboard-based navigation menu (use the `arrow keys` and `<tab>` key to navigate, use `<enter>` or `<spacebar>` to select).
+		...
+		[ ok ] Setting preliminary keymap...done.
+		...
 
-1. The Operating System (OS) on Raspberry Pi assumes we have a 4 GB microSD card. Our card is 32 GB, so the first thing we need to do is expand the Raspberry Pi hard drive partition to fill up our whole card:
-	1. Navigate to and select option `1 Expand Filesystem`
-	1. You should get a prompt telling you the file system will be expanded on next reboot
-	1. Select **`<Ok>`**
+
+1. You booted into a desktop environment, but I asked you not to plug in the mouse. So how do we navigate? For the majority of labs this semester, we will only use the keyboard to operate the Pi. This is for two reasons: 1) it's still often faster to use the keyboard in a terminal for most things, and 2) when things go wrong in the graphical user interface (the **GUI**), you might often need a keyboard to diagnose or fix problems in the command line interface (the **CLI**). So, let's disable the desktop environment for now.
+
+1. Launch an instance of the Terminal program by typing the keyboard combination `<control-alt-T>`. You will find yourself at the command prompt (typically represented by the `$` character) with the Pi awaiting your instructions (called "commands"). The cursor is represented by the `_` character and is where typing will begin.
+	
+		pi@raspberrypi ~ $ _
+
+
+1. We need to set the keyboard-only environment (known as the command line interface, or **CLI**) to be the default setup for your Pi, for now. **BY CONVENTION** I will represent the command prompt as the `$` sign. **You should not type this character as part of the command to run.** We need to run `sudo raspi-config`, so type this text and then press `<return>`.
+
+			$ sudo raspi-config
+			
+	You will now be in a blue screen comprised of the Raspberry Pi Software Configuration Tool (`raspi-config`). This is a keyboard-based navigational menu to adjust settings on the Pi (use the arrow keys and `<tab>` key to navigate, use `<enter>` or `<spacebar>` to select the highlighted option).
+
+
+1. Select `Boot Options` then `B1 Console.` Then select `<Finish>` and then `<Yes>` to Reboot.
+
+	You should have now successfully booted into the command line environment **without** a Desktop. Don't worry, you will get comfortable with this environment and will be a Linux pro by the end of the semester.
+	
+1. Once the boot has finished, you should see a login menu prompt awaiting your input:
+		
+		raspberrypi login: _
+
+	Login with the default Raspian OS admin user:
+		
+		raspberrypi login: pi
+		Password: raspberry   (NOTE: text will not show up as you type a password)
+		
+	Were you able to login? How do you know? Describe what you see:
+	
+		:
+	
+	
+1. Now, we need to get back into `raspi-config` and setup a bunch more stuff. What is the command you run to launch the `raspi-config` tool? Write it down here:
+	
+		$
 
 
 1. Raspberry Pi is designed in UK. Therefore, all defaults are for Britain (and you may notice some British spelling and grammar here and there). Here, we will reconfigure Raspberry Pi for Houston, TX with US Keyboard layout.
 
-	1.  The default is a British Keyboard Layout. We need to change this to US Keyboard Layout so that everything will match our hardware.
+	1. First, launch the `raspi-config` utility. The default is a British Keyboard Layout. We need to change this to US Keyboard Layout so that everything will match our hardware.
 
-	1. Select option `4 Internationalisation Options` then `13 Change Keyboard Layout`. Configure successive options as follows:
+	1. Select option `Internationalisation Options` then `Change Keyboard Layout`. Configure successive options as follows:
 
 			Generic 104-key PC
 			Other
@@ -44,7 +78,7 @@
 		You will be taken back to the main raspi-config menu.
 
 
-	1. Select option `4 Internationalisation Options` then `12 Change Timezone`. configure successive options as follows:
+	1. Select option `Internationalisation Options` then `Change Timezone`. configure successive options as follows:
 
 			US
 			Central
@@ -52,7 +86,7 @@
 		You will be taken back to the main raspi-config menu.
 
 				
-	1. Select option `4 Internationalisation Options` then `11 Change Locale`. You will see a LONG list of Locales to be generated, with mostly empty brackets such as:
+	1. Select option `Internationalisation Options` then `Change Locale`. You will see a LONG list of Locales to be generated, with mostly empty brackets such as:
 		
 				[ ] All locales
 				[ ] aa.DJ ISO-8859-1
@@ -73,7 +107,7 @@
 	
 		You will be taken back to the main raspi-config menu.
 
-1. Select option `8 Advanced Options` ---> `A4 SSH`.
+1. Select option `Advanced Options` ---> `SSH`.
 	1. Select **`Enable`** to enable the SSH server.
 	1. When completed, Select **`Ok`**.
 
@@ -81,25 +115,10 @@
 
 1. Now we are ready to reboot.
 
-		Select <Finish>
-		Select <Yes> when asked if you would like to reboot now
+	Select `<Finish>`
+	Select `<Yes>` when asked if you would like to reboot now
 		
-1. You will now be booted into the command-line interface. You may now notice lines of text streaming by, such as:
-
-		...
-		[ ok ] Setting preliminary keymap...done.
-		...
-
-1. You will be taken to a login menu prompt:
-
-		Raspbian GNU/Linux 7 raspberrypi tty1
-		
-		raspberrypi login: _
-
-	login with the default Raspian OS admin user:
-		
-		raspberrypi login: pi
-		Password: raspberry   (NOTE: text will not show up as you type a password)
+1. Login. Do you remember your username and password?
 		
 1. The OS will welcome you, give a warranty disclaimer, and put you at a command prompt:
 
@@ -109,6 +128,6 @@
 
 1. If you ever need to get back to the raspi-config menu, here's how to do it:
 
-		pi@raspberrypi ~ $ sudo raspi-config
+		$ sudo raspi-config
 
 ###Congrats! You are now ready to use your Raspberry Pi.

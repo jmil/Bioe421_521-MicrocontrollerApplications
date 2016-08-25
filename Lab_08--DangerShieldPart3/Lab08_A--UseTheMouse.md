@@ -1,19 +1,19 @@
 #Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+####Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ##Lab 8A. Use the Mouse
 
-Upt until now, we have only used a keyboard as the human-machine interface. You've now mastered a huge swath of skills and knowledge behind the core of how UNIX-like machines work and how to do lots of tasks. Today let's plug into the graphical user interface **(GUI)** and mouse. We held back doing this until now for two reasons: 1) it's still often faster to use the keyboard in a terminal for most things, and 2) when things go wrong in the GUI, you might often need a keyboard to diagnose or fix problems (remember `killall` ?)
+Upt until now, we have only used a keyboard as the human-machine interface. You've now mastered a huge swath of skills and knowledge behind the core of how UNIX-like machines work and how to do lots of tasks. Today let's plug into the graphical user interface **(GUI)** and mouse. We held back doing this until now for two reasons: 1) it's still often faster to use the keyboard in a terminal for most things, and 2) when things go wrong in the GUI, you might often need a keyboard and the **CLI** to diagnose or fix problems (remember `killall`?).
 
 
+
+1. Let's set the Desktop environment to be the default login on your Pi:
 
 		$ sudo raspi-config
 
-Select option `3 Enable Boot to Desktop/Scratch` then `Desktop Log in as user 'pi' at the graphical desktop`. Then select **`<Finish>`** and then **`<Yes>`** to Reboot.
+Select option `Boot Options` then `Desktop Autologin Desltop GUI, automatically logged in as 'pi' user`. Then select **`<Finish>`** and then **`<Yes>`** to Reboot.
 
-
-Spend a bit poking around the desktop. Use `Epiphany` to browse the web. It's been optimized for Raspberry Pi. You can install Chrome, but it's slow. You can install lots of things. But this is a $35 computer, so don't expect too much without heavily optimized code.
-		
+You should now boot into the Desktop environment with mouse control.
 
 
 ##Assignments
@@ -22,9 +22,17 @@ Spend a bit poking around the desktop. Use `Epiphany` to browse the web. It's be
 http://pixabay.com/
 
 
-1. Open an instance of LXTerminal (should be an icon on your desktop). This is your handy bash shell! You can do everything here we have done in class so far.
+1. Open an instance of LXTerminal (remember <control-alt-T> key combo). This is your handy bash shell! You can do everything here we have done in class so far. Check what directory you are in. What command did you run to check the current directory?
 
-1. Open `Arduino` (`Start Menu` -> `Programming` -> `Arduino IDE`), and get familiar with the GUI version of the application. You need to make sure you correctly setup your Arduino board:
+		$ 
+
+1. Install Processing and Arduino via:
+
+		$ sudo apt-get update
+		$ sudo apt-get dist-upgrade
+		$ sudo apt-get install arduino processing 
+
+1. Open `Arduino` (`Start Menu` -> `Programming` -> `Arduino IDE`), and get familiar with the GUI version of the application. With your Arduino Uno plugged in, you need to make sure you correctly setup your Arduino board:
 
 	`Tools` -> `Board` -> `Arduino Uno` 
 
@@ -33,9 +41,11 @@ http://pixabay.com/
 	`Tools` -> `Serial Port` -> probably the `ACM0` setting we used in last couple classes
 
 
-	Find the Verify and Upload buttons. First try uploading the `Blink` tutorial available via `File` -> `Examples` -> `01.Basics` -> `Blink`. That should upload fine.
+1. Identify the `Verify` and `Upload` buttons. `Verify` will try to compile the current sketch for the Board you have selected in the menus.
+
+1. Try to verify and upload the `Blink` tutorial which is available via `File` -> `Examples` -> `01.Basics` -> `Blink`. That should upload fine.
 	
-	Next, try one of your Danger Shield programs. You will probably have problems uploading your Danger Shield sketch. Can you figure out how to install the proper libraries in your Arduino program? **HINT:** Remember when you ran `git clone ...` to grab the CapacitiveSensor library in each `lib` directory created with `ino`? You might try to do this inside the `/usr/share/arduino/libraries/` folder. Do you remember how to address permissions problems to allow you to run this command?
+1. Next, try one of your Danger Shield programs. You will probably have problems uploading your Danger Shield sketch. Can you figure out how to install the proper libraries in your Arduino program? **HINT:** Remember when you ran `git clone ...` to grab the CapacitiveSensor library in each `lib` directory created with `ino`? You might try to do this inside the `/usr/share/arduino/libraries/` folder. Do you remember how to address permissions problems to allow you to run this command?
 
 	Show your successful Danger Shield upload to your Instructor.
 

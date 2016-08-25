@@ -1,17 +1,22 @@
 #Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+####Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ##Lab 1B. Getting Raspberry Pi on the Internets
 
 ### Ethernet Access
 
 
-1. Check that you do not currently have network access. You should NOT see an entry for `inet addr` on the second line of output:
+1. Check that you do not currently have network access. You should **NOT** see an entry for `inet addr` on the second line of output:
 
 			$ ifconfig eth0
-			eth0	Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
-					UP BROADCAST MULTICAST  MTU:1500  Metric:1
-			...
+			eth0      Link encap:Ethernet  HWaddr b8:27:eb:01:49:dd  
+			          inet6 addr: fe80::35cf:e506:60c2:1e7b/64 Scope:Link
+			          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+			          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+			          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+			          collisions:0 txqueuelen:1000 
+			          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
 
 
 Ask your Instructor for help disconnecting ethernet from a desktop computer in OEDK classroom, connect the female-to-female coupler and ethernet extension cord, and plug the ethernet cord into the ethernet port on your Raspberry Pi. 
@@ -19,9 +24,14 @@ Ask your Instructor for help disconnecting ethernet from a desktop computer in O
 Once connected, you should see the LED on the Ethernet port light up. Your Pi should have auto-requested an IP address from the network. Check that you now have an `inet addr` on the second line:
 
 			$ ifconfig eth0
-			eth0	Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
-					inet addr:10.69.254.6  Bcast:10.69.254.1  Mask:255.255.255.0
-			...
+			eth0      Link encap:Ethernet  HWaddr b8:27:eb:01:49:dd  
+			          inet addr:10.69.51.159  Bcast:10.69.51.255  Mask:255.255.255.0
+			          inet6 addr: fe80::35cf:e506:60c2:1e7b/64 Scope:Link
+			          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+			          RX packets:63 errors:0 dropped:0 overruns:0 frame:0
+			          TX packets:90 errors:0 dropped:0 overruns:0 carrier:0
+			          collisions:0 txqueuelen:1000 
+			          RX bytes:8762 (8.5 KiB)  TX bytes:15212 (14.8 KiB)
 
 1. To check if you are on the Internet, see if you can `ping` internet servers. **NOTE:** use **`<ctrl-C>`** to cancel the `ping`.
 
@@ -86,7 +96,7 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 		$ sudo shutdown -r now
 
 
-1. Move on to **Lab 1C**. **NOTE:** WiFi instructions below will **NOT** work for Fall 2015 (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.
+1. Move on to **Lab 1C**. **NOTE:** WiFi instructions below will **NOT** work yet with Rice University's WiFi network (and so we will need to use hardwired ethernet connections for this semester). I've put the instructions below for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.
 
 
 

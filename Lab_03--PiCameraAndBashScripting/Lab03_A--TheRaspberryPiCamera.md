@@ -1,5 +1,5 @@
 #Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+####Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ##Lab 3A. The Raspberry Pi Camera
 ######Adapted from http://www.raspberrypi.org/documentation/usage/camera/README.md
@@ -29,7 +29,7 @@ From http://RaspberryPi.org/:
 
 		$ sudo raspi-config
 
-	Select `5 Enable Camera` and hit the **`<enter>`** key. Select `<Enable>`, then on the main `raspi-config` page select `<Finish>` and choose `<Yes>` to reboot.
+	Select `Enable Camera` and hit the **`<enter>`** key. Select `<Enable>`, then on the main `raspi-config` page select `<Finish>` and choose `<Yes>` to reboot.
 	
 	From http://RaspberryPi.org/:
 

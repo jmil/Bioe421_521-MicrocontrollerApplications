@@ -440,19 +440,23 @@ pre[class*="language-"] {
 <body>
 <h1 id="toc_0">Bioe 421/521: Microcontroller Applications</h1>
 
-<h4 id="toc_1">Instructor: Jordan Miller<br>TA: Jacob Albritton<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
+<h4 id="toc_1">Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
 
 <h2 id="toc_2">Lab 1B. Getting Raspberry Pi on the Internets</h2>
 
 <h3 id="toc_3">Ethernet Access</h3>
 
 <ol>
-<li><p>Check that you do not currently have network access. You should NOT see an entry for <code>inet addr</code> on the second line of output:</p>
+<li><p>Check that you do not currently have network access. You should <strong>NOT</strong> see an entry for <code>inet addr</code> on the second line of output:</p>
 
 <pre><code>    $ ifconfig eth0
-    eth0    Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
-            UP BROADCAST MULTICAST  MTU:1500  Metric:1
-    ...
+    eth0      Link encap:Ethernet  HWaddr b8:27:eb:01:49:dd  
+              inet6 addr: fe80::35cf:e506:60c2:1e7b/64 Scope:Link
+              UP BROADCAST MULTICAST  MTU:1500  Metric:1
+              RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000 
+              RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 </code></pre></li>
 </ol>
 
@@ -461,9 +465,14 @@ pre[class*="language-"] {
 <p>Once connected, you should see the LED on the Ethernet port light up. Your Pi should have auto-requested an IP address from the network. Check that you now have an <code>inet addr</code> on the second line:</p>
 
 <pre><code>        $ ifconfig eth0
-        eth0    Link encap:Ethernet HWaddr b8:27:eb:8c:b4:52
-                inet addr:10.69.254.6  Bcast:10.69.254.1  Mask:255.255.255.0
-        ...
+        eth0      Link encap:Ethernet  HWaddr b8:27:eb:01:49:dd  
+                  inet addr:10.69.51.159  Bcast:10.69.51.255  Mask:255.255.255.0
+                  inet6 addr: fe80::35cf:e506:60c2:1e7b/64 Scope:Link
+                  UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+                  RX packets:63 errors:0 dropped:0 overruns:0 frame:0
+                  TX packets:90 errors:0 dropped:0 overruns:0 carrier:0
+                  collisions:0 txqueuelen:1000 
+                  RX bytes:8762 (8.5 KiB)  TX bytes:15212 (14.8 KiB)
 </code></pre>
 
 <ol>
@@ -528,7 +537,7 @@ Do you want to continue [Y/n]?
 
 <pre><code>$ sudo shutdown -r now
 </code></pre></li>
-<li><p>Move on to <strong>Lab 1C</strong>. <strong>NOTE:</strong> WiFi instructions below will <strong>NOT</strong> work for Fall 2015 (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.</p></li>
+<li><p>Move on to <strong>Lab 1C</strong>. <strong>NOTE:</strong> WiFi instructions below will <strong>NOT</strong> work yet with Rice University&#39;s WiFi network (and so we will need to use hardwired ethernet connections for this semester). I&#39;ve put the instructions below for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.</p></li>
 </ol>
 
 <hr>
