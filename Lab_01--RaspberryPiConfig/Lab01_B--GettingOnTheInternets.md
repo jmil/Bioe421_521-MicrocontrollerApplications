@@ -81,6 +81,24 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 			the general settings for individual packages. 
 			
 	This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.
+	
+	Re-run the `update` and `dist-upgrade` commands until you see the results as follows:
+	
+		$ sudo apt-get dist-upgrade
+		Reading package lists... Done
+		Building dependency tree       
+		Reading state information... Done
+		Calculating upgrade... Done
+		0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+
+	
+	
+	**Troubleshooting:** It's possible that the Raspberry Pi may crash during this process (sometimes during the update of `raspberrypi-kernel`). Symptoms: you may see some errors when you try to do anything that reference nothing being found (e.g. `EXT4` errors about the hard drive partition). If this happens, you will need to force reboot by disconnecting power and reconnecting power to the Pi. Upon fresh reboot, your update will be in a broken state (test this by re-running the `update` and `dist-upgrade` commands above). To fix, run the following:
+		
+		$ sudo dpkg --configure -a
+	
+	If this completes successfully, re-run the `update` and `dist-upgrade` commands again until you see the successful completion notice describe above.	
 
 1. Install some games:
 
@@ -104,7 +122,7 @@ ___
 
 ### WiFi Access
 
-**NOTE:** WiFi instructions below will **NOT** work for Fall 2015 (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.
+**NOTE:** WiFi instructions below will **NOT** work (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.
 
 1. Plug in your USB WiFi module
 1. Check that you do not currently have network access:

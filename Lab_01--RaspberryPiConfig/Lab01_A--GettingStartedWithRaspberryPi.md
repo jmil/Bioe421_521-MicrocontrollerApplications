@@ -126,6 +126,10 @@
 
 	Select `<Finish>`
 	Select `<Yes>` when asked if you would like to reboot now
+	
+	**Troubleshooting:** If reboot wasn't given as an option for you, you can reboot by issuing the following command:
+	
+		$ sudo reboot
 		
 1. Login. Do you remember your username and password?
 		

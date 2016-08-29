@@ -525,7 +525,24 @@ Do you want to continue [Y/n]?
     the general settings for individual packages. 
 </code></pre>
 
-<p>This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.</p></li>
+<p>This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.</p>
+
+<p>Re-run the <code>update</code> and <code>dist-upgrade</code> commands until you see the results as follows:</p>
+
+<pre><code>$ sudo apt-get dist-upgrade
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+</code></pre>
+
+<p><strong>Troubleshooting:</strong> It&#39;s possible that the Raspberry Pi may crash during this process (sometimes during the update of <code>raspberrypi-kernel</code>). Symptoms: you may see some errors when you try to do anything that reference nothing being found (e.g. <code>EXT4</code> errors about the hard drive partition). If this happens, you will need to force reboot by disconnecting power and reconnecting power to the Pi. Upon fresh reboot, your update will be in a broken state (test this by re-running the <code>update</code> and <code>dist-upgrade</code> commands above). To fix, run the following:</p>
+
+<pre><code>$ sudo dpkg --configure -a
+</code></pre>
+
+<p>If this completes successfully, re-run the <code>update</code> and <code>dist-upgrade</code> commands again until you see the successful completion notice describe above.    </p></li>
 <li><p>Install some games:</p>
 
 <pre><code>$ sudo apt-get install bsdgames
@@ -545,7 +562,7 @@ Do you want to continue [Y/n]?
 
 <h3 id="toc_6">WiFi Access</h3>
 
-<p><strong>NOTE:</strong> WiFi instructions below will <strong>NOT</strong> work for Fall 2015 (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.</p>
+<p><strong>NOTE:</strong> WiFi instructions below will <strong>NOT</strong> work (as we will use hardwired ethernet connections as described above), but there are here for you to use to get on unencrypted or encrypted WiFi networks you might have at home or at your lab.</p>
 
 <ol>
 <li>Plug in your USB WiFi module</li>
