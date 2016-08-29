@@ -38,7 +38,7 @@ Another useful **STDOUT** redirector is the **`>>`** operator. If a file doesn't
 ### Looking at Long Streams
 
 
-Grab the `dict.zip` dictionary file:
+Grab the `dict.zip` dictionary file. NOTE: you may want to use a URL shortener on a different computer to avoid typing out the entire URL:
 
 	$ cd ~
 	$ mkdir Lab02
@@ -82,6 +82,8 @@ You can view a file a small portion at a time, making it especially easy to chec
 	$ tail web2
 
 What was your output?
+
+	:
 
 It would also be nice to look in detail at this file, similar to the functionality we saw when using man pages. We might want to be able to inspect the file live, one screen at a time.
 
@@ -145,6 +147,10 @@ What's the last line of this file?
 So, now it should make sense how **on a single line** we can search through a giant text file and rapidly output the answer to our question: how many words in the dictionary contain the text string **dog**. There's more than one way to do it... if you just want a number output, you can use the `wc` command in your pipe. Write out your single line command here:
 
 	$ 
+	
+And what is the output of this command:
+
+	:
 
 
 You can also grab files from the internet and process them via pipe without having to save any data files on your hard drive. This is great for large files you want to process on a small hard drive. Just edit the stream, you don't need to go through the hassle of saving it all to hard drive, then opening the file again for processing.
@@ -160,20 +166,32 @@ Often it's helpful to have a way to save some of these data streams along the wa
 
 	$ man tee
 
-	
  
 #### Assignments
 
-Write a single-line program to output a line of text which tells you the line number where **`palm`** is Disallowed in Google's `robots.txt` file:
+1. Add the `tee` command to your team command-line manual.
 
-	$
+1. Write a single-line program to output a line of text which tells you the line number where **`palm`** is Disallowed in Google's `robots.txt` file:
+
+		$
+		
+	What was the output?
+		
+		:
 	
 
-Making use of `ifconfig`, write a single-line program to output a line of text containing your "inet addr" (this is your **i**nter**net** **addr**ess, or IP (**I**nternet **P**rotocol) address). Hint: use quotes to pass a longer search string to the `grep` command.
+1. Making use of `ifconfig`, write a single-line program to output a line of text containing your "inet addr" (this is your **i**nter**net** **addr**ess, or IP (**I**nternet **P**rotocol) address). **Hint:** use quotes to pass a longer search string to the `grep` command.
 	
-	$
+		$
+
+	What was the output?
+		
+		:
+	
 
 
-Insert the `tee` command into some of your single-line commands. How can you check if your file was created? What were its contents?
 
-	$
+1. Insert the `tee` command into some of your single-line commands. How can you check if your file was created? What were its contents?
+
+		$
+

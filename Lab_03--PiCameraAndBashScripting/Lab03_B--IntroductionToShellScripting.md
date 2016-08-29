@@ -40,7 +40,7 @@ Read this carefully, it can be confusing. An advantage of putting the whole **sh
 Let's learn by example. A `bash` script you should use as a template is available here:
 https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
 
-Do you remember how to pull down this file using `wget`?
+Do you remember how to pull down this file using `wget`? You might want to use a URL shortener.
 
 Grab the template file and run it. You will have to change permissions on the file in order to execute it:
 
@@ -49,7 +49,7 @@ Grab the template file and run it. You will have to change permissions on the fi
 
 What happened when you ran the script?
 
-### Your \$PATH to Success
+### Your $PATH to Success
 
 If you look at the sample `bash-script.sh` you will notice a lot is going on:
 
@@ -104,7 +104,7 @@ Let's begin.
 	
 		echo "$3, $2, $1"
 
-	The bash shell automagically creates variables for you when you run a script, and assigns the first word to `$1`, the second to `$2`, and the third to `$3`. It's ***as if*** your script actually read as:
+	The bash shell **automagically** creates variables for you when you run a script, and assigns the first word to `$1`, the second to `$2`, and the third to `$3`. It's ***as if*** your script actually read as:
 		
 		#! /bin/bash
 		
@@ -165,11 +165,54 @@ Let's get started. I put a script template you should use at:
 1. Use `nano` to write a `bash` script that grabs the current local weather. You will need to install the `weather-util` command:
 
 		$ sudo apt-get install weather-util
+		
+	**NOTE:** As of August 23rd, 2016 the NOAA WX weather products URLs were deprecated. This means `weather-util` won't work out of the box. e.g. if we use the 4-character code location for Houston Hobby Airport and run `weather KHOU` you may see an error like:
+	
+		$ weather KHOU
+		Searching via station...
+		[caching result Houston Hobby Airport, TX, United States]
+		weather error: failed to retrieve
+		   http://weather.noaa.gov/pub/data/observations/metar/decoded/KHOU.TXT
+		   HTTPError: HTTP Error 404: Not Found
+	
+	
+	But, an updated file has been created by the developer, so we next need to get the latest files with `git` and overwrite the files that were installed with the `weather-util` package:
+	
+		$ cd ~
+		$ mkdir weather-pkg
+		$ cd weather-pkg
+		$ git clone http://www.yuggoth.org/git/weather.git
+		$ cd weather
+		$ ls -la
+		
+	Make sure you have a `stations` file. We next need to copy this file to `/usr/share/weather/`:
+	
+		$ sudo cp stations /usr/share/weather-util/
+		
+	Check that it's there with:
+	
+		$ ls -la /usr/share/weather-util/
+	
+	Now, using the airport code location for Houston Hobby Airport you can run something like:
 
-	Using the `KHOU` location you can run something like:
+		$ weather hou
+		Searching via airport...
+		[caching result Houston Hobby Airport, TX, United States]
+		Current conditions at Houston Hobby Airport, TX
+		Last updated Aug 29, 2016 - 01:53 PM EDT / 2016.08.29 1753 UTC
+		   Temperature: 77.0 F (25.0 C)
+		   Relative Humidity: 87%
+		   Wind: from the E (100 degrees) at 12 MPH (10 KT)
+		   Weather: Lightning observed
+		   Sky conditions: mostly cloudy
+		   Precipitation last hour: A trace
 
-		$ weather -i KHOU
-	This will take some time. Be patient!
+	This may take some time. Be patient! Recall that you can use `grep` to parse this text a bit (remember that text given to `grep` is case-sensitive):
+	
+		$ weather hou | grep Temperature
+		   Temperature: 77.0 F (25.0 C)
+	
+	
 1. Modify your script to have the weather data saved to a file named with the current time and located at `/home/pi/weather/`.
 	**Hints:** You will want to use the `date` command and look at it's formatting options:
 		
@@ -196,7 +239,7 @@ Let's get started. I put a script template you should use at:
 
 ### Homework Submission
 
-1. move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention. Note the trailing `/` characters here have specific meaning... don't forget them!
+1. move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention for `Team09-LambdaFTW`. **Make sure there are no spaces in your team name identifier**. And, the trailing `/` characters here have specific meaning... don't forget them!
 
 		$ cd ~
 		$ mkdir Team09-LambdaFTW_Lab03

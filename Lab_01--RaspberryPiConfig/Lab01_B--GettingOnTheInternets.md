@@ -82,7 +82,7 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 			
 	This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.
 	
-	Re-run the `update` and `dist-upgrade` commands until you see the results as follows:
+	Re-run the `update` and `dist-upgrade` commands until you see the successful completion results reported as follows:
 	
 		$ sudo apt-get dist-upgrade
 		Reading package lists... Done
@@ -94,7 +94,11 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 
 	
 	
-	**Troubleshooting:** It's possible that the Raspberry Pi may crash during this process (sometimes during the update of `raspberrypi-kernel`). Symptoms: you may see some errors when you try to do anything that reference nothing being found (e.g. `EXT4` errors about the hard drive partition). If this happens, you will need to force reboot by disconnecting power and reconnecting power to the Pi. Upon fresh reboot, your update will be in a broken state (test this by re-running the `update` and `dist-upgrade` commands above). To fix, run the following:
+	**TROUBLESHOOTING:** It's possible that the Raspberry Pi may crash during this process (sometimes during the update of `raspberrypi-kernel`). Symptoms: you may see some errors when you try to do anything that reference nothing being found (e.g. `EXT4-fs error` is about the hard drive). If this happens, you will need to force reboot by disconnecting power and reconnecting power to the Pi. Upon fresh reboot, your update will be in a broken state. Test this by re-running the `update` and `dist-upgrade` commands above. The error will state:
+	
+		E: dpkg was interrupted, you must manually run `sudo dpkg --configure -a` to correct the problem.
+	
+	To fix, just follow these instructions:
 		
 		$ sudo dpkg --configure -a
 	

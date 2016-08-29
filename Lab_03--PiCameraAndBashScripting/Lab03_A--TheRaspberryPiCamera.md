@@ -69,13 +69,6 @@ To view the picture you just took, you need a command line frame buffer image vi
 	$ sudo apt-get update
 	$ sudo apt-get install fbi
 
-Don't worry, Linux is case sensitive (`fbi` is different than `FBI`).
-
-	$ sudo apt-get install FBI
-	...
-	E: Unable to locate package FBI
-
-phew!
 
 Let's look at what the `fbi` can do for us:
 
@@ -83,9 +76,9 @@ Let's look at what the `fbi` can do for us:
 
 You can display an image simply by passing your filename as input to `fbi`:
 
-	$ fbi smile.jpg
+	$ fbi -a smile.jpg
 
-Type a capital letter **`<H>`** to show keyboard commands (noting that **`<q>`** or **`<esc>`** will quit `fbi`). Test out some of these options.
+Type  **`<h>`** to show keyboard commands (noting that **`<q>`** or **`<esc>`** will quit `fbi`). Test out some of these options.
 
 If you happen to be remotely connected to your Raspberry Pi, like through SSH, you may need to enter which framebuffer you want to display the image on (with `-d`). Let's say you also want to autoscale the image (with `-a`), and suppress the textual display. You might enter something like:
 
@@ -105,6 +98,7 @@ If your image is upside down, consider utilizing the `-vf` and `-hf` options of 
 ### Recording a Video
 
 We will utilize the `raspivid` command. Unfortunately, there is no man page. You can learn more at:
+
 http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md
 
 You can also see a list of all commands by running `raspivid` with no options. Best to **pipe** it to `more` so you can scroll the long list:

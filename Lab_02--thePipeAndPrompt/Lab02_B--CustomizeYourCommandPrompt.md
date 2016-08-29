@@ -39,67 +39,98 @@ Check that your backup file is there, and that it's contents are correct. What c
 	$
 	$
 
-Now we will use `nano` to edit the `.bashrc` file and change the command prompt.
 
-	$ nano ~/.bashrc
+## Assignments
 
-Scroll down to put the cursor just **BETWEEN** these two lines:
+
+1. Now we will use `nano` to edit the `.bashrc` file and change the command prompt.
+
+		$ nano ~/.bashrc
+
+	Scroll down to put the cursor just **BETWEEN** these two lines:
 	
-	...
-	esac
+		...
+		esac
 
-	# enable color support of ls and also add handy aliases
-	...
+		# enable color support of ls and also add handy aliases
+		...
 	
 
-The following shows some text we want to insert into our `.bashrc` file to make an awesome command prompt. However, you may notice some characters that will be very difficult to type:
-
-	...
-	esac
-
-	Decoration1="\[\e[90m\]╔["
-	RegularUserPart="\[\e[36m\]\u"
-	RootUserPart="\[\e[31;5m\]\u\[\e[m\]"
-	Between="\[\e[90m\]@"
-	HostPart="\[\e[32m\]\h:"
-	PathPart="\[\e[93;1m\]\w"
-	Decoration2="\[\e[90m\]]\n╚>\[\e[m\]"
-	case `id -u` in
-	    0) export PS1="$Decoration1$RootUserPart$Between$HostPart$PathPart$Decoration2# ";;
-	    *) export PS1="$Decoration1$RegularUserPart$Between$HostPart$PathPart$Decoration2$ ";;
-	esac
-
-
-	# enable color support of ls and also add handy aliases
-	...
-
-
-So, here's a complicated shortcut to do this a bit faster. Follow carefully: Let's use the `wget` command to grab this text snippet from the `.md` file on github **for this lab,** then insert it into your `.bashrc` file using `<ctrl-R>` from within the `nano` editor.
-
-Thanks to the source Matthew Holt for this awesome command prompt code:
+	The following shows some text we want to insert into our `.bashrc` file to make an awesome command prompt. And, hat-tip to the source Matthew Holt for this awesome command prompt code:
 http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
 
+	However, you may notice some characters that will be very difficult to type:
 
- Here we see that variables can be created by starting a line with a variable name, then assigning a value to it with the `=` sign. We later can call the value of this variable by using the `$` sign before the variable name (which you see down where it says `export PS1=`).
+		...
+		esac
+
+		Decoration1="\[\e[90m\]╔["
+		RegularUserPart="\[\e[36m\]\u"
+		RootUserPart="\[\e[31;5m\]\u\[\e[m\]"
+		Between="\[\e[90m\]@"
+		HostPart="\[\e[32m\]\h:"
+		PathPart="\[\e[93;1m\]\w"
+		Decoration2="\[\e[90m\]]\n╚>\[\e[m\]"
+		case `id -u` in
+		    0) export PS1="$Decoration1$RootUserPart$Between$HostPart$PathPart$Decoration2# ";;
+		    *) export PS1="$Decoration1$RegularUserPart$Between$HostPart$PathPart$Decoration2$ ";;
+		esac
+
+
+		# enable color support of ls and also add handy aliases
+		...
+
+
+	So, here's a shortcut to do this a bit faster. Follow **carefully**: Let's use the `wget` command to grab this text snippet from the `.md` file on github **for this lab,**. **Hint:** You may want to use a URL shortener such as:
+
+		http://tinyurl.com/421-CommandPrompt
+	
+	So then you might do something like:
+
+		$ wget -qO- http://tinyurl.com/421-CommandPrompt > commandprompt.txt
+
+	Next, use `nano` to edit this new `commandprompt.txt` file and delete everything except this text snippet. Then insert it into your `.bashrc` file using `<ctrl-R>` from within a new `nano` editor.
+
+	Here we see that variables can be created by starting a line with a variable name, then assigning a value to it with the `=` sign. We later can call the value of this variable by using the `$` sign before the variable name (which you see down where it says `export PS1=`).
  
- To see the changes in your command prompt, you need to logout and then login again. This will cause the `~/.bashrc` file to be read back in.
+	 To see the changes in your command prompt, you need to logout and then login again. This will cause the `~/.bashrc` file to be read back in. You can logout with:
  
- What did you get?
+		$ exit
+
+	After you login again, write down what your new command prompt looks like:
+
+		:
+		:
+		:
  
- Next, edit the command prompt and customize it to show your team name.
-  
- Make backups of your edits in case you type something incorrectly along the way.
+
+1. Make backups of your edits in case you type something incorrectly along the way. What command do you use to backup this file?
+
+		$
+
+1. Next, edit the command prompt and customize it to show your team name. write down what your new command prompt looks like:
+
+		:
+		:
+		:
  
- Let's do something more complicated -- we want our command prompt to show the current time. So each time `$PS1` is called, we want the current time to be updated. Check out the BashRCGenerator to help you customize your prompt:
+1. Now, let's do something more complicated -- we want our command prompt to show the current time. So each time `$PS1` is called, we want the current time to be updated. Check out the BashRCGenerator to help you customize your prompt:
 http://bashrcgenerator.com/
 
-Update your command prompt with the current time and some custom colors for your team name or other sections.
+	Update your command prompt with the current time and some custom colors for your team name or other sections.
  
-To add other commands here into your prompt, you might consider using the backtick ``` ` ``` character, which is located just under the **`<esc>`** key on your keyboard. Backtick escapes you into it's own temporary shell mid-stream, and takes the **STDOUT** from that command to insert. For example, in the line:
+	To add other commands here into your prompt, you might consider using the backtick ``` ` ``` character, which is located just under the **`<esc>`** key on your keyboard. Backtick escapes you into it's own temporary shell mid-stream, and takes the **STDOUT** from that command to insert. For example, in the line:
  
-	case `id -u`
+		case `id -u`
 
-The shell effectively runs `id -u`, and sends the output from this command to the `case` operator in this line for evaluation. It's a simple way to have nested commands simply by encasing your command within some backticks. What do you get when you run `id -u` from the command line? Check the man page for the `id` command to learn more.
+	The shell effectively runs `id -u`, and sends the output from this command to the `case` operator in this line for evaluation. It's a simple way to have nested commands simply by encasing your command within some backticks. What do you get when you run `id -u` from the command line? Check the man page for the `id` command to learn more.
+
+	Write down what your new command prompt looks like:
+
+		:
+		:
+		:
+
 	 	
 
 Show your new command prompt to your Instructor!

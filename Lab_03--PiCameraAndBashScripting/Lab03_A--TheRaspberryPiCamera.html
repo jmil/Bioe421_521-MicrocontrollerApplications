@@ -529,15 +529,6 @@ $ raspistill -v -o smile.jpg
 $ sudo apt-get install fbi
 </code></pre>
 
-<p>Don&#39;t worry, Linux is case sensitive (<code>fbi</code> is different than <code>FBI</code>).</p>
-
-<pre><code>$ sudo apt-get install FBI
-...
-E: Unable to locate package FBI
-</code></pre>
-
-<p>phew!</p>
-
 <p>Let&#39;s look at what the <code>fbi</code> can do for us:</p>
 
 <pre><code>$ man fbi
@@ -545,10 +536,10 @@ E: Unable to locate package FBI
 
 <p>You can display an image simply by passing your filename as input to <code>fbi</code>:</p>
 
-<pre><code>$ fbi smile.jpg
+<pre><code>$ fbi -a smile.jpg
 </code></pre>
 
-<p>Type a capital letter <strong><code>&lt;H&gt;</code></strong> to show keyboard commands (noting that <strong><code>&lt;q&gt;</code></strong> or <strong><code>&lt;esc&gt;</code></strong> will quit <code>fbi</code>). Test out some of these options.</p>
+<p>Type  <strong><code>&lt;h&gt;</code></strong> to show keyboard commands (noting that <strong><code>&lt;q&gt;</code></strong> or <strong><code>&lt;esc&gt;</code></strong> will quit <code>fbi</code>). Test out some of these options.</p>
 
 <p>If you happen to be remotely connected to your Raspberry Pi, like through SSH, you may need to enter which framebuffer you want to display the image on (with <code>-d</code>). Let&#39;s say you also want to autoscale the image (with <code>-a</code>), and suppress the textual display. You might enter something like:</p>
 
@@ -569,8 +560,9 @@ E: Unable to locate package FBI
 
 <h3 id="toc_8">Recording a Video</h3>
 
-<p>We will utilize the <code>raspivid</code> command. Unfortunately, there is no man page. You can learn more at:<br>
-<a href="http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md">http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md</a></p>
+<p>We will utilize the <code>raspivid</code> command. Unfortunately, there is no man page. You can learn more at:</p>
+
+<p><a href="http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md">http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md</a></p>
 
 <p>You can also see a list of all commands by running <code>raspivid</code> with no options. Best to <strong>pipe</strong> it to <code>more</code> so you can scroll the long list:</p>
 

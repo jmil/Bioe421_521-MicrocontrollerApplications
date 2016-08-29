@@ -488,7 +488,7 @@ pre[class*="language-"] {
 <p>Let&#39;s learn by example. A <code>bash</code> script you should use as a template is available here:<br>
 <a href="https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh">https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh</a></p>
 
-<p>Do you remember how to pull down this file using <code>wget</code>?</p>
+<p>Do you remember how to pull down this file using <code>wget</code>? You might want to use a URL shortener.</p>
 
 <p>Grab the template file and run it. You will have to change permissions on the file in order to execute it:</p>
 
@@ -498,7 +498,7 @@ $ ./bash-script.sh
 
 <p>What happened when you ran the script?</p>
 
-<h3 id="toc_4">Your \$PATH to Success</h3>
+<h3 id="toc_4">Your $PATH to Success</h3>
 
 <p>If you look at the sample <code>bash-script.sh</code> you will notice a lot is going on:</p>
 
@@ -562,7 +562,7 @@ $ ./user-input.sh value1 value2 value3
 <pre><code>echo &quot;$3, $2, $1&quot;
 </code></pre>
 
-<p>The bash shell automagically creates variables for you when you run a script, and assigns the first word to <code>$1</code>, the second to <code>$2</code>, and the third to <code>$3</code>. It&#39;s <strong><em>as if</em></strong> your script actually read as:</p>
+<p>The bash shell <strong>automagically</strong> creates variables for you when you run a script, and assigns the first word to <code>$1</code>, the second to <code>$2</code>, and the third to <code>$3</code>. It&#39;s <strong><em>as if</em></strong> your script actually read as:</p>
 
 <pre><code>#! /bin/bash
 
@@ -637,12 +637,56 @@ echo &quot;$3, $2, $1&quot;
 <pre><code>$ sudo apt-get install weather-util
 </code></pre>
 
-<p>Using the <code>KHOU</code> location you can run something like:</p>
+<p><strong>NOTE:</strong> As of August 23rd, 2016 the NOAA WX weather products URLs were deprecated. This means <code>weather-util</code> won&#39;t work out of the box. e.g. if we use the 4-character code location for Houston Hobby Airport and run <code>weather KHOU</code> you may see an error like:</p>
 
-<pre><code>$ weather -i KHOU
+<pre><code>$ weather KHOU
+Searching via station...
+[caching result Houston Hobby Airport, TX, United States]
+weather error: failed to retrieve
+   http://weather.noaa.gov/pub/data/observations/metar/decoded/KHOU.TXT
+   HTTPError: HTTP Error 404: Not Found
 </code></pre>
 
-<p>This will take some time. Be patient!</p></li>
+<p>But, an updated file has been created by the developer, so we next need to get the latest files with <code>git</code> and overwrite the files that were installed with the <code>weather-util</code> package:</p>
+
+<pre><code>$ cd ~
+$ mkdir weather-pkg
+$ cd weather-pkg
+$ git clone http://www.yuggoth.org/git/weather.git
+$ cd weather
+$ ls -la
+</code></pre>
+
+<p>Make sure you have a <code>stations</code> file. We next need to copy this file to <code>/usr/share/weather/</code>:</p>
+
+<pre><code>$ sudo cp stations /usr/share/weather-util/
+</code></pre>
+
+<p>Check that it&#39;s there with:</p>
+
+<pre><code>$ ls -la /usr/share/weather-util/
+</code></pre>
+
+<p>Now, using the airport code location for Houston Hobby Airport you can run something like:</p>
+
+<pre><code>$ weather hou
+Searching via airport...
+[caching result Houston Hobby Airport, TX, United States]
+Current conditions at Houston Hobby Airport, TX
+Last updated Aug 29, 2016 - 01:53 PM EDT / 2016.08.29 1753 UTC
+   Temperature: 77.0 F (25.0 C)
+   Relative Humidity: 87%
+   Wind: from the E (100 degrees) at 12 MPH (10 KT)
+   Weather: Lightning observed
+   Sky conditions: mostly cloudy
+   Precipitation last hour: A trace
+</code></pre>
+
+<p>This may take some time. Be patient! Recall that you can use <code>grep</code> to parse this text a bit (remember that text given to <code>grep</code> is case-sensitive):</p>
+
+<pre><code>$ weather hou | grep Temperature
+   Temperature: 77.0 F (25.0 C)
+</code></pre></li>
 <li><p>Modify your script to have the weather data saved to a file named with the current time and located at <code>/home/pi/weather/</code>.<br>
 <strong>Hints:</strong> You will want to use the <code>date</code> command and look at it&#39;s formatting options:</p>
 
@@ -678,7 +722,7 @@ echo &quot;$3, $2, $1&quot;
 <h3 id="toc_12">Homework Submission</h3>
 
 <ol>
-<li><p>move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention. Note the trailing <code>/</code> characters here have specific meaning... don&#39;t forget them!</p>
+<li><p>move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention for <code>Team09-LambdaFTW</code>. <strong>Make sure there are no spaces in your team name identifier</strong>. And, the trailing <code>/</code> characters here have specific meaning... don&#39;t forget them!</p>
 
 <pre><code>$ cd ~
 $ mkdir Team09-LambdaFTW_Lab03

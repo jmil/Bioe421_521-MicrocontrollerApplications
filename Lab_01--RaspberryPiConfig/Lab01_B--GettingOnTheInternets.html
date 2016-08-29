@@ -527,7 +527,7 @@ Do you want to continue [Y/n]?
 
 <p>This will take some time. Raspberry Pi is pulling down all the newest versions of software packages, authenticating their checksums, expanding and installing the new packages. When it has completed, you will be back at the command prompt. Check for any errors in the upgrade text being printed.</p>
 
-<p>Re-run the <code>update</code> and <code>dist-upgrade</code> commands until you see the results as follows:</p>
+<p>Re-run the <code>update</code> and <code>dist-upgrade</code> commands until you see the successful completion results reported as follows:</p>
 
 <pre><code>$ sudo apt-get dist-upgrade
 Reading package lists... Done
@@ -537,7 +537,12 @@ Calculating upgrade... Done
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 </code></pre>
 
-<p><strong>Troubleshooting:</strong> It&#39;s possible that the Raspberry Pi may crash during this process (sometimes during the update of <code>raspberrypi-kernel</code>). Symptoms: you may see some errors when you try to do anything that reference nothing being found (e.g. <code>EXT4</code> errors about the hard drive partition). If this happens, you will need to force reboot by disconnecting power and reconnecting power to the Pi. Upon fresh reboot, your update will be in a broken state (test this by re-running the <code>update</code> and <code>dist-upgrade</code> commands above). To fix, run the following:</p>
+<p><strong>TROUBLESHOOTING:</strong> It&#39;s possible that the Raspberry Pi may crash during this process (sometimes during the update of <code>raspberrypi-kernel</code>). Symptoms: you may see some errors when you try to do anything that reference nothing being found (e.g. <code>EXT4-fs error</code> is about the hard drive). If this happens, you will need to force reboot by disconnecting power and reconnecting power to the Pi. Upon fresh reboot, your update will be in a broken state. Test this by re-running the <code>update</code> and <code>dist-upgrade</code> commands above. The error will state:</p>
+
+<pre><code>E: dpkg was interrupted, you must manually run `sudo dpkg --configure -a` to correct the problem.
+</code></pre>
+
+<p>To fix, just follow these instructions:</p>
 
 <pre><code>$ sudo dpkg --configure -a
 </code></pre>

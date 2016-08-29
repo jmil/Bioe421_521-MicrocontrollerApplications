@@ -483,7 +483,10 @@ $ cat ~/.bashrc
 $
 </code></pre>
 
-<p>Now we will use <code>nano</code> to edit the <code>.bashrc</code> file and change the command prompt.</p>
+<h2 id="toc_5">Assignments</h2>
+
+<ol>
+<li><p>Now we will use <code>nano</code> to edit the <code>.bashrc</code> file and change the command prompt.</p>
 
 <pre><code>$ nano ~/.bashrc
 </code></pre>
@@ -497,7 +500,10 @@ esac
 ...
 </code></pre>
 
-<p>The following shows some text we want to insert into our <code>.bashrc</code> file to make an awesome command prompt. However, you may notice some characters that will be very difficult to type:</p>
+<p>The following shows some text we want to insert into our <code>.bashrc</code> file to make an awesome command prompt. And, hat-tip to the source Matthew Holt for this awesome command prompt code:<br>
+<a href="http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html">http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html</a></p>
+
+<p>However, you may notice some characters that will be very difficult to type:</p>
 
 <pre><code>...
 esac
@@ -514,27 +520,46 @@ case `id -u` in
     *) export PS1=&quot;$Decoration1$RegularUserPart$Between$HostPart$PathPart$Decoration2$ &quot;;;
 esac
 
-
 # enable color support of ls and also add handy aliases
 ...
 </code></pre>
 
-<p>So, here&#39;s a complicated shortcut to do this a bit faster. Follow carefully: Let&#39;s use the <code>wget</code> command to grab this text snippet from the <code>.md</code> file on github <strong>for this lab,</strong> then insert it into your <code>.bashrc</code> file using <code>&lt;ctrl-R&gt;</code> from within the <code>nano</code> editor.</p>
+<p>So, here&#39;s a shortcut to do this a bit faster. Follow <strong>carefully</strong>: Let&#39;s use the <code>wget</code> command to grab this text snippet from the <code>.md</code> file on github <strong>for this lab,</strong>. <strong>Hint:</strong> You may want to use a URL shortener such as:</p>
 
-<p>Thanks to the source Matthew Holt for this awesome command prompt code:<br>
-<a href="http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html">http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html</a></p>
+<pre><code>http://tinyurl.com/421-CommandPrompt
+</code></pre>
+
+<p>So then you might do something like:</p>
+
+<pre><code>$ wget -qO- http://tinyurl.com/421-CommandPrompt &gt; commandprompt.txt
+</code></pre>
+
+<p>Next, use <code>nano</code> to edit this new <code>commandprompt.txt</code> file and delete everything except this text snippet. Then insert it into your <code>.bashrc</code> file using <code>&lt;ctrl-R&gt;</code> from within a new <code>nano</code> editor.</p>
 
 <p>Here we see that variables can be created by starting a line with a variable name, then assigning a value to it with the <code>=</code> sign. We later can call the value of this variable by using the <code>$</code> sign before the variable name (which you see down where it says <code>export PS1=</code>).</p>
 
-<p>To see the changes in your command prompt, you need to logout and then login again. This will cause the <code>~/.bashrc</code> file to be read back in.</p>
+<p>To see the changes in your command prompt, you need to logout and then login again. This will cause the <code>~/.bashrc</code> file to be read back in. You can logout with:</p>
 
-<p>What did you get?</p>
+<pre><code>$ exit
+</code></pre>
 
-<p>Next, edit the command prompt and customize it to show your team name.</p>
+<p>After you login again, write down what your new command prompt looks like:</p>
 
-<p>Make backups of your edits in case you type something incorrectly along the way.</p>
+<pre><code>:
+:
+:
+</code></pre></li>
+<li><p>Make backups of your edits in case you type something incorrectly along the way. What command do you use to backup this file?</p>
 
-<p>Let&#39;s do something more complicated -- we want our command prompt to show the current time. So each time <code>$PS1</code> is called, we want the current time to be updated. Check out the BashRCGenerator to help you customize your prompt:<br>
+<pre><code>$
+</code></pre></li>
+<li><p>Next, edit the command prompt and customize it to show your team name. write down what your new command prompt looks like:</p>
+
+<pre><code>:
+:
+:
+</code></pre></li>
+<li><p>Now, let&#39;s do something more complicated -- we want our command prompt to show the current time. So each time <code>$PS1</code> is called, we want the current time to be updated. Check out the BashRCGenerator to help you customize your prompt:<br>
 <a href="http://bashrcgenerator.com/">http://bashrcgenerator.com/</a></p>
 
 <p>Update your command prompt with the current time and some custom colors for your team name or other sections.</p>
@@ -546,9 +571,17 @@ esac
 
 <p>The shell effectively runs <code>id -u</code>, and sends the output from this command to the <code>case</code> operator in this line for evaluation. It&#39;s a simple way to have nested commands simply by encasing your command within some backticks. What do you get when you run <code>id -u</code> from the command line? Check the man page for the <code>id</code> command to learn more.</p>
 
+<p>Write down what your new command prompt looks like:</p>
+
+<pre><code>:
+:
+:
+</code></pre></li>
+</ol>
+
 <p>Show your new command prompt to your Instructor!</p>
 
-<h2 id="toc_5">Shutdown Procedure</h2>
+<h2 id="toc_6">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>
