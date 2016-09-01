@@ -108,9 +108,9 @@ Let's begin.
 		
 		#! /bin/bash
 		
-		$1="value1"
-		$2="value2"
-		$3="value3"
+		1="value1"
+		2="value2"
+		3="value3"
 		echo "$3, $2, $1"
 	
 	But it happens dynamically, and takes the user input as the value to assign to the numbered variables.
@@ -127,7 +127,7 @@ Let's start by making a script that will help you make more scripts: you want it
 
 Given that the **next** assignment below will be to make a `weather.sh` script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this `get_script.sh`, we want the user to be able to run:
 
-	$ ./get_script.sh weather.sh
+	$ ./get_script.sh weather
 
 And have it generate `weather.sh` ready to be edited and then immediately executed.
 
@@ -139,7 +139,6 @@ Let's get started. I put a script template you should use at:
 
 		$ 
 
-	**NOTE:** You probably only need the first 15 lines of this file to use as a template.
 
 1. Use `nano` to edit `get-script.sh` to, itself, grab the `bash-script.sh` template from github and output it to `STDOUT`. Of course, you will have to `chmod +x` this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:
 
@@ -150,13 +149,17 @@ Let's get started. I put a script template you should use at:
  
 1. Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive that will be generated from a live copy of the `bash-script.sh` file on github. What happens when you now run:
 
-		$ ./get_script.sh weather.sh
+		$ ./get_script.sh weather
 
 	Describe the result:
 
 		:
 
 1. Next, modify `get-script.sh` to also run the command `chmod +x` on your newly created `weather.sh` script file to make it executable right after it's created. Describe the result and how you checked it if the new `weather.sh` was executable:
+
+		:
+
+1. Finally, we don't want to have to delete all those extra lines each time we make a new script. So, edit the `get-script.sh` file to grab **ONLY** the 15 lines of the `bash_script.sh` file to use as a template. Describe your modifications:
 
 		:
 
