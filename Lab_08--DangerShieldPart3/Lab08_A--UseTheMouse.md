@@ -11,7 +11,7 @@ Upt until now, we have only used a keyboard as the human-machine interface. You'
 
 		$ sudo raspi-config
 
-Select option `Boot Options` then `Desktop Autologin Desltop GUI, automatically logged in as 'pi' user`. Then select **`<Finish>`** and then **`<Yes>`** to Reboot.
+Select option `Boot Options` then `Desktop Autologin Desktop GUI, automatically logged in as 'pi' user`. Then select **`<Finish>`** and then **`<Yes>`** to Reboot.
 
 You should now boot into the Desktop environment with mouse control.
 
