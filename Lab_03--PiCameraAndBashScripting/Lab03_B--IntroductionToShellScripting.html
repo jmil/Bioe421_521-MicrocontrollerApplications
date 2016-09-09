@@ -498,7 +498,7 @@ $ ./bash-script.sh
 
 <p>What happened when you ran the script?</p>
 
-<h3 id="toc_4">Your $PATH to Success</h3>
+<h3 id="toc_4">Your <code>$PATH</code> to Success</h3>
 
 <p>If you look at the sample <code>bash-script.sh</code> you will notice a lot is going on:</p>
 
@@ -582,16 +582,25 @@ echo &quot;$3, $2, $1&quot;
 <pre><code>$ cd ~/scripts
 </code></pre>
 
-<h4 id="toc_7">get_script.sh</h4>
+<h4 id="toc_7">make_script.sh</h4>
 
 <p>Let&#39;s start by making a script that will help you make more scripts: you want it to create a new file based on an online template, write out the template into a new user-specified file, and <code>chmod +x</code> this new file so it will immediately be executable.</p>
 
-<p>Given that the <strong>next</strong> assignment below will be to make a <code>weather.sh</code> script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this <code>get_script.sh</code>, we want the user to be able to run:</p>
+<p>Given that the <strong>next</strong> assignment below will be to make a <code>weather.sh</code> script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this <code>make_script.sh</code>, we want the user to be able to run:</p>
 
-<pre><code>$ ./get_script.sh weather
+<pre><code>$ ./make_script.sh weather
 </code></pre>
 
 <p>And have it generate <code>weather.sh</code> ready to be edited and then immediately executed.</p>
+
+<p>We will be making a bunch of scripts, so the workflow will be:</p>
+
+<ol>
+<li>make a script</li>
+<li>make a script, then get a file</li>
+<li>make a script, then get a file, then make the script executable within itself</li>
+<li>make a script, then get a file, then make the script executable within itself, then allow for user input</li>
+</ol>
 
 <p>Let&#39;s get started. I put a script template you should use at:</p>
 
@@ -605,7 +614,7 @@ echo &quot;$3, $2, $1&quot;
 </code></pre></li>
 <li><p>Use <code>nano</code> to edit <code>get-script.sh</code> to, itself, grab the <code>bash-script.sh</code> template from github and output it to <code>STDOUT</code>. Of course, you will have to <code>chmod +x</code> this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:</p>
 
-<pre><code>$ ./get_script.sh
+<pre><code>$ ./make_script.sh
 </code></pre>
 
 <p>Describe the output:</p>
@@ -614,7 +623,7 @@ echo &quot;$3, $2, $1&quot;
 </code></pre></li>
 <li><p>Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive that will be generated from a live copy of the <code>bash-script.sh</code> file on github. What happens when you now run:</p>
 
-<pre><code>$ ./get_script.sh weather
+<pre><code>$ ./make_script.sh weather
 </code></pre>
 
 <p>Describe the result:</p>

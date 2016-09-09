@@ -49,7 +49,7 @@ Grab the template file and run it. You will have to change permissions on the fi
 
 What happened when you ran the script?
 
-### Your $PATH to Success
+### Your `$PATH` to Success
 
 If you look at the sample `bash-script.sh` you will notice a lot is going on:
 
@@ -121,15 +121,24 @@ Make sure you are working inside your `scripts` folder:
 
 	$ cd ~/scripts
 
-
-#### get_script.sh
+#### make_script.sh
 Let's start by making a script that will help you make more scripts: you want it to create a new file based on an online template, write out the template into a new user-specified file, and `chmod +x` this new file so it will immediately be executable.
 
-Given that the **next** assignment below will be to make a `weather.sh` script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this `get_script.sh`, we want the user to be able to run:
+Given that the **next** assignment below will be to make a `weather.sh` script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this `make_script.sh`, we want the user to be able to run:
 
-	$ ./get_script.sh weather
+	$ ./make_script.sh weather
 
 And have it generate `weather.sh` ready to be edited and then immediately executed.
+
+
+We will be making a bunch of scripts, so the workflow will be:
+
+1. make a script
+1. make a script, then get a file
+1. make a script, then get a file, then make the script executable within itself
+1. make a script, then get a file, then make the script executable within itself, then allow for user input
+
+
 
 Let's get started. I put a script template you should use at:
 
@@ -142,14 +151,14 @@ Let's get started. I put a script template you should use at:
 
 1. Use `nano` to edit `get-script.sh` to, itself, grab the `bash-script.sh` template from github and output it to `STDOUT`. Of course, you will have to `chmod +x` this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:
 
-		$ ./get_script.sh
+		$ ./make_script.sh
 	Describe the output:
 	
 		:
  
 1. Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive that will be generated from a live copy of the `bash-script.sh` file on github. What happens when you now run:
 
-		$ ./get_script.sh weather
+		$ ./make_script.sh weather
 
 	Describe the result:
 
