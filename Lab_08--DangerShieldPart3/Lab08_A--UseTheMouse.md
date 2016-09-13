@@ -3,17 +3,22 @@
 
 ##Lab 8A. Use the Mouse
 
-Upt until now, we have only used a keyboard as the human-machine interface. You've now mastered a huge swath of skills and knowledge behind the core of how UNIX-like machines work and how to do lots of tasks. Today let's plug into the graphical user interface **(GUI)** and mouse. We held back doing this until now for two reasons: 1) it's still often faster to use the keyboard in a terminal for most things, and 2) when things go wrong in the GUI, you might often need a keyboard and the **CLI** to diagnose or fix problems (remember `killall`?).
+Upt until now, we have only used a keyboard as the human-machine interface. You've now mastered a huge swath of skills and knowledge behind the core of how UNIX-like machines work and how to do lots of tasks. Today let's plug into the graphical user interface **(GUI)** and mouse. We held back doing this until now for three reasons: **1)** As we learned in class, the keyboard is the most *expressive* human-machine interface, **2)** it's still often faster to use the keyboard in a terminal for most things, and **3)** when things go wrong in the GUI, you might often need a keyboard and the **CLI** to diagnose or fix problems (remember `killall`?).
 
+Note that the **GUI** is just another program (albeit much more complicated than the ones we've used so far). The entire interface is a single shell instance that you will be interfacing with using the keyboard **AND** the mouse.
 
 
 1. Let's set the Desktop environment to be the default login on your Pi:
 
 		$ sudo raspi-config
 
-Select option `Boot Options` then `Desktop Autologin Desktop GUI, automatically logged in as 'pi' user`. Then select **`<Finish>`** and then **`<Yes>`** to Reboot.
+	Select option `Boot Options` then `Desktop Autologin Desktop GUI, automatically logged in as 'pi' user`. Then select **`<Finish>`** and then **`<Yes>`** to Reboot.
 
-You should now boot into the Desktop environment with mouse control.
+	You should now boot into the Desktop environment with mouse control.
+
+1. **Troubleshooting:** If this doesn't auto-login for you, you can just login via command-line and issue the following command to launch the GUI:
+
+		$ startx
 
 
 ##Assignments

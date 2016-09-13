@@ -444,18 +444,24 @@ pre[class*="language-"] {
 
 <h2 id="toc_2">Lab 8A. Use the Mouse</h2>
 
-<p>Upt until now, we have only used a keyboard as the human-machine interface. You&#39;ve now mastered a huge swath of skills and knowledge behind the core of how UNIX-like machines work and how to do lots of tasks. Today let&#39;s plug into the graphical user interface <strong>(GUI)</strong> and mouse. We held back doing this until now for two reasons: 1) it&#39;s still often faster to use the keyboard in a terminal for most things, and 2) when things go wrong in the GUI, you might often need a keyboard and the <strong>CLI</strong> to diagnose or fix problems (remember <code>killall</code>?).</p>
+<p>Upt until now, we have only used a keyboard as the human-machine interface. You&#39;ve now mastered a huge swath of skills and knowledge behind the core of how UNIX-like machines work and how to do lots of tasks. Today let&#39;s plug into the graphical user interface <strong>(GUI)</strong> and mouse. We held back doing this until now for three reasons: <strong>1)</strong> As we learned in class, the keyboard is the most <em>expressive</em> human-machine interface, <strong>2)</strong> it&#39;s still often faster to use the keyboard in a terminal for most things, and <strong>3)</strong> when things go wrong in the GUI, you might often need a keyboard and the <strong>CLI</strong> to diagnose or fix problems (remember <code>killall</code>?).</p>
+
+<p>Note that the <strong>GUI</strong> is just another program (albeit much more complicated than the ones we&#39;ve used so far). The entire interface is a single shell instance that you will be interfacing with using the keyboard <strong>AND</strong> the mouse.</p>
 
 <ol>
 <li><p>Let&#39;s set the Desktop environment to be the default login on your Pi:</p>
 
 <pre><code>$ sudo raspi-config
-</code></pre></li>
-</ol>
+</code></pre>
 
 <p>Select option <code>Boot Options</code> then <code>Desktop Autologin Desktop GUI, automatically logged in as &#39;pi&#39; user</code>. Then select <strong><code>&lt;Finish&gt;</code></strong> and then <strong><code>&lt;Yes&gt;</code></strong> to Reboot.</p>
 
-<p>You should now boot into the Desktop environment with mouse control.</p>
+<p>You should now boot into the Desktop environment with mouse control.</p></li>
+<li><p><strong>Troubleshooting:</strong> If this doesn&#39;t auto-login for you, you can just login via command-line and issue the following command to launch the GUI:</p>
+
+<pre><code>$ startx
+</code></pre></li>
+</ol>
 
 <h2 id="toc_3">Assignments</h2>
 
