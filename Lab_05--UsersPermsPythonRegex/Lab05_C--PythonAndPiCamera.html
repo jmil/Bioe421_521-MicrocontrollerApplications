@@ -454,7 +454,7 @@ pre[class*="language-"] {
 $ sudo apt-get dist-upgrade
 $ sudo apt-get install python-picamera
 $ sudo apt-get install python-imaging     # this includes PIL
-$ sudo apt-get install python-setuptools     # this includes PIL
+$ sudo apt-get install python-setuptools     
 </code></pre>
 
 <p>We are using v1.10 of python-picamera. Let&#39;s check to make sure, with code from here:<br>
@@ -465,7 +465,7 @@ $ sudo apt-get install python-setuptools     # this includes PIL
 <pre><code>$ python --version
 Python 2.7.3
 $ python
-Python 2.7.3 (default, Mar 18 2014.....
+Python 2.7.3 .....
 ...
 &gt;&gt;&gt; from pkg_resources import require
 &gt;&gt;&gt; require(&#39;picamera&#39;)
@@ -485,16 +485,20 @@ $
 <h3 id="toc_4">External Tutorial</h3>
 
 <p>We will be using a selection of the tutorials here:<br>
-<a href="http://picamera.readthedocs.org/en/release-1.10/recipes1.html">http://picamera.readthedocs.org/en/release-1.10/recipes1.html</a></p>
+<a href="http://picamera.readthedocs.io/en/release-1.12/recipes1.html">http://picamera.readthedocs.io/en/release-1.12/recipes1.html</a></p>
 
 <p>Create and run the following files based on the sample code provided on the webpage:<br>
 <code>capture-file.py</code><br>
 <code>capture-stream.py</code><br>
+<code>capture-PIL.py</code><br>
 <code>capture-resized.py</code><br>
 <code>capture-consistent.py</code><br>
 <code>capture-timelapse.py</code><br>
 <code>capture-lowlight.py</code><br>
-<code>record-video.py</code></p>
+<code>record-video-file.py</code><br>
+<code>overlay-image.py</code><br>
+<code>overlay-text.py</code><br>
+<code>control-LED.py</code></p>
 
 <p>Feel free to add your own modifications and demonstrate to your Instructor! Make sure you use the correct <strong>shebang</strong> and commented header for each of your files:</p>
 
@@ -503,7 +507,7 @@ $
 # TEAM MEMBER NAMES
 </code></pre>
 
-<p>Recall -- you may want to use <code>fbi</code> to look at the images you&#39;ve saved.</p>
+<p>Check your work before you submit! Recall -- you may want to use <code>fbi</code> and <code>omxplayer</code> to look at the images and videos you&#39;ve saved.</p>
 
 <h3 id="toc_5">System Scheduling</h3>
 
@@ -533,12 +537,8 @@ $
 <a href="http://picamera.readthedocs.org/en/release-1.10/recipes1.html">http://picamera.readthedocs.org/en/release-1.10/recipes1.html</a></p>
 
 <p>Create and run the following files based on the sample code provided on that webpage:<br>
-<code>capture-PIL-image.py</code><br>
 <code>capture-openCV-object.py</code><br>
-<code>capture-consistent-images.py</code><br>
-<code>record-circular-stream.py</code><br>
-<code>overlay-text-output.py</code><br>
-<code>control-the-LED.py</code></p>
+<code>record-circular-stream.py</code></p>
 
 <h2 id="toc_8">Turn in Homework</h2>
 

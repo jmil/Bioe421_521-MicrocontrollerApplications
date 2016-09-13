@@ -46,7 +46,9 @@ One of the most important aspects of the shell, especially for new users, is tha
 	Write down general and specific usage notes about each command using Markdown format (*.md). The markdown format allows you to do hierarchical text formatting with only a few extra characters. Feel free to use a web browser on the neighboring PC to help you work through understanding these programs and how they are commonly used:
 
 		man
+		apropos
 
+		id
 		who
 		whoami
 		hostname
@@ -62,6 +64,8 @@ One of the most important aspects of the shell, especially for new users, is tha
 		chown
 		chmod
 		chgrp
+		adduser
+		addgroup
 		crontab
 		nano
 		
@@ -105,6 +109,8 @@ One of the most important aspects of the shell, especially for new users, is tha
 		
 		shutdown
 		reboot
+		halt
+		poweroff
 		
 		
 1. Using your notes, answer the following questions. In your answers **be sure to indicate** the command(s) you used to arrive at your answer. One lab partner should run the Pi while the other helps advise using the notes you generated. Switch roles mid-way through these questions so you each get a feel for the terminal.

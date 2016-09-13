@@ -13,7 +13,7 @@ We want to install the `python-picamera` command. Run `apt-get` as the superuser
 	$ sudo apt-get dist-upgrade
 	$ sudo apt-get install python-picamera
 	$ sudo apt-get install python-imaging     # this includes PIL
-	$ sudo apt-get install python-setuptools     # this includes PIL
+	$ sudo apt-get install python-setuptools     
 
 We are using v1.10 of python-picamera. Let's check to make sure, with code from here:
 https://picamera.readthedocs.org/en/release-1.10/faq.html#how-can-i-tell-what-version-of-picamera-i-have-installed
@@ -23,7 +23,7 @@ We will do this in the interactive CLI `python` interface, which has three angle
 	$ python --version
 	Python 2.7.3
 	$ python
-	Python 2.7.3 (default, Mar 18 2014.....
+	Python 2.7.3 .....
 	...
 	>>> from pkg_resources import require
 	>>> require('picamera')
@@ -42,16 +42,21 @@ To exit the CLI python interface, you will need to use `exit()` or `<CTRL-D>` as
 ### External Tutorial
 
 We will be using a selection of the tutorials here:
-http://picamera.readthedocs.org/en/release-1.10/recipes1.html
+http://picamera.readthedocs.io/en/release-1.12/recipes1.html
 
 Create and run the following files based on the sample code provided on the webpage:
 `capture-file.py`
 `capture-stream.py`
+`capture-PIL.py`
 `capture-resized.py`
 `capture-consistent.py`
 `capture-timelapse.py`
 `capture-lowlight.py`
-`record-video.py`
+`record-video-file.py`
+`overlay-image.py`
+`overlay-text.py`
+`control-LED.py`
+
 
 Feel free to add your own modifications and demonstrate to your Instructor! Make sure you use the correct **shebang** and commented header for each of your files:
 
@@ -60,7 +65,7 @@ Feel free to add your own modifications and demonstrate to your Instructor! Make
 	# TEAM MEMBER NAMES
 
 
-Recall -- you may want to use `fbi` to look at the images you've saved.
+Check your work before you submit! Recall -- you may want to use `fbi` and `omxplayer` to look at the images and videos you've saved.
 
 
 ### System Scheduling
@@ -90,12 +95,8 @@ We will be using a selection of the tutorials here:
 http://picamera.readthedocs.org/en/release-1.10/recipes1.html
 
 Create and run the following files based on the sample code provided on that webpage:
-`capture-PIL-image.py`
 `capture-openCV-object.py`
-`capture-consistent-images.py`
 `record-circular-stream.py`
-`overlay-text-output.py`
-`control-the-LED.py`
 
 
 ## Turn in Homework
