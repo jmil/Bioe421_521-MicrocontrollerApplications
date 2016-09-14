@@ -135,11 +135,3 @@ http://bashrcgenerator.com/
 
 Show your new command prompt to your Instructor!
  
-
-## Shutdown Procedure
-
-1. Shutdown your Pi properly:
-
-		$ sudo shutdown -h now
-
- Unplug everthing and restore the Windows desktop computer to a working state.

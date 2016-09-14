@@ -21,13 +21,30 @@ Check out the man page for the `wc` command. Please add this command to your tea
 
 	$ man wc
 
-Let's check how many bytes are in the `hi.txt` file. Can you count the bytes based on our discussion in class?
+Let's check how many bytes are in the `hi.txt` file.
 
 	$ wc -c hi.txt
+	
+Can you count the bytes based on our discussion in class? How many bytes do you count in this file:
+
+	:
+
 
 The **`>`** directive functions by writing an entire file, so it will overwrite whatever file is already there (you can use the `ls` command to see what files are there in your current working directory).
 
 Another useful **STDOUT** redirector is the **`>>`** operator. If a file doesn't exist yet, it will be created. If the file already exists, it will **append** your output to that file.
+
+	$ echo 'Hi!' > hi2.txt
+	$ echo 'Hi!' >> hi2.txt
+	$ echo 'Hi!' >> hi2.txt
+	$ cat hi2.txt
+	$ wc -c hi2.txt
+
+How many bytes did you get in this `hi2.txt` file? Explain:
+
+	:
+	
+Let's do another example:	
 
 	$ echo 'The stream editor works' >> stream.txt
 	$ echo 'by allowing you to process' >> stream.txt
@@ -38,7 +55,7 @@ Another useful **STDOUT** redirector is the **`>>`** operator. If a file doesn't
 ### Looking at Long Streams
 
 
-Grab the `dict.zip` dictionary file. NOTE: you may want to use a URL shortener on a different computer to avoid typing out the entire URL:
+Grab the `dict.zip` dictionary file. NOTE: you may want to use a URL shortener on a different computer to avoid having to type out the entire URL:
 
 	$ cd ~
 	$ mkdir Lab02

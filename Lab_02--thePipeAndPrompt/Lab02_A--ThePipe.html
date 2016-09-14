@@ -464,14 +464,33 @@ $ cat hi.txt
 <pre><code>$ man wc
 </code></pre>
 
-<p>Let&#39;s check how many bytes are in the <code>hi.txt</code> file. Can you count the bytes based on our discussion in class?</p>
+<p>Let&#39;s check how many bytes are in the <code>hi.txt</code> file.</p>
 
 <pre><code>$ wc -c hi.txt
+</code></pre>
+
+<p>Can you count the bytes based on our discussion in class? How many bytes do you count in this file:</p>
+
+<pre><code>:
 </code></pre>
 
 <p>The <strong><code>&gt;</code></strong> directive functions by writing an entire file, so it will overwrite whatever file is already there (you can use the <code>ls</code> command to see what files are there in your current working directory).</p>
 
 <p>Another useful <strong>STDOUT</strong> redirector is the <strong><code>&gt;&gt;</code></strong> operator. If a file doesn&#39;t exist yet, it will be created. If the file already exists, it will <strong>append</strong> your output to that file.</p>
+
+<pre><code>$ echo &#39;Hi!&#39; &gt; hi2.txt
+$ echo &#39;Hi!&#39; &gt;&gt; hi2.txt
+$ echo &#39;Hi!&#39; &gt;&gt; hi2.txt
+$ cat hi2.txt
+$ wc -c hi2.txt
+</code></pre>
+
+<p>How many bytes did you get in this <code>hi2.txt</code> file? Explain:</p>
+
+<pre><code>:
+</code></pre>
+
+<p>Let&#39;s do another example:   </p>
 
 <pre><code>$ echo &#39;The stream editor works&#39; &gt;&gt; stream.txt
 $ echo &#39;by allowing you to process&#39; &gt;&gt; stream.txt
@@ -481,7 +500,7 @@ $ cat stream.txt
 
 <h3 id="toc_4">Looking at Long Streams</h3>
 
-<p>Grab the <code>dict.zip</code> dictionary file. NOTE: you may want to use a URL shortener on a different computer to avoid typing out the entire URL:</p>
+<p>Grab the <code>dict.zip</code> dictionary file. NOTE: you may want to use a URL shortener on a different computer to avoid having to type out the entire URL:</p>
 
 <pre><code>$ cd ~
 $ mkdir Lab02
