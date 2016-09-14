@@ -46,7 +46,7 @@ http://www.github.com/new
 	https://help.github.com/articles/generating-ssh-keys/
 	
 
-	**HINT:** You need to put these authentication keys you generated you generated onto github.com in your user settings.
+	**HINT:** You need to put these authentication keys you generated onto github.com in your user settings.
 
 	Open a terminal on your Pi. Let's pull down your repo:
 
@@ -93,11 +93,32 @@ Look at the manual for `git log`, which git makes available by running `man` on 
 
 	$ man git-log
 
-To answer the following questions, look at the earliest commit messages from Linus Torvalds in the `git log` history. Is there an easy way to invert the order of all of the commit messages? Show your Instructor the answer to the following questions:
+To answer the following questions, look at some of the earliest commit messages from Linus Torvalds in the `git log` history. Is there an easy way to invert the order of all of the commit messages? Show your Instructor the answer to the following questions:
 
-1. Linus calls `git` the information manager from **where**?
-1. `git` is a viable way of describing **what**?
+1. What was Linus Torvald's email address in 2005?
+
+		answer: 
+		commit (first 8 chars): 
+		timestamp (abbrev. OK):
+
+
 1. What was the exact date, time, and timezone that `git` was first successfully used?
+
+		answer: 
+		commit (first 8 chars): 
+
+1. Linus calls `git` "the information manager from" **where**?
+
+		answer: 
+		commit (first 8 chars): 
+		timestamp (abbrev. OK):
+
+1. `git` is "a viable way of describing" **what**?
+
+		answer: 
+		commit (first 8 chars): 
+		timestamp (abbrev. OK):
+
 
 
 ## Assignment: Read through ProGit Ch.2
@@ -142,7 +163,7 @@ Work on your final project in your **`~/421_521_final_project`** `git` repo. As 
 
 1. Verify that your push went through correctly: on github you should check the commit log and commit message to ensure your push was successful.
 
-1. Add your partner's github user account, as well as your Instructor's github user account `jmil` as registered collaborators to your github project on github.com, and make sure you enable them to write changes to your repo. This will help with collaboration and troubleshooting as you progress.
+1. Add your partner's github user account, as well as your Instructor's github user account `jmil` as registered collaborators to your github project on http://github.com, and make sure you enable them to write changes to your repo. This will help with collaboration and troubleshooting as you progress.
 
 1. Submit the URL of your repo on Owlspace for today's Assignment, and **be sure to include** the github username of you and your teammate (you each need your own personal github account!).
 
