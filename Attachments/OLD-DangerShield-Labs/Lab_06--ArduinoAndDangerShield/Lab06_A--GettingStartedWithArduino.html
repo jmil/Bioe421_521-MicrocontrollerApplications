@@ -1,0 +1,762 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>Lab06_A--GettingStartedWithArduino</title>
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important {
+	color: #e90;
+}
+
+.token.important {
+	font-weight: bold;
+}
+
+.token.entity {
+	cursor: help;
+
+</style>
+</head>
+<body>
+<h1 id="toc_0">Bioe 421/521: Microcontroller Applications</h1>
+
+<h4 id="toc_1">Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
+
+<h2 id="toc_2">Lab 6A. Getting Started with Arduino</h2>
+
+<p>Today we add the <strong>Arduino</strong>  microcontroller (pronounced <code>Ar du ween Oh</code>), to our hardware setup. It was developed by an awesome hardware/software team in Italy. Wikipedia has a concise overview:</p>
+
+<blockquote>
+<p>Arduino is a single-board microcontroller, intended to make building interactive objects or environments more accessible. The hardware consists of an open-source hardware board designed around an 8-bit Atmel AVR microcontroller, or a 32-bit Atmel ARM. Current models feature a USB interface, 6 analog input pins, as well as 14 digital I/O pins that accommodate various extension boards.</p>
+
+<p>Introduced in 2005, the Arduino&#39;s designers sought to provide an inexpensive and easy way for hobbyists, students, and professionals to create devices that interact with their environment using sensors and actuators. Common examples for beginner hobbyists include simple robots, thermostats and motion detectors. It comes with a simple integrated development environment (IDE) that runs on regular personal computers and allows users to write programs for Arduino using C or C++.</p>
+</blockquote>
+
+<p>Arduino almost immediately became a favorite among tinkerers and hobbyists for the ease with which you can rapidly prototype integrated devices. It&#39;s programmed with an open-source and cross-platform (Linux, Mac, Windows) software kit. And it&#39;s an extremely extensible system. In fact, Arduino microcontrollers power most of the open-source 3D printers you can buy today. You can read all about Arduino and see it&#39;s amazingly vibrant community here:<br>
+<a href="http://www.arduino.cc/">http://www.arduino.cc/</a></p>
+
+<h3 id="toc_3">Plugging It In</h3>
+
+<p>We are using <strong>Arduino UNO R3</strong>. Arduino by default gets its power over USB. This is great, because we have a spare USB port on our Raspberry Pi! Look for your <strong>Arduino Starter Pack</strong> inside your crate. Inside it, carefully find the smaller box labeled <strong>Arduino UNO</strong>, and take out the device. It looks like this:</p>
+
+<p><img src="ArduinoUno_R3_Front.png" alt="Arduino UNO" style="width:300px"><strong>Arduino UNO</strong></p>
+
+<p>Use the included USB A-&gt;B cable to connect Arduino UNO to your Raspberry Pi. You should see some LEDs light up, especially the green power LED.</p>
+
+<h3 id="toc_4">Update the Software</h3>
+
+<ol>
+<li><p>We need to make sure we have the latest Arduino software updated on our Pi. Did you previously install the <code>arduino</code> program correctly (back in <strong>Lab1B</strong>)? Do you remember <strong><code>which</code></strong> command you can use to check if it&#39;s installed correctly?</p>
+
+<pre><code>$ which arduino
+/usr/bin/arduino
+</code></pre></li>
+<li><p>Let&#39;s update our known list of programs and version numbers and make sure we have the latest versions of everything.</p>
+
+<pre><code>$ sudo apt-get update
+$ sudo apt-get dist-upgrade
+</code></pre>
+
+<p>This will take a little while. In the meantime, learn more about Arduino and start talking with your lab partner about what you might want to do for your final project:<br>
+<a href="http://blog.arduino.cc/">http://blog.arduino.cc/</a></p>
+
+<p>And... we&#39;re back. Let&#39;s cleanup deprecated programs too:</p>
+
+<pre><code>$ sudo apt-get autoremove
+</code></pre></li>
+<li><p>We need to have the ability to program the Arduino and upload software via command line.</p>
+
+<pre><code>$ sudo apt-get install arduino-core arduino-mk
+</code></pre></li>
+<li><p>We need to make sure that our user account is a member of the <code>dialout</code> group <strong>AND</strong> the <code>tty</code> group so that we are authorized by the OS to communicate with the Arduino:</p>
+
+<pre><code>$ id
+$ man usermod
+$ sudo usermod -a -G dialout pi
+$ sudo usermod -a -G tty pi
+</code></pre></li>
+<li><p>Reboot your Pi to make sure the changes took effect:</p>
+
+<pre><code>$ sudo shutdown -r now
+</code></pre></li>
+<li><p>Verify it worked:</p>
+
+<pre><code>$ id
+</code></pre>
+
+<p>Is your user account now a member of the <code>dialout</code> group <strong>AND</strong> the <code>tty</code> group?</p>
+
+<pre><code>:
+</code></pre></li>
+<li><p>To do a test upload of software to our Arduino board, we will need to use a combination of <code>git</code>, <code>python</code>, and <code>ino</code> <em>(hat-tip <a href="http://openenergymonitor.blogspot.com/2013/12/developing-for-arduino-remotely-on.html">http://openenergymonitor.blogspot.com/2013/12/developing-for-arduino-remotely-on.html</a>)</em>.</p>
+
+<pre><code>$ man git
+</code></pre>
+
+<p><code>git</code> is an extremely powerful tool... but for right now, you can think of <code>git</code> simply as a a way to store and track all changes to files and easily transmit them over the Internet (it has compression, version control, and internet protocols all built-in). It&#39;s a convenient way to download and install software from other people. Here, we use <code>git</code> to download the software, and a <code>python</code> script will help us install it in the system.</p>
+
+<pre><code>$ sudo apt-get install python-dev
+$ sudo apt-get install python-setuptools
+$ cd ~
+$ mkdir -p github
+$ cd github
+$ git clone git://github.com/amperka/ino.git
+$ cd ino
+$ ls -la            # WOW, that&#39;s a lot of stuff!
+$ sudo python setup.py install
+</code></pre>
+
+<h4 id="toc_5">SECURITY NOTE: we will be downloading software over the internet, then running these installation programs as the root user. Raspberry Pi is easy enough to reinstall, but be aware of where you download software from, and which scripts you choose to give root access to as you progress in class.</h4>
+
+<p>Check if your software was installed correctly:</p>
+
+<pre><code>$ which ino
+/usr/local/bin/ino
+</code></pre>
+
+<p>We also need to have command-line serial communication (this is a serial communication protocol emulated over USB):</p>
+
+<pre><code>$ sudo apt-get install picocom
+$ which picocom
+/usr/bin/picocom
+</code></pre></li>
+<li><p>Finally, we need to check if the system can now recognize the Arduino device so that we can program it. With your Arduino connected to your Raspberry Pi, let&#39;s see which port the system sees it as:</p>
+
+<pre><code>$ dmesg | grep tty
+...
+...
+... ttyAMA0: USB ACM device
+</code></pre>
+
+<p>You should see a message with <code>ttyAMA0</code> or something like it. What <code>tty</code> string is used to connect to your Arduino?</p>
+
+<pre><code>:
+</code></pre>
+
+<p>Additionally, we have a minor problem with Arduino with the current version of Raspbian <em>(hat-tip: <a href="http://openmicros.org/index.php/articles/94-ciseco-product-documentation/raspberry-pi/288-programming-an-arduino-from-your-raspberry-pi-with-ciseco-hardware">http://openmicros.org/index.php/articles/94-ciseco-product-documentation/raspberry-pi/288-programming-an-arduino-from-your-raspberry-pi-with-ciseco-hardware</a>)</em>:</p>
+
+<blockquote>
+<p>The serial port on the GPIO that we want to use to communicate with the Arduino ... is /dev/ttyAMA0. Unfortunately, the Arduino IDE does not recognise this port. It prefers to use /dev/ttyS0. To get round this we link /dev/ttyS0 to /dev/ttyAMA0 and make sure this link is permanent. To do this, we need to create a file called <code>/etc/udev/rules.d/99-tty.rules</code> using a text editor.</p>
+</blockquote>
+
+<p>So, use nano to open and create this new file:</p>
+
+<pre><code>$ sudo nano /etc/udev/rules.d/99-tty.rules
+</code></pre>
+
+<p>Set the contents of the file to be the following:</p>
+
+<pre><code>KERNEL==”ttyAMA0″,SYMLINK+=”ttyS0″ GROUP=”dialout”
+KERNEL==”ttyACM0″,SYMLINK+=”ttyS1″ GROUP=”dialout”
+</code></pre>
+
+<p>Save and exit.</p></li>
+<li><p>We should now reboot again:</p>
+
+<pre><code>$ sudo shutdown -r now
+</code></pre></li>
+<li><p>Now let&#39;s check which permissions are set for the Arduino:</p>
+
+<pre><code>$ cd /dev
+$ ls -la | grep ttyA
+</code></pre>
+
+<p>What are the full permissions set for these tty ports?</p>
+
+<pre><code>:
+:
+:
+:
+</code></pre>
+
+<p><strong>Show this to your Instructor.</strong></p>
+
+<p>Now we should be all set to program your Arduino with Raspberry Pi.</p></li>
+</ol>
+
+<h3 id="toc_6">Blink!</h3>
+
+<p>Ok, it&#39;s time to create and install your first Arduino program, called a <strong>sketch</strong>. Arduino is written in it&#39;s own unique programming language, which is C-like but has some abbreviations and conventions we will learn about.</p>
+
+<ol>
+<li><p>We will use the <code>ino</code> command to generate a lot of the template files for us, and compile the ASCII-based <strong>sketch</strong> into a binary <code>.hex</code> file that the Arduino can natively use. <code>ino</code> will call the <code>picocom</code> program in the background to actually do the upload of the <code>.hex</code> file to the Arduino over the emulated USB-serial connection.</p>
+
+<pre><code>$ cd ~
+$ mkdir -p arduino/blink
+$ cd arduino/blink
+</code></pre></li>
+<li><p>Arduino comes with a set of templates we can learn from... and the <code>ino</code> program already knows how to copy them into your current directory to get ready for compilation. Here, we will grab the <code>blink</code> templates, build them, then upload them.</p>
+
+<p>Since <code>ino</code> wasn&#39;t installed in the conventional way, it doesn&#39;t have a man page:</p>
+
+<pre><code>$ man ino
+No manual entry for ino
+</code></pre>
+
+<p>Instead, <code>ino</code> has a brief help file, accessed with the <code>-h</code> flag:</p>
+
+<pre><code>$ ino -h
+</code></pre>
+
+<p>Ok, let&#39;s make a <strong>sketch</strong> patterned off the <strong>blink</strong> templates:</p>
+
+<pre><code>$ ino init -t blink
+$ ls -la
+</code></pre>
+
+<p>You should see two directories, a <code>lib</code> and a <code>src</code>. Inside <code>src</code> you will find the contents of the sketch. Let&#39;s see what&#39;s in there:</p>
+
+<pre><code>$ cd src
+$ ls -la
+$ cat sketch.ino
+
+#define LED_PIN 13
+
+void setup()
+{
+    pinmode(LED_PIN, OUTPUT);
+}
+
+void loop()
+{
+    digitalWrite(LED_PIN, HIGH);
+    delay(100);
+    digitalWrite(LED_PIN, LOW);
+    delay(900);
+}
+</code></pre>
+
+<p>That&#39;s all there is to a basic Arduino <strong>sketch</strong>. The <code>#define</code> command sets a global variable <code>LED_PIN</code> to the integer <code>13</code>. Next, the <code>setup()</code> loop gets called once immediately after the Arduino is powered on. You use the <code>setup()</code> loop to, you guessed it, setup your variables. Here we set the <code>LED_PIN</code> to respond to our commands with an output. The <code>loop()</code> is continously run as long as the Arduino has power. Inside this loop, we successively set the <code>LED_PIN</code> to be <code>HIGH</code> or <code>LOW</code>, corresponding to on and off in this case. We also have to insert delays in milliseconds between the on/off switches so that we can observe a change with our eyes. Although the Arduino might be considered <q>slow</q> by the standard of modern computers, it&#39;s now slouch! With the processor running at 16 MHz, if we don&#39;t pause the LED light, we won&#39;t see a change.</p>
+
+<p>Why don&#39;t we need a <strong>shebang</strong> in this Arduino sketch?</p>
+
+<pre><code>:
+</code></pre></li>
+<li><p>Let&#39;s build the <strong>sketch</strong> into a binary file:</p>
+
+<pre><code>$ cd ~/arduino/blink/
+$ ino build
+Searching for Board description file ...
+...
+Converting to firmware.hex
+</code></pre></li>
+<li><p>Check what was done; there should be a new <code>.build</code> directory:</p>
+
+<pre><code>$ ls -la
+$ cd .build
+$ ls -la
+$ cd uno
+$ ls -la
+$ cat firmware.hex
+</code></pre>
+
+<p>Describe the contents of the firmware.hex file:<br /><br /><br /></p></li>
+<li><p>Upload the firmware to your Arduino. Make sure the Arduino is connected to Raspberry Pi via the USB A-&gt;B cable.</p>
+
+<pre><code>$ cd ~/arduino/blink/
+$ ino upload
+Guessing serial port ... /dev/ttyACM0
+
+avrdude: AVR device initialized and ready to accept instructions
+...
+
+avrdude done.   Thank you.
+</code></pre>
+
+<p>Your Arduino UNO should now have a heartbeat. Is your LED blinking?</p>
+
+<h4 id="toc_7">TROUBLESHOOTING</h4>
+
+<p>If you have trouble connecting, carefully check which permissions are set for the Arduino:</p>
+
+<pre><code>$ cd /dev
+$ ls -la | grep ttyA
+</code></pre>
+
+<p>You can also tell <code>ino</code> to utilize a specific port of your choosing with the <code>-p</code> flag:</p>
+
+<pre><code>$ cd ~/arduino/blink/
+$ ino upload -p /dev/ttyACM0
+Guessing serial port ... /dev/ttyACM0
+
+avrdude: AVR device initialized and ready to accept instructions
+...
+
+avrdude done.   Thank you.
+</code></pre>
+
+<h4 id="toc_8">TECHNICAL NOTE: Arduino has a tiny amount of solid-state memory, meaning that even if you disconnect it, your uploaded <code>.hex</code> file will be saved and immediately run again (as if it were being run for the first time) when power is restored.</h4></li>
+</ol>
+
+<h3 id="toc_9">Assignments</h3>
+
+<p>Now you should see how we can modify your program to blink at different frequencies. You can edit the <code>sketch.ino</code> file using <code>nano</code>, save changes, then use <code>ino</code> to build and upload your <strong>sketch</strong>.</p>
+
+<p>For each Assignment below, make a new directory sketch based on the <strong>blink</strong> template.</p>
+
+<h4 id="toc_10">~/arduino/strobe</h4>
+
+<ol>
+<li><p>Experiment with different frequencies for blinking LED (try very long and very short durations). Find one that you like. Note that very short durations of the LED set <code>HIGH</code> will appear, to your eye, to be a very dim LED.</p>
+
+<p><strong>Show your Arduino&#39;s strobing LED to your Instructor.</strong></p></li>
+</ol>
+
+<h4 id="toc_11">~/arduino/pulse</h4>
+
+<ol>
+<li><p>Make a <strong>sketch</strong> where the LED will appear to slowly and smoothly brighten over 5 seconds, then dim again over 5 seconds. While we <u>could</u> use the basic <strong>blink</strong> or <strong>strobe</strong> code above, we would benefit from a more advanced workflow. Enter <strong>Blink Without Delay</strong>:<br>
+<a href="https://www.arduino.cc/en/Tutorial/BlinkWithoutDelay">https://www.arduino.cc/en/Tutorial/BlinkWithoutDelay</a></p>
+
+<blockquote>
+<p>Blink Without Delay</p>
+
+<p>Sometimes you need to do two things at once. For example you might want to blink an LED while reading a button press. In this case, you can&#39;t use delay(), because Arduino pauses your program during the delay(). If the button is pressed while Arduino is paused waiting for the delay() to pass, your program will miss the button press.</p>
+
+<p>This sketch demonstrates how to blink an LED without using delay(). It turns on the LED on and then makes note of the time. Then, each time through loop(), it checks to see if the desired blink time has passed. If it has, it toggles the LED on or off and makes note of the new time. In this way the LED blinks continuously while the sketch execution never lags on a single instruction.</p>
+</blockquote>
+
+<p>You can grab the <code>BlinkWithoutDelay.ino</code> file from:<br>
+<a href="https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/BlinkWithoutDelay.ino">https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/BlinkWithoutDelay.ino</a></p></li>
+</ol>
+
+<script type="text/javascript">
+self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook('End', function () {
+   MathJaxListener.invokeCallbackForKey_('End');
+})
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+    }
+})
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>
