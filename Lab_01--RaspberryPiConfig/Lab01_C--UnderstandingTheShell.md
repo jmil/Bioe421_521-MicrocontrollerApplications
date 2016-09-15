@@ -65,6 +65,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 		chmod
 		chgrp
 		adduser
+		userdel
 		addgroup
 		crontab
 		nano
