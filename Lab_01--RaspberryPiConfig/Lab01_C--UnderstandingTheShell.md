@@ -84,6 +84,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 		dash
 		sh
 		ssh
+		sshd
 		which
 		clear
 		
