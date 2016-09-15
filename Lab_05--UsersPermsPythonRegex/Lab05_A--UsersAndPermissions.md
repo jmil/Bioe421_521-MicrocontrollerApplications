@@ -58,13 +58,18 @@ Now we will add a new group of your choosing to the groups database, and then ad
 	Adding user pi to group awesometown
 	Done.
 
-Logout and login again to update the user info.
+Logout and login again to update the user info:
 
 	$ exit
 
+If that didn't work, try a `reboot`:
+	
+	$ sudo shutdown -r now
+
 What is your new group name? What is your new group ID (hint: it should be an integer)?
 
-	:
+	group name:
+	group ID:
 
 
 ###Collaborate
@@ -114,11 +119,16 @@ What are the full permissions for `home`? Is it a file or folder (and how can yo
 
 What is your `uid` and `gid` for your neighbor's Pi?
 
-	:
+	uid:
+	gid:
 	
-What groups is this user in?
+What groups is this user in? What command did you run to determine this?
 
-	:
+	groups  :
+			:
+			:
+	command used: 
+	
 
 You can disconnect from your neighbor's pi using `exit` which will close that shell:
 	
@@ -126,7 +136,7 @@ You can disconnect from your neighbor's pi using `exit` which will close that sh
 	$ exit
 
 
-####We are running the Raspian OS, which is a **Rasp**berry Pi customized version of Deb**ian** Linux. So, you can learn more about how users and permissions work on your Raspberry Pi by visiting here:
+####We are running the Raspian OS. Raspbian is a portmanteau of _Rasp_berry Pi and De_bian_ Linux because it is a customized version of Debian that works well on Raspberry Pi. So, you can learn more about how users and permissions work on your Raspberry Pi by learning about Debian Linux:
  
 ####http://wiki.debian.org/Permissions
 

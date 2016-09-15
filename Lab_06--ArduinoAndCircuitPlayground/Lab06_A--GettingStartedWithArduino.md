@@ -105,22 +105,6 @@ Use the included USB A->B cable to connect Arduino UNO to your Raspberry Pi. You
 	
 		:
 	
- 
-	Additionally, we have a minor problem with Arduino with the current version of Raspbian *(hat-tip: http://openmicros.org/index.php/articles/94-ciseco-product-documentation/raspberry-pi/288-programming-an-arduino-from-your-raspberry-pi-with-ciseco-hardware)*:
-	
-	> The serial port on the GPIO that we want to use to communicate with the Arduino ... is /dev/ttyAMA0. Unfortunately, the Arduino IDE does not recognise this port. It prefers to use /dev/ttyS0. To get round this we link /dev/ttyS0 to /dev/ttyAMA0 and make sure this link is permanent. To do this, we need to create a file called `/etc/udev/rules.d/99-tty.rules` using a text editor.
-
-
-	So, use nano to open and create this new file:
-	
-		$ sudo nano /etc/udev/rules.d/99-tty.rules
-
-	Set the contents of the file to be the following:
-	
-		KERNEL==”ttyAMA0″,SYMLINK+=”ttyS0″ GROUP=”dialout”
-		KERNEL==”ttyACM0″,SYMLINK+=”ttyS1″ GROUP=”dialout”
-
-	Save and exit.
 		
 1. We should now reboot again:
 	
@@ -213,7 +197,11 @@ Ok, it's time to create and install your first Arduino program, called a **sketc
 		$ ls -la
 		$ cat firmware.hex
 	
-	Describe the contents of the firmware.hex file:<br /><br /><br />
+	Describe the contents of the firmware.hex file:
+
+		:
+		:
+		:
 	
 1. Upload the firmware to your Arduino. Make sure the Arduino is connected to Raspberry Pi via the USB A->B cable.
 	
@@ -226,8 +214,12 @@ Ok, it's time to create and install your first Arduino program, called a **sketc
 		
 		avrdude done.   Thank you.
 	
-	Your Arduino UNO should now have a heartbeat. Is your LED blinking?
+	Your Arduino UNO should now have a heartbeat. Is your LED blinking? Show your instructor.
 	
+		:
+		:
+		:
+
 	
 	#### TROUBLESHOOTING
 	

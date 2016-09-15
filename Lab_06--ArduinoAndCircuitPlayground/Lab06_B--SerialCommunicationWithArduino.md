@@ -47,13 +47,13 @@ Although currently connected by USB, Arduino is an independent computer. So we c
 
 1. Fear not! We can use `python` to establish a new serial link, reboot your Arduino, and then monitor the output from the Arduino's running program. This is a pattern we will utilize often.
 
-	Find the ttyA* setting for your Arduino as we did for Lab 6A:
+	Find the `ttyA*` setting for your Arduino as we did for the previous lab:
 	
 			$ dmesg | grep tty
 			...
 			...
 			... ttyACM0: USB ACM device
-	Recall that you should see a message with ttyACM0 or something like it.
+	Recall that you should see a message with `ttyACM0` or something like it.
 
 1. Make a new python script `~/arduino/ascii/python-arduino-read.py` with the following contents (making sure you match your specific `ttyACM0` string (from above) to what `dmesg` gave you):
 
