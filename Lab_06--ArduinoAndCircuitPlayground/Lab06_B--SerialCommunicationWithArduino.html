@@ -487,7 +487,7 @@ $
 <p>The output from this program is sent to the serial link (via <code>Serial.println</code> for <q>serial, print line</q>). But the serial link is disconnected after the <code>.hex</code> upload.</p></li>
 <li><p>Fear not! We can use <code>python</code> to establish a new serial link, reboot your Arduino, and then monitor the output from the Arduino&#39;s running program. This is a pattern we will utilize often.</p>
 
-<p>Find the ttyA* setting for your Arduino as we did for Lab 6A:</p>
+<p>Find the <code>ttyA*</code> setting for your Arduino as we did for the previous lab:</p>
 
 <pre><code>    $ dmesg | grep tty
     ...
@@ -495,7 +495,7 @@ $
     ... ttyACM0: USB ACM device
 </code></pre>
 
-<p>Recall that you should see a message with ttyACM0 or something like it.</p></li>
+<p>Recall that you should see a message with <code>ttyACM0</code> or something like it.</p></li>
 <li><p>Make a new python script <code>~/arduino/ascii/python-arduino-read.py</code> with the following contents (making sure you match your specific <code>ttyACM0</code> string (from above) to what <code>dmesg</code> gave you):</p>
 
 <pre><code>#! /usr/bin/python
