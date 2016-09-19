@@ -96,7 +96,3 @@ What was your output? Was it different than you expected? How so?
 
 Using this basic structure for `python` regex searching taking text from command-line as the argument, follow the rest of the tutorial by creating a new file for each row in the tutorial.
 
-Figure out a way to suppress the very first `arg` so that the script-name itself is not taken as an input. Explain:
-
-	:
-

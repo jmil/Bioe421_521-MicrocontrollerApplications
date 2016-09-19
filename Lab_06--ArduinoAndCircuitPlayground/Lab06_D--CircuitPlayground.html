@@ -1,0 +1,437 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>Lab06_D--CircuitPlayground</title>
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important {
+	color: #e90;
+}
+
+.token.important {
+	font-weight: bold;
+}
+
+.token.entity {
+	cursor: help;
+
+</style>
+</head>
+<body>
+<h1 id="toc_0">Bioe 421/521: Microcontroller Applications</h1>
+
+<h4 id="toc_1">Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
+
+<h2 id="toc_2">Lab 6C. The Circuit Playground</h2>
+
+<p>The Arduino is a beloved device because it&#39;s incredibly versatile -- in previous years of this class we used the DangerShield which lets you use those unused pins all over the Arduino Uno board. If you&#39;re interested in DangerShield you can read more in the <code>Attachments</code> folder of this lab repository and ask your instructor to see an assembled board:<br>
+<a href="https://www.sparkfun.com/products/11649">https://www.sparkfun.com/products/11649</a><br>
+<a href="https://github.com/sparkfun/DangerShield">https://github.com/sparkfun/DangerShield</a></p>
+
+<p>But there&#39;s a new Arduino-compatible board in town, the Circuit Playground made by Adafruit!</p>
+
+<p><u>Adafruit&#39;s Circuit Playground:</u><br>
+<img src="circuit_playground.jpg" alt="circuit"></p>
+
+<p>It&#39;s so purty! But, you ask, what&#39;s all that neato stuff all over the board?!?!?! From <a href="Adafruit.com">Adafruit.com</a>:<br>
+<a href="http://www.adafruit.com/products/3000">http://www.adafruit.com/products/3000</a></p>
+
+<blockquote>
+<p>Would you like to learn electronics, with an all-in-one board that has sensors and LEDs built in? Circuit Playground is here - and it&#39;s the best way to practice programming on real hardware with no soldering or sewing required!</p>
+
+<p>Circuit Playground features an ATmega32u4 processor, just like our popular Flora. The board&#39;s also round and has alligator-clip pads around it so you don&#39;t have to solder or sew to make it work. You can power it from USB, a AAA battery pack, or with a Lipoly battery (for advanced users). Just program your code into the board then take it on the go!</p>
+
+<p>• ATmega32u4 Processor, running at 3.3V and 8MHz<br>
+• MicroUSB port for programming and debugging with Arduino IDE<br>
+• USB port can act like serial port, keyboard, mouse, joystick or MIDI</p>
+
+<p>Circuit Playground has built-in USB support. Built in USB means you plug it in to program it and it just shows up.  All you really need is a Micro-B data/sync USB cable - not included! With the new 1.6.4+ Arduino IDE, it takes only a few seconds to add support. The Circuit Playground has USB HID support, so it can act like a mouse or keyboard and attach directly to computers.</p>
+
+<p>Circuit Playground now works with Codebender as well!</p>
+
+<p>Here&#39;s some of the great goodies baked in:</p>
+
+<p>• 10 x mini NeoPixels, each one can display any color<br>
+• 1 x Motion sensor (LIS3DH triple-axis accelerometer with tap detection, free-fall detection)<br>
+• 1 x Temperature sensor (thermistor)<br>
+• 1 x Light sensor (phototransistor)<br>
+• 1 x Sound sensor (MEMS microphone)<br>
+• 1 x Mini speaker (magnetic buzzer)<br>
+• 2 x Push buttons, left and right<br>
+• 1 x Slide switch<br>
+• 8 x alligator-clip friendly input/output pins<br>
+• Includes I2C, UART, and 4 pins that can do analog inputs/PWM output<br>
+• All 8 pads can act as capacitive touch inputs<br>
+• Green <q>ON</q> LED so you know its powered<br>
+• Red <q>#13</q> LED for basic blinking<br>
+• Reset button</p>
+
+<p>We&#39;ve started out with a Developer Edition of Circuit Playground. This version is designed for people who have a little experience with Arduino already, who want to help build &amp; document projects. There might be minor hardware or software bugs. Once we feel like the design is really solid we&#39;ll revise/re-release it into a universal edition for anyone to use!</p>
+</blockquote>
+
+<p>Wow, that&#39;s a lot of stuff! Let&#39;s get setup to connect and program your Circuit Playground using Raspberry Pi.</p>
+
+<h3 id="toc_3">Install the latest Arduino</h3>
+
+<ol>
+<li><p>To program the Circuit Playground, we just load another Arduino sketch. Yay! But first we have to give <code>arduino</code> the proper library files so it can understand Circuit Playground. This is easiest to do in the latest version of <code>arduino</code>, which is not yet part of the lastest build of Raspbian OS. Let&#39;s first uninstall the default <code>arduino</code> environment and then manually grab and install a later version:</p>
+
+<pre><code>$ sudo apt-get remove arduino
+$ cd ~/Downloads
+$ wget https://downloads.arduino.cc/arduino-1.6.11-linuxarm.tar.xz
+$ tar -xvf arduino-1.6.11-linuxarm.tar.xz
+$ ls -la
+$ cd arduino-1.6.11
+$ sudo ./install.sh
+</code></pre>
+
+<p>When you call <code>sudo ./install.sh</code>, which program is actually used to process the <code>install.sh</code> file? How do you know?</p>
+
+<pre><code>program:
+explanation:
+</code></pre></li>
+<li><p>Connect your Circuit Playground to your Raspberry Pi with the included micro USB cable. It should light up with the default sketch. But we still need to configure your Raspberry Pi to program it!</p></li>
+<li><p>Launch the Arduino IDE (Recall: <code>Start Menu</code> -&gt; <code>Programming</code> -&gt; <code>Arduino IDE</code>). What version of <code>arduino</code> are you running? Show your instructor:</p>
+
+<pre><code>:
+</code></pre></li>
+</ol>
+
+<h3 id="toc_4">Configure Arduino IDE for Circuit Playground</h3>
+
+<ol>
+<li><p>We need to tell the Arduino IDE about the Circuit Playground. Hat-tip: <a href="https://learn.adafruit.com/add-boards-arduino-v164/setup">https://learn.adafruit.com/add-boards-arduino-v164/setup</a></p>
+
+<p>Open <code>File</code> -&gt; <code>Preferences</code> and very carefully type the following URL into the <code>Additional Boards Manager URLs:</code> field:</p>
+
+<pre><code>https://adafruit.github.io/arduino-board-index/package_adafruit_index.json 
+</code></pre>
+
+<p>It should look like this:</p>
+
+<p><strong>Additional Boards Manager URL:</strong><br>
+<img src="Prefs-BoardManagerURL.png" alt="Boards Search Result"></p>
+
+<p>Click <code>&lt;OK&gt;</code>.</p></li>
+<li><p>Now, open <code>Tools</code> -&gt; <code>Board:...</code> -&gt; <code>Boards Manger...</code></p></li>
+<li><p>In the search field at the top, type <code>adafruit</code>. Install the latest version of <code>Adafruit AVR Boards</code> as shown in the following screenshots.</p>
+
+<p><strong><q>adafruit</q> boards search result:</strong><br>
+<img src="BoardsManager-Search.png" alt="Boards Search Result"></p>
+
+<p><strong><q>Adafruit AVR Boards</q> installing:</strong><br>
+<img src="BoardsManager-Install.png" alt="Boards Search Result"></p>
+
+<p><strong><q>Adafruit AVR Boards</q> installation completed:</strong><br>
+<img src="BoardsManager-Installed.png" alt="Boards Search Result"></p></li>
+<li><p>After successful installation, make sure you have all the Adafruit Boards listed under <code>Tools</code> -&gt; <code>Board:...</code>. Select <code>Adafruit Circuit Playground</code>.</p>
+
+<p><strong><q>Adafruit Circuit Playground</q> board selected:</strong><br>
+<img src="Adafruit-Boards.png" alt="Boards Search Result"></p></li>
+<li><p>Now we need to install the Circuit Playground Library files. Follow a similar workflow as above</p></li>
+<li><p>In the Arduino IDE, navigate to <code>Sketch</code> -&gt; <code>Include Library</code> -&gt; <code>Manage Libraries...</code>. Search for <code>circuit</code>, and install the latest version of <code>Adafruit Circuit Playground</code>.</p>
+
+<p><strong>Search for <q>circuit</q> in the Library Manager:</strong><br>
+<img src="LibraryManager-Search.png" alt="Boards Search Result"></p>
+
+<p><strong>Installing <q>Adafruit AVR Boards</q>:</strong><br>
+<img src="LibraryManager-Install.png" alt="Boards Search Result"></p>
+
+<p><strong>Library installation successful:</strong><br>
+<img src="LibraryManager-Installed.png" alt="Boards Search Result"></p></li>
+<li><p>Check that it was installed correctly. You should see a new entry under <code>Sketch</code> -&gt; <code>Include Library</code> -&gt; <code>Adafruit Circuit Playground</code> (down under the <code>Recommended libraries</code> heading).</p>
+
+<p><strong><q>Adafruit Circuit Playground</q> library is available:</strong><br>
+<img src="LibraryMenu-Available.png" alt="Boards Search Result"></p></li>
+<li><p>Phew. Ok, now we need to download a bunch of sample programs your Instructor has pulled together from various official and unofficial sources. In a terminal, let&#39;s grab the code using <code>git</code>:</p>
+
+<pre><code>$ mkdir -p ~/github
+$ cd ~/github
+$ which git
+$ git clone https://github.com/jmil/Adafruit_CircuitPlayground.git
+$ ls -la
+$ cd Adafruit_CircuitPlayground
+$ ls -la
+</code></pre></li>
+</ol>
+
+<h3 id="toc_5">Learn with Circuit Playground Sketches</h3>
+
+<p>A Circuit Playground sketch will generally call the <code>Adafruit_CircuitPlayground.h</code> file (using <code>#include</code>) which allows the sketch to access the functions optimized for this board. The simplest one is <code>CircuitPlayground.begin();</code> which is typically seen in the <code>setup()</code> function. Work with your lab partner to explain each line of the following source code for <code>Hello_Blink.ino</code>:</p>
+
+<pre><code>#include &lt;Adafruit_CircuitPlayground.h&gt;
+
+void setup() {
+  CircuitPlayground.begin();
+}
+
+void loop() {
+  CircuitPlayground.redLED(HIGH);
+  delay(500);
+  CircuitPlayground.redLED(LOW);
+  delay(500);
+}
+</code></pre>
+
+<p>To upload to Circuit Playground, first <strong>make sure</strong> <code>Adafruit Circuit Playground</code> is selected under <code>Tools</code> -&gt; <code>Board</code>.</p>
+
+<p>Next, <strong>make sure</strong> the correct port is selected under <code>Tools</code> -&gt; <code>Port</code>.</p>
+
+<p>A successful compilation and upload will show in the Arduino IDE with the <q>Done uploading.</q> statement at the bottom left of the window:</p>
+
+<p><strong>Successful Upload of <q>Hello_Blink.ino</q>:</strong><br>
+<img src="Hello-Blink-Uploaded.png" alt="Boards Search Result"></p>
+
+<h2 id="toc_6">Assignments</h2>
+
+<p>Work from the <code>Hello_CircuitPlayground</code> folder in the <code>examples</code> folder of the <code>~/github/Adafruit_CircuitPlayground</code>. Open each <code>.ino</code> sketch, read the contents carefully with your lab partner, and compile and upload the sketch to your Circuit Playground.</p>
+
+<h4 id="toc_7"><strong>BE SURE TO CHECK THE SERIAL MONITOR IN Arduino</strong> to read the live output of programs that do this. Did you find the Serial Monitor button?</h4>
+
+<p>The following descriptions are courtesy of the <code>README.md</code> file in this folder.</p>
+
+<p>A set of very basic example sketches to demonstrate the various components<br>
+of the <a href="https://www.adafruit.com/products/3000">Circuit Playground</a>.<br>
+These sketches were tested and verified with:</p>
+
+<ul>
+<li>Circuit Playground Developer Edition</li>
+<li>Ubuntu 16.04 LTS</li>
+<li>Arduino IDE 1.6.11</li>
+<li>Adafruit AVR Boards 1.4.9</li>
+<li>Adafruit Circuit Playground Library 1.6.1</li>
+</ul>
+
+<h3 id="toc_8">Hello_Blink</h3>
+
+<p>Blinks the little red LED next to the micro USB connector once per second.</p>
+
+<h3 id="toc_9">Hello_SlideSwitch</h3>
+
+<p>The position (+ or -) of the slide switch is sent to the serial monitor once<br>
+per second.</p>
+
+<pre><code>Slide Switch: -
+Slide Switch: +
+Slide Switch: +
+</code></pre>
+
+<h3 id="toc_10">Hello_Buttons</h3>
+
+<p>The position (UP or DOWN) of the two push buttons are sent to the serial<br>
+monitor once per second.</p>
+
+<pre><code>Left Button:   UP   Right Button:   UP
+Left Button: DOWN   Right Button:   UP
+Left Button:   UP   Right Button:   UP
+Left Button:   UP   Right Button: DOWN
+</code></pre>
+
+<h3 id="toc_11">Hello_LightSensor</h3>
+
+<p>The reading (0-1023) from the light sensor is sent to the serial monitor once<br>
+per second.</p>
+
+<pre><code>Light Sensor: 962
+Light Sensor: 954
+Light Sensor: 275
+Light Sensor: 192
+Light Sensor: 688
+</code></pre>
+
+<h3 id="toc_12">Hello_Temperature</h3>
+
+<p>The temperature is sent to the serial monitor once per second.</p>
+
+<pre><code>tempC: 28.25  tempF: 83.02
+tempC: 29.71  tempF: 85.64
+tempC: 30.72  tempF: 87.30
+tempC: 31.85  tempF: 89.32
+</code></pre>
+
+<h3 id="toc_13">Hello_Accelerometer</h3>
+
+<p>The readings (in m/s<sup>2</sup>) from the 3 axes of the accelerometer are sent<br>
+to the serial monitor once per second. (1G ~= 9.8 m/s<sup>2</sup>)</p>
+
+<pre><code>X: -0.33  Y: 2.41  Z: 9.40
+X: -1.25  Y: 4.20  Z: 1.86
+X: -7.95  Y: -3.50  Z: -2.47
+X: 0.11  Y: -8.38  Z: 2.25
+X: -2.28  Y: 2.73  Z: 9.10
+</code></pre>
+
+<h3 id="toc_14">Hello_SoundSensor</h3>
+
+<p>The reading (0-1023) from the sound sensor (microphone) is sent to the serial<br>
+monitor once per second.</p>
+
+<pre><code>Sound Sensor: 339
+Sound Sensor: 339
+Sound Sensor: 1023
+Sound Sensor: 10
+Sound Sensor: 15
+Sound Sensor: 1023
+Sound Sensor: 336
+</code></pre>
+
+<h3 id="toc_15">Hello_Speaker</h3>
+
+<p>Plays a 500Hz tone for 0.1 seconds on the speaker, followed by 1 second of<br>
+silence.</p>
+
+<h3 id="toc_16">Hello_NeoPixels</h3>
+
+<p>Clears all pixels for 0.5 seconds then displays colors on the fist 5 pixels<br>
+using individual 8-bit values and the same colors on the next 5 pixels using<br>
+24-bit values. After 5 seconds, this repeats.</p>
+
+<h2 id="toc_17">Shutdown Procedure</h2>
+
+<ol>
+<li><p>Shutdown your Pi properly:</p>
+
+<pre><code>$ sudo shutdown -h now
+</code></pre>
+
+<p>Unplug everthing and restore the Windows desktop computer to a working state.</p></li>
+</ol>
+
+<script type="text/javascript">
+self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook('End', function () {
+   MathJaxListener.invokeCallbackForKey_('End');
+})
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+    }
+})
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>

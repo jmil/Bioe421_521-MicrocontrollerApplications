@@ -2,7 +2,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Lab06_C--DangerShield</title>
+<title>Lab06_C--UseTheMouse</title>
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -442,291 +442,133 @@ pre[class*="language-"] {
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
 
-<h2 id="toc_2">Lab 6C. The Danger Shield</h2>
+<h2 id="toc_2">Lab 6C. Use the Mouse</h2>
 
-<p>The Arduino is a beloved device because it&#39;s incredibly versatile -- see all those unused pins all over the board? Let&#39;s use them! Because Arduino is open-source, lots of people have built custom hardware circuit boards that snap right into all those ports. These specialty boards are often even larger than the Arduino itself, so they are called <strong>shields</strong>. One of my favorites Arduino shields is the open-source <strong>Danger Shield</strong>, developed by Zach Hoeken Smith and now commercialized by many companies including SparkFun. Zach named it the danger shield because it is dangerously-awesome -- it&#39;s got rad sliders, regular LEDs, temperature and light sensors, clicky buttons, a 7-segment LED, a buzzer speaker, and now a capacitive touch sensor! We are utilizing hardware and code from:<br>
-<a href="https://www.sparkfun.com/products/11649">https://www.sparkfun.com/products/11649</a><br>
-<a href="https://github.com/sparkfun/DangerShield">https://github.com/sparkfun/DangerShield</a></p>
+<p>Upt until now, we have only used a keyboard as the human-machine interface. You&#39;ve now mastered a huge swath of skills and knowledge behind the core of how UNIX-like machines work and how to do lots of tasks. Today let&#39;s plug into the graphical user interface <strong>(GUI)</strong> and mouse. We held back doing this until now for three reasons: <strong>1)</strong> As we learned in class, the keyboard is the most <em>expressive</em> human-machine interface, <strong>2)</strong> it&#39;s still often faster to use the keyboard in a terminal for most things, and <strong>3)</strong> when things go wrong in the GUI, you might often need a keyboard and the <strong>CLI</strong> to diagnose or fix problems (remember <code>killall</code>?).</p>
 
-<h3 id="toc_3">BE CAREFUL: YOU CAN EASILY RUIN THE FRAGILE PINS ON THE BOTTOM OF THE DANGER SHIELD! GET INSTRUCTION FROM YOUR INSTRUCTOR. YOU ARE RESPONSIBLE FOR THE MAINTENANCE OF YOUR DANGER SHIELD.</h3>
+<p>Note that the <strong>GUI</strong> is just another program (albeit much more complicated than the ones we&#39;ve used so far). The entire interface is a single shell instance that you will be interfacing with using the keyboard <strong>AND</strong> the mouse.</p>
 
 <ol>
-<li><p>To program the Danger Shield, we just load another Arduino sketch. However, the Capacitive Touch sensor is not a standard Arduino part. So we need to load that library into the <code>lib</code> directory that was created by <code>ino</code>. The Danger Shield default sketch is available in another <code>git</code> repository. Study this code carefully and make sure you understand what is going on:</p>
+<li><p>Let&#39;s set the Desktop environment to be the default login on your Pi:</p>
 
-<pre><code>$ cd ~
-$ mkdir -p arduino/dangershield
-$ cd arduino/dangershield
-$ ino init -t blink
-$ cd lib
-$ git clone https://github.com/PaulStoffregen/CapacitiveSensor
-$ cd ../src
-$ rm sketch.ino
-$ git clone https://github.com/sparkfun/DangerShield
-$ cd ..
-$ pwd
-$ ino build
-...
-Converting to firmware.hex
-$ ino upload
+<pre><code>$ sudo raspi-config
 </code></pre>
 
-<p>Your Danger Shield should start blinking and going crazy as you move the sliders all around and click buttons. Check the <strong>L</strong>ight <strong>D</strong>ependent <strong>R</strong>esistor (LDR)... what happens when you block the light going there? <br /> <br /></p>
+<p>Select option <code>Boot Options</code> then <code>Desktop Autologin Desktop GUI, automatically logged in as &#39;pi&#39; user</code>. Then select <strong><code>&lt;Finish&gt;</code></strong> and then <strong><code>&lt;Yes&gt;</code></strong> to Reboot.</p>
 
-<p>With your lab partner, carefully inspect the contents of the Danger Shield Arduino sketch. The sketch is located at:</p>
+<p>You should now boot into the Desktop environment with mouse control.</p></li>
+<li><p><strong>Troubleshooting:</strong> If this doesn&#39;t auto-login for you, you can just login via command-line and issue the following command to launch the GUI:</p>
 
-<pre><code>~/arduino/dangershield/src/DangerShield/Firmware/DangerShield/DangerShield.ino
-</code></pre>
-
-<p>Can you find the <code>setup()</code> and <code>loop()</code> sections? How are comments made?</p></li>
-</ol>
-
-<h3 id="toc_4">Assignment</h3>
-
-<ol>
-<li><p>Copy (remember <code>cp</code>) your <code>python-arduino-read.py</code> script into your <code>~/arduino/dangershield/</code> directory. With the script running, move sliders and switches and press and release the capacitive touch sensor so you have some fluctuating vaules in your <code>output.txt</code> file. Get a solid 2 minutes or more of data capture before you terminate the program. Check the contents of the <code>output.txt</code> file to make sure you got a good range of data. How many bytes is your file?<br /><br /></p></li>
-<li><p>Zip up the arduino folder for Today&#39;s lab to make a single .zip file</p>
-
-<pre><code>$ cd ~
-$ zip -r Team09-LambdaFTW_Lab06.zip arduino
-</code></pre></li>
-<li><p><code>scp</code> your team&#39;s homework .zip file to your Instructor&#39;s RaspberryPi. Your Instructor will provide you with the value to enter for <strong>IP_ADDRESS</strong>. Use your same <code>raspberry</code> password (note that you are logging in as user <code>student</code>):</p>
-
-<pre><code>$ man scp
-$ scp Team09-LambdaFTW_Lab06.zip student@IP_ADDRESS:/home/student/
+<pre><code>$ startx
 </code></pre></li>
 </ol>
 
-<h2 id="toc_5">Shutdown Procedure</h2>
+<h2 id="toc_3">Assignments</h2>
 
 <ol>
-<li><p>Shutdown your Pi properly:</p>
+<li><p>Change your desktop background. Make sure the image you choose off the web has a legal, free open access license. I recommend:<br>
+<a href="http://pixabay.com/">http://pixabay.com/</a></p></li>
+<li><p>Open an instance of LXTerminal (remember the <code>&lt;control-alt-T&gt;</code> key combo?). This is your handy bash shell! You can do everything here we have done in class so far. Check what directory you are in. What command did you run to check the current directory?</p>
 
-<pre><code>$ sudo shutdown -h now
+<pre><code>$ 
+</code></pre></li>
+<li><p>Install <code>arduino</code> via:</p>
+
+<pre><code>$ sudo apt-get update
+$ sudo apt-get dist-upgrade
+$ sudo apt-get install arduino 
+</code></pre></li>
+<li><p>Let&#39;s install <code>processing</code>, which is now compatible with Raspberry Pi but hasn&#39;t yet made it into the official Raspbian repository (so you cannot yet install it with <code>sudo apt-get install processing</code>). However, we can install <code>processing</code> via the script located at it&#39;s webpage for linux systems with the ARM architecture:<br>
+<a href="https://processing.org/download/install-arm.sh">https://processing.org/download/install-arm.sh</a></p>
+
+<p>First let&#39;s take a look at this script:</p>
+
+<pre><code>$ wget -qO- https://processing.org/download/install-arm.sh | more
 </code></pre>
 
-<p>Unplug everthing and restore the Windows desktop computer to a working state.</p></li>
+<p>What command will we need to use to run this script?</p>
+
+<pre><code>: 
+</code></pre>
+
+<p>Where is this command located on your hard drive? How do you know?</p>
+
+<pre><code>command: $ 
+location:
+explanation: 
+</code></pre>
+
+<p>We can run this script by piping the output from <code>wget</code> directly to the <code>sudo</code> version of the command needed to run this script. So what is your single-line program to install <code>processing</code>?</p>
+
+<pre><code>$ 
+</code></pre>
+
+<p>Explain the security risks with piping a script you download over the internet to the <code>sudo</code> version of this command:</p>
+
+<pre><code>:
+:
+:
+:
+:
+:
+:
+:
+:
+: 
+</code></pre></li>
+<li><p>Check that everything is installed correctly. What command should you run to find where <code>arduino</code> and <code>processing</code> were installed? And what location did you find:</p>
+
+<pre><code>command: $ 
+output: 
+command: $
+output: 
+</code></pre></li>
+<li><p>Finally, we need to uninstall <code>libgles2-mesa</code> because it can cause problems with <code>processing</code>:</p>
+
+<pre><code>$ sudo apt-get remove libgles2-mesa
+</code></pre></li>
+<li><p>If everything is installed correctly, let&#39;s reboot:</p>
+
+<pre><code>$ reboot
+</code></pre></li>
 </ol>
 
-<h2 id="toc_6">Appendix</h2>
+<h4 id="toc_4">Processing</h4>
 
-<p>Contents of DangerShield.ino, <code>git</code> commit: df57294493beed14e043b4a15eb1c5230e0c466c</p>
+<ol>
+<li><p>In the GUI, open <code>Processing</code> (<code>Start Menu</code> -&gt; <code>Programming</code> -&gt; <code>Processing</code>), and get familiar with the GUI version of the application. Try out some of the example programs via <code>File</code> -&gt; <code>Examples...</code>. Run and play with the following demos. You can quit a running processing program using the <code>&lt;esc&gt;</code> key.</p>
 
-<pre><code>/*
- Danger Shield Example Sketch
- Written by Chris Taylor 3-3-2010
- Tweaked by Nathan Seidle 10-22-2012
- Spark Fun Electronics
+<p>• <code>Graphics</code> -&gt; <code>Wiggling</code><br>
+Make sure you press the <code>&lt;w&gt;</code> key after the program has launched to see an even more dynamic animation. </p>
 
- This code is public domain but you buy me a beer if you use this and we meet someday (Beerware license).
- The project is OSHW and the schematic is released under Creative Commons Share Alike w/ Attribution v3.0
+<p>• <code>Graphics</code> -&gt; <code>Ribbons</code><br>
+Use the mouse to rotate the 3D protein structure.</p>
 
- This is the example code, created in Arduino v1.0.1 for the Danger Shield product by SparkFun Electronics. 
- It demonstrates each feature of the shield. Move one of the sliders to get a different sound out of the buzzer. 
- Move another slider to change the digit being displayed on the seven segment display. Move the last slider to 
- change the brightness of one of the two status LEDs. Press one of the large buttons to toggle on/off the status LED. 
- Cover the light sensor to &#39;scare&#39; the unit. Open a terminal window at 9600bps if you&#39;d like to see the
- values change over the serial connection.
+<p>• <code>Graphics</code> -&gt; <code>Particles</code><br>
+Move the mouse to dynamically set the location of particle emissions.</p>
 
- This code works best with product SKU 10115: https://www.sparkfun.com/products/10115
+<p><strong>NOTE:</strong> We will come back to <code>processing</code> later in the semester, and you may want to use it for your final project.</p></li>
+</ol>
 
- Knock sensor, new temp sensor: https://www.sparkfun.com/products/10115
- Cap touch sensor: https://www.sparkfun.com/products/10570
+<h4 id="toc_5">Arduino</h4>
 
- The idea of a Danger Shield was originally created by Zach Hoeken (http://www.zachhoeken.com/) released CC-SA.
+<ol>
+<li><p>Next, in the GUI, open <code>Arduino</code> (<code>Start Menu</code> -&gt; <code>Programming</code> -&gt; <code>Arduino IDE</code>), and get familiar with the GUI version of the application. With your Arduino Uno plugged in, you need to make sure you correctly setup your Arduino board:</p>
 
- */
+<p><code>Tools</code> -&gt; <code>Board</code> -&gt; <code>Arduino Uno</code> </p>
 
-// Shift register bit values to display 0-9 on the seven-segment display
-const byte ledCharSet[10] = {
-  B00111111, 
-  B00000110, 
-  B01011011, 
-  B01001111, 
-  B01100110, 
-  B01101101, 
-  B01111101, 
-  B00000111, 
-  B01111111, 
-  B01101111
-};
+<p><code>Tools</code> -&gt; <code>Programmer</code> -&gt; <code>AVRISP mkII</code></p>
 
-// Pin definitions
+<p><code>Tools</code> -&gt; <code>Serial Port</code> -&gt; probably the <code>ACM0</code> setting we used in last couple classes</p></li>
+<li><p>Check that the bottom right of the Arduino window now says something like:</p>
 
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-//These pin definitions are for v1.6 of the board
-/*
-#define SLIDER1  A0
- #define SLIDER2  A1
- #define SLIDER3  A2
- #define LIGHT    A3
- #define TEMP     A4
- #define KNOCK    A5
+<pre><code>Arduino Uno on /dev/ttyACM0
+</code></pre></li>
+<li><p>Identify the <code>Verify</code> and <code>Upload</code> buttons. <code>Verify</code> will try to compile the current sketch for the Board you have selected in the menus.</p></li>
+<li><p>Try to verify and upload the <code>Blink</code> tutorial which is available via <code>File</code> -&gt; <code>Examples</code> -&gt; <code>01.Basics</code> -&gt; <code>Blink</code>. That should upload fine.</p></li>
+</ol>
 
- #define DATA     4
- #define LED1     5
- #define LED2     6
- #define LATCH    7
- #define CLOCK    8
- #define BUZZER   9
- #define BUTTON1  10
- #define BUTTON2  11
- #define BUTTON3  12
- //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- */
-
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-//These pin definitions are for v1.7 of the board
-#define SLIDER1  A2 //Matches button 1
-#define SLIDER2  A1 
-#define SLIDER3  A0 //Matches button 3
-#define LIGHT    A3
-#define TEMP     A4
-
-#define BUZZER   3
-#define DATA     4
-#define LED1     5
-#define LED2     6
-#define LATCH    7
-#define CLOCK    8
-#define BUTTON1  10
-#define BUTTON2  11
-#define BUTTON3  12
-//v1.7 uses CapSense
-//This relies on the Capactive Sensor library here: http://playground.arduino.cc/Main/CapacitiveSensor
-#include &lt;CapacitiveSensor.h&gt;
-
-CapacitiveSensor capPadOn92 = CapacitiveSensor(9, 2);   //Use digital pins 2 and 9,
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-int avgLightLevel;
-
-void setup()
-{
-  Serial.begin(9600);
-
-  //Initialize inputs and outputs
-  pinMode(SLIDER1, INPUT);
-  pinMode(SLIDER2, INPUT);
-  pinMode(SLIDER3, INPUT);
-  pinMode(LIGHT, INPUT);
-  pinMode(TEMP, INPUT);
-
-  //Enable internal pullups
-  pinMode(BUTTON1, INPUT_PULLUP);
-  pinMode(BUTTON2, INPUT_PULLUP);
-  pinMode(BUTTON3, INPUT_PULLUP);
-
-  pinMode(BUZZER, OUTPUT);
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
-
-  pinMode(LATCH, OUTPUT);
-  pinMode(CLOCK, OUTPUT);
-  pinMode(DATA, OUTPUT);
-
-  //Initialize the capsense
-  capPadOn92.set_CS_AutocaL_Millis(0xFFFFFFFF); // Turn off autocalibrate on channel 1 - From Capacitive Sensor example sketch
-
-  Serial.println(&quot;Danger Shield Component Test&quot;);  
-
-  //Take 16 readings from the light sensor and average them together
-  avgLightLevel = 0;
-  for(int x = 0 ; x &lt; 16 ; x++)
-    avgLightLevel += analogRead(LIGHT);
-  avgLightLevel /= 16;
-  Serial.print(&quot;Avg: &quot;);
-  Serial.println(avgLightLevel);
-
-}
-
-void loop()
-{
-  //Read inputs
-  int val1 = analogRead(SLIDER1);
-  int val2 = analogRead(SLIDER2);
-  int val3 = analogRead(SLIDER3);
-  int lightLevel = analogRead(LIGHT);
-  long temperature = analogRead(TEMP);
-
-  //Read the cap sense pad
-  long capLevel = capPadOn92.capacitiveSensor(30);
-
-  //Do conversion of temp from analog value to digital
-  temperature *= 5000; //5V is the same as 1023 from the ADC (12-bit) - example, the ADC returns 153 * 5000 = 765,000
-  temperature /= 1023; //It&#39;s now in mV - 765,000 / 1023 = 747
-  //The TMP36 reports 500mV at 0C so let&#39;s subtract off the 500mV offset
-  temperature -= 500; //747 - 500 = 247
-  //Temp is now in C where 247 = 24.7
-
-  //Display values
-  //sprintf is a great way to combine a bunch of variables and strings together into one print statement
-  char tempString[200];
-  sprintf(tempString, &quot;Sliders: %04d %04d %04d Light: %04d Capsense: %04d&quot;, val1, val2, val3, lightLevel, capLevel);
-  Serial.print(tempString); 
-  sprintf(tempString, &quot; Temp: %03d.%01dC&quot;, (int)temperature/10, (int)temperature%10);
-  Serial.print(tempString); 
-
-  //If user is hitting button 1, turn on LED 1
-  if(digitalRead(BUTTON1) == LOW)
-  {
-    Serial.print(&quot; Button 1!&quot;);
-    digitalWrite(LED1, HIGH);
-  }
-  else
-    digitalWrite(LED1, LOW);
-
-  Serial.println();
-
-  //Set the brightness on LED #2 (D6) based on slider 1
-  int ledLevel = map(val1, 0, 1020, 0, 255); //Map the slider level to a value we can set on the LED
-  analogWrite(LED2, ledLevel); //Set LED brightness
-
-  //Set 7 segment display based on the 2nd slider
-  int numToDisplay = map(val2, 0, 1020, 0, 9); //Map the slider value to a displayable value
-  digitalWrite(LATCH, LOW);
-  shiftOut(DATA, CLOCK, MSBFIRST, ~(ledCharSet[numToDisplay]));
-  digitalWrite(LATCH, HIGH);
-
-  //Set the sound based on the 3rd slider
-  long buzSound = map(val3, 0, 1020, 1000, 10000); //Map the slider value to an audible frequency
-  if(buzSound &gt; 1100)
-    tone(BUZZER, buzSound); //Set sound value
-  else
-    noTone(BUZZER);
-
-  //If light sensor is less than 3/4 of the average (covered up) then freak out
-  while(lightLevel &lt; (avgLightLevel * 3 / 4))
-  {
-    //Blink the status LEDs back and forth
-    if(digitalRead(LED1) == LOW)
-    {
-      digitalWrite(LED1, HIGH);
-      digitalWrite(LED2, LOW);
-    }
-    else {
-      digitalWrite(LED1, LOW);
-      digitalWrite(LED2, HIGH);
-    }
-
-    //Display an increasing number on the 7-segment display
-    digitalWrite(LATCH, LOW);
-    shiftOut(DATA, CLOCK, MSBFIRST, ~(ledCharSet[numToDisplay]));
-    digitalWrite(LATCH, HIGH);
-    numToDisplay++; //Goto next number
-    if(numToDisplay &gt; 9) numToDisplay = 0; //Loop number
-
-    //Play a horrendously annoying sound
-    //Frequency increases with each loop
-    tone(BUZZER, buzSound);
-    buzSound += 100;
-    if(buzSound &gt; 3000) buzSound = 1000;
-
-    delay(25);
-
-    lightLevel = analogRead(LIGHT); //We need to take another reading to be able to exit the while loop
-  }
-}
-</code></pre>
+<h3 id="toc_6">You are now ready to program all kinds of Arduino&#39;s and their derivatives using your Raspberry Pi and its GUI!</h3>
 
 <script type="text/javascript">
 self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);

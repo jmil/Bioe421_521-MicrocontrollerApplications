@@ -46,7 +46,6 @@ http://picamera.readthedocs.io/en/release-1.12/recipes1.html
 
 Create and run the following files based on the sample code provided on the webpage:
 `capture-file.py`
-`capture-stream.py`
 `capture-PIL.py`
 `capture-resized.py`
 `capture-consistent.py`
@@ -95,6 +94,7 @@ We will be using a selection of the tutorials here:
 http://picamera.readthedocs.org/en/release-1.10/recipes1.html
 
 Create and run the following files based on the sample code provided on that webpage:
+`capture-stream.py`
 `capture-openCV-object.py`
 `record-circular-stream.py`
 

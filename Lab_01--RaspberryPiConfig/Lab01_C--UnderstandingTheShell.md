@@ -33,7 +33,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 ## Assignment
 
 
-1. Read some more man pages (for the programs listed below), and take detailed notes. Use the Markdown format since it can be read easily by humans and easily converted into HTML by computers for nice rendered viewing online.
+1. Read some more man pages (for the programs listed below), and take detailed notes. **DO NOT** copy the man pages verbatim; instead, use your own words. Use the Markdown format since it can be read easily by humans and easily converted into HTML by computers for nice rendered viewing online.
 
 	On the Windows computer next to your Raspberry Pi, have your lab partner use the free editor with live rendering at:
 	http://dillinger.io
@@ -99,6 +99,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 		tar
 		unzip
 		wget
+		curl
 		ifconfig
 		mount
 		ping
@@ -109,10 +110,22 @@ One of the most important aspects of the shell, especially for new users, is tha
 		raspivid
 		uname
 		
-		shutdown
 		reboot
 		halt
 		poweroff
+		shutdown
+
+	**TIP** from: http://unix.stackexchange.com/questions/205464/whats-the-difference-between-poweroff-and-halt
+	
+	> `halt` terminates all processes and shuts down the cpu.
+	
+	> `poweroff` is exactly like `halt`, but it also turns off the unit itself (lights and everything on a PC). It sends an ACPI command to the board, then to the PSU, to cut the power.
+	
+	> `shutdown` is like poweroff, but it also runs the shutdown scripts.
+	
+	**NOTE** for the purposes of our class and the Raspberry Pi: `halt`, `poweroff`, and `shutdown` will essentially achieve the same goal, but these aliases help with backward compatibility with programs from other *NIX systems (Unix, Linux, OpenBSD, etc.). We will generally prefer using the `shutdown` command because it's a bit cleaner and nicer to your system.
+
+
 		
 		
 1. Using your notes, answer the following questions. In your answers **be sure to indicate** the command(s) you used to arrive at your answer. One lab partner should run the Pi while the other helps advise using the notes you generated. Switch roles mid-way through these questions so you each get a feel for the terminal.

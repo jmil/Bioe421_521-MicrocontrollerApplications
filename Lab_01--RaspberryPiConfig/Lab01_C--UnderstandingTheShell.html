@@ -479,7 +479,7 @@ pre[class*="language-"] {
 <h2 id="toc_5">Assignment</h2>
 
 <ol>
-<li><p>Read some more man pages (for the programs listed below), and take detailed notes. Use the Markdown format since it can be read easily by humans and easily converted into HTML by computers for nice rendered viewing online.</p>
+<li><p>Read some more man pages (for the programs listed below), and take detailed notes. <strong>DO NOT</strong> copy the man pages verbatim; instead, use your own words. Use the Markdown format since it can be read easily by humans and easily converted into HTML by computers for nice rendered viewing online.</p>
 
 <p>On the Windows computer next to your Raspberry Pi, have your lab partner use the free editor with live rendering at:<br>
 <a href="http://dillinger.io">http://dillinger.io</a><br>
@@ -545,6 +545,7 @@ tail
 tar
 unzip
 wget
+curl
 ifconfig
 mount
 ping
@@ -555,11 +556,23 @@ raspistill
 raspivid
 uname
 
-shutdown
 reboot
 halt
 poweroff
-</code></pre></li>
+shutdown
+</code></pre>
+
+<p><strong>TIP</strong> from: <a href="http://unix.stackexchange.com/questions/205464/whats-the-difference-between-poweroff-and-halt">http://unix.stackexchange.com/questions/205464/whats-the-difference-between-poweroff-and-halt</a></p>
+
+<blockquote>
+<p><code>halt</code> terminates all processes and shuts down the cpu.</p>
+
+<p><code>poweroff</code> is exactly like <code>halt</code>, but it also turns off the unit itself (lights and everything on a PC). It sends an ACPI command to the board, then to the PSU, to cut the power.</p>
+
+<p><code>shutdown</code> is like poweroff, but it also runs the shutdown scripts.</p>
+</blockquote>
+
+<p><strong>NOTE</strong> for the purposes of our class and the Raspberry Pi: <code>halt</code>, <code>poweroff</code>, and <code>shutdown</code> will essentially achieve the same goal, but these aliases help with backward compatibility with programs from other *NIX systems (Unix, Linux, OpenBSD, etc.). We will generally prefer using the <code>shutdown</code> command because it&#39;s a bit cleaner and nicer to your system.</p></li>
 <li><p>Using your notes, answer the following questions. In your answers <strong>be sure to indicate</strong> the command(s) you used to arrive at your answer. One lab partner should run the Pi while the other helps advise using the notes you generated. Switch roles mid-way through these questions so you each get a feel for the terminal.</p>
 
 <ol>
