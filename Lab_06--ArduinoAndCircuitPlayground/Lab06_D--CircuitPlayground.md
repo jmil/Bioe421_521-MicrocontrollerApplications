@@ -114,7 +114,7 @@ Wow, that's a lot of stuff! Let's get setup to connect and program your Circuit 
 	**"Adafruit Circuit Playground" board selected:**
 	![Boards Search Result](Adafruit-Boards.png)
 
-1. Now we need to install the Circuit Playground Library files. Follow a similar workflow as above
+1. Now we need to install the Circuit Playground Library files. We will follow a similar workflow as above.
 
 1. In the Arduino IDE, navigate to `Sketch` -> `Include Library` -> `Manage Libraries...`. Search for `circuit`, and install the latest version of `Adafruit Circuit Playground`.
 
@@ -133,6 +133,9 @@ Wow, that's a lot of stuff! Let's get setup to connect and program your Circuit 
 	**"Adafruit Circuit Playground" library is available:**
 	![Boards Search Result](LibraryMenu-Available.png)
 
+1. Also install the `Adafruit SleepyDog Library` using the same procedure as above (simply search the Library Manager for `sleepy`). You will use this library later. Was it installed correctly? How do you know?
+
+		: 
 
 
 1. Phew. Ok, now we need to download a bunch of sample programs your Instructor has pulled together from various official and unofficial sources. In a terminal, let's grab the code using `git`:

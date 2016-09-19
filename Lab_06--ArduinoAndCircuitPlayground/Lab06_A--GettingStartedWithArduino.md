@@ -267,6 +267,7 @@ For each Assignment below, make a new directory sketch based on the **blink** te
 	You can grab the `BlinkWithoutDelay.ino` file from:
 	https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/BlinkWithoutDelay.ino
 
+	**Show your Arduino's pulsing LED to your Instructor.**
 
 
 
