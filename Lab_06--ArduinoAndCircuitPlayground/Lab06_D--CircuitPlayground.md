@@ -286,7 +286,44 @@ using individual 8-bit values and the same colors on the next 5 pixels using
 
 
 
+## APPENDIX
 
+### Troubleshooting Circuit Playground
+
+During our work with Circuit Playground it may eventually get confused and stop being able to connect to a computer. Here's how to fix it:
+
+
+#### Symptoms:	
+* From: [https://forums.adafruit.com/viewtopic.php?f=58&t=102881](https://forums.adafruit.com/viewtopic.php?f=58&t=102881)
+	`jfmclaugh` writes:
+	> Circuit Playground was working fine until recently- now all I get is a green light, and occasionally the red #13 pulses when I press reset. It won't install- I get USB Device Not Recognized. I'm using a cable that worked OK before, still works fine on my smart phone. I reinstalled the drivers as well, no help. Please advise, thanks
+
+
+* Another symptom is that you will no longer see Circuit Playground listed in the output from:
+
+		$ dmesg | grep tty
+
+	Nor will Circuit Playground be available in the `Ports` menu item in the Arduino IDE.
+
+
+#### Solution 
+* `adafruit_support_mike` responds:
+
+	>Connect the Circuit Playground to your computer and open the demo sketch in the Arduino IDE. Select 'Circuit Playground' under Tools->Board, and don't bother with Tools->Serial Port. From the Preferences pane, select verbose output during upload.
+
+	>Click the Upload button, and wait for a series of lines that begin with 'PORTS' to start scrolling past in the console pane.
+
+	>Double-click the Circuit Playground's reset button at that point.
+
+	>The ATmega32u4 handles USB communication within the chip, and sometimes the bootloader's USB code crashes. Double-clicking the reset button restarts the bootloader and forces it to set up a new USB connection exactly when the Arduino IDE is looking for a device to do that.
+
+	> ...
+
+	> It's more of a design tradeoff than a bug.
+
+	> The ATmega32u4 has 32k of Flash memory which is shared by the bootloader and the user code. The USB connection to upload firmware is controlled by the bootloader, and the more protocol checking and fallback code we add there, the less useful the board gets as a development platform.
+
+	> As your students will learn, microcontroller programming is all about making tradeoffs with limited resources.
 
 
 
