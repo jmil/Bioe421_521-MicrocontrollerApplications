@@ -1,7 +1,7 @@
 #Bioe 421/521: Microcontroller Applications
 ####Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 6C. The Circuit Playground
+##Lab 6D. The Circuit Playground
 
 The Arduino is a beloved device because it's incredibly versatile -- in previous years of this class we used the DangerShield which lets you use those unused pins all over the Arduino Uno board. If you're interested in DangerShield you can read more in the `Attachments` folder of this lab repository and ask your instructor to see an assembled board:
 https://www.sparkfun.com/products/11649
@@ -272,6 +272,18 @@ silence.
 Clears all pixels for 0.5 seconds then displays colors on the fist 5 pixels
 using individual 8-bit values and the same colors on the next 5 pixels using
 24-bit values. After 5 seconds, this repeats.
+
+
+## Turn in Homework
+
+1. Zip up the folder for the files from Today's lab to make a single .zip file. **DON'T** include your ~/github folder.
+
+		$ zip -r Team09-LambdaFTW_Lab06.zip Team09-LambdaFTW_Lab06
+
+1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
+
+		$ scp Team09-LambdaFTW_Lab06.zip student@IP_ADDRESS:/home/student/
+
 
 
 

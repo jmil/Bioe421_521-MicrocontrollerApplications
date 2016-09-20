@@ -2,7 +2,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Lab07--DivingDeeperIntoDangerShield</title>
+<title>Lab07--DivingDeeperIntoCircuitPlayground</title>
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -442,73 +442,53 @@ pre[class*="language-"] {
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
 
-<h2 id="toc_2">Lab 7. Diving Deeper into the Danger Shield</h2>
+<h2 id="toc_2">Lab 7. Diving Deeper into the Circuit Playground</h2>
 
-<p>Use your knowledge of Danger Shield to complete the following Assignments.</p>
+<p>Adafruit and friends have made some great informational pages and tutorials to better explain Circuit Playground.</p>
 
-<h4 id="toc_3">General Procedure: Recall you have used <code>ino</code> to setup the proper set of directories and files for each of your Arduino scripts. So, for EACH of the following assignments, you should repeat this setup procedure to create a clean directory to work in:</h4>
+<ol>
+<li><p>Read and discuss pp 1-56 of Circuit Playground Lesson #0 (attached).</p></li>
+<li><p>Read and discuss all of the pages explaining Circuit Playground functions linked on:</p>
 
-<pre><code>    $ cd ~
-    $ mkdir -p arduino/ASSIGNMENT-NAME
-    $ cd arduino/ASSIGNMENT-NAME
-    $ ino init -t blink
-    $ cd lib
-    $ git clone https://github.com/PaulStoffregen/CapacitiveSensor
-    $ cd ../src
-    $ rm sketch.ino
-    $ git clone https://github.com/sparkfun/DangerShield
-</code></pre>
+<p><a href="https://caternuson.github.io/Adafruit_CircuitPlayground/">https://caternuson.github.io/Adafruit_CircuitPlayground/</a></p></li>
+<li><p>Study and try all of the example sketches in the <code>Adafruit_CircuitPlayground</code> folder in your <code>github</code> folder. If you want to download them again, the instructions are:</p>
 
-<h4 id="toc_4">Then    you just edit that particular instance of the DangerShield.ino file, adding what you want and deleting anything you don&#39;t want. When editing in <code>nano</code>, <strong><code>&lt;ctrl-K&gt;</code></strong> can be used to delete an entire line at a time.</h4>
+<pre><code>$ mkdir -p ~/github
+$ cd ~/github
+$ which git
+$ git clone https://github.com/jmil/Adafruit_CircuitPlayground.git
+$ ls -la
+$ cd Adafruit_CircuitPlayground
+$ ls -la
+</code></pre></li>
+</ol>
 
-<pre><code>    $ nano DangerShield/Firmware/DangerShield/DangerShield.ino
-</code></pre>
+<h2 id="toc_3">Assignment</h2>
 
-<h4 id="toc_5">To complete each assignment, you need to be sure to test and debug it on your Danger Shield hardware! So after editing your <code>.ino</code> file, you would:</h4>
+<h3 id="toc_4">Modify the Example Sketches</h3>
 
-<pre><code>    $ cd arduino/ASSIGNMENT-NAME
-    $ ino build
-    ...
-    Converting to firmware.hex
-    $ ino upload
-</code></pre>
+<ol>
+<li><p>Devise some clever/inventive/exciting/fund modifications of one of these awesome <code>.ino</code> files. For example, you could add music to a sketch that uses the LEDs, or add light output to a sketch that uses the speaker. There are many possibilities; you&#39;re only limited by your imagination.</p></li>
+<li><p>You will want to <strong>FIRST</strong> copy the relevant folder out of the examples folder and into a folder for today&#39;s lab:</p>
 
-<h3 id="toc_6">Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn&#39;t introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your <code>for{}</code> or <code>while{}</code> loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: <a href="http://arduino.cc/en/Reference/HomePage">http://arduino.cc/en/Reference/HomePage</a></h3>
+<pre><code>$ mkdir -p ~/Team09-LambdaFTW_Lab07
+</code></pre></li>
+<li><p>Discuss with your Instructor your intended modification and some ways you could make it happen.</p></li>
+</ol>
 
-<h3 id="toc_7">Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Danger Shield programming. Test early and often. You have been warned!!</h3>
+<h4 id="toc_5">You need to be sure to test and debug it on your Circuit Playground hardware!</h4>
 
-<h2 id="toc_8">Assignments</h2>
+<p>Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn&#39;t introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your <code>for{}</code> or <code>while{}</code> loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: <a href="http://arduino.cc/en/Reference/HomePage">http://arduino.cc/en/Reference/HomePage</a></p>
 
-<h3 id="toc_9">Assignment 1: Cycle</h3>
+<h4 id="toc_6">Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Circuit Playground programming. Test early and often. You have been warned!!</h4>
 
-<p><strong>Remember to make a new directory by following the complete tutorial at the beginning of this lab.</strong><br>
-Next, find the <code>const byte ledCharSet[10]</code> array. Do you remember what <code>const</code> and <code>byte</code> do? Note that you can change the pattern of 0s and 1s here to light up different parts of the 7-segment LED.</p>
-
-<p>By default, DangerShield is setup so that moving the second slider will count, progressively, from 0-9 as a function of the distance you have moved the slider. This is done with the <code>map</code> command, which converts from 0-1020 of the slider position (yes, the slider has more than 1020 physical positions that can be read!) to the much more restricted range of 0-9; the mapped value between 0-9 is then selected from <code>ledCharSet</code> array with the <code>ledCharSet[numToDisplay]</code> call.</p>
-
-<p>For the Cycle assignment: </p>
-
-<p>Figure out and replace the byte codes in <code>ledCharSet</code> that lets you light up, progressively as the slider is moved, only the outer ring of LEDs on the 7-segment LED <strong>one at a time</strong>. You want the outer 6-segments. What happens as you slide the slider slower or faster? <strong>Hint:</strong>The outer ring of LEDs on the 7-segment LED is the LEDs that are lit to display the digit <code>0</code>.</p>
-
-<h3 id="toc_10">Assignment 2: Spinner</h3>
-
-<p><strong>Remember to make a new directory by following the complete tutorial at the beginning of this lab.</strong> Taking what you learned from the <strong>Cycle</strong> assignment, modify your design (recall: you can use the <code>cp</code> command to copy your <code>.ino</code> file from the Cycle directory) to make the LED appear to spin at one LED lit per second. Test this! Next, modify your code to get the outer ring of LEDs to appear to spin at a speed which is a function of the position that the second slider is moved to. <strong>HINT:</strong> You could use a <code>while</code> construct to test if the slider position is greater than, say, 2, and within the while loop you could do something like what you find elsewhere in the DangerShield code. A <code>delay</code> would probably be useful here...:</p>
-
-<pre><code>    //Display an increasing number on the 7-segment display
-    digitalWrite(LATCH, LOW);
-    shiftOut(DATA, CLOCK, MSBFIRST, ~(ledCharSet[numToDisplay]));
-    digitalWrite(LATCH, HIGH);
-    numToDisplay++; //Goto next number
-    if(numToDisplay &gt; 9) numToDisplay = 0; //Loop number
-</code></pre>
-
-<h3 id="toc_11">Upload your work from today</h3>
+<h3 id="toc_7">Upload your work from today</h3>
 
 <ol>
 <li><p>Zip up the arduino folder for Today&#39;s lab to make a single .zip file</p>
 
 <pre><code>$ cd ~
-$ zip -r Team09-LambdaFTW_Lab07.zip arduino
+$ zip -r Team09-LambdaFTW_Lab07.zip Team09-LambdaFTW_Lab07
 </code></pre></li>
 <li><p><code>scp</code> your team&#39;s homework .zip file to your Instructor&#39;s RaspberryPi. Your Instructor will provide you with the value to enter for <strong>IP_ADDRESS</strong>. Use your same <code>raspberry</code> password (note that you are logging in as user <code>student</code>):</p>
 
@@ -517,7 +497,7 @@ $ scp Team09-LambdaFTW_Lab07.zip student@IP_ADDRESS:/home/student/
 </code></pre></li>
 </ol>
 
-<h2 id="toc_12">Shutdown Procedure</h2>
+<h2 id="toc_8">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>
@@ -528,226 +508,52 @@ $ scp Team09-LambdaFTW_Lab07.zip student@IP_ADDRESS:/home/student/
 <p>Unplug everthing and restore the Windows desktop computer to a working state.</p></li>
 </ol>
 
-<h2 id="toc_13">Appendix</h2>
+<h2 id="toc_9">APPENDIX</h2>
 
-<p>Contents of DangerShield.ino, <code>git</code> commit: df57294493beed14e043b4a15eb1c5230e0c466c</p>
+<h3 id="toc_10">Troubleshooting Circuit Playground</h3>
 
-<pre><code>/*
- Danger Shield Example Sketch
- Written by Chris Taylor 3-3-2010
- Tweaked by Nathan Seidle 10-22-2012
- Spark Fun Electronics
+<p>During our work with Circuit Playground it may eventually get confused and stop being able to connect to a computer. Here&#39;s how to fix it:</p>
 
- This code is public domain but you buy me a beer if you use this and we meet someday (Beerware license).
- The project is OSHW and the schematic is released under Creative Commons Share Alike w/ Attribution v3.0
+<h4 id="toc_11">Symptoms:</h4>
 
- This is the example code, created in Arduino v1.0.1 for the Danger Shield product by SparkFun Electronics. 
- It demonstrates each feature of the shield. Move one of the sliders to get a different sound out of the buzzer. 
- Move another slider to change the digit being displayed on the seven segment display. Move the last slider to 
- change the brightness of one of the two status LEDs. Press one of the large buttons to toggle on/off the status LED. 
- Cover the light sensor to &#39;scare&#39; the unit. Open a terminal window at 9600bps if you&#39;d like to see the
- values change over the serial connection.
+<ul>
+<li><p>From: <a href="https://forums.adafruit.com/viewtopic.php?f=58&amp;t=102881">https://forums.adafruit.com/viewtopic.php?f=58&amp;t=102881</a><br>
+<code>jfmclaugh</code> writes:</p>
 
- This code works best with product SKU 10115: https://www.sparkfun.com/products/10115
+<blockquote>
+<p>Circuit Playground was working fine until recently- now all I get is a green light, and occasionally the red #13 pulses when I press reset. It won&#39;t install- I get USB Device Not Recognized. I&#39;m using a cable that worked OK before, still works fine on my smart phone. I reinstalled the drivers as well, no help. Please advise, thanks</p>
+</blockquote></li>
+<li><p>Another symptom is that you will no longer see Circuit Playground listed in the output from:</p>
 
- Knock sensor, new temp sensor: https://www.sparkfun.com/products/10115
- Cap touch sensor: https://www.sparkfun.com/products/10570
-
- The idea of a Danger Shield was originally created by Zach Hoeken (http://www.zachhoeken.com/) released CC-SA.
-
- */
-
-// Shift register bit values to display 0-9 on the seven-segment display
-const byte ledCharSet[10] = {
-  B00111111, 
-  B00000110, 
-  B01011011, 
-  B01001111, 
-  B01100110, 
-  B01101101, 
-  B01111101, 
-  B00000111, 
-  B01111111, 
-  B01101111
-};
-
-// Pin definitions
-
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-//These pin definitions are for v1.6 of the board
-/*
-#define SLIDER1  A0
- #define SLIDER2  A1
- #define SLIDER3  A2
- #define LIGHT    A3
- #define TEMP     A4
- #define KNOCK    A5
-
- #define DATA     4
- #define LED1     5
- #define LED2     6
- #define LATCH    7
- #define CLOCK    8
- #define BUZZER   9
- #define BUTTON1  10
- #define BUTTON2  11
- #define BUTTON3  12
- //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- */
-
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-//These pin definitions are for v1.7 of the board
-#define SLIDER1  A2 //Matches button 1
-#define SLIDER2  A1 
-#define SLIDER3  A0 //Matches button 3
-#define LIGHT    A3
-#define TEMP     A4
-
-#define BUZZER   3
-#define DATA     4
-#define LED1     5
-#define LED2     6
-#define LATCH    7
-#define CLOCK    8
-#define BUTTON1  10
-#define BUTTON2  11
-#define BUTTON3  12
-//v1.7 uses CapSense
-//This relies on the Capactive Sensor library here: http://playground.arduino.cc/Main/CapacitiveSensor
-#include &lt;CapacitiveSensor.h&gt;
-
-CapacitiveSensor capPadOn92 = CapacitiveSensor(9, 2);   //Use digital pins 2 and 9,
-//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-int avgLightLevel;
-
-void setup()
-{
-  Serial.begin(9600);
-
-  //Initialize inputs and outputs
-  pinMode(SLIDER1, INPUT);
-  pinMode(SLIDER2, INPUT);
-  pinMode(SLIDER3, INPUT);
-  pinMode(LIGHT, INPUT);
-  pinMode(TEMP, INPUT);
-
-  //Enable internal pullups
-  pinMode(BUTTON1, INPUT_PULLUP);
-  pinMode(BUTTON2, INPUT_PULLUP);
-  pinMode(BUTTON3, INPUT_PULLUP);
-
-  pinMode(BUZZER, OUTPUT);
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
-
-  pinMode(LATCH, OUTPUT);
-  pinMode(CLOCK, OUTPUT);
-  pinMode(DATA, OUTPUT);
-
-  //Initialize the capsense
-  capPadOn92.set_CS_AutocaL_Millis(0xFFFFFFFF); // Turn off autocalibrate on channel 1 - From Capacitive Sensor example sketch
-
-  Serial.println(&quot;Danger Shield Component Test&quot;);  
-
-  //Take 16 readings from the light sensor and average them together
-  avgLightLevel = 0;
-  for(int x = 0 ; x &lt; 16 ; x++)
-    avgLightLevel += analogRead(LIGHT);
-  avgLightLevel /= 16;
-  Serial.print(&quot;Avg: &quot;);
-  Serial.println(avgLightLevel);
-
-}
-
-void loop()
-{
-  //Read inputs
-  int val1 = analogRead(SLIDER1);
-  int val2 = analogRead(SLIDER2);
-  int val3 = analogRead(SLIDER3);
-  int lightLevel = analogRead(LIGHT);
-  long temperature = analogRead(TEMP);
-
-  //Read the cap sense pad
-  long capLevel = capPadOn92.capacitiveSensor(30);
-
-  //Do conversion of temp from analog value to digital
-  temperature *= 5000; //5V is the same as 1023 from the ADC (12-bit) - example, the ADC returns 153 * 5000 = 765,000
-  temperature /= 1023; //It&#39;s now in mV - 765,000 / 1023 = 747
-  //The TMP36 reports 500mV at 0C so let&#39;s subtract off the 500mV offset
-  temperature -= 500; //747 - 500 = 247
-  //Temp is now in C where 247 = 24.7
-
-  //Display values
-  //sprintf is a great way to combine a bunch of variables and strings together into one print statement
-  char tempString[200];
-  sprintf(tempString, &quot;Sliders: %04d %04d %04d Light: %04d Capsense: %04d&quot;, val1, val2, val3, lightLevel, capLevel);
-  Serial.print(tempString); 
-  sprintf(tempString, &quot; Temp: %03d.%01dC&quot;, (int)temperature/10, (int)temperature%10);
-  Serial.print(tempString); 
-
-  //If user is hitting button 1, turn on LED 1
-  if(digitalRead(BUTTON1) == LOW)
-  {
-    Serial.print(&quot; Button 1!&quot;);
-    digitalWrite(LED1, HIGH);
-  }
-  else
-    digitalWrite(LED1, LOW);
-
-  Serial.println();
-
-  //Set the brightness on LED #2 (D6) based on slider 1
-  int ledLevel = map(val1, 0, 1020, 0, 255); //Map the slider level to a value we can set on the LED
-  analogWrite(LED2, ledLevel); //Set LED brightness
-
-  //Set 7 segment display based on the 2nd slider
-  int numToDisplay = map(val2, 0, 1020, 0, 9); //Map the slider value to a displayable value
-  digitalWrite(LATCH, LOW);
-  shiftOut(DATA, CLOCK, MSBFIRST, ~(ledCharSet[numToDisplay]));
-  digitalWrite(LATCH, HIGH);
-
-  //Set the sound based on the 3rd slider
-  long buzSound = map(val3, 0, 1020, 1000, 10000); //Map the slider value to an audible frequency
-  if(buzSound &gt; 1100)
-    tone(BUZZER, buzSound); //Set sound value
-  else
-    noTone(BUZZER);
-
-  //If light sensor is less than 3/4 of the average (covered up) then freak out
-  while(lightLevel &lt; (avgLightLevel * 3 / 4))
-  {
-    //Blink the status LEDs back and forth
-    if(digitalRead(LED1) == LOW)
-    {
-      digitalWrite(LED1, HIGH);
-      digitalWrite(LED2, LOW);
-    }
-    else {
-      digitalWrite(LED1, LOW);
-      digitalWrite(LED2, HIGH);
-    }
-
-    //Display an increasing number on the 7-segment display
-    digitalWrite(LATCH, LOW);
-    shiftOut(DATA, CLOCK, MSBFIRST, ~(ledCharSet[numToDisplay]));
-    digitalWrite(LATCH, HIGH);
-    numToDisplay++; //Goto next number
-    if(numToDisplay &gt; 9) numToDisplay = 0; //Loop number
-
-    //Play a horrendously annoying sound
-    //Frequency increases with each loop
-    tone(BUZZER, buzSound);
-    buzSound += 100;
-    if(buzSound &gt; 3000) buzSound = 1000;
-
-    delay(25);
-
-    lightLevel = analogRead(LIGHT); //We need to take another reading to be able to exit the while loop
-  }
-}
+<pre><code>$ dmesg | grep tty
 </code></pre>
+
+<p>Nor will Circuit Playground be available in the <code>Ports</code> menu item in the Arduino IDE.</p></li>
+</ul>
+
+<h4 id="toc_12">Solution</h4>
+
+<ul>
+<li><p><code>adafruit_support_mike</code> responds:</p>
+
+<blockquote>
+<p>Connect the Circuit Playground to your computer and open the demo sketch in the Arduino IDE. Select &#39;Circuit Playground&#39; under Tools-&gt;Board, and don&#39;t bother with Tools-&gt;Serial Port. From the Preferences pane, select verbose output during upload.</p>
+
+<p>Click the Upload button, and wait for a series of lines that begin with &#39;PORTS&#39; to start scrolling past in the console pane.</p>
+
+<p>Double-click the Circuit Playground&#39;s reset button at that point.</p>
+
+<p>The ATmega32u4 handles USB communication within the chip, and sometimes the bootloader&#39;s USB code crashes. Double-clicking the reset button restarts the bootloader and forces it to set up a new USB connection exactly when the Arduino IDE is looking for a device to do that.</p>
+
+<p>...</p>
+
+<p>It&#39;s more of a design tradeoff than a bug.</p>
+
+<p>The ATmega32u4 has 32k of Flash memory which is shared by the bootloader and the user code. The USB connection to upload firmware is controlled by the bootloader, and the more protocol checking and fallback code we add there, the less useful the board gets as a development platform.</p>
+
+<p>As your students will learn, microcontroller programming is all about making tradeoffs with limited resources.</p>
+</blockquote></li>
+</ul>
 
 <script type="text/javascript">
 self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
