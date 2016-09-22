@@ -276,9 +276,10 @@ using individual 8-bit values and the same colors on the next 5 pixels using
 
 ## Turn in Homework
 
-1. Zip up the folder for the files from Today's lab to make a single .zip file. **DON'T** include your ~/github folder.
-
-		$ zip -r Team09-LambdaFTW_Lab06.zip Team09-LambdaFTW_Lab06
+1. Zip up your `~/arduino` folder to make a single .zip file.
+		
+		$ cd ~
+		$ zip -r Team09-LambdaFTW_Lab06.zip ~/arduino
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 

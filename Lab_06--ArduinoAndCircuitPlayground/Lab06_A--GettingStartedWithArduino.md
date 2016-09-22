@@ -253,8 +253,12 @@ For each Assignment below, make a new directory sketch based on the **blink** te
 
 	**Show your Arduino's strobing LED to your Instructor.**
 	
-#### ~/arduino/pulse
-1. Make a **sketch** where the LED will appear to slowly and smoothly brighten over 5 seconds, then dim again over 5 seconds. While we _could_ use the basic **blink** or **strobe** code above, we would benefit from a more advanced workflow. Enter **Blink Without Delay**:
+	
+#### ~/arduino/blink-without-delay
+
+1. Work through the following example for:
+
+ **Blink Without Delay**:
 	https://www.arduino.cc/en/Tutorial/BlinkWithoutDelay
 
 	>Blink Without Delay
@@ -264,10 +268,56 @@ For each Assignment below, make a new directory sketch based on the **blink** te
 	>This sketch demonstrates how to blink an LED without using delay(). It turns on the LED on and then makes note of the time. Then, each time through loop(), it checks to see if the desired blink time has passed. If it has, it toggles the LED on or off and makes note of the new time. In this way the LED blinks continuously while the sketch execution never lags on a single instruction.
 
 
-	You can grab the `BlinkWithoutDelay.ino` file from:
+You can grab the `BlinkWithoutDelay.ino` file from:
 	https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/BlinkWithoutDelay.ino
 
-	**Show your Arduino's pulsing LED to your Instructor.**
+
+
+#### ~/arduino/dissolve
+
+1. Read through the page at:
+	http://playground.arduino.cc/Tutorials/Throb
+	
+1. Generate the `Dissolve.ino` sketch and test it out on your Arduino. Explain how this code works here:
+
+		:
+		:
+		:
+		:
+		:
+		:
+		:
+		:
+		:
+		:
+		
+	You can also download `Dissolve.ino` at:
+		https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/Dissolve.ino
+
+
+#### ~/arduino/throb
+
+1. Make a **sketch** where the LED will appear to slowly and smoothly brighten, then dim again in a cycle. While we _could_ use the basic **blink** or **strobe** code above, we would benefit from a more advanced workflow. Read through the second example for `Throb` at:
+	http://playground.arduino.cc/Tutorials/Throb
+	
+1. Modify the `Throb.ino` sketch to make the LED slowly and smoothly brighten over 5 seconds, then dim again over 5 seconds. Test it out on your Arduino. Explain how this code works here:
+
+		:
+		:
+		:
+		:
+		:
+		:
+		:
+		:
+		:
+		:
+	
+	You can also download `Throb.ino` at:
+		https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/Throb.ino
+
+
+**Show your Arduino's pulsing LED to your Instructor.**
 
 
 

@@ -90,10 +90,10 @@ Although currently connected by USB, Arduino is an independent computer. So we c
 
 	Describe the contents of your output.txt file and show it to your Instructor:
 	
-	:
-	:
-	:
-	:
+		:
+		:
+		:
+		:
 
 ### `ino` serial
 
