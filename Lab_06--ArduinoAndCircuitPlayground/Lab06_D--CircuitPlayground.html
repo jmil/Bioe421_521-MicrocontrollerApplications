@@ -494,9 +494,10 @@ pre[class*="language-"] {
 <h3 id="toc_3">Install the latest Arduino</h3>
 
 <ol>
-<li><p>To program the Circuit Playground, we just load another Arduino sketch. Yay! But first we have to give <code>arduino</code> the proper library files so it can understand Circuit Playground. This is easiest to do in the latest version of <code>arduino</code>, which is not yet part of the lastest build of Raspbian OS. Let&#39;s first uninstall the default <code>arduino</code> environment and then manually grab and install a later version:</p>
+<li><p>To program the Circuit Playground, we just load another Arduino sketch. Yay! But first we have to give <code>arduino</code> the proper library files so it can understand Circuit Playground. This is easiest to do in the latest version of <code>arduino</code>, which is not yet part of the lastest build of Raspbian OS. Let&#39;s first uninstall the default <code>arduino</code> environment and then manually grab and install a later version. Let&#39;s do this on a fresh boot to make sure we are ready for the install:</p>
 
-<pre><code>$ sudo apt-get remove arduino
+<pre><code>$ sudo shutdown -r now
+$ sudo apt-get remove arduino
 $ cd ~/Downloads
 $ wget https://downloads.arduino.cc/arduino-1.6.11-linuxarm.tar.xz
 $ tar -xvf arduino-1.6.11-linuxarm.tar.xz
@@ -509,6 +510,15 @@ $ sudo ./install.sh
 
 <pre><code>program:
 explanation:
+</code></pre>
+
+<p><strong>TROUBLESHOOTING:</strong> If you have errors during the install, you can try to uninstall and then reboot and reinstall again:</p>
+
+<pre><code>$ cd ~/Downloads/arduino-1.6.11
+$ sudo ./uninstall.sh
+$ sudo shutdown -r now
+$ cd ~/Downloads/arduino-1.6.11
+$ sudo ./install.sh
 </code></pre></li>
 <li><p>Connect your Circuit Playground to your Raspberry Pi with the included micro USB cable. It should light up with the default sketch. But we still need to configure your Raspberry Pi to program it!</p></li>
 <li><p>Launch the Arduino IDE (Recall: <code>Start Menu</code> -&gt; <code>Programming</code> -&gt; <code>Arduino IDE</code>). What version of <code>arduino</code> are you running? Show your instructor:</p>
@@ -738,11 +748,9 @@ $ zip -r Team09-LambdaFTW_Lab06.zip Team09-LambdaFTW_Lab06
 
 <h2 id="toc_19">APPENDIX</h2>
 
-<h3 id="toc_20">Troubleshooting Circuit Playground</h3>
-
 <p>During our work with Circuit Playground it may eventually get confused and stop being able to connect to a computer. Here&#39;s how to fix it:</p>
 
-<h4 id="toc_21">Symptoms:</h4>
+<h4 id="toc_20">Symptoms:</h4>
 
 <ul>
 <li><p>From: <a href="https://forums.adafruit.com/viewtopic.php?f=58&amp;t=102881">https://forums.adafruit.com/viewtopic.php?f=58&amp;t=102881</a><br>
@@ -759,7 +767,7 @@ $ zip -r Team09-LambdaFTW_Lab06.zip Team09-LambdaFTW_Lab06
 <p>Nor will Circuit Playground be available in the <code>Ports</code> menu item in the Arduino IDE.</p></li>
 </ul>
 
-<h4 id="toc_22">Solution</h4>
+<h4 id="toc_21">Solution</h4>
 
 <ul>
 <li><p><code>adafruit_support_mike</code> responds:</p>
