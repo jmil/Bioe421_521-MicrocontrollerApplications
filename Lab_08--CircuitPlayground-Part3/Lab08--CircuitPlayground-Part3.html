@@ -2,7 +2,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Lab08_B--CircuitPlayground-Part3</title>
+<title>Lab08--CircuitPlayground-Part3</title>
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -461,7 +461,19 @@ pre[class*="language-"] {
 <p><a href="http://arduino.cc/en/reference/random">http://arduino.cc/en/reference/random</a><br>
 <a href="http://arduino.cc/en/Reference/RandomSeed">http://arduino.cc/en/Reference/RandomSeed</a></p>
 
-<p><strong>Rules:</strong>At boot up, the Circuit Playground should choose one of four tones to play. Then the user can choose one of four capacitive sensors <strong>ON THE OPPOSITE SIDE</strong> to press to match the tone. Make sure that pressing the sensor of interest will also create those tones. Use a color LED to devise a score-keeping methodology up to 10. Use an error buzzer sound to indicate when the user guessed wrong (and decrement their score to zero, and start over again). Give the user 3 attempts to guess each combination.</p>
+<p><strong>Rules:</strong>At boot up, the Circuit Playground should choose one of four tones to play. Then the user can choose one of four capacitive sensors <strong>ON THE OPPOSITE SIDE</strong> to press to match the tone. Make sure that pressing the sensor of interest will also create those tones to give the user feedback. Use a color LED to devise a score-keeping methodology up to 10. Use an error buzzer sound to indicate when the user guessed wrong (and decrement their score to zero, and start over again). Give the user 3 attempts to guess each combination.</p>
+
+<p>Example:</p>
+
+<pre><code>    Round 1:
+    Circuit Playground plays Tone A and illuminates to represent Tone A
+    Player must play Tone A (and LED illuminates to indicate Tone A played)
+    If correct, proceed to Round 2:
+    Circuit Playground plays Tone A, B
+    Player plays Tone A, B ... etc.
+</code></pre>
+
+<p>Note that Simon Says is a memory game. The point of Simon Says is that with each progressing round, the tone sequence gets longer and more complicated (it should be a cumulative sequence, though, to help the user remember).</p>
 
 <p>If the user wins, they should get a game winning sound, and an animation of the LEDs.</p>
 

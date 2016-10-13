@@ -24,14 +24,24 @@ Today you will use Raspberry Pi to design a Simon Says game that can run on your
 http://arduino.cc/en/reference/random
 http://arduino.cc/en/Reference/RandomSeed
 
-**Rules:**At boot up, the Circuit Playground should choose one of four tones to play. Then the user can choose one of four capacitive sensors **ON THE OPPOSITE SIDE** to press to match the tone. Make sure that pressing the sensor of interest will also create those tones. Use a color LED to devise a score-keeping methodology up to 10. Use an error buzzer sound to indicate when the user guessed wrong (and decrement their score to zero, and start over again). Give the user 3 attempts to guess each combination.
+**Rules:**At boot up, the Circuit Playground should choose one of four tones to play. Then the user can choose one of four capacitive sensors **ON THE OPPOSITE SIDE** to press to match the tone. Make sure that pressing the sensor of interest will also create those tones to give the user feedback. Use a color LED to devise a score-keeping methodology up to 10. Use an error buzzer sound to indicate when the user guessed wrong (and decrement their score to zero, and start over again). Give the user 3 attempts to guess each combination.
+
+Example:
+
+		Round 1:
+		Circuit Playground plays Tone A and illuminates to represent Tone A
+		Player must play Tone A (and LED illuminates to indicate Tone A played)
+		If correct, proceed to Round 2:
+		Circuit Playground plays Tone A, B
+		Player plays Tone A, B ... etc.
+
+Note that Simon Says is a memory game. The point of Simon Says is that with each progressing round, the tone sequence gets longer and more complicated (it should be a cumulative sequence, though, to help the user remember).
 
 If the user wins, they should get a game winning sound, and an animation of the LEDs.
 
 Finally, for added challenge, make the rate of tone playback for the challenge accelerated based on the position of the slider.
 
 ####You need to be sure to test and debug it on your Circuit Playground hardware!
-
 
 Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn't introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your `for{}` or `while{}` loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: http://arduino.cc/en/Reference/HomePage
 
