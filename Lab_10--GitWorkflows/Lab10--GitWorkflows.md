@@ -141,7 +141,7 @@ Work on your final project in your **`~/421_521_final_project`** `git` repo. As 
 
 1. Move the contents of your Brainstorm and Abstract into the `README.md` file and use markdown to format it. You will want to check if you are formatting things properly by looking at your repo on github. Don't rename this file, the `README.md` file by default is rendered into HTML by github to make it easy for people to understand what's in the repo.
 
-1.  Create a `milestones.md` file. Put a detailed set of deadlines you hope to accomplish for your final project. Start with proof of concept issues. What's the first thing you need to verify that the basic mechanics of your project will work? Be sure to overlay these milestones with the assignment due dates given on the Owlspace calendar. You can format such as:
+1.  Create a `milestones.md` file. Put a detailed set of deadlines you hope to accomplish for your final project. Start with proof of concept issues. What's the first thing you need to verify that the basic mechanics of your project will work? Be sure to overlay these milestones with the assignment due dates given on the Canvas.rice.edu course calendar. You can format such as:
 
 		# Header here (title, names, etc.)
 		## Milestones
@@ -165,7 +165,13 @@ Work on your final project in your **`~/421_521_final_project`** `git` repo. As 
 
 1. Add your partner's github user account, as well as your Instructor's github user account `jmil` as registered collaborators to your github project on http://github.com, and make sure you enable them to write changes to your repo. This will help with collaboration and troubleshooting as you progress.
 
-1. Submit the URL of your repo on Owlspace for today's Assignment, and **be sure to include** the github username of you and your teammate (you each need your own personal github account!).
+1. Submit the URL of your repo on Canvas.rice.edu course website for today's Assignment, and **be sure to include** the github username of you and your teammate (you each need your own personal github account!).
+
+
+## Final Project
+
+Work for the rest of lab class on your final project. Consult with your Instructor and TA, formulate ideas, make a working plan, and get to work!
+
 
 ## Shutdown Procedure
 
