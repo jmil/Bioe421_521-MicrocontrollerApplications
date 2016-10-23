@@ -16,6 +16,19 @@ Get started at the terminal at the section **First-Time Git Setup**. You want yo
 	￼$ git config --global user.name "Jane Doe"
 	$ git config --global user.email janedoe@example.com
 	$ git config --list
+	
+
+### Install Chromium Web Browser
+
+Github no longer supports older web browsers (sad!). So let's get a newer web browser for your Pi. You can't install Chrome, but you can install "the open-source project that forms the basis for Google Chrome" which is called Chromium. Yay for open source!
+
+	$ sudo apt-get update
+	$ sudo apt-get dist-upgrade
+	$ sudo apt-get install chromium-browser
+	$ sudo apt-get install ttf-mscorefonts-installer
+	
+Check that it was installed correctly. You should now see it in `Menu -> Internet -> Chromium Web Browser`. Were you able to launch this browser?
+
 
 ###Using Github for your Final Project
 
@@ -23,7 +36,7 @@ http://www.github.com/ is one of the most popular site for managing `git` repos 
 
 ###NOTE: Your class final project will be backed-up and submitted through github.
 
-1. Make a github repo for your final project by navigating to:
+1. Using the Chromium web browser, make a github repo for your final project by navigating to:
 http://www.github.com/new
 
 	One of you will be the master account for your final project. Decide who that is, register an account if you don't have that already, and then create a new repo with the following settings (you should choose your own repo name and add a better description):

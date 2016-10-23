@@ -458,14 +458,26 @@ $ git config --global user.email janedoe@example.com
 $ git config --list
 </code></pre>
 
-<h3 id="toc_4">Using Github for your Final Project</h3>
+<h3 id="toc_4">Install Chromium Web Browser</h3>
+
+<p>Github no longer supports older web browsers (sad!). So let&#39;s get a newer web browser for your Pi. You can&#39;t install Chrome, but you can install <q>the open-source project that forms the basis for Google Chrome</q> which is called Chromium. Yay for open source!</p>
+
+<pre><code>$ sudo apt-get update
+$ sudo apt-get dist-upgrade
+$ sudo apt-get install chromium-browser
+$ sudo apt-get install ttf-mscorefonts-installer
+</code></pre>
+
+<p>Check that it was installed correctly. You should now see it in <code>Menu -&gt; Internet -&gt; Chromium Web Browser</code>. Were you able to launch this browser?</p>
+
+<h3 id="toc_5">Using Github for your Final Project</h3>
 
 <p><a href="http://www.github.com/">http://www.github.com/</a> is one of the most popular site for managing <code>git</code> repos because it has advanced high performance server back-end, excellent user interface tools, and it&#39;s free to use.</p>
 
-<h3 id="toc_5">NOTE: Your class final project will be backed-up and submitted through github.</h3>
+<h3 id="toc_6">NOTE: Your class final project will be backed-up and submitted through github.</h3>
 
 <ol>
-<li><p>Make a github repo for your final project by navigating to:<br>
+<li><p>Using the Chromium web browser, make a github repo for your final project by navigating to:<br>
 <a href="http://www.github.com/new">http://www.github.com/new</a></p>
 
 <p>One of you will be the master account for your final project. Decide who that is, register an account if you don&#39;t have that already, and then create a new repo with the following settings (you should choose your own repo name and add a better description):</p>
@@ -518,7 +530,7 @@ origin  git@github.com:jmil/421_521_final_project.git (push)
 </code></pre></li>
 </ol>
 
-<h2 id="toc_6">Assignment: The <code>git/git</code> repo</h2>
+<h2 id="toc_7">Assignment: The <code>git/git</code> repo</h2>
 
 <p>The internet loves recursion, and <code>git</code> is no exception. <code>git</code> is a command-line program, whose source code should be developed using a distributed version control system (DVCS). Of course, <code>git</code> is developed using... you guessed it: <code>git</code>. Let&#39;s take a look:</p>
 
@@ -560,11 +572,11 @@ timestamp (abbrev. OK):
 </code></pre></li>
 </ol>
 
-<h2 id="toc_7">Assignment: Read through ProGit Ch.2</h2>
+<h2 id="toc_8">Assignment: Read through ProGit Ch.2</h2>
 
 <p>Read through ProGit Ch.2 especially at the section <strong><q>Recording Changes to the Repository</q></strong>. This should show you how to go about making commits and uploading them to github (note that we have already setup the <code>origin</code> for you, which you verified with the command <code>git remote -v</code>).</p>
 
-<h2 id="toc_8">Assignment: Putting your Final Project on Github</h2>
+<h2 id="toc_9">Assignment: Putting your Final Project on Github</h2>
 
 <p>Work on your final project in your <strong><code>~/421_521_final_project</code></strong> <code>git</code> repo. As you make each change, you will want to commit (save) and push (backup) each advance of your project (even the small ones!). Because <code>git</code> can do asynchronous and non-linear merges, you will want to commit early and often. Once you have <code>cd</code>&#39;ed into your final project directory, you will probably do a sequence such as:</p>
 
@@ -576,7 +588,7 @@ timestamp (abbrev. OK):
  $ git log
 </code></pre>
 
-<h3 id="toc_9">By the end of class you should have completed the following tasks:</h3>
+<h3 id="toc_10">By the end of class you should have completed the following tasks:</h3>
 
 <ol>
 <li><p>Move the contents of your Brainstorm and Abstract into the <code>README.md</code> file and use markdown to format it. You will want to check if you are formatting things properly by looking at your repo on github. Don&#39;t rename this file, the <code>README.md</code> file by default is rendered into HTML by github to make it easy for people to understand what&#39;s in the repo.</p></li>
@@ -595,7 +607,7 @@ timestamp (abbrev. OK):
 <li><p>Put your code here! Hopefully you already have a coding framework for your final project. Is it Arduino? Is it python? Is it a combination? Store your files in this repo, and push your project far today. Don&#39;t wait until the last minute... remember that your commits are being logged too! So it will be pretty clear to your Instructors who is consistently putting in effort on their class projects.</p></li>
 </ol>
 
-<h3 id="toc_10">Upload your work from today</h3>
+<h3 id="toc_11">Upload your work from today</h3>
 
 <ol>
 <li><p>Push your latest changes up to the github server:</p>
@@ -608,11 +620,11 @@ $ git push origin master
 <li><p>Submit the URL of your repo on Canvas.rice.edu course website for today&#39;s Assignment, and <strong>be sure to include</strong> the github username of you and your teammate (you each need your own personal github account!).</p></li>
 </ol>
 
-<h2 id="toc_11">Final Project</h2>
+<h2 id="toc_12">Final Project</h2>
 
 <p>Work for the rest of lab class on your final project. Consult with your Instructor and TA, formulate ideas, make a working plan, and get to work!</p>
 
-<h2 id="toc_12">Shutdown Procedure</h2>
+<h2 id="toc_13">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>
