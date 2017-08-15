@@ -1,5 +1,5 @@
 #Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Dan Sazer<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
 ##Lab 8B. Danger Shield Part 3
