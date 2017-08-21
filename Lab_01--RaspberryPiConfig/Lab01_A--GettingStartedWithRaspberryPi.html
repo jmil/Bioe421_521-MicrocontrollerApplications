@@ -1,8 +1,13 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 
 <head>
+
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Lab01_A--GettingStartedWithRaspberryPi</title>
+
+
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -305,6 +310,7 @@ sup {
 	}
 }
 </style>
+
 <style type="text/css">
 /**
  * prism.js default theme for JavaScript, CSS and HTML
@@ -315,13 +321,14 @@ sup {
 code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
+	background: none;
 	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
-	direction: ltr;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
+	word-wrap: normal;
 	line-height: 1.5;
 
 	-moz-tab-size: 4;
@@ -369,6 +376,7 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
+	white-space: normal;
 }
 
 .token.comment,
@@ -391,7 +399,8 @@ pre[class*="language-"] {
 .token.boolean,
 .token.number,
 .token.constant,
-.token.symbol {
+.token.symbol,
+.token.deleted {
 	color: #905;
 }
 
@@ -399,7 +408,8 @@ pre[class*="language-"] {
 .token.attr-name,
 .token.string,
 .token.char,
-.token.builtin {
+.token.builtin,
+.token.inserted {
 	color: #690;
 }
 
@@ -407,8 +417,7 @@ pre[class*="language-"] {
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
+.style .token.string {
 	color: #a67f59;
 	background: hsla(0, 0%, 100%, .5);
 }
@@ -424,27 +433,36 @@ pre[class*="language-"] {
 }
 
 .token.regex,
-.token.important {
+.token.important,
+.token.variable {
 	color: #e90;
 }
 
-.token.important {
+.token.important,
+.token.bold {
 	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
 }
 
 .token.entity {
 	cursor: help;
-
+}
 </style>
+
+
 </head>
+
 <body>
+
 <h1 id="toc_0">Bioe 421/521: Microcontroller Applications</h1>
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
 
 <h2 id="toc_2">Lab 1A. Getting Started with Raspberry Pi</h2>
 
-<h6 id="toc_3">We will use Raspberry Pi 3 - Model B - ARMv8 with 1G RAM: <a href="https://www.adafruit.com/products/3055">https://www.adafruit.com/products/3055</a> and the 2016-05-27 Installation of Raspbian Jessie Linux from: <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a> with a SHA-1 checksum of: 64c7ed611929ea5178fbb69b5a5f29cc9cc7c157</h6>
+<h6 id="toc_3">We will use Raspberry Pi 3 - Model B - ARMv8 with 1G RAM: <a href="https://www.adafruit.com/products/3055">https://www.adafruit.com/products/3055</a> and the 2017-07-05 Installation of Raspbian <q>Jessie</q> Linux from: <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a> with a SHA-256 checksum of: 455cb85fb54c73bad07bd3a44db67755912579cd84ecbd42e2ab49565206b65e</h6>
 
 <h5 id="toc_4">Raspberry Pi is a complete computer system under $40. It uses an ARM processor similar to what is found in many smartphones. It can run many operating systems (OSes) and is perfect for lightweight input/output tasks. Raspberry Pi&#39;s low cost and extremely low power usage make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.</h5>
 
@@ -468,19 +486,16 @@ pre[class*="language-"] {
 <li><p><strong>CAREFULLY</strong> plug in the microSD card. Make sure you interface the metal contacts on the microSD card properly to the metal contacts on the Raspberry Pi. Press in all the way. <strong>Be careful</strong>, this microSD card <strong><em>is your hard drive</em></strong>. So, be mindful not to bump or disconnect the microSD card, as this is literally disconnecting your hard drive.</p></li>
 <li><p>Finally, plug in Raspberry Pi power supply to AC power, and use the micro USB cable to give power to your Pi. The screen should become live and your computer should now be booting up. You may now notice lines of text streaming by, such as:</p>
 
-<pre><code>...
+<div><pre><code class="language-none">...
 [ ok ] Setting preliminary keymap...done.
-...
-</code></pre></li>
+...</code></pre></div></li>
 <li><p>You booted into a desktop environment, but I asked you not to plug in the mouse. So how do we navigate? For the majority of labs this semester, we will only use the keyboard to operate the Pi. This is for two reasons: 1) it&#39;s still often faster to use the keyboard in a terminal for most things, and 2) when things go wrong in the graphical user interface (the <strong>GUI</strong>), you might often need a keyboard to diagnose or fix problems in the command line interface (the <strong>CLI</strong>). So, let&#39;s disable the desktop environment for now.</p></li>
 <li><p>Launch an instance of the Terminal program by typing the keyboard combination <code>&lt;control-alt-T&gt;</code>. You will find yourself at the command prompt (typically represented by the <code>$</code> character) with the Pi awaiting your instructions (called <q>commands</q>). The cursor is represented by the <code>_</code> character and is where typing will begin.</p>
 
-<pre><code>pi@raspberrypi ~ $ _
-</code></pre></li>
+<div><pre><code class="language-none">pi@raspberrypi ~ $ _</code></pre></div></li>
 <li><p>We need to set the keyboard-only environment (known as the command line interface, or <strong>CLI</strong>) to be the default setup for your Pi, for now. <strong>BY CONVENTION</strong> I will represent the command prompt as the <code>$</code> sign. <strong>You should not type this character as part of the command to run.</strong> We need to run <code>sudo raspi-config</code>, so type this text and then press <code>&lt;return&gt;</code>.</p>
 
-<pre><code>    $ sudo raspi-config
-</code></pre>
+<div><pre><code class="language-none">    $ sudo raspi-config</code></pre></div>
 
 <p>You will now be in a blue screen comprised of the Raspberry Pi Software Configuration Tool (<code>raspi-config</code>). This is a keyboard-based navigational menu to adjust settings on the Pi (use the arrow keys and <code>&lt;tab&gt;</code> key to navigate, use <code>&lt;enter&gt;</code> or <code>&lt;spacebar&gt;</code> to select the highlighted option).</p></li>
 <li><p>Select <code>Boot Options</code> then <code>B1 Console.</code> Then select <code>&lt;Finish&gt;</code> and then <code>&lt;Yes&gt;</code> to Reboot.</p>
@@ -488,64 +503,55 @@ pre[class*="language-"] {
 <p>You should have now successfully booted into the command line environment <strong>without</strong> a Desktop. Don&#39;t worry, you will get comfortable with this environment and will be a Linux pro by the end of the semester.</p></li>
 <li><p>Once the boot has finished, you should see a login menu prompt awaiting your input:</p>
 
-<pre><code>raspberrypi login: _
-</code></pre>
+<div><pre><code class="language-none">raspberrypi login: _</code></pre></div>
 
 <p>Login with the default Raspian OS admin user:</p>
 
-<pre><code>raspberrypi login: pi
-Password: raspberry   (NOTE: text will not show up as you type a password)
-</code></pre>
+<div><pre><code class="language-none">raspberrypi login: pi
+Password: raspberry   (NOTE: text will not show up as you type a password)</code></pre></div>
 
 <p>Were you able to login? How do you know? Describe what you see:</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>Now, we need to get back into <code>raspi-config</code> and setup a bunch more stuff. What is the command you run to launch the <code>raspi-config</code> tool? Write it down here:</p>
 
-<pre><code>$
-</code></pre></li>
+<div><pre><code class="language-none">$</code></pre></div></li>
 <li><p>Raspberry Pi is designed in UK. Therefore, all defaults are for Britain (and you may notice some British spelling and grammar here and there). Here, we will reconfigure Raspberry Pi for Houston, TX with US Keyboard layout.</p>
 
 <ol>
-<li>First, launch the <code>raspi-config</code> utility. The default is a British Keyboard Layout. We need to change this to US Keyboard Layout so that everything will match our hardware.</li>
+<li><p>First, launch the <code>raspi-config</code> utility. The default is a British Keyboard Layout. We need to change this to US Keyboard Layout so that everything will match our hardware.</p></li>
 <li><p>Select option <code>Internationalisation Options</code> then <code>Change Keyboard Layout</code>. Configure successive options as follows:</p>
 
-<pre><code>Generic 104-key PC
+<div><pre><code class="language-none">Generic 104-key PC
 Other
 English (US)
 English (US)            (NOTE: this option is all the way at the top)
 The default for the keyboard layout
 No compose key
-Select &lt;YES&gt; for Use Control+Alt+Backspace to terminate the X server
-</code></pre>
+Select &lt;YES&gt; for Use Control+Alt+Backspace to terminate the X server</code></pre></div>
 
 <p>You will be taken back to the main raspi-config menu.</p></li>
 <li><p>Select option <code>Internationalisation Options</code> then <code>Change Timezone</code>. configure successive options as follows:</p>
 
-<pre><code>US
-Central
-</code></pre>
+<div><pre><code class="language-none">US
+Central</code></pre></div>
 
 <p>You will be taken back to the main raspi-config menu.</p></li>
 <li><p>Select option <code>Internationalisation Options</code> then <code>Change Locale</code>. You will see a LONG list of Locales to be generated, with mostly empty brackets such as:</p>
 
-<pre><code>    [ ] All locales
+<div><pre><code class="language-none">    [ ] All locales
     [ ] aa.DJ ISO-8859-1
-    ...
-</code></pre>
+    ...</code></pre></div>
 
 <p>Use the arrow keys to navigate, and use the <strong><code>&lt;spacebar&gt;</code></strong> to enable individual locales. Here we need to do <strong>two Steps together</strong>:</p>
 
 <ol>
 <li><p>The <code>en_US.UTF-8 UTF-8</code> option is empty. <strong><code>&lt;SELECT&gt;</code></strong> it using the <strong><code>&lt;spacebar&gt;</code></strong> so it will show an asterisk:</p>
 
-<pre><code>[*] en_US.UTF-8 UTF-8
-</code></pre></li>
+<div><pre><code class="language-none">[*] en_US.UTF-8 UTF-8</code></pre></div></li>
 <li><p>The <code>en_GB.UTF-8 UTF-8</code> option contains an asterisk. <strong><code>&lt;DESELECT&gt;</code></strong> it using the <strong><code>&lt;spacebar&gt;</code></strong>:</p>
 
-<pre><code>[ ] en_US.UTF-8 UTF-8
-</code></pre></li>
+<div><pre><code class="language-none">[ ] en_US.UTF-8 UTF-8</code></pre></div></li>
 <li><p>Select <strong><code>Ok</code></strong>.</p></li>
 <li><p>On the next screen, select your new config <code>en_US.UTF-8</code> as the Default locale for the system environment.</p></li>
 </ol>
@@ -567,39 +573,45 @@ Select <code>&lt;Yes&gt;</code> when asked if you would like to reboot now</p>
 
 <p><strong>Troubleshooting:</strong> If reboot wasn&#39;t given as an option for you, you can reboot by issuing the following command:</p>
 
-<pre><code>$ sudo reboot
-</code></pre></li>
+<div><pre><code class="language-none">$ sudo reboot</code></pre></div></li>
 <li><p>Login. Do you remember your username and password?</p></li>
 <li><p>The OS will welcome you, give a warranty disclaimer, and put you at a command prompt:</p>
 
-<pre><code>pi@raspberrypi ~ $ _
-</code></pre></li>
+<div><pre><code class="language-none">pi@raspberrypi ~ $ _</code></pre></div></li>
 <li><p>Confirm your localization worked correctly by seeing if you can type an <q>@</q> symbol.</p></li>
 <li><p>If you ever need to get back to the raspi-config menu, here&#39;s how to do it:</p>
 
-<pre><code>$ sudo raspi-config
-</code></pre></li>
+<div><pre><code class="language-none">$ sudo raspi-config</code></pre></div></li>
 </ol>
 
 <h3 id="toc_7">Congrats! You are now ready to use your Raspberry Pi.</h3>
 
+
+
 <script type="text/javascript">
-self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
 </script>
+
 <script type="text/x-mathjax-config">
-MathJax.Hub.Register.StartupHook('End', function () {
-   MathJaxListener.invokeCallbackForKey_('End');
-})
-</script>
-<script type="text/x-mathjax-config">
+(function () {
+
 MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-    }
-})
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
 </script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 </body>
 
 </html>

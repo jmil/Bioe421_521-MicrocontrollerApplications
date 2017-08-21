@@ -1,8 +1,13 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 
 <head>
+
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Lab01_C--UnderstandingTheShell</title>
+
+
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -305,6 +310,7 @@ sup {
 	}
 }
 </style>
+
 <style type="text/css">
 /**
  * prism.js default theme for JavaScript, CSS and HTML
@@ -315,13 +321,14 @@ sup {
 code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
+	background: none;
 	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
-	direction: ltr;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
+	word-wrap: normal;
 	line-height: 1.5;
 
 	-moz-tab-size: 4;
@@ -369,6 +376,7 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
+	white-space: normal;
 }
 
 .token.comment,
@@ -391,7 +399,8 @@ pre[class*="language-"] {
 .token.boolean,
 .token.number,
 .token.constant,
-.token.symbol {
+.token.symbol,
+.token.deleted {
 	color: #905;
 }
 
@@ -399,7 +408,8 @@ pre[class*="language-"] {
 .token.attr-name,
 .token.string,
 .token.char,
-.token.builtin {
+.token.builtin,
+.token.inserted {
 	color: #690;
 }
 
@@ -407,8 +417,7 @@ pre[class*="language-"] {
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
+.style .token.string {
 	color: #a67f59;
 	background: hsla(0, 0%, 100%, .5);
 }
@@ -424,20 +433,29 @@ pre[class*="language-"] {
 }
 
 .token.regex,
-.token.important {
+.token.important,
+.token.variable {
 	color: #e90;
 }
 
-.token.important {
+.token.important,
+.token.bold {
 	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
 }
 
 .token.entity {
 	cursor: help;
-
+}
 </style>
+
+
 </head>
+
 <body>
+
 <h1 id="toc_0">Bioe 421/521: Microcontroller Applications</h1>
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
@@ -458,8 +476,7 @@ pre[class*="language-"] {
 
 <p>The string of characters next to your blinking cursor is called the command prompt. It is the computer asking you for input in the form of a command and syntax that it has been programmed to recognize. Default on Pi for the command prompt is to show your username, the &#39;@&#39; symbol, and your short hostname, followed by the (abbreviated where possible) current directory in which your shell is located:</p>
 
-<pre><code>pi@raspberrypi ~ $ _
-</code></pre>
+<div><pre><code class="language-none">pi@raspberrypi ~ $ _</code></pre></div>
 
 <p>The default command prompt will show a dollar sign (<code>$</code>) if you are a regular user, and a pound sign (<code>#</code>) sign if you are a superuser. We&#39;ll get to explain the superuser later.</p>
 
@@ -468,8 +485,7 @@ pre[class*="language-"] {
 <ol>
 <li><p>Using the command prompt, bring up the manual pages (often abbreviated as the <q>man pages</q>) for the <code>man</code> command itself:</p>
 
-<pre><code>$ man man
-</code></pre>
+<div><pre><code class="language-none">$ man man</code></pre></div>
 
 <p>The screen will be cleared and you will be presented with the manual. Note that the manual continues off the screen. For getting help on using man pages, use the <strong><code>&lt;h&gt;</code></strong> key (<q>h</q> for <q>help</q>). To scroll down one line at a time, use the <strong><code>&lt;enter&gt;</code></strong> key. To scroll down one entire page at a time, use the <strong><code>&lt;spacebar&gt;</code></strong>. To go to the previous page, press the <strong><code>&lt;b&gt;</code></strong> key (<q>b</q> for &#39;back&#39;). To exit out of the man pages, press the <strong><code>&lt;q&gt;</code></strong> key (<q>q</q> for &#39;quit&#39;).</p>
 
@@ -491,7 +507,7 @@ You can link it to google drive, dropbox, and github. Or you can edit and downlo
 
 <p>Write down general and specific usage notes about each command using Markdown format (*.md). The markdown format allows you to do hierarchical text formatting with only a few extra characters. Feel free to use a web browser on the neighboring PC to help you work through understanding these programs and how they are commonly used:</p>
 
-<pre><code>man
+<div><pre><code class="language-none">man
 apropos
 
 id
@@ -559,8 +575,7 @@ uname
 reboot
 halt
 poweroff
-shutdown
-</code></pre>
+shutdown</code></pre></div>
 
 <p><strong>TIP</strong> from: <a href="http://unix.stackexchange.com/questions/205464/whats-the-difference-between-poweroff-and-halt">http://unix.stackexchange.com/questions/205464/whats-the-difference-between-poweroff-and-halt</a></p>
 
@@ -578,56 +593,43 @@ shutdown
 <ol>
 <li><p>What is your username?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>What is your short hostname?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>What is your IP Address?         </p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>What is the full path of your current working directory?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>How long has your Pi been turned on?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>What version of <code>python</code> is installed on your Pi?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>How long does it take to get a <code>ping</code> from google.com? How many bytes did you get back? NOTE: you can quit pinging with <strong><code>&lt;ctrl-C&gt;</code></strong></p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>Where is the <code>man</code> command located on your hard drive?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>What is the serial number of your Pi? (hint: it&#39;s stored in the <code>/proc/cpuinfo</code> file)</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>What version of Raspbian Linux are you running on your Pi? (hint: it&#39;s the <q>pretty name</q> shown in the <code>/etc/os-release</code> file)</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>You want your Pi to take a photograph every hour. What program could you use to take the photograph? What program could schedule this command?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>What command will let you reboot the Pi immediately?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>What percentage of the CPU does the <code>top</code> command utilize?</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 </ol></li>
 </ol>
 
@@ -636,31 +638,39 @@ shutdown
 <ol>
 <li><p>Shutdown your Pi properly:</p>
 
-<pre><code>$ sudo shutdown -h now
-</code></pre>
+<div><pre><code class="language-none">$ sudo shutdown -h now</code></pre></div>
 
 <p>Unplug everthing and restore the Windows desktop computer to a working state.</p></li>
 </ol>
 
 <h3 id="toc_9">Make sure you show your work to an Instructor before you leave for the day.</h3>
 
+
+
 <script type="text/javascript">
-self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
 </script>
+
 <script type="text/x-mathjax-config">
-MathJax.Hub.Register.StartupHook('End', function () {
-   MathJaxListener.invokeCallbackForKey_('End');
-})
-</script>
-<script type="text/x-mathjax-config">
+(function () {
+
 MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-    }
-})
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
 </script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 </body>
 
 </html>

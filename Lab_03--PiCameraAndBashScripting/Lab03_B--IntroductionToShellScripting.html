@@ -1,8 +1,13 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 
 <head>
+
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Lab03_B--IntroductionToShellScripting</title>
+
+
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -305,6 +310,7 @@ sup {
 	}
 }
 </style>
+
 <style type="text/css">
 /**
  * prism.js default theme for JavaScript, CSS and HTML
@@ -315,13 +321,14 @@ sup {
 code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
+	background: none;
 	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
-	direction: ltr;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
+	word-wrap: normal;
 	line-height: 1.5;
 
 	-moz-tab-size: 4;
@@ -369,6 +376,7 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
+	white-space: normal;
 }
 
 .token.comment,
@@ -391,7 +399,8 @@ pre[class*="language-"] {
 .token.boolean,
 .token.number,
 .token.constant,
-.token.symbol {
+.token.symbol,
+.token.deleted {
 	color: #905;
 }
 
@@ -399,7 +408,8 @@ pre[class*="language-"] {
 .token.attr-name,
 .token.string,
 .token.char,
-.token.builtin {
+.token.builtin,
+.token.inserted {
 	color: #690;
 }
 
@@ -407,8 +417,7 @@ pre[class*="language-"] {
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
+.style .token.string {
 	color: #a67f59;
 	background: hsla(0, 0%, 100%, .5);
 }
@@ -424,20 +433,29 @@ pre[class*="language-"] {
 }
 
 .token.regex,
-.token.important {
+.token.important,
+.token.variable {
 	color: #e90;
 }
 
-.token.important {
+.token.important,
+.token.bold {
 	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
 }
 
 .token.entity {
 	cursor: help;
-
+}
 </style>
+
+
 </head>
+
 <body>
+
 <h1 id="toc_0">Bioe 421/521: Microcontroller Applications</h1>
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
@@ -462,8 +480,7 @@ pre[class*="language-"] {
 
 <p>You already saw hints of shell scripting in the previous Lab, where we had to edit the <code>.bashrc</code> file. There were lots of commands in there! Let&#39;s take a look again:</p>
 
-<pre><code>$ cat ~/.bashrc | more
-</code></pre>
+<div><pre><code class="language-none">$ cat ~/.bashrc | more</code></pre></div>
 
 <p>So, our <strong>script</strong> will be a flat list of commands written in plain <strong>ASCII</strong> text. But how will the computer know what text files on our computer are just text and which are commands? It would take a long time to run the <code>web2</code> file as a <strong>script</strong>! We need to make it easy for the computer to notice that our file is a <strong>script</strong> and not strictly a text file. We want our <strong>script</strong> to be <em>interpreted as a program</em>. </p>
 
@@ -478,8 +495,7 @@ pre[class*="language-"] {
 
 <p>So... you start a text file (usually given the file extension <code>.sh</code> to denote a <strong>sh</strong>ell script) with the following line:</p>
 
-<pre><code>    #! /bin/bash
-</code></pre>
+<div><pre><code class="language-none">    #! /bin/bash</code></pre></div>
 
 <p>The <strong><code>#</code></strong> sign denotes the line is a comment, <strong>BUT</strong> the <strong><q>bang</q></strong> (<strong><code>!</code></strong>) indicates to the shell interpreter that the file should be processed as a series of commands, in this case interpreted by the <code>bash</code> shell. Together, the <strong><code>#!</code></strong> is called the <strong>shebang</strong>.</p>
 
@@ -492,9 +508,8 @@ pre[class*="language-"] {
 
 <p>Grab the template file and run it. You will have to change permissions on the file in order to execute it:</p>
 
-<pre><code>$ chmod +x bash-script.sh
-$ ./bash-script.sh
-</code></pre>
+<div><pre><code class="language-none">$ chmod +x bash-script.sh
+$ ./bash-script.sh</code></pre></div>
 
 <p>What happened when you ran the script?</p>
 
@@ -502,14 +517,12 @@ $ ./bash-script.sh
 
 <p>If you look at the sample <code>bash-script.sh</code> you will notice a lot is going on:</p>
 
-<pre><code>$ cat bash-script.sh | more
-</code></pre>
+<div><pre><code class="language-none">$ cat bash-script.sh | more</code></pre></div>
 
 <p>Some variables are built-in to the <strong>shell</strong> already, such as <code>$USER</code> and <code>$PATH</code> (they don&#39;t have to be defined in your script). You can check with:</p>
 
-<pre><code>$ echo $USER
-$ echo $PATH
-</code></pre>
+<div><pre><code class="language-none">$ echo $USER
+$ echo $PATH</code></pre></div>
 
 <p>Other variables can be set with simple assignment using the <strong><code>=</code></strong> character as you did when editing your prompt. You can also have variable variables, which are not set until the script is run. Recall: these are set with the backtick <strong><code>`</code></strong> character to escape you to a temporary <strong>shell</strong> to run the command and set its <strong>STDOUT</strong> as input to the variable. This allows you to, for example, set a variable for the exact time the script was run and splice that output into your commands as plain text. Check the <code>bash-script.sh</code> carefully to find this section.</p>
 
@@ -519,58 +532,50 @@ $ echo $PATH
 
 <p>User input options will be assigned to integer variables in numerical order. We will use <code>nano</code> to write a <code>bash</code> script that takes three user-input text strings at the command prompt and outputs them in reverse order. The syntax we want to achieve should be:</p>
 
-<pre><code>    $ ./user_input.sh value1 value2 value3
+<div><pre><code class="language-none">    $ ./user_input.sh value1 value2 value3
     OUTPUT:
-    value3, value2, value1
-</code></pre>
+    value3, value2, value1</code></pre></div>
 
 <p>Let&#39;s begin.</p>
 
 <ol>
 <li><p>Generate the <code>scripts</code> folder to contain everything:</p>
 
-<pre><code>$ cd ~
+<div><pre><code class="language-none">$ cd ~
 $ mkdir scripts
-$ cd scripts
-</code></pre></li>
+$ cd scripts</code></pre></div></li>
 <li><p>Create a new file <code>user_input.sh</code> and edit it with <code>nano</code>:</p>
 
-<pre><code>$ nano user_input.sh
-</code></pre>
+<div><pre><code class="language-none">$ nano user_input.sh</code></pre></div>
 
 <p>Make the file contents to be the following:</p>
 
-<pre><code>#! /bin/bash
+<div><pre><code class="language-none">#! /bin/bash
 
-echo &quot;$3, $2, $1&quot;
-</code></pre></li>
+echo &quot;$3, $2, $1&quot;</code></pre></div></li>
 <li><p>Save and exit.</p>
 
 <p>Now try it out!</p>
 
-<pre><code>$ chmod +x user-input.sh
-$ ./user-input.sh value1 value2 value3
-</code></pre>
+<div><pre><code class="language-none">$ chmod +x user-input.sh
+$ ./user-input.sh value1 value2 value3</code></pre></div>
 
 <p>What was the script output?</p>
 
-<pre><code>:
-</code></pre>
+<div><pre><code class="language-none">:</code></pre></div>
 
 <p>How did that happen? The magic happens at this line of your script:</p>
 
-<pre><code>echo &quot;$3, $2, $1&quot;
-</code></pre>
+<div><pre><code class="language-none">echo &quot;$3, $2, $1&quot;</code></pre></div>
 
 <p>The bash shell <strong>automagically</strong> creates variables for you when you run a script, and assigns the first word to <code>$1</code>, the second to <code>$2</code>, and the third to <code>$3</code>. It&#39;s <strong><em>as if</em></strong> your script actually read as:</p>
 
-<pre><code>#! /bin/bash
+<div><pre><code class="language-none">#! /bin/bash
 
 1=&quot;value1&quot;
 2=&quot;value2&quot;
 3=&quot;value3&quot;
-echo &quot;$3, $2, $1&quot;
-</code></pre>
+echo &quot;$3, $2, $1&quot;</code></pre></div>
 
 <p>But it happens dynamically, and takes the user input as the value to assign to the numbered variables.</p></li>
 </ol>
@@ -579,8 +584,7 @@ echo &quot;$3, $2, $1&quot;
 
 <p>Make sure you are working inside your <code>scripts</code> folder:</p>
 
-<pre><code>$ cd ~/scripts
-</code></pre>
+<div><pre><code class="language-none">$ cd ~/scripts</code></pre></div>
 
 <h4 id="toc_7">make_script.sh</h4>
 
@@ -588,8 +592,7 @@ echo &quot;$3, $2, $1&quot;
 
 <p>Given that the <strong>next</strong> assignment below will be to make a <code>weather.sh</code> script, it would be great if we could automatically pull down the Bioe421/521 script template, name it what we want, and make it executable. So for this <code>make_script.sh</code>, we want the user to be able to run:</p>
 
-<pre><code>$ ./make_script.sh weather
-</code></pre>
+<div><pre><code class="language-none">$ ./make_script.sh weather</code></pre></div>
 
 <p>And have it generate <code>weather.sh</code> ready to be edited and then immediately executed.</p>
 
@@ -604,40 +607,32 @@ echo &quot;$3, $2, $1&quot;
 
 <p>Let&#39;s get started. I put a script template you should use at:</p>
 
-<pre><code>    https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
-</code></pre>
+<div><pre><code class="language-none">    https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh</code></pre></div>
 
 <ol>
 <li><p>Write a one-line program to put the contents of the file at this URL into a new file named <code>get-script.sh</code>. Write the program (after you&#39;re sure it works!) here:</p>
 
-<pre><code>$ 
-</code></pre></li>
+<div><pre><code class="language-none">$ </code></pre></div></li>
 <li><p>Use <code>nano</code> to edit <code>get-script.sh</code> to, itself, grab the <code>bash-script.sh</code> template from github and output it to <code>STDOUT</code>. Of course, you will have to <code>chmod +x</code> this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:</p>
 
-<pre><code>$ ./make_script.sh
-</code></pre>
+<div><pre><code class="language-none">$ ./make_script.sh</code></pre></div>
 
 <p>Describe the output:</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>Modify your script to take input from the user, and use this user input to set the filename of a new script file on your hard drive that will be generated from a live copy of the <code>bash-script.sh</code> file on github. What happens when you now run:</p>
 
-<pre><code>$ ./make_script.sh weather
-</code></pre>
+<div><pre><code class="language-none">$ ./make_script.sh weather</code></pre></div>
 
 <p>Describe the result:</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>Next, modify <code>get-script.sh</code> to also run the command <code>chmod +x</code> on your newly created <code>weather.sh</code> script file to make it executable right after it&#39;s created. Describe the result and how you checked it if the new <code>weather.sh</code> was executable:</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>Finally, we don&#39;t want to have to delete all those extra lines each time we make a new script. So, edit the <code>get-script.sh</code> file to grab <strong>ONLY</strong> the 15 lines of the <code>bash_script.sh</code> file to use as a template. Describe your modifications:</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 </ol>
 
 <h3 id="toc_8">weather.sh</h3>
@@ -645,42 +640,37 @@ echo &quot;$3, $2, $1&quot;
 <ol>
 <li><p>Use <code>nano</code> to write a <code>bash</code> script that grabs the current local weather. You will need to install the <code>weather-util</code> command:</p>
 
-<pre><code>$ sudo apt-get install weather-util
-</code></pre>
+<div><pre><code class="language-none">$ sudo apt-get install weather-util</code></pre></div>
 
 <p><strong>NOTE:</strong> As of August 23rd, 2016 the NOAA WX weather products URLs were deprecated. This means <code>weather-util</code> won&#39;t work out of the box. e.g. if we use the 4-character code location for Houston Hobby Airport and run <code>weather KHOU</code> you may see an error like:</p>
 
-<pre><code>$ weather KHOU
+<div><pre><code class="language-none">$ weather KHOU
 Searching via station...
 [caching result Houston Hobby Airport, TX, United States]
 weather error: failed to retrieve
    http://weather.noaa.gov/pub/data/observations/metar/decoded/KHOU.TXT
-   HTTPError: HTTP Error 404: Not Found
-</code></pre>
+   HTTPError: HTTP Error 404: Not Found</code></pre></div>
 
 <p>But, an updated file has been created by the developer, so we next need to get the latest files with <code>git</code> and overwrite the files that were installed with the <code>weather-util</code> package:</p>
 
-<pre><code>$ cd ~
+<div><pre><code class="language-none">$ cd ~
 $ mkdir weather-pkg
 $ cd weather-pkg
 $ git clone http://www.yuggoth.org/git/weather.git
 $ cd weather
-$ ls -la
-</code></pre>
+$ ls -la</code></pre></div>
 
 <p>Make sure you have a <code>stations</code> file. We next need to copy this file to <code>/usr/share/weather/</code>:</p>
 
-<pre><code>$ sudo cp stations /usr/share/weather-util/
-</code></pre>
+<div><pre><code class="language-none">$ sudo cp stations /usr/share/weather-util/</code></pre></div>
 
 <p>Check that it&#39;s there with:</p>
 
-<pre><code>$ ls -la /usr/share/weather-util/
-</code></pre>
+<div><pre><code class="language-none">$ ls -la /usr/share/weather-util/</code></pre></div>
 
 <p>Now, using the airport code location for Houston Hobby Airport you can run something like:</p>
 
-<pre><code>$ weather hou
+<div><pre><code class="language-none">$ weather hou
 Searching via airport...
 [caching result Houston Hobby Airport, TX, United States]
 Current conditions at Houston Hobby Airport, TX
@@ -690,19 +680,16 @@ Last updated Aug 29, 2016 - 01:53 PM EDT / 2016.08.29 1753 UTC
    Wind: from the E (100 degrees) at 12 MPH (10 KT)
    Weather: Lightning observed
    Sky conditions: mostly cloudy
-   Precipitation last hour: A trace
-</code></pre>
+   Precipitation last hour: A trace</code></pre></div>
 
 <p>This may take some time. Be patient! Recall that you can use <code>grep</code> to parse this text a bit (remember that text given to <code>grep</code> is case-sensitive):</p>
 
-<pre><code>$ weather hou | grep Temperature
-   Temperature: 77.0 F (25.0 C)
-</code></pre></li>
+<div><pre><code class="language-none">$ weather hou | grep Temperature
+   Temperature: 77.0 F (25.0 C)</code></pre></div></li>
 <li><p>Modify your script to have the weather data saved to a file named with the current time and located at <code>/home/pi/weather/</code>.<br>
 <strong>Hints:</strong> You will want to use the <code>date</code> command and look at it&#39;s formatting options:</p>
 
-<pre><code>$ man date
-</code></pre>
+<div><pre><code class="language-none">$ man date</code></pre></div>
 
 <p>You likely also want to use the <code>-p</code> flag of the <code>mkdir</code> command.</p></li>
 <li><p>You might get a warning when running <code>weather -i</code>. Modify your script to suppress this <strong>STDERR</strong> by sending it to <strong>STDOUT</strong> and then using a piped <code>tail</code> to show output starting at the 4th line. You will want to check the man page for <code>tail</code> to see how to show output relative to the beginning of the input.</p></li>
@@ -735,23 +722,20 @@ Last updated Aug 29, 2016 - 01:53 PM EDT / 2016.08.29 1753 UTC
 <ol>
 <li><p>move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention for <code>Team09-LambdaFTW</code>. <strong>Make sure there are no spaces in your team name identifier</strong>. And, the trailing <code>/</code> characters here have specific meaning... don&#39;t forget them!</p>
 
-<pre><code>$ cd ~
+<div><pre><code class="language-none">$ cd ~
 $ mkdir Team09-LambdaFTW_Lab03
 $ mv raspicam Team09-LambdaFTW_Lab03/
 $ mv scripts Team09-LambdaFTW_Lab03/
-$ mv weather Team09-LambdaFTW_Lab03/
-</code></pre></li>
+$ mv weather Team09-LambdaFTW_Lab03/</code></pre></div></li>
 <li><p>Zip up the folder to make a single .zip file</p>
 
-<pre><code>$ sudo apt-get update
+<div><pre><code class="language-none">$ sudo apt-get update
 $ sudo apt-get install zip
-$ zip -r Team09-LambdaFTW_Lab03.zip Team09-LambdaFTW_Lab03
-</code></pre></li>
+$ zip -r Team09-LambdaFTW_Lab03.zip Team09-LambdaFTW_Lab03</code></pre></div></li>
 <li><p><code>scp</code> your team&#39;s homework .zip file to your Instructor&#39;s RaspberryPi. Your Instructor will provide you with the value to enter for <strong>IP_ADDRESS</strong>. Use your same <code>raspberry</code> password (note that you are logging in as user <code>student</code>):</p>
 
-<pre><code>$ man scp
-$ scp Team09-LambdaFTW_Lab03.zip student@IP_ADDRESS:/home/student/
-</code></pre></li>
+<div><pre><code class="language-none">$ man scp
+$ scp Team09-LambdaFTW_Lab03.zip student@IP_ADDRESS:/home/student/</code></pre></div></li>
 </ol>
 
 <h2 id="toc_13">Shutdown Procedure</h2>
@@ -759,29 +743,37 @@ $ scp Team09-LambdaFTW_Lab03.zip student@IP_ADDRESS:/home/student/
 <ol>
 <li><p>Shutdown your Pi properly:</p>
 
-<pre><code>$ sudo shutdown -h now
-</code></pre>
+<div><pre><code class="language-none">$ sudo shutdown -h now</code></pre></div>
 
 <p>Unplug everthing and restore the Windows desktop computer to a working state.</p></li>
 </ol>
 
+
+
 <script type="text/javascript">
-self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
 </script>
+
 <script type="text/x-mathjax-config">
-MathJax.Hub.Register.StartupHook('End', function () {
-   MathJaxListener.invokeCallbackForKey_('End');
-})
-</script>
-<script type="text/x-mathjax-config">
+(function () {
+
 MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-    }
-})
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
 </script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 
 ## Lab 1A. Getting Started with Raspberry Pi
 
-###### We will use Raspberry Pi 3 - Model B - ARMv8 with 1G RAM: https://www.adafruit.com/products/3055 and the 2016-05-27 Installation of Raspbian Jessie Linux from: https://www.raspberrypi.org/downloads/raspbian/ with a SHA-1 checksum of: 64c7ed611929ea5178fbb69b5a5f29cc9cc7c157
+###### We will use Raspberry Pi 3 - Model B - ARMv8 with 1G RAM: https://www.adafruit.com/products/3055 and the 2017-07-05 Installation of Raspbian "Jessie" Linux from: https://www.raspberrypi.org/downloads/raspbian/ with a SHA-256 checksum of: 455cb85fb54c73bad07bd3a44db67755912579cd84ecbd42e2ab49565206b65e
 
 ##### Raspberry Pi is a complete computer system under $40. It uses an ARM processor similar to what is found in many smartphones. It can run many operating systems (OSes) and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
 

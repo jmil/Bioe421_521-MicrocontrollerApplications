@@ -1,8 +1,13 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 
 <head>
+
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Lab09--ComputerVisionWithRaspberryPiCamera</title>
+
+
 <style type="text/css">
 body {
   font-family: Helvetica, arial, sans-serif;
@@ -305,6 +310,7 @@ sup {
 	}
 }
 </style>
+
 <style type="text/css">
 /**
  * prism.js default theme for JavaScript, CSS and HTML
@@ -315,13 +321,14 @@ sup {
 code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
+	background: none;
 	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
-	direction: ltr;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
+	word-wrap: normal;
 	line-height: 1.5;
 
 	-moz-tab-size: 4;
@@ -369,6 +376,7 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
+	white-space: normal;
 }
 
 .token.comment,
@@ -391,7 +399,8 @@ pre[class*="language-"] {
 .token.boolean,
 .token.number,
 .token.constant,
-.token.symbol {
+.token.symbol,
+.token.deleted {
 	color: #905;
 }
 
@@ -399,7 +408,8 @@ pre[class*="language-"] {
 .token.attr-name,
 .token.string,
 .token.char,
-.token.builtin {
+.token.builtin,
+.token.inserted {
 	color: #690;
 }
 
@@ -407,8 +417,7 @@ pre[class*="language-"] {
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
+.style .token.string {
 	color: #a67f59;
 	background: hsla(0, 0%, 100%, .5);
 }
@@ -424,20 +433,29 @@ pre[class*="language-"] {
 }
 
 .token.regex,
-.token.important {
+.token.important,
+.token.variable {
 	color: #e90;
 }
 
-.token.important {
+.token.important,
+.token.bold {
 	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
 }
 
 .token.entity {
 	cursor: help;
-
+}
 </style>
+
+
 </head>
+
 <body>
+
 <h1 id="toc_0">Bioe 421/521: Microcontroller Applications</h1>
 
 <h4 id="toc_1">Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications</h4>
@@ -461,49 +479,43 @@ pre[class*="language-"] {
 <ol>
 <li><p>Install the image processor <code>OpenCV</code> for <code>Camera.py</code>:</p>
 
-<pre><code>$ sudo -s
+<div><pre><code class="language-none">$ sudo -s
 # apt-get update
 # apt-get install libopencv-dev
-# apt-get install python-opencv
-</code></pre></li>
+# apt-get install python-opencv</code></pre></div></li>
 <li><p>The image classifier can tell the difference between arrays of pixels. Install Skykit for <code>classifier.py</code> and <code>find_shortest_path.py</code>:</p>
 
-<pre><code># apt-get install build-essential python-dev python-numpy python-setuptools python-scipy 
+<div><pre><code class="language-none"># apt-get install build-essential python-dev python-numpy python-setuptools python-scipy 
 # apt-get install python-matplotlib
 # apt-get install python-pip
-# exit
-</code></pre></li>
+# exit</code></pre></div></li>
 <li><p>Now we are just about ready. Let&#39;s make the <code>computer_vision</code> directory for us to work in.</p>
 
-<pre><code>$ cd ~
+<div><pre><code class="language-none">$ cd ~
 $ mkdir -p computer_vision
-$ cd computer_vision
-</code></pre>
+$ cd computer_vision</code></pre></div>
 
 <p>Use <code>wget</code> to pull down the relevant attachments from github:</p>
 
-<pre><code>https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/vids.zip
+<div><pre><code class="language-none">https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/vids.zip
 
-https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/face-detect.zip
-</code></pre>
+https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Attachments/face-detect.zip</code></pre></div>
 
 <p>Unzip these zip files:</p>
 
-<pre><code>$ which unzip
+<div><pre><code class="language-none">$ which unzip
 $ man unzip
 $ unzip vids.zip
-$ unzip face-detect.zip
-</code></pre></li>
+$ unzip face-detect.zip</code></pre></div></li>
 </ol>
 
 <h2 id="toc_4">Analyze a Video</h2>
 
 <p>Let&#39;s take a look at a sample video we&#39;d like to analyze. Recall <code>omxplayer</code> can help us here.</p>
 
-<pre><code>    $ cd vids
+<div><pre><code class="language-none">    $ cd vids
     $ which omxplayer
-    $ omxplayer vid1.mov
-</code></pre>
+    $ omxplayer vid1.mov</code></pre></div>
 
 <p>There&#39;s motion, there&#39;s a person(!), there&#39;s a shoe, there are sunglasses. Think about the features of a human face that make it straightforward to you to recognize people. We will need to provide our computer with instructions of how to do the same thing.</p>
 
@@ -521,47 +533,41 @@ $ unzip face-detect.zip
 <ol>
 <li><p>Let&#39;s check out the readme:</p>
 
-<pre><code>$ cd ../face-detect/
+<div><pre><code class="language-none">$ cd ../face-detect/
 $ cd data/
-$ cat readme.txt
-</code></pre></li>
+$ cat readme.txt</code></pre></div></li>
 <li><p>Ok, we&#39;re almost ready to run the <strong>haarcascade</strong> on the video. Let&#39;s try to understand what it&#39;s going to do, first though.</p>
 
-<pre><code>$ cd ../src
-$ nano analyze_video.py
-</code></pre></li>
+<div><pre><code class="language-none">$ cd ../src
+$ nano analyze_video.py</code></pre></div></li>
 <li><p>Notice near the top you should set the name of the video you want to analyze:</p>
 
-<pre><code>video_file_name = &#39;../sample.mov&#39;
-</code></pre></li>
+<div><pre><code class="language-none">video_file_name = &#39;../sample.mov&#39;</code></pre></div></li>
 <li><p>Set this variable correctly:</p>
 
-<pre><code>video_file_name = &#39;../../vids/vid1.mov&#39;
-</code></pre></li>
+<div><pre><code class="language-none">video_file_name = &#39;../../vids/vid1.mov&#39;</code></pre></div></li>
 <li><p>Look for this region later in the code:</p>
 
-<pre><code>if __name__ == &#39;__main__&#39;:
+<div><pre><code class="language-none">if __name__ == &#39;__main__&#39;:
 
     ...
     cascade_fn = args.get(&#39;--cascade&#39;, &quot;../data/haarcascades/haarcascade_frontalface_alt.xml&quot;)
     nested_fn  = args.get(&#39;--nested-cascade&#39;, &quot;../data/haarcascades/haarcascade_eye.xml&quot;)
 
     cascade = cv2.CascadeClassifier(cascade_fn)
-    nested = cv2.CascadeClassifier(nested_fn)
-</code></pre>
+    nested = cv2.CascadeClassifier(nested_fn)</code></pre></div>
 
 <p>At the beginning of the run, the video file is loaded and you have two cascade identifiers that are loaded. <code>cascade_fn</code> refers to <code>frontalface</code> and will be scanning your image for a person&#39;s face. <code>nested_fn</code> is a nested cascade... only if a <code>frontalface</code> object is found will <code>nested_fn</code> look for eyes within that face.</p>
 
 <p>This section loads the video and figures out it&#39;s dimensions and notifies the user:</p>
 
-<pre><code>cap = cv2.VideoCapture(video_file_name)
+<div><pre><code class="language-none">cap = cv2.VideoCapture(video_file_name)
 width= cap.get(3)
 height = cap.get(4)
-print width
-</code></pre></li>
+print width</code></pre></div></li>
 <li><p>Later on, we have the processing loop, which runs while <code>cap</code> is being read, which is to say when a video file is being read. It turns the picture into a grayscale value, starts detecting the cascade, and makes a new cropped image to be displayed and highlighted for the user (<code>imshow</code>):</p>
 
-<pre><code>while(cap.isOpened()):
+<div><pre><code class="language-none">while(cap.isOpened()):
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     gray = cv2.equalizeHist(gray)
@@ -580,32 +586,27 @@ print width
 
     draw_str(vis, (20, 20), &#39;time: %.1f ms&#39; % (dt*1000))
     cv2.imshow(&#39;facedetect&#39;, vis)
-    captured_frame_number=captured_frame_number+1
-</code></pre></li>
+    captured_frame_number=captured_frame_number+1</code></pre></div></li>
 <li><p>Finally, note that the files will be output to the following location:</p>
 
-<pre><code>cv2.imwrite(&quot;../data/saved_images/{0:d}.png&quot;.format(captured_frame_number),vis)
-</code></pre></li>
+<div><pre><code class="language-none">cv2.imwrite(&quot;../data/saved_images/{0:d}.png&quot;.format(captured_frame_number),vis)</code></pre></div></li>
 <li><p>Save and exit this. Let&#39;s run it:</p>
 
-<pre><code>$ python analyze_video.py
-</code></pre>
+<div><pre><code class="language-none">$ python analyze_video.py</code></pre></div>
 
 <p>You can use the <code>q</code> key to quit the program. What happens when you run this program? </p>
 
-<pre><code>:
+<div><pre><code class="language-none">:
 :
 :
 :
-:
-</code></pre></li>
+:</code></pre></div></li>
 <li><p>Let&#39;s look at the recorded slideshow of the processed images that you made. Remember the <code>fbi</code> command?:</p>
 
-<pre><code>$ cd ../data/saved_images
+<div><pre><code class="language-none">$ cd ../data/saved_images
 $ ls -la
 $ man fbi
-$ sudo fbi -d /dev/fb0 -a -T 2 -t 3 *.png
-</code></pre>
+$ sudo fbi -d /dev/fb0 -a -T 2 -t 3 *.png</code></pre></div>
 
 <p>Use <strong><code>&lt;shift-Q&gt;</code></strong> to terminate.</p></li>
 <li><p>Show your instructor the <code>fbi</code> slideshow of the facial recognition images of your newly recorded video.</p></li>
@@ -618,11 +619,10 @@ $ sudo fbi -d /dev/fb0 -a -T 2 -t 3 *.png
 <li><p>Examine the other video, <code>vid2.mov</code> in the <code>vids</code> folder, using <code>omxplayer</code>.</p></li>
 <li><p>Analyze <code>vid2.mov</code> for facial recognition. Describe what in this video makes the challenge more difficult:</p>
 
-<pre><code>:
-</code></pre></li>
+<div><pre><code class="language-none">:</code></pre></div></li>
 <li><p>Make an <code>fbi</code> slideshow of these new images and show your Instructor. Describe the commands and procedures you used to accomplish this task:</p>
 
-<pre><code>:
+<div><pre><code class="language-none">:
 :
 :
 :
@@ -637,8 +637,7 @@ $ sudo fbi -d /dev/fb0 -a -T 2 -t 3 *.png
 :
 :
 :
-:
-</code></pre></li>
+:</code></pre></div></li>
 </ol>
 
 <h2 id="toc_6">Record and Analyze your Own Video</h2>
@@ -648,23 +647,20 @@ $ sudo fbi -d /dev/fb0 -a -T 2 -t 3 *.png
 <ol>
 <li><p>Recall the <code>raspivid</code> command. We will take a video that&#39;s lower resolution than HD so it&#39;s faster to process by the Pi when searching for faces:</p>
 
-<pre><code>$ cd ~/computer_vision/
-$ raspivid -o find_our_faces.h264 -w 640 -h 480
-</code></pre></li>
+<div><pre><code class="language-none">$ cd ~/computer_vision/
+$ raspivid -o find_our_faces.h264 -w 640 -h 480</code></pre></div></li>
 <li><p>We need to wrap this raw <code>.h264</code> file into a more standard <code>.mp4</code> or <code>.avi</code> container so that <code>OpenCV</code> can process it:</p>
 
-<pre><code>$ sudo apt-get install -y gpac
+<div><pre><code class="language-none">$ sudo apt-get install -y gpac
 $ which MP4Box
 $ MP4Box -fps 30 -add find_our_faces.h264 find_our_faces.mp4
-$ omxplayer find_our_faces.mp4
-</code></pre>
+$ omxplayer find_our_faces.mp4</code></pre></div>
 
 <p>If the <code>.mp4</code> doesn&#39;t work, you could try:</p>
 
-<pre><code>$ sudo apt-get install ffmpeg
+<div><pre><code class="language-none">$ sudo apt-get install ffmpeg
 $ which ffmpeg
-$ ffmpeg -i find_our_faces.h264 -vcodec mjpeg -qscale 1 -an find_our_faces.avi
-</code></pre></li>
+$ ffmpeg -i find_our_faces.h264 -vcodec mjpeg -qscale 1 -an find_our_faces.avi</code></pre></div></li>
 <li><p>Analyze your newly recorded video for faces.</p></li>
 <li><p>Show your instructor an <code>fbi</code> slideshow of the facial recognition images of your newly recorded video. <strong>HINT:</strong> You will want to purge the previously saved facial recognition images so you have a clean slideshow.</p></li>
 </ol>
@@ -684,14 +680,12 @@ $ ffmpeg -i find_our_faces.h264 -vcodec mjpeg -qscale 1 -an find_our_faces.avi
 <ol>
 <li><p>Zip up the arduino folder for Today&#39;s lab to make a single .zip file</p>
 
-<pre><code>$ cd ~
-$ zip -r Team09-LambdaFTW_Lab09.zip computer_vision
-</code></pre></li>
+<div><pre><code class="language-none">$ cd ~
+$ zip -r Team09-LambdaFTW_Lab09.zip computer_vision</code></pre></div></li>
 <li><p><code>scp</code> your team&#39;s homework .zip file to your Instructor&#39;s RaspberryPi. Your Instructor will provide you with the value to enter for <strong>IP_ADDRESS</strong>. Use your same <code>raspberry</code> password (note that you are logging in as user <code>student</code>):</p>
 
-<pre><code>$ man scp
-$ scp Team09-LambdaFTW_Lab09.zip student@IP_ADDRESS:/home/student/
-</code></pre></li>
+<div><pre><code class="language-none">$ man scp
+$ scp Team09-LambdaFTW_Lab09.zip student@IP_ADDRESS:/home/student/</code></pre></div></li>
 </ol>
 
 <h2 id="toc_9">Shutdown Procedure</h2>
@@ -699,29 +693,37 @@ $ scp Team09-LambdaFTW_Lab09.zip student@IP_ADDRESS:/home/student/
 <ol>
 <li><p>Shutdown your Pi properly:</p>
 
-<pre><code>$ sudo shutdown -h now
-</code></pre>
+<div><pre><code class="language-none">$ sudo shutdown -h now</code></pre></div>
 
 <p>Unplug everthing and restore the Windows desktop computer to a working state.</p></li>
 </ol>
 
+
+
 <script type="text/javascript">
-self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content)):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var a in e)e.hasOwnProperty(a)&&(r[a]=t.util.clone(e[a]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var a in n)r[a]=n[a];return r},insertBefore:function(e,n,r,a){a=a||t.languages;var i=a[e],o={};for(var l in i)if(i.hasOwnProperty(l)){if(l==n)for(var s in r)r.hasOwnProperty(s)&&(o[s]=r[s]);o[l]=i[l]}return a[e]=o},DFS:function(e,n){for(var r in e)n.call(e,r,e[r]),"Object"===t.util.type(e)&&t.languages.DFS(e[r],n)}},highlightAll:function(e,n){for(var r,a=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;r=a[i++];)t.highlightElement(r,e===!0,n)},highlightElement:function(r,a,i){for(var o,l,s=r;s&&!e.test(s.className);)s=s.parentNode;if(s&&(o=(s.className.match(e)||[,""])[1],l=t.languages[o]),l){r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o,s=r.parentNode,/pre/i.test(s.nodeName)&&(s.className=s.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var c=r.textContent;if(c){var g={element:r,language:o,grammar:l,code:c};if(t.hooks.run("before-highlight",g),a&&self.Worker){var u=new Worker(t.filename);u.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),o),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},u.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(r),t.hooks.run("after-highlight",g)}}},highlight:function(e,r,a){var i=t.tokenize(e,r);return n.stringify(t.util.encode(i),a)},tokenize:function(e,n){var r=t.Token,a=[e],i=n.rest;if(i){for(var o in i)n[o]=i[o];delete n.rest}e:for(var o in n)if(n.hasOwnProperty(o)&&n[o]){var l=n[o];l="Array"===t.util.type(l)?l:[l];for(var s=0;s<l.length;++s){var c=l[s],g=c.inside,u=!!c.lookbehind,f=0;c=c.pattern||c;for(var h=0;h<a.length;h++){var d=a[h];if(a.length>e.length)break e;if(!(d instanceof r)){c.lastIndex=0;var p=c.exec(d);if(p){u&&(f=p[1].length);var m=p.index-1+f,p=p[0].slice(f),v=p.length,y=m+v,k=d.slice(0,m+1),b=d.slice(y+1),w=[h,1];k&&w.push(k);var N=new r(o,g?t.tokenize(p,g):p);w.push(N),b&&w.push(b),Array.prototype.splice.apply(a,w)}}}}}return a},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[],r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(r&&r.length)for(var a,i=0;a=r[i++];)a(n)}}},n=t.Token=function(e,t){this.type=e,this.content=t};if(n.stringify=function(e,r,a){if("string"==typeof e)return e;if("[object Array]"==Object.prototype.toString.call(e))return e.map(function(t){return n.stringify(t,r,e)}).join("");var i={type:e.type,content:n.stringify(e.content,r,a),tag:"span",classes:["token",e.type],attributes:{},language:r,parent:a};"comment"==i.type&&(i.attributes.spellcheck="true"),t.hooks.run("wrap",i);var o="";for(var l in i.attributes)o+=l+'="'+(i.attributes[l]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+o+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,a=n.code;self.postMessage(JSON.stringify(t.tokenize(a,t.languages[r]))),self.close()},!1),self.Prism):self.Prism;var r=document.getElementsByTagName("script");return r=r[r.length-1],r&&(t.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
 </script>
+
 <script type="text/x-mathjax-config">
-MathJax.Hub.Register.StartupHook('End', function () {
-   MathJaxListener.invokeCallbackForKey_('End');
-})
-</script>
-<script type="text/x-mathjax-config">
+(function () {
+
 MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        processEscapes: true
-    }
-})
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
 </script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 </body>
 
 </html>
