@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 5C. Python and the Raspberry Pi Camera
+## Lab 5C. Python and the Raspberry Pi Camera
 
 We've previously used the Raspberry Pi Camera by calling the `raspistill` command to take pictures and `raspivid` command to take a video. We could add these into bash shell scripts for more automated handling. However, `python` on Raspberry Pi has some special constructs which allow more flexible use of the Raspberry Pi Camera. Let's take a look.
 
@@ -16,7 +16,7 @@ We want to install the `python-picamera` command. Run `apt-get` as the superuser
 	$ sudo apt-get install python-setuptools     
 
 We are using v1.10 of python-picamera. Let's check to make sure, with code from here:
-https://picamera.readthedocs.org/en/release-1.10/faq.html#how-can-i-tell-what-version-of-picamera-i-have-installed
+https://picamera.readthedocs.org/en/release-1.10/faq.html# how-can-i-tell-what-version-of-picamera-i-have-installed
 
 We will do this in the interactive CLI `python` interface, which has three angle brackets `>>>` as the python command prompt, so type what you see below after the `>>>`. Note it has familiar and very similar behavior to the `bash` shell's **STDIN** and **STDOUT**.
 
@@ -86,7 +86,7 @@ Why might you want to run a timelapse capture via a system `cron` job instead of
 	:
 	:
 
-####Congratulations, you're now an über professional geek videographer!
+#### Congratulations, you're now an über professional geek videographer!
 
 ### Optional/Bonus: Try some more of the Tutorials
 

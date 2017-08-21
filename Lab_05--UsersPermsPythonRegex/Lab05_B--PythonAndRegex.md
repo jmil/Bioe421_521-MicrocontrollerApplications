@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 5B. `Python` and Regex
+## Lab 5B. `Python` and Regex
 
 Previously in Lab we have done text-based search using the `grep`, `sed`, and `awk` commands. Often text searching can be done with much more complicated logic. We briefly looked at expanding the complexity of text searching that looked at the principles behind regular expressions (often abbreviated `regex` or `regexp`; plurals: `regexes` or `regexps`). We looked at the wonderful handout/explanation behind regular expressions from:
 http://www.regular-expressions.info
@@ -15,7 +15,7 @@ Here we will take a closer look at regular expressions using a different abstrac
 It's a great language you will want to become familiar with this semester.
 
 
-###External Tutorial on Python Regex
+### External Tutorial on Python Regex
 
 As the `pi` user back on your team's Raspberry Pi, create a new folder to store python code you generate today:
 
@@ -26,7 +26,7 @@ As the `pi` user back on your team's Raspberry Pi, create a new folder to store 
 Let's make a new `python` file that can be processed by the `python` program. This is a very similar process to how we made **shell scripts (\*.sh)** to be processed by the `bash` shell. `Python` scripts should be given the **.py** suffix.
 
 
-####Assignment
+#### Assignment
 Go to the following webpage (or use the handout):
 http://flockhart.virtualave.net/RBIF0100/regexp.html
 

@@ -1,13 +1,13 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
-##Lab 8B. Danger Shield Part 3
+## Lab 8B. Danger Shield Part 3
 
 Use your knowledge of Danger Shield to complete the following Assignments.
 
 
-####Procedure: You may use the GUI or use the command line to complete this assignment. For command line: recall you have used `ino` to setup the proper set of directories and files for each of your Arduino scripts. So, for EACH of the following assignments, you should repeat this setup procedure to create a clean directory to work in:
+#### Procedure: You may use the GUI or use the command line to complete this assignment. For command line: recall you have used `ino` to setup the proper set of directories and files for each of your Arduino scripts. So, for EACH of the following assignments, you should repeat this setup procedure to create a clean directory to work in:
 
 		$ cd ~
 		$ mkdir -p arduino/SimonSays
@@ -19,11 +19,11 @@ Use your knowledge of Danger Shield to complete the following Assignments.
 		$ rm sketch.ino
 		$ git clone https://github.com/sparkfun/DangerShield
 		
-####Then	you just edit that particular instance of the DangerShield.ino file, adding what you want and deleting anything you don't want. When editing in `nano`, **`<ctrl-K>`** can be used to delete an entire line at a time.
+#### Then	you just edit that particular instance of the DangerShield.ino file, adding what you want and deleting anything you don't want. When editing in `nano`, **`<ctrl-K>`** can be used to delete an entire line at a time.
 
 		$ nano DangerShield/Firmware/DangerShield/DangerShield.ino
 
-####To complete each assignment, you need to be sure to test and debug it on your Danger Shield hardware! So after editing your `.ino` file, you would:
+#### To complete each assignment, you need to be sure to test and debug it on your Danger Shield hardware! So after editing your `.ino` file, you would:
 		
 		$ cd arduino/SimonSays
 		$ ino build
@@ -31,14 +31,14 @@ Use your knowledge of Danger Shield to complete the following Assignments.
 		Converting to firmware.hex
 		$ ino upload
 
-###Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn't introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your `for{}` or `while{}` loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: http://arduino.cc/en/Reference/HomePage
+### Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn't introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your `for{}` or `while{}` loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: http://arduino.cc/en/Reference/HomePage
 
-###Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Danger Shield programming. Test early and often. You have been warned!!
+### Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Danger Shield programming. Test early and often. You have been warned!!
 
 
-##Assignments
+## Assignments
 
-###Assignment 1: Simon Says
+### Assignment 1: Simon Says
 
 Today you will use Raspberry Pi to design a Simon Says game. You will want to use either `random` or `randomSeed()` to complete this assignment.
 
@@ -54,7 +54,7 @@ Finally, for added challenge, make the rate of tone playback for the challenge a
 
 
 
-###Upload your work from today
+### Upload your work from today
 
 1. Zip up the arduino folder for Today's lab to make a single .zip file
 

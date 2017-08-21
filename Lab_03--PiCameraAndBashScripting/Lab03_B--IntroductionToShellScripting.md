@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 3B. Introduction to Shell Scripting
+## Lab 3B. Introduction to Shell Scripting
 So far, we've learned about the command-line terminal (a.k.a. the **shell**), and how to run basic commands like `cp` and `pwd` (you remember what those stand for, right? How could you look them up?). We've also covered using the **pipe** character (**`|`**) to make more complicated logical programs by passing **STDOUT** from one command as **STDIN** to the next one. However, what's the point of having a computer if we have to manually type each program each time we want to run it?
 
 It would be **MUCH** better if we had a way to save our most cleverly devised commands and single-line programs. Even better, we'd like to be able to save programs in a way that makes it easy to re-use our programs later and run them without much hassle.

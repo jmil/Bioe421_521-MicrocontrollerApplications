@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 8A. Use the Mouse
+## Lab 8A. Use the Mouse
 
 Upt until now, we have only used a keyboard as the human-machine interface. You've now mastered a huge swath of skills and knowledge behind the core of how UNIX-like machines work and how to do lots of tasks. Today let's plug into the graphical user interface **(GUI)** and mouse. We held back doing this until now for three reasons: **1)** As we learned in class, the keyboard is the most *expressive* human-machine interface, **2)** it's still often faster to use the keyboard in a terminal for most things, and **3)** when things go wrong in the GUI, you might often need a keyboard and the **CLI** to diagnose or fix problems (remember `killall`?).
 
@@ -21,7 +21,7 @@ Note that the **GUI** is just another program (albeit much more complicated than
 		$ startx
 
 
-##Assignments
+## Assignments
 
 1. Change your desktop background. Make sure the image you choose off the web has a legal, free open access license. I recommend:
 http://pixabay.com/

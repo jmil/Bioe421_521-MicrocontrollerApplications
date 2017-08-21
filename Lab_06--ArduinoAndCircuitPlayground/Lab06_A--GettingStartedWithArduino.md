@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 6A. Getting Started with Arduino
+## Lab 6A. Getting Started with Arduino
 
 Today we add the **Arduino**  microcontroller (pronounced `Ar du ween Oh`), to our hardware setup. It was developed by an awesome hardware/software team in Italy. Wikipedia has a concise overview:
 
@@ -159,7 +159,7 @@ Ok, it's time to create and install your first Arduino program, called a **sketc
 		$ ls -la
 		$ cat sketch.ino
 		
-		#define LED_PIN 13
+		# define LED_PIN 13
 		
 		void setup()
 		{
@@ -174,7 +174,7 @@ Ok, it's time to create and install your first Arduino program, called a **sketc
 			delay(900);
 		}
 	
-	That's all there is to a basic Arduino **sketch**. The `#define` command sets a global variable `LED_PIN` to the integer `13`. Next, the `setup()` loop gets called once immediately after the Arduino is powered on. You use the `setup()` loop to, you guessed it, setup your variables. Here we set the `LED_PIN` to respond to our commands with an output. The `loop()` is continously run as long as the Arduino has power. Inside this loop, we successively set the `LED_PIN` to be `HIGH` or `LOW`, corresponding to on and off in this case. We also have to insert delays in milliseconds between the on/off switches so that we can observe a change with our eyes. Although the Arduino might be considered "slow" by the standard of modern computers, it's now slouch! With the processor running at 16 MHz, if we don't pause the LED light, we won't see a change.
+	That's all there is to a basic Arduino **sketch**. The `# define` command sets a global variable `LED_PIN` to the integer `13`. Next, the `setup()` loop gets called once immediately after the Arduino is powered on. You use the `setup()` loop to, you guessed it, setup your variables. Here we set the `LED_PIN` to respond to our commands with an output. The `loop()` is continously run as long as the Arduino has power. Inside this loop, we successively set the `LED_PIN` to be `HIGH` or `LOW`, corresponding to on and off in this case. We also have to insert delays in milliseconds between the on/off switches so that we can observe a change with our eyes. Although the Arduino might be considered "slow" by the standard of modern computers, it's now slouch! With the processor running at 16 MHz, if we don't pause the LED light, we won't see a change.
 	
 	Why don't we need a **shebang** in this Arduino sketch?
 	

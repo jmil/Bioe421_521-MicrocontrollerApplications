@@ -1,8 +1,8 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
-##Lab 9. Computer Vision with Raspberry Pi Camera
+## Lab 9. Computer Vision with Raspberry Pi Camera
 
 Oftentimes, to execute a particular plan it might be more efficient to make an analogy between your current task and what someone else has already achieved and posted online. If they posted their ideas and their code under a liberal, legal, free and open-source license, you might be able to both benefit from and become a potential benefactor of a source project or success story you find online.
 
@@ -15,7 +15,7 @@ The reason why `python` is such an excellent language to use is that you don't h
 
 Video files can be a fairly regular format, but the Raspberry Pi Camera has a unique video format (remember how you connected it very close to the CPU so that the video could be read efficiently?). So we need to modify these files to work with your Pi Camera.
 
-###Install `OpenCV`
+### Install `OpenCV`
 
 1. Install the image processor `OpenCV` for `Camera.py`:
 
@@ -53,7 +53,7 @@ Video files can be a fairly regular format, but the Raspberry Pi Camera has a un
 		$ unzip face-detect.zip
 			
 
-##Analyze a Video
+## Analyze a Video
 
 Let's take a look at a sample video we'd like to analyze. Recall `omxplayer` can help us here.
 
@@ -165,7 +165,7 @@ http://en.wikipedia.org/wiki/Haar-like_features
 1. Show your instructor the `fbi` slideshow of the facial recognition images of your newly recorded video.
 
 
-##Analyze Another Video
+## Analyze Another Video
 
 1. Purge the contents of the `saved_images` folder (make sure you keep the folder itself!).
 
@@ -199,7 +199,7 @@ http://en.wikipedia.org/wiki/Haar-like_features
 
 
 
-##Record and Analyze your Own Video
+## Record and Analyze your Own Video
 
 Now let's make your own video to analyze and find your faces.
 
@@ -237,7 +237,7 @@ http://picamera.readthedocs.io/en/release-1.12/recipes1.html
 
 
 
-###Upload your work from today
+### Upload your work from today
 
 1. Zip up the arduino folder for Today's lab to make a single .zip file
 

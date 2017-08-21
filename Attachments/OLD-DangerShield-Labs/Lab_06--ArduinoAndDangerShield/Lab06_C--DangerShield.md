@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 6C. The Danger Shield
+## Lab 6C. The Danger Shield
 
 The Arduino is a beloved device because it's incredibly versatile -- see all those unused pins all over the board? Let's use them! Because Arduino is open-source, lots of people have built custom hardware circuit boards that snap right into all those ports. These specialty boards are often even larger than the Arduino itself, so they are called **shields**. One of my favorites Arduino shields is the open-source **Danger Shield**, developed by Zach Hoeken Smith and now commercialized by many companies including SparkFun. Zach named it the danger shield because it is dangerously-awesome -- it's got rad sliders, regular LEDs, temperature and light sensors, clicky buttons, a 7-segment LED, a buzzer speaker, and now a capacitive touch sensor! We are utilizing hardware and code from:
 https://www.sparkfun.com/products/11649
@@ -36,7 +36,7 @@ https://github.com/sparkfun/DangerShield
 	
 	Can you find the `setup()` and `loop()` sections? How are comments made?
 
-###Assignment
+### Assignment
 
 1. Copy (remember `cp`) your `python-arduino-read.py` script into your `~/arduino/dangershield/` directory. With the script running, move sliders and switches and press and release the capacitive touch sensor so you have some fluctuating vaules in your `output.txt` file. Get a solid 2 minutes or more of data capture before you terminate the program. Check the contents of the `output.txt` file to make sure you got a good range of data. How many bytes is your file?<br /><br />
 
@@ -113,45 +113,45 @@ Contents of DangerShield.ino, `git` commit: df57294493beed14e043b4a15eb1c5230e0c
 	//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 	//These pin definitions are for v1.6 of the board
 	/*
-	#define SLIDER1  A0
-	 #define SLIDER2  A1
-	 #define SLIDER3  A2
-	 #define LIGHT    A3
-	 #define TEMP     A4
-	 #define KNOCK    A5
+	# define SLIDER1  A0
+	 # define SLIDER2  A1
+	 # define SLIDER3  A2
+	 # define LIGHT    A3
+	 # define TEMP     A4
+	 # define KNOCK    A5
 	 
-	 #define DATA     4
-	 #define LED1     5
-	 #define LED2     6
-	 #define LATCH    7
-	 #define CLOCK    8
-	 #define BUZZER   9
-	 #define BUTTON1  10
-	 #define BUTTON2  11
-	 #define BUTTON3  12
+	 # define DATA     4
+	 # define LED1     5
+	 # define LED2     6
+	 # define LATCH    7
+	 # define CLOCK    8
+	 # define BUZZER   9
+	 # define BUTTON1  10
+	 # define BUTTON2  11
+	 # define BUTTON3  12
 	 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 	 */
 
 	//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 	//These pin definitions are for v1.7 of the board
-	#define SLIDER1  A2 //Matches button 1
-	#define SLIDER2  A1 
-	#define SLIDER3  A0 //Matches button 3
-	#define LIGHT    A3
-	#define TEMP     A4
+	# define SLIDER1  A2 //Matches button 1
+	# define SLIDER2  A1 
+	# define SLIDER3  A0 //Matches button 3
+	# define LIGHT    A3
+	# define TEMP     A4
 
-	#define BUZZER   3
-	#define DATA     4
-	#define LED1     5
-	#define LED2     6
-	#define LATCH    7
-	#define CLOCK    8
-	#define BUTTON1  10
-	#define BUTTON2  11
-	#define BUTTON3  12
+	# define BUZZER   3
+	# define DATA     4
+	# define LED1     5
+	# define LED2     6
+	# define LATCH    7
+	# define CLOCK    8
+	# define BUTTON1  10
+	# define BUTTON2  11
+	# define BUTTON3  12
 	//v1.7 uses CapSense
 	//This relies on the Capactive Sensor library here: http://playground.arduino.cc/Main/CapacitiveSensor
-	#include <CapacitiveSensor.h>
+	# include <CapacitiveSensor.h>
 
 	CapacitiveSensor capPadOn92 = CapacitiveSensor(9, 2);   //Use digital pins 2 and 9,
 	//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -235,7 +235,7 @@ Contents of DangerShield.ino, `git` commit: df57294493beed14e043b4a15eb1c5230e0c
 
 	  Serial.println();
 
-	  //Set the brightness on LED #2 (D6) based on slider 1
+	  //Set the brightness on LED # 2 (D6) based on slider 1
 	  int ledLevel = map(val1, 0, 1020, 0, 255); //Map the slider level to a value we can set on the LED
 	  analogWrite(LED2, ledLevel); //Set LED brightness
 

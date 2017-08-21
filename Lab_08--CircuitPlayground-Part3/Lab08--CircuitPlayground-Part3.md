@@ -1,13 +1,13 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
-##Lab 8. Circuit Playground Part 3
+## Lab 8. Circuit Playground Part 3
 
 Use your knowledge of Circuit Playground to complete the following Challenge.
 
 
-##Assignment
+## Assignment
 
 You should save your new or edited `.ino` file(s) in a new directory for today:
 
@@ -17,7 +17,7 @@ You should save your new or edited `.ino` file(s) in a new directory for today:
 
 
 
-###Assignment 1: Simon Says
+### Assignment 1: Simon Says
 
 Today you will use Raspberry Pi to design a Simon Says game that can run on your Circuit Playground. You will want to use either `random` or `randomSeed()` to complete this assignment.
 
@@ -41,14 +41,14 @@ If the user wins, they should get a game winning sound, and an animation of the 
 
 Finally, for added challenge, make the rate of tone playback for the challenge accelerated based on the position of the slider.
 
-####You need to be sure to test and debug it on your Circuit Playground hardware!
+#### You need to be sure to test and debug it on your Circuit Playground hardware!
 
 Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn't introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your `for{}` or `while{}` loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: http://arduino.cc/en/Reference/HomePage
 
-####Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Circuit Playground programming. Test early and often. You have been warned!!
+#### Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Circuit Playground programming. Test early and often. You have been warned!!
 
 
-###Upload your work from today
+### Upload your work from today
 
 1. Zip up the arduino folder for Today's lab to make a single .zip file
 
@@ -83,7 +83,7 @@ During our work with Circuit Playground it may eventually get confused and stop 
 #### Symptoms:	
 * From: [https://forums.adafruit.com/viewtopic.php?f=58&t=102881](https://forums.adafruit.com/viewtopic.php?f=58&t=102881)
 	`jfmclaugh` writes:
-	> Circuit Playground was working fine until recently- now all I get is a green light, and occasionally the red #13 pulses when I press reset. It won't install- I get USB Device Not Recognized. I'm using a cable that worked OK before, still works fine on my smart phone. I reinstalled the drivers as well, no help. Please advise, thanks
+	> Circuit Playground was working fine until recently- now all I get is a green light, and occasionally the red # 13 pulses when I press reset. It won't install- I get USB Device Not Recognized. I'm using a cable that worked OK before, still works fine on my smart phone. I reinstalled the drivers as well, no help. Please advise, thanks
 
 
 * Another symptom is that you will no longer see Circuit Playground listed in the output from:

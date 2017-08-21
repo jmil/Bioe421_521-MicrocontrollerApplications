@@ -1,10 +1,10 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 3A. The Raspberry Pi Camera
-######Adapted from http://www.raspberrypi.org/documentation/usage/camera/README.md
+## Lab 3A. The Raspberry Pi Camera
+###### Adapted from http://www.raspberrypi.org/documentation/usage/camera/README.md
 
-###Hardware: Connecting your Raspberry Pi Camera
+### Hardware: Connecting your Raspberry Pi Camera
 
 ****
 **NOTE: BEFORE giving any power to your Raspberry Pi computer:**
@@ -23,7 +23,7 @@ From http://RaspberryPi.org/:
 >Although the connectors on the PCB and the Pi are different, they work in a similar way. On the Raspberry Pi itself, pull up the tabs on each end of the connector. It should slide up easily, and be able to pivot around slightly. Fully insert the ribbon cable into the slot, ensuring it is set straight, then gently press down the tabs to clip it into place. The camera PCB connector also requires you to pull the tabs away from the board, gently insert the cable, then push the tabs back. The PCB connector can be a little more awkward than the one on the Pi itself. 
 
 
-###Software: Enable your Raspberry Pi Camera
+### Software: Enable your Raspberry Pi Camera
 1. Once your camera is plugged in, boot up your RaspberryPi and login.
 1. Open the `raspi-config` tool from the Terminal:
 
@@ -93,7 +93,7 @@ If your image is upside down, consider utilizing the `-vf` and `-hf` options of 
 	$ raspistill -v -vf -hf -o smile2.jpg
 
 
-####Congratulations, you're now a professional geek photographer!
+#### Congratulations, you're now a professional geek photographer!
 
 ### Recording a Video
 
@@ -122,7 +122,7 @@ If that doesn't work, try the more complete:
 	$ omxplayer -o hdmi video.h264
 
 
-####Congratulations, you're now a professional geek videographer!
+#### Congratulations, you're now a professional geek videographer!
 
 ### Kiosk Assignment
 

@@ -1,12 +1,12 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 5A. Users and Permissions
+## Lab 5A. Users and Permissions
 
 As we learned in class, programs are files on the computer that get read and loaded into memory by launching them as "processes". Processes are single instance self-encapsulated copies of the program loaded in memory (one program can have multiple instances running). And there are tons of processes running on your computer all the time. The computer uses two major conventions to decide which processes to run, and when. The first is order of operations, where programs are run as soon as they can be after they are launched. The second is based on a hierarchy of users and permissions on your system.
 
 
-###Change your Password!
+### Change your Password!
 
 Right now, you and the entire Internets have your username and password, because they are still the default set for the Pi:
 
@@ -72,7 +72,7 @@ What is your new group name? What is your new group ID (hint: it should be an in
 	group ID:
 
 
-###Collaborate
+### Collaborate
 Now that your user account is locked down with a unique password, it will be safe to create a new user account for your neighboring lab group on each of your respective Pis. While logged in as your `pi` account, you can add a new user account with username of their choice. Allow them to also set their password, and enter information as appropriate when prompted.
 
 	$ sudo adduser friendly-neighbor
@@ -94,7 +94,7 @@ Why might you want to create and then join a group between two user accounts?
 
 	:
 
-###Connect Remotely
+### Connect Remotely
 Now with each group being given a working user account on another Pi, you can ssh into your neighbor's Pi to get **shell access**. Make sure you trade IP address info too (recall this is your `inet addr` for either the ethernet connection `eth0` or the WiFi receiver `wlan0` depending on how you are currently connecting to the internet). If you're not sure just run `ifconfig` with no options. Here we will use `eth0`:
 	
 	$ ifconfig eth0
@@ -136,11 +136,11 @@ You can disconnect from your neighbor's pi using `exit` which will close that sh
 	$ exit
 
 
-####We are running the Raspian OS. Raspbian is a portmanteau of _Rasp_berry Pi and De_bian_ Linux because it is a customized version of Debian that works well on Raspberry Pi. So, you can learn more about how users and permissions work on your Raspberry Pi by learning about Debian Linux:
+#### We are running the Raspian OS. Raspbian is a portmanteau of _Rasp_berry Pi and De_bian_ Linux because it is a customized version of Debian that works well on Raspberry Pi. So, you can learn more about how users and permissions work on your Raspberry Pi by learning about Debian Linux:
  
-####http://wiki.debian.org/Permissions
+#### http://wiki.debian.org/Permissions
 
-####And you can learn more about Debian policies for Users and Groups by vising here:
+#### And you can learn more about Debian policies for Users and Groups by vising here:
 
-####http://www.debian.org/doc/debian-policy/ch-opersys.html
+#### http://www.debian.org/doc/debian-policy/ch-opersys.html
 

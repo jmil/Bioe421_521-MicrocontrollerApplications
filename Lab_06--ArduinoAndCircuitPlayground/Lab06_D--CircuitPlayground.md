@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 6D. The Circuit Playground
+## Lab 6D. The Circuit Playground
 
 The Arduino is a beloved device because it's incredibly versatile -- in previous years of this class we used the DangerShield which lets you use those unused pins all over the Arduino Uno board. If you're interested in DangerShield you can read more in the `Attachments` folder of this lab repository and ask your instructor to see an assembled board:
 https://www.sparkfun.com/products/11649
@@ -43,7 +43,7 @@ It's so purty! But, you ask, what's all that neato stuff all over the board?!?!?
 >• Includes I2C, UART, and 4 pins that can do analog inputs/PWM output
 >• All 8 pads can act as capacitive touch inputs
 >• Green "ON" LED so you know its powered
->• Red "#13" LED for basic blinking
+>• Red "# 13" LED for basic blinking
 >• Reset button
 
 >We've started out with a Developer Edition of Circuit Playground. This version is designed for people who have a little experience with Arduino already, who want to help build & document projects. There might be minor hardware or software bugs. Once we feel like the design is really solid we'll revise/re-release it into a universal edition for anyone to use!
@@ -161,9 +161,9 @@ Wow, that's a lot of stuff! Let's get setup to connect and program your Circuit 
 ### Learn with Circuit Playground Sketches
 
 
-A Circuit Playground sketch will generally call the `Adafruit_CircuitPlayground.h` file (using `#include`) which allows the sketch to access the functions optimized for this board. The simplest one is `CircuitPlayground.begin();` which is typically seen in the `setup()` function. Work with your lab partner to explain each line of the following source code for `Hello_Blink.ino`:
+A Circuit Playground sketch will generally call the `Adafruit_CircuitPlayground.h` file (using `# include`) which allows the sketch to access the functions optimized for this board. The simplest one is `CircuitPlayground.begin();` which is typically seen in the `setup()` function. Work with your lab partner to explain each line of the following source code for `Hello_Blink.ino`:
 
-	#include <Adafruit_CircuitPlayground.h>
+	# include <Adafruit_CircuitPlayground.h>
 
 	void setup() {
 	  CircuitPlayground.begin();
@@ -317,7 +317,7 @@ During our work with Circuit Playground it may eventually get confused and stop 
 #### Symptoms:	
 * From: [https://forums.adafruit.com/viewtopic.php?f=58&t=102881](https://forums.adafruit.com/viewtopic.php?f=58&t=102881)
 	`jfmclaugh` writes:
-	> Circuit Playground was working fine until recently- now all I get is a green light, and occasionally the red #13 pulses when I press reset. It won't install- I get USB Device Not Recognized. I'm using a cable that worked OK before, still works fine on my smart phone. I reinstalled the drivers as well, no help. Please advise, thanks
+	> Circuit Playground was working fine until recently- now all I get is a green light, and occasionally the red # 13 pulses when I press reset. It won't install- I get USB Device Not Recognized. I'm using a cable that worked OK before, still works fine on my smart phone. I reinstalled the drivers as well, no help. Please advise, thanks
 
 
 * Another symptom is that you will no longer see Circuit Playground listed in the output from:

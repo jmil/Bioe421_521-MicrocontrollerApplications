@@ -1,8 +1,8 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
-##Lab 2B. Customizing Your Command Prompt
+## Lab 2B. Customizing Your Command Prompt
 
 ### A Note about Your Shell History
 

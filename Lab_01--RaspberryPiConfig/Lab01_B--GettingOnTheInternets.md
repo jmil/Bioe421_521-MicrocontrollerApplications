@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 1B. Getting Raspberry Pi on the Internets
+## Lab 1B. Getting Raspberry Pi on the Internets
 
 ### Ethernet Access
 
@@ -42,10 +42,10 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 
 
 
-###Welcome to the Internet!
+### Welcome to the Internet!
 
 
-1. ####Let's upgrade your system and all its software to the latest OS version.
+1. #### Let's upgrade your system and all its software to the latest OS version.
 
 	Grab the complete list of all the latest software programs and packages:
 

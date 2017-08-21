@@ -1,14 +1,14 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 1C. Understanding the Shell
+## Lab 1C. Understanding the Shell
 
 
 
 From [Wikipedia, Shell (computing):](https://en.wikipedia.org/wiki/Shell_(computing))
 > A shell manages the user–system interaction by prompting users for input, interpreting their input, and then handling an output from the underlying operating system.
 
-#####The text-only command-line interface (CLI), commonly shortened to "command-line", is the simplest shell we will use in class.
+##### The text-only command-line interface (CLI), commonly shortened to "command-line", is the simplest shell we will use in class.
 
 Command-line utilizes a keyboard and video screen as the human-computer interface. It is also known as a terminal (think of the very ends of the cables connected to the computer), or shell (think of a wrapper -- a shell is a program which wraps or compartmentalizes **YOUR interface** with the computer and allows you to run commands and programs).
 	
@@ -28,7 +28,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 
 	The screen will be cleared and you will be presented with the manual. Note that the manual continues off the screen. For getting help on using man pages, use the **`<h>`** key ("h" for "help"). To scroll down one line at a time, use the **`<enter>`** key. To scroll down one entire page at a time, use the **`<spacebar>`**. To go to the previous page, press the **`<b>`** key ("b" for 'back'). To exit out of the man pages, press the **`<q>`** key ("q" for 'quit').
 		
-	#####NOTE: Many man pages have a very helpful section way at their bottom entitled "EXAMPLES". This section often shows written commands with their explained output. Very handy!	
+	##### NOTE: Many man pages have a very helpful section way at their bottom entitled "EXAMPLES". This section often shows written commands with their explained output. Very handy!	
 	
 ## Assignment
 
@@ -38,9 +38,9 @@ One of the most important aspects of the shell, especially for new users, is tha
 	On the Windows computer next to your Raspberry Pi, have your lab partner use the free editor with live rendering at:
 	http://dillinger.io
 	You can link it to google drive, dropbox, and github. Or you can edit and download the file.
-	###CRITICAL NOTE: Anything you save to the desktop on the Windows computer will be deleted after you logout (Rice IT default setup for the Windows computers). So it's best to use online text editing to save your file. Email it to yourself for now so that you have a backup.
+	### CRITICAL NOTE: Anything you save to the desktop on the Windows computer will be deleted after you logout (Rice IT default setup for the Windows computers). So it's best to use online text editing to save your file. Email it to yourself for now so that you have a backup.
 	
-	###TIP: Be descriptive here, the document you write will be available to you and your partner during the upcoming quiz.
+	### TIP: Be descriptive here, the document you write will be available to you and your partner during the upcoming quiz.
 
 
 	Write down general and specific usage notes about each command using Markdown format (*.md). The markdown format allows you to do hierarchical text formatting with only a few extra characters. Feel free to use a web browser on the neighboring PC to help you work through understanding these programs and how they are commonly used:
@@ -201,5 +201,5 @@ One of the most important aspects of the shell, especially for new users, is tha
 
  Unplug everthing and restore the Windows desktop computer to a working state.
 
-###Make sure you show your work to an Instructor before you leave for the day.
+### Make sure you show your work to an Instructor before you leave for the day.
 

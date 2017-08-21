@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 4A. Parsing with `Grep`, `Awk`, and `Sed`
+## Lab 4A. Parsing with `Grep`, `Awk`, and `Sed`
 
 From [Wikipedia, Parsing:](https://en.wikipedia.org/wiki/Parsing)
 > Parsing or syntactic analysis is the process of analysing a string of symbols, either in natural language or in computer languages, conforming to the rules of a formal grammar.
@@ -145,7 +145,7 @@ You will want to take this `cancer_refs.txt` result file, and parse out the PMID
 1. Now, get it working for your `cancer_PMIDs.txt` file.
 
  
-###Now, Let's apply this file for the following querys:
+### Now, Let's apply this file for the following querys:
 
 #### GFP
 

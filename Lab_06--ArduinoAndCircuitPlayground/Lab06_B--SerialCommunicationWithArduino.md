@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 6B. Serial Communication with Arduino
+## Lab 6B. Serial Communication with Arduino
 
 Although currently connected by USB, Arduino is an independent computer. So we can actively communicate with Arduino to find out the state of variables in our running program. Let's take a look.
 

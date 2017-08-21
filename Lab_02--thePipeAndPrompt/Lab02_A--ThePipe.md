@@ -1,7 +1,7 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 2A. Redirecting Streams of Data
+## Lab 2A. Redirecting Streams of Data
 
 The command prompt serves as a source of standard input **(STDIN)**, and your computer monitor serves as the stream for standard output **(STDOUT)**. It's a data stream because the output happens a chunk at a time (another flowing river analogy) instead of all at once. This makes redirecting data streams very efficient -- you don't need to read a whole file into memory, you just start streaming the file from the beginning and you can process things as you go. Let's take a look.
 

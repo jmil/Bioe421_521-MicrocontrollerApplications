@@ -1,11 +1,11 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 1A. Getting Started with Raspberry Pi
+## Lab 1A. Getting Started with Raspberry Pi
 
-######We will use Raspberry Pi 3 - Model B - ARMv8 with 1G RAM: https://www.adafruit.com/products/3055 and the 2016-05-27 Installation of Raspbian Jessie Linux from: https://www.raspberrypi.org/downloads/raspbian/ with a SHA-1 checksum of: 64c7ed611929ea5178fbb69b5a5f29cc9cc7c157
+###### We will use Raspberry Pi 3 - Model B - ARMv8 with 1G RAM: https://www.adafruit.com/products/3055 and the 2016-05-27 Installation of Raspbian Jessie Linux from: https://www.raspberrypi.org/downloads/raspbian/ with a SHA-1 checksum of: 64c7ed611929ea5178fbb69b5a5f29cc9cc7c157
 
-#####Raspberry Pi is a complete computer system under $40. It uses an ARM processor similar to what is found in many smartphones. It can run many operating systems (OSes) and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
+##### Raspberry Pi is a complete computer system under $40. It uses an ARM processor similar to what is found in many smartphones. It can run many operating systems (OSes) and is perfect for lightweight input/output tasks. Raspberry Pi's low cost and extremely low power usage make it a perfect choice for always-on internet-connected computing. It also has a rudimentary graphics card allowing us to run a full graphical user interface, which we will do later in the semester.
 
 [Adafruit says](https://www.adafruit.com/products/3055):
 
@@ -16,9 +16,9 @@
 > Lastly, there’s an upgraded switched power source that goes up to 2.5 Amps instead of just 2 Amps - allowing your Pi to power even more powerful devices over USB ports.
 
 
-#####Hardware: We supply a complete Raspberry Pi, power cable, video cable, keyboard and mouse. We will utilize the computer displays already available at OEDK Computing Classroom and disconnect the desktop Windows PCs from those monitors to work with Raspberry Pi.
+##### Hardware: We supply a complete Raspberry Pi, power cable, video cable, keyboard and mouse. We will utilize the computer displays already available at OEDK Computing Classroom and disconnect the desktop Windows PCs from those monitors to work with Raspberry Pi.
 
-#####Raspberry Pi, like many microcontrollers, is sensitive to static. Avoid charging yourself up with static as it could damage your device (not usually a huge problem in Houston, but be careful). Let's get started.
+##### Raspberry Pi, like many microcontrollers, is sensitive to static. Avoid charging yourself up with static as it could damage your device (not usually a huge problem in Houston, but be careful). Let's get started.
 
 1. Plug in the Keyboard to the Raspberry Pi. **We will not use the mouse** until later in the semester.
 
@@ -143,4 +143,4 @@
 
 		$ sudo raspi-config
 
-###Congrats! You are now ready to use your Raspberry Pi.
+### Congrats! You are now ready to use your Raspberry Pi.

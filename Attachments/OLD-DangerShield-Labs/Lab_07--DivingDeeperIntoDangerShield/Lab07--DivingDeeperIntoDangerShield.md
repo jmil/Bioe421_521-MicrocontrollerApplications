@@ -1,12 +1,12 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-##Lab 7. Diving Deeper into the Danger Shield
+## Lab 7. Diving Deeper into the Danger Shield
 
 Use your knowledge of Danger Shield to complete the following Assignments.
 
 
-####General Procedure: Recall you have used `ino` to setup the proper set of directories and files for each of your Arduino scripts. So, for EACH of the following assignments, you should repeat this setup procedure to create a clean directory to work in:
+#### General Procedure: Recall you have used `ino` to setup the proper set of directories and files for each of your Arduino scripts. So, for EACH of the following assignments, you should repeat this setup procedure to create a clean directory to work in:
 
 		$ cd ~
 		$ mkdir -p arduino/ASSIGNMENT-NAME
@@ -18,11 +18,11 @@ Use your knowledge of Danger Shield to complete the following Assignments.
 		$ rm sketch.ino
 		$ git clone https://github.com/sparkfun/DangerShield
 		
-####Then	you just edit that particular instance of the DangerShield.ino file, adding what you want and deleting anything you don't want. When editing in `nano`, **`<ctrl-K>`** can be used to delete an entire line at a time.
+#### Then	you just edit that particular instance of the DangerShield.ino file, adding what you want and deleting anything you don't want. When editing in `nano`, **`<ctrl-K>`** can be used to delete an entire line at a time.
 
 		$ nano DangerShield/Firmware/DangerShield/DangerShield.ino
 
-####To complete each assignment, you need to be sure to test and debug it on your Danger Shield hardware! So after editing your `.ino` file, you would:
+#### To complete each assignment, you need to be sure to test and debug it on your Danger Shield hardware! So after editing your `.ino` file, you would:
 		
 		$ cd arduino/ASSIGNMENT-NAME
 		$ ino build
@@ -30,14 +30,14 @@ Use your knowledge of Danger Shield to complete the following Assignments.
 		Converting to firmware.hex
 		$ ino upload
 
-###Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn't introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your `for{}` or `while{}` loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: http://arduino.cc/en/Reference/HomePage
+### Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn't introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your `for{}` or `while{}` loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: http://arduino.cc/en/Reference/HomePage
 
-###Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Danger Shield programming. Test early and often. You have been warned!!
+### Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Danger Shield programming. Test early and often. You have been warned!!
 
 
-##Assignments
+## Assignments
 
-###Assignment 1: Cycle
+### Assignment 1: Cycle
 
 **Remember to make a new directory by following the complete tutorial at the beginning of this lab.**
 Next, find the `const byte ledCharSet[10]` array. Do you remember what `const` and `byte` do? Note that you can change the pattern of 0s and 1s here to light up different parts of the 7-segment LED.
@@ -49,7 +49,7 @@ For the Cycle assignment:
 Figure out and replace the byte codes in `ledCharSet` that lets you light up, progressively as the slider is moved, only the outer ring of LEDs on the 7-segment LED **one at a time**. You want the outer 6-segments. What happens as you slide the slider slower or faster? **Hint:**The outer ring of LEDs on the 7-segment LED is the LEDs that are lit to display the digit `0`.
 
 
-###Assignment 2: Spinner
+### Assignment 2: Spinner
 
 **Remember to make a new directory by following the complete tutorial at the beginning of this lab.** Taking what you learned from the **Cycle** assignment, modify your design (recall: you can use the `cp` command to copy your `.ino` file from the Cycle directory) to make the LED appear to spin at one LED lit per second. Test this! Next, modify your code to get the outer ring of LEDs to appear to spin at a speed which is a function of the position that the second slider is moved to. **HINT:** You could use a `while` construct to test if the slider position is greater than, say, 2, and within the while loop you could do something like what you find elsewhere in the DangerShield code. A `delay` would probably be useful here...:
 	
@@ -61,7 +61,7 @@ Figure out and replace the byte codes in `ledCharSet` that lets you light up, pr
 	    if(numToDisplay > 9) numToDisplay = 0; //Loop number
 
 
-###Upload your work from today
+### Upload your work from today
 
 1. Zip up the arduino folder for Today's lab to make a single .zip file
 
@@ -136,45 +136,45 @@ Contents of DangerShield.ino, `git` commit: df57294493beed14e043b4a15eb1c5230e0c
 	//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 	//These pin definitions are for v1.6 of the board
 	/*
-	#define SLIDER1  A0
-	 #define SLIDER2  A1
-	 #define SLIDER3  A2
-	 #define LIGHT    A3
-	 #define TEMP     A4
-	 #define KNOCK    A5
+	# define SLIDER1  A0
+	 # define SLIDER2  A1
+	 # define SLIDER3  A2
+	 # define LIGHT    A3
+	 # define TEMP     A4
+	 # define KNOCK    A5
 	 
-	 #define DATA     4
-	 #define LED1     5
-	 #define LED2     6
-	 #define LATCH    7
-	 #define CLOCK    8
-	 #define BUZZER   9
-	 #define BUTTON1  10
-	 #define BUTTON2  11
-	 #define BUTTON3  12
+	 # define DATA     4
+	 # define LED1     5
+	 # define LED2     6
+	 # define LATCH    7
+	 # define CLOCK    8
+	 # define BUZZER   9
+	 # define BUTTON1  10
+	 # define BUTTON2  11
+	 # define BUTTON3  12
 	 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 	 */
 
 	//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 	//These pin definitions are for v1.7 of the board
-	#define SLIDER1  A2 //Matches button 1
-	#define SLIDER2  A1 
-	#define SLIDER3  A0 //Matches button 3
-	#define LIGHT    A3
-	#define TEMP     A4
+	# define SLIDER1  A2 //Matches button 1
+	# define SLIDER2  A1 
+	# define SLIDER3  A0 //Matches button 3
+	# define LIGHT    A3
+	# define TEMP     A4
 
-	#define BUZZER   3
-	#define DATA     4
-	#define LED1     5
-	#define LED2     6
-	#define LATCH    7
-	#define CLOCK    8
-	#define BUTTON1  10
-	#define BUTTON2  11
-	#define BUTTON3  12
+	# define BUZZER   3
+	# define DATA     4
+	# define LED1     5
+	# define LED2     6
+	# define LATCH    7
+	# define CLOCK    8
+	# define BUTTON1  10
+	# define BUTTON2  11
+	# define BUTTON3  12
 	//v1.7 uses CapSense
 	//This relies on the Capactive Sensor library here: http://playground.arduino.cc/Main/CapacitiveSensor
-	#include <CapacitiveSensor.h>
+	# include <CapacitiveSensor.h>
 
 	CapacitiveSensor capPadOn92 = CapacitiveSensor(9, 2);   //Use digital pins 2 and 9,
 	//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -258,7 +258,7 @@ Contents of DangerShield.ino, `git` commit: df57294493beed14e043b4a15eb1c5230e0c
 
 	  Serial.println();
 
-	  //Set the brightness on LED #2 (D6) based on slider 1
+	  //Set the brightness on LED # 2 (D6) based on slider 1
 	  int ledLevel = map(val1, 0, 1020, 0, 255); //Map the slider level to a value we can set on the LED
 	  analogWrite(LED2, ledLevel); //Set LED brightness
 

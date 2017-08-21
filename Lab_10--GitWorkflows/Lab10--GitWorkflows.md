@@ -1,8 +1,8 @@
-#Bioe 421/521: Microcontroller Applications
-####Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+# Bioe 421/521: Microcontroller Applications
+#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
-##Lab 10. Git Workflows
+## Lab 10. Git Workflows
 
 In class we learned about **Version Control Systems (VCS)**, also known as **Source Control** (i.e. source code control) and **Revision Control**. We want to store all your code, all your comments, all your documentation, and the entire history of all your files into an intergrity-verified library or **repository** **(repo)**. Recall: we will use the distributed VCS (DVCS) `git` to manage all the code for your final project.
 
@@ -30,11 +30,11 @@ Github no longer supports older web browsers (sad!). So let's get a newer web br
 Check that it was installed correctly. You should now see it in `Menu -> Internet -> Chromium Web Browser`. Were you able to launch this browser?
 
 
-###Using Github for your Final Project
+### Using Github for your Final Project
 
 http://www.github.com/ is one of the most popular site for managing `git` repos because it has advanced high performance server back-end, excellent user interface tools, and it's free to use.
 
-###NOTE: Your class final project will be backed-up and submitted through github.
+### NOTE: Your class final project will be backed-up and submitted through github.
 
 1. Using the Chromium web browser, make a github repo for your final project by navigating to:
 http://www.github.com/new
@@ -150,7 +150,7 @@ Work on your final project in your **`~/421_521_final_project`** `git` repo. As 
 	 $ git status
 	 $ git log
 
-###By the end of class you should have completed the following tasks:
+### By the end of class you should have completed the following tasks:
 
 1. Move the contents of your Brainstorm and Abstract into the `README.md` file and use markdown to format it. You will want to check if you are formatting things properly by looking at your repo on github. Don't rename this file, the `README.md` file by default is rendered into HTML by github to make it easy for people to understand what's in the repo.
 
@@ -167,7 +167,7 @@ Work on your final project in your **`~/421_521_final_project`** `git` repo. As 
 
 1. Put your code here! Hopefully you already have a coding framework for your final project. Is it Arduino? Is it python? Is it a combination? Store your files in this repo, and push your project far today. Don't wait until the last minute... remember that your commits are being logged too! So it will be pretty clear to your Instructors who is consistently putting in effort on their class projects.
 
-###Upload your work from today
+### Upload your work from today
 
 1. Push your latest changes up to the github server:
 
