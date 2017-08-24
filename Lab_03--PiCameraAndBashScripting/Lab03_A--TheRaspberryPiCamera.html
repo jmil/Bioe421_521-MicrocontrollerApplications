@@ -506,10 +506,16 @@ pre[class*="language-"] {
 
 <h3 id="toc_6">Using the Camera</h3>
 
-<p>We will utilize the <code>raspistill</code> command. Unfortunately, as of this writing there is no man page. You can learn more at:<br>
+<p>We will utilize the <code>raspistill</code> command. Unfortunately, as of this writing there is no <code>man</code> page for it.</p>
+
+<div><pre><code class="language-none">$ man raspistill
+No manual entry for raspistill
+...</code></pre></div>
+
+<p>You can learn more at:<br>
 <a href="http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md">http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md</a></p>
 
-<p>You can also see a list of all commands by running <code>raspistill</code> with no options. It will scroll by fast, and you won&#39;t be able to <strong>pipe</strong> it to <code>more</code>:</p>
+<p>Instead of using <code>man</code>, you can also see a list of all commands by running <code>raspistill</code> with no options. It will scroll by fast, and you won&#39;t be able to <strong>pipe</strong> it to <code>more</code>:</p>
 
 <div><pre><code class="language-none">$ raspistill | more</code></pre></div>
 

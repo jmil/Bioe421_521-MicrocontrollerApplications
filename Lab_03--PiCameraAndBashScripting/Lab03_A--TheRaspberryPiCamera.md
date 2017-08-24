@@ -37,10 +37,16 @@ From http://RaspberryPi.org/:
 
 ### Using the Camera
 
-We will utilize the `raspistill` command. Unfortunately, as of this writing there is no man page. You can learn more at:
+We will utilize the `raspistill` command. Unfortunately, as of this writing there is no `man` page for it.
+
+	$ man raspistill
+	No manual entry for raspistill
+	...
+
+You can learn more at:
 http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md
 
-You can also see a list of all commands by running `raspistill` with no options. It will scroll by fast, and you won't be able to **pipe** it to `more`:
+Instead of using `man`, you can also see a list of all commands by running `raspistill` with no options. It will scroll by fast, and you won't be able to **pipe** it to `more`:
 
 	$ raspistill | more
 
