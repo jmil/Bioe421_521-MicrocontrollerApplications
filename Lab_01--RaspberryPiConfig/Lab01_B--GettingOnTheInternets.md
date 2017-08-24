@@ -67,7 +67,13 @@ Once connected, you should see the LED on the Ethernet port light up. Your Pi sh
 		Need to get 38.8 MB of archives.
 		After this operation, 151 kB of additional disk space will be used.
 		Do you want to continue [Y/n]?
-		
+
+	In the final line "Do you want to continue [Y/n]", Why is the `Y` capitalized, but the `n` is not?
+	
+		:
+
+	Type `y` followed by `<enter>`, or just type `<enter>`.
+
 	Note that we will use `dist-upgrade` as the recommended upgrade command instead of simply `upgrade` to make sure that we have an intelligently loaded set of software that is known to work well together. From the manual:
 			
 			dist-upgrade in addition to performing the function of upgrade,
