@@ -103,8 +103,13 @@ If your image is upside down, consider utilizing the `-vf` and `-hf` options of 
 
 ### Recording a Video
 
-We will utilize the `raspivid` command. Unfortunately, there is no man page. You can learn more at:
+We will utilize the `raspivid` command. Unfortunately, there is no `man` page.
 
+	$ man raspivid
+	No manual entry for raspivid
+	...
+
+ You can learn more at:
 http://www.raspberrypi.org/documentation/usage/camera/raspicam/raspivid.md
 
 You can also see a list of all commands by running `raspivid` with no options. Best to **pipe** it to `more` so you can scroll the long list:
