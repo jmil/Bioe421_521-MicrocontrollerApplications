@@ -116,7 +116,7 @@
 	
 		You will be taken back to the main raspi-config menu.
 
-1. Select option `Advanced Options` ---> `SSH`.
+1. Select option `Interfacing Options` ---> `SSH`.
 	1. Select **`Enable`** to enable the SSH server.
 	1. When completed, Select **`Ok`**.
 

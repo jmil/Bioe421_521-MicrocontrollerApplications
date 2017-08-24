@@ -49,6 +49,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 		apropos
 
 		id
+		w
 		who
 		whoami
 		hostname
