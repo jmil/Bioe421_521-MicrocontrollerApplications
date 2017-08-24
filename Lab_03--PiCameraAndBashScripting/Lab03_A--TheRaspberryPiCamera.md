@@ -29,7 +29,7 @@ From http://RaspberryPi.org/:
 
 		$ sudo raspi-config
 
-	Select `Enable Camera` and hit the **`<enter>`** key. Select `<Enable>`, then on the main `raspi-config` page select `<Finish>` and choose `<Yes>` to reboot.
+	Select `Interfacing Options` -> `P1 Camera` and hit the **`<enter>`** key. Select `<Enable>`, then on the main `raspi-config` page select `<Finish>` and choose `<Yes>` to reboot.
 	
 	From http://RaspberryPi.org/:
 
