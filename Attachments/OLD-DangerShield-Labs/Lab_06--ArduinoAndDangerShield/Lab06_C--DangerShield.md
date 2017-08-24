@@ -43,12 +43,12 @@ https://github.com/sparkfun/DangerShield
 1. Zip up the arduino folder for Today's lab to make a single .zip file
 
 		$ cd ~
-		$ zip -r Team09-LambdaFTW_Lab06.zip arduino
+		$ zip -r Team09-Lab06.zip arduino
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
 		$ man scp
-		$ scp Team09-LambdaFTW_Lab06.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-Lab06.zip student@IP_ADDRESS:/home/student/
 
 
 

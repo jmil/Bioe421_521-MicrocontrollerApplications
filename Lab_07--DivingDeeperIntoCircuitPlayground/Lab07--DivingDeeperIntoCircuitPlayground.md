@@ -29,7 +29,7 @@ Adafruit and friends have made some great informational pages and tutorials to b
 
 1. You will want to **FIRST** copy the relevant folder out of the examples folder and into a folder for today's lab:
 
-		$ mkdir -p ~/Team09-LambdaFTW_Lab07
+		$ mkdir -p ~/Team09-Lab07
 	
 1. Discuss with your Instructor your intended modification and some ways you could make it happen.
 
@@ -45,12 +45,12 @@ Remember, with microcontroller projects: test early and often. Each significant 
 1. Zip up the arduino folder for Today's lab to make a single .zip file
 
 		$ cd ~
-		$ zip -r Team09-LambdaFTW_Lab07.zip Team09-LambdaFTW_Lab07
+		$ zip -r Team09-Lab07.zip Team09-Lab07
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
 		$ man scp
-		$ scp Team09-LambdaFTW_Lab07.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-Lab07.zip student@IP_ADDRESS:/home/student/
 
 
 

@@ -12,7 +12,7 @@ Use your knowledge of Circuit Playground to complete the following Challenge.
 You should save your new or edited `.ino` file(s) in a new directory for today:
 
 		$ cd ~
-		$ mkdir -p Team09-LambdaFTW_Lab08/
+		$ mkdir -p Team09-Lab08/
 		
 
 
@@ -53,12 +53,12 @@ Remember, with microcontroller projects: test early and often. Each significant 
 1. Zip up the arduino folder for Today's lab to make a single .zip file
 
 		$ cd ~
-		$ zip -r Team09-LambdaFTW_Lab08.zip arduino/SimonSays
+		$ zip -r Team09-Lab08.zip arduino/SimonSays
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
 		$ man scp
-		$ scp Team09-LambdaFTW_Lab08.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-Lab08.zip student@IP_ADDRESS:/home/student/
 
 
 

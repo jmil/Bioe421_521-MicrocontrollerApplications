@@ -103,11 +103,11 @@ Create and run the following files based on the sample code provided on that web
 
 1. Zip up the folder for Today's lab to make a single .zip file
 
-		$ zip -r Team09-LambdaFTW_Lab05.zip Team09-LambdaFTW_Lab05
+		$ zip -r Team09-Lab05.zip Team09-Lab05
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
-		$ scp Team09-LambdaFTW_Lab05.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-Lab05.zip student@IP_ADDRESS:/home/student/
 
 
 

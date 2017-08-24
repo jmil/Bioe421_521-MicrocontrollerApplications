@@ -35,8 +35,8 @@ From [Wikipedia, Roger Y. Tsien:](https://en.wikipedia.org/wiki/Roger_Y._Tsien)
 
 1. Sounds interesting. Let's learn some more about his work. Make a new directory for today, and query the NIH database for some of Roger Tsien's publications, identified here by specific **PMIDs**.
 	
-		$ mkdir Team09-LambdaFTW_Lab04
-		$ cd Team09-LambdaFTW_Lab04
+		$ mkdir Team09-Lab04
+		$ cd Team09-Lab04
 		$ wget -O tsien.txt "http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,18454154,19423828?report=MEDLINE&format=text" 
 
 	Let's look at the file you created:
@@ -178,11 +178,11 @@ You will want to take this `cancer_refs.txt` result file, and parse out the PMID
 1. Zip up your folder from today to make a single .zip file
 
 		$ cd ~
-		$ zip -r Team09-LambdaFTW_Lab04.zip Team09-LambdaFTW_Lab04
+		$ zip -r Team09-Lab04.zip Team09-Lab04
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
-		$ scp Team09-LambdaFTW_Lab04.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-Lab04.zip student@IP_ADDRESS:/home/student/
 
 
 ## Shutdown Procedure

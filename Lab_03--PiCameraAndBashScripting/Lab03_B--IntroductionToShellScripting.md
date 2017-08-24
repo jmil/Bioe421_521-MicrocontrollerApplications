@@ -254,21 +254,21 @@ Let's get started. I put a script template you should use at:
 1. move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention for `Team09-LambdaFTW`. **Make sure there are no spaces in your team name identifier**. And, the trailing `/` characters here have specific meaning... don't forget them!
 
 		$ cd ~
-		$ mkdir Team09-LambdaFTW_Lab03
-		$ mv raspicam Team09-LambdaFTW_Lab03/
-		$ mv scripts Team09-LambdaFTW_Lab03/
-		$ mv weather Team09-LambdaFTW_Lab03/
+		$ mkdir Team09-Lab03
+		$ mv raspicam Team09-Lab03/
+		$ mv scripts Team09-Lab03/
+		$ mv weather Team09-Lab03/
 		
 1. Zip up the folder to make a single .zip file
 
 		$ sudo apt-get update
 		$ sudo apt-get install zip
-		$ zip -r Team09-LambdaFTW_Lab03.zip Team09-LambdaFTW_Lab03
+		$ zip -r Team09-Lab03.zip Team09-Lab03
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
 		$ man scp
-		$ scp Team09-LambdaFTW_Lab03.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-Lab03.zip student@IP_ADDRESS:/home/student/
 
 ## Shutdown Procedure
 

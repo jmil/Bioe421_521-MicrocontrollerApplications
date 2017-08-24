@@ -288,12 +288,12 @@ using individual 8-bit values and the same colors on the next 5 pixels using
 1. Zip up your `~/arduino` folder to make a single .zip file.
 		
 		$ cd ~
-		$ mv arduino Team09-LambdaFTW_Lab06
-		$ zip -r Team09-LambdaFTW_Lab06.zip Team09-LambdaFTW_Lab06
+		$ mv arduino Team09-Lab06
+		$ zip -r Team09-Lab06.zip Team09-Lab06
 
 1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
 
-		$ scp Team09-LambdaFTW_Lab06.zip student@IP_ADDRESS:/home/student/
+		$ scp Team09-Lab06.zip student@IP_ADDRESS:/home/student/
 
 
 
