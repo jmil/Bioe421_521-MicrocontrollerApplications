@@ -17,7 +17,7 @@ We can send the streamed output directly to a new file, instead of to the comput
 	$ echo 'Hello World!' > hi.txt
 	$ cat hi.txt
 
-Check out the man page for the `wc` command. Please add this command to your team's man page descriptions.
+Check out the `man` page for the `wc` command. Please add this command to your team's `man` page descriptions.
 
 	$ man wc
 
@@ -102,7 +102,7 @@ What was your output?
 
 	:
 
-It would also be nice to look in detail at this file, similar to the functionality we saw when using man pages. We might want to be able to inspect the file live, one screen at a time.
+It would also be nice to look in detail at this file, similar to the functionality we saw when using `man` pages. We might want to be able to inspect the file live, one screen at a time.
 
 	$ more web2
 	
@@ -171,7 +171,7 @@ And what is the output of this command:
 
 
 You can also grab files from the internet and process them via pipe without having to save any data files on your hard drive. This is great for large files you want to process on a small hard drive. Just edit the stream, you don't need to go through the hassle of saving it all to hard drive, then opening the file again for processing.
-**NOTE:** we use the capital letter **`O`** below as a flag. Remember you can check the `wget` man page if you aren't sure what each flag does.
+**NOTE:** we use the capital letter **`O`** below as a flag. Remember you can check the `wget` `man` page if you aren't sure what each flag does.
 
 
 	$ wget -qO- http://www.google.com/robots.txt
