@@ -144,12 +144,12 @@ Let's get started. I put a script template you should use at:
 
 		https://github.com/jmil/Bioe421_521-MicrocontrollerApplications/raw/master/Attachments/bash-script.sh
 
-1. Write a one-line program to put the contents of the file at this URL into a new file named `get-script.sh`. Write the program (after you're sure it works!) here:
+1. Write a one-line program to put the contents of the file at this URL into a new file named `make-script.sh`. Write the program (after you're sure it works!) here:
 
 		$ 
 
 
-1. Use `nano` to edit `get-script.sh` to, itself, grab the `bash-script.sh` template from github and output it to `STDOUT`. Of course, you will have to `chmod +x` this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:
+1. Use `nano` to edit `make-script.sh` to, itself, grab the `bash-script.sh` template from github and output it to `STDOUT`. Of course, you will have to `chmod +x` this script to make it executable. Once you have done so, this is a good time to test your script. Modularization and testing on a line-by-line basis is the way to go. What happens when you run:
 
 		$ ./make_script.sh
 	Describe the output:
@@ -164,11 +164,11 @@ Let's get started. I put a script template you should use at:
 
 		:
 
-1. Next, modify `get-script.sh` to also run the command `chmod +x` on your newly created `weather.sh` script file to make it executable right after it's created. Describe the result and how you checked it if the new `weather.sh` was executable:
+1. Next, modify `make-script.sh` to also run the command `chmod +x` on your newly created `weather.sh` script file to make it executable right after it's created. Describe the result and how you checked it if the new `weather.sh` was executable:
 
 		:
 
-1. Finally, we don't want to have to delete all those extra lines each time we make a new script. So, edit the `get-script.sh` file to grab **ONLY** the 15 lines of the `bash_script.sh` file to use as a template. Describe your modifications:
+1. Finally, we don't want to have to delete all those extra lines each time we make a new script. So, edit the `make-script.sh` file to grab **ONLY** the 15 lines of the `bash_script.sh` file to use as a template. Describe your modifications:
 
 		:
 
