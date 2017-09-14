@@ -251,7 +251,7 @@ Let's get started. I put a script template you should use at:
 
 ### Homework Submission
 
-1. move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention for `Team09-LambdaFTW`. **Make sure there are no spaces in your team name identifier**. And, the trailing `/` characters here have specific meaning... don't forget them!
+1. move all of your scripts, pics, and weather info into a folder following the demonstrated naming convention for `Team09`. **Make sure there are no spaces in your team name identifier**. And, the trailing `/` characters here have specific meaning... don't forget them!
 
 		$ cd ~
 		$ mkdir Team09-Lab03

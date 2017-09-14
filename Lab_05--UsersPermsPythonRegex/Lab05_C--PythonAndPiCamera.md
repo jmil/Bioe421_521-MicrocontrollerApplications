@@ -60,7 +60,7 @@ Create and run the following files based on the sample code provided on the webp
 Feel free to add your own modifications and demonstrate to your Instructor! Make sure you use the correct **shebang** and commented header for each of your files:
 
 	#! /usr/bin/python
-	# Team09-LambdaFTW
+	# Team09
 	# TEAM MEMBER NAMES
 
 
