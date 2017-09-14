@@ -557,7 +557,7 @@ $ _</code></pre></div>
 
 <div><pre><code class="language-none">$ ifconfig eth0</code></pre></div>
 
-<p>Now you can login to your neighbor&#39;s Pi using their IP address:</p>
+<p>Now you can login to your neighbor&#39;s Pi using your <code>friendly-neighbor</code> guest username and their IP address:</p>
 
 <div><pre><code class="language-none">$ ssh friendly-neighbor@IP_ADDRESS
 $ whoami
@@ -575,7 +575,7 @@ $ ls -la</code></pre></div>
 
 <div><pre><code class="language-none">:</code></pre></div>
 
-<p>What is your <code>uid</code> and <code>gid</code> for your neighbor&#39;s Pi?</p>
+<p>What is your <code>uid</code> and <code>gid</code> for your guest username on your neighbor&#39;s Pi?</p>
 
 <div><pre><code class="language-none">uid:
 gid:</code></pre></div>
@@ -592,13 +592,32 @@ command used: </code></pre></div>
 <div><pre><code class="language-none">$ man exit
 $ exit</code></pre></div>
 
-<h4 id="toc_6">We are running the Raspian OS. Raspbian is a portmanteau of <u>Rasp</u>berry Pi and De<u>bian</u> Linux because it is a customized version of Debian that works well on Raspberry Pi. So, you can learn more about how users and permissions work on your Raspberry Pi by learning about Debian Linux:</h4>
+<h3 id="toc_6">Watch your Remote Access Session get Terminated by <code>kill</code></h3>
 
-<h4 id="toc_7"><a href="http://wiki.debian.org/Permissions">http://wiki.debian.org/Permissions</a></h4>
+<p>Login to your neighbor&#39;s Pi via remote access <code>ssh</code>. While logged in there, instruct them how to find and <code>kill</code> your shell session. Once they <code>kill</code> your session on their Pi, your screen will show output too!</p>
 
-<h4 id="toc_8">And you can learn more about Debian policies for Users and Groups by vising here:</h4>
+<p>Write a clean set of commands and output that your neighboring team used to <code>kill</code> your session on their Pi:</p>
 
-<h4 id="toc_9"><a href="http://www.debian.org/doc/debian-policy/ch-opersys.html">http://www.debian.org/doc/debian-policy/ch-opersys.html</a></h4>
+<div><pre><code class="language-none">$
+output: 
+$
+output:
+$
+output:
+$
+output:</code></pre></div>
+
+<p>What message did you get on <strong>your</strong> Pi when your remote session was terminated?</p>
+
+<div><pre><code class="language-none">output:</code></pre></div>
+
+<h4 id="toc_7">Recall that we are running the Raspian OS. Raspbian is a portmanteau of <u>Rasp</u>berry Pi and De<u>bian</u> Linux because it is a customized version of Debian that works well on Raspberry Pi. So, you can learn more about how users and permissions work on your Raspberry Pi by learning about Debian Linux:</h4>
+
+<h4 id="toc_8"><a href="http://wiki.debian.org/Permissions">http://wiki.debian.org/Permissions</a></h4>
+
+<h4 id="toc_9">And you can learn more about Debian policies for Users and Groups by vising here:</h4>
+
+<h4 id="toc_10"><a href="http://www.debian.org/doc/debian-policy/ch-opersys.html">http://www.debian.org/doc/debian-policy/ch-opersys.html</a></h4>
 
 
 

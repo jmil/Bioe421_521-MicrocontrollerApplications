@@ -99,7 +99,7 @@ Now with each group being given a working user account on another Pi, you can ss
 	
 	$ ifconfig eth0
 
-Now you can login to your neighbor's Pi using their IP address:
+Now you can login to your neighbor's Pi using your `friendly-neighbor` guest username and their IP address:
 
 	$ ssh friendly-neighbor@IP_ADDRESS
 	$ whoami
@@ -117,7 +117,7 @@ What are the full permissions for `home`? Is it a file or folder (and how can yo
 
 	:
 
-What is your `uid` and `gid` for your neighbor's Pi?
+What is your `uid` and `gid` for your guest username on your neighbor's Pi?
 
 	uid:
 	gid:
@@ -136,7 +136,26 @@ You can disconnect from your neighbor's pi using `exit` which will close that sh
 	$ exit
 
 
-#### We are running the Raspian OS. Raspbian is a portmanteau of _Rasp_berry Pi and De_bian_ Linux because it is a customized version of Debian that works well on Raspberry Pi. So, you can learn more about how users and permissions work on your Raspberry Pi by learning about Debian Linux:
+### Watch your Remote Access Session get Terminated by `kill`
+
+Login to your neighbor's Pi via remote access `ssh`. While logged in there, instruct them how to find and `kill` your shell session. Once they `kill` your session on their Pi, your screen will show output too!
+
+Write a clean set of commands and output that your neighboring team used to `kill` your session on their Pi:
+
+	$
+	output: 
+	$
+	output:
+	$
+	output:
+	$
+	output:
+
+What message did you get on **your** Pi when your remote session was terminated?
+
+	output:
+
+#### Recall that we are running the Raspian OS. Raspbian is a portmanteau of _Rasp_berry Pi and De_bian_ Linux because it is a customized version of Debian that works well on Raspberry Pi. So, you can learn more about how users and permissions work on your Raspberry Pi by learning about Debian Linux:
  
 #### http://wiki.debian.org/Permissions
 
