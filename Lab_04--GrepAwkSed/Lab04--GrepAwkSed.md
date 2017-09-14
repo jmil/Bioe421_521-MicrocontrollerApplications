@@ -1,7 +1,7 @@
 # Bioe 421/521: Microcontroller Applications
 #### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
-## Lab 4A. Parsing with `Grep`, `Awk`, and `Sed`
+## Lab 4. Parsing with `Grep`, `Awk`, and `Sed`
 
 From [Wikipedia, Parsing:](https://en.wikipedia.org/wiki/Parsing)
 > Parsing or syntactic analysis is the process of analysing a string of symbols, either in natural language or in computer languages, conforming to the rules of a formal grammar.
