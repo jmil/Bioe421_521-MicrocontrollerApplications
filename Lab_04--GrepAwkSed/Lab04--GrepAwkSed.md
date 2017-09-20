@@ -39,11 +39,13 @@ From [Wikipedia, Roger Y. Tsien:](https://en.wikipedia.org/wiki/Roger_Y._Tsien)
 		$ cd Team09-Lab04
 		$ wget -O tsien.txt "http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,18454154,19423828?report=MEDLINE&format=text" 
 
-	Let's look at the file you created:
-	
-		$ cat tsien.txt | less
 
-	You should see the following file:
+Let's look at the file you created:
+	
+	$ cat tsien.txt | less
+
+
+You should see the following file:
 
 		<?xml version="1.0" encoding="utf-8"?>
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -92,10 +94,14 @@ From [Wikipedia, Roger Y. Tsien:](https://en.wikipedia.org/wiki/Roger_Y._Tsien)
 
 		:
 
-1. Let's modify this script to be more useful. Given a file that contains a list of PMIDs, it would be ideal if, for each PMID, you could go to pubmed and download the article information. You will want to use the URL of the following form, where you will substitute each unique PMID, line by line, for the "########" section:
+1. Let's modify this script to be more useful. Given a file that contains a list of PMIDs, it would be ideal if, for each PMID, you could go to pubmed and download the article information. You will want to use the URL of the following form, where you will substitute each unique PMID, line by line, for the "########" section. Note that the report format here is `MEDLINE`:
 
-		http://www.ncbi.nlm.nih.gov/pubmed/########?report=MEDLINE&format=text
+		https://www.ncbi.nlm.nih.gov/pubmed/########?report=MEDLINE&format=text
+		
+	The `xml` report format can also be useful for the rest of the lab, so be sure to look at that one too:
 	
+		http://www.ncbi.nlm.nih.gov/pubmed/########?report=xml&format=text
+
 
 	So your `parsePMIDs.sh` file  should read your `PMIDs.txt` file, grab the article information for each PMID, and append it to a new file, `Tsien_result.txt`.
 
@@ -103,9 +109,13 @@ From [Wikipedia, Roger Y. Tsien:](https://en.wikipedia.org/wiki/Roger_Y._Tsien)
 
 Now you should see where we are going with this... Pubmed allows us to query the database with a search term, such as "cancer", and return a list of PMIDs. Retrieve text from the following link into a new file `cancer_refs.txt`:
 
-		http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=cancer&reldate=60&datetype=edat
-		
+> https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=cancer&reldate=60&datetype=edat&retmode=text	
+
 **NOTE:** You will likely need to put this URL within quotes to get it to download correctly. Or a URL shortener website could help you.
+
+What command did you run to do this?
+
+	$ 
 	
 Check the contents of your file:
 
@@ -130,7 +140,7 @@ Can you identify the delimiter for these fields in the URL? Write it here:
 	: 
 
 	
-You will want to take this `cancer_refs.txt` result file, and parse out the PMIDs into a new file, `cancer_PMIDs.txt`. Note that the PMIDs will have to be parsed out from between the `<Id>` and `</Id>` tags.
+You will want to take this `cancer_refs.txt` result file, and parse out the PMIDs into a new file, `cancer_PMIDs.txt`. Note that the PMIDs will have to be parsed out from between the `<Id>` and `</Id>` tags. You could also think about using a clever "find/replace" scheme – which command did we learn today that's great at find/replace?
 	
 1. Generate a script called `PMID_query.sh`. We want the **use case** to be:
 
@@ -141,35 +151,43 @@ You will want to take this `cancer_refs.txt` result file, and parse out the PMID
 		AUTHORS LIST
 		Nat Methods. 2005 Dec;2(12):905-9.
 		ABSTRACT
+		
+	Recall: the `MEDLINE` and `xml` formats might each be useful for part of this formatting.
 	
 1. Now, get it working for your `cancer_PMIDs.txt` file.
 
  
-### Now, Let's apply this file for the following querys:
+### Now, Let's apply this file for the following query: GFP (Green Fluorescent Protein)
 
-#### GFP
+> via wikipedia.org:
+> The green fluorescent protein (GFP) is a protein composed of 238 amino acid residues (26.9 kDa) that exhibits bright green fluorescence when exposed to light in the blue to ultraviolet range ...
+> GFP can be introduced into animals or other species through transgenic techniques, and maintained in their genome and that of their offspring. To date, GFP has been expressed in many species, including bacteria, yeasts, fungi, fish and mammals, including in human cells. Scientists Roger Y. Tsien, Osamu Shimomura, and Martin Chalfie were awarded the 2008 Nobel Prize in Chemistry on 10 October 2008 for their discovery and development of the green fluorescent protein.
 
-1. Design a URL to get the PMIDs of up to 1,000 publications for 'GFP' in the last year. What URL did you come up with?
+1. Design a URL to get the PMIDs of up to 100 publications for 'GFP' in the last year. What URL did you come up with?
 	
 		:
 	
-1. Put the result of this query into the file `GFP-PMIDs.txt`.
+1. Put the PMID results from this query into the file `GFP-PMIDs.txt` such that it can be called by `PMID_query.sh`. So, as above your results will need to be parsed for the PMIDs that are between the `<Id>` and `</Id>` tags.
 
-1. User your `PMID_query.sh` file to parse this file output formatted citations about GFP to `GFP_bibliography.txt`. What is the command you ran to do this?
+1. Get a timer ready. Use your `PMID_query.sh` file to create formatted citations about 'GFP' in `GFP_bibliography.txt`. While the script is running, time how long it takes to get each citation:
 
-		$
-
-#### 3D Print
-
-1. Design a URL to get the PMIDs of up to 1,000 publications for '3D Print' in the last year. What URL did you come up with?
+		____ seconds per citation
+		
+	What is placing the speed limit on this script? How do you think you could you speed it up? Explain.
 	
 		:
+		:
+		:
+		
+1. Try some of these options to speed up your script:
+
+		Now: ____ seconds per citation
+		
+	Explain what you determined was slowing down your script:
 	
-1. Put the result of this query into the file `3D_print-PMIDs.txt`.
-
-1. User your `PMID_query.sh` file to parse this file output formatted citations about GFP to `3D_print_bibliography.txt`. What is the command you ran to do this?
-
-		$
+		:
+		:
+		:
 
 	
 ### Homework Submission

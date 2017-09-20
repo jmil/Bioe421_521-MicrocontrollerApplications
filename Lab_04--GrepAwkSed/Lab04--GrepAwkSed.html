@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Lab04_A--GrepAwkSed</title>
+<title>Lab04--GrepAwkSed</title>
 
 
 <style type="text/css">
@@ -501,7 +501,8 @@ robots</code></pre></div>
 
 <div><pre><code class="language-none">$ mkdir Team09-Lab04
 $ cd Team09-Lab04
-$ wget -O tsien.txt &quot;http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,18454154,19423828?report=MEDLINE&amp;format=text&quot; </code></pre></div>
+$ wget -O tsien.txt &quot;http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,18454154,19423828?report=MEDLINE&amp;format=text&quot; </code></pre></div></li>
+</ol>
 
 <p>Let&#39;s look at the file you created:</p>
 
@@ -509,16 +510,18 @@ $ wget -O tsien.txt &quot;http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,1
 
 <p>You should see the following file:</p>
 
-<div><pre><code class="language-none">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
-&lt;pre&gt;
-PMID- 16299475
-OWN - NLM
-...
-AID - 324/5928/804 [pii]
-AID - 10.1126/science.1168683 [doi]
-PST - ppublish
-SO  - Science. 2009 May 8;324(5928):804-7. doi: 10.1126/science.1168683.</code></pre></div></li>
+<div><pre><code class="language-none">    &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+    &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+    &lt;pre&gt;
+    PMID- 16299475
+    OWN - NLM
+    ...
+    AID - 324/5928/804 [pii]
+    AID - 10.1126/science.1168683 [doi]
+    PST - ppublish
+    SO  - Science. 2009 May 8;324(5928):804-7. doi: 10.1126/science.1168683.</code></pre></div>
+
+<ol>
 <li><p>Next, write a piped command line program to process <code>tsien.txt</code> and output a new file <code>tsien_PMIDs.txt</code> which contains a list of the PMID contained in this file. You will probably want to use what you learned about <code>grep</code>, <code>awk</code>, and/or <code>sed</code>. Just like most things we&#39;ve learned so far, there is more than one way to do it (<a href="https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it">TIMTOWTDI, pronounced <em>Tim Toady</em></a>)!</p>
 
 <p><strong>Hint:</strong> You may want to start by doing a simple <code>grep</code> for <q>PMID</q>:</p>
@@ -552,9 +555,13 @@ done &lt;tsien_PMIDs.txt</code></pre></div></li>
 <li><p>Do you remember how to modify <code>parsePMIDs.sh</code> to make it executable? Write the command you used here:</p>
 
 <div><pre><code class="language-none">:</code></pre></div></li>
-<li><p>Let&#39;s modify this script to be more useful. Given a file that contains a list of PMIDs, it would be ideal if, for each PMID, you could go to pubmed and download the article information. You will want to use the URL of the following form, where you will substitute each unique PMID, line by line, for the <q>########</q> section:</p>
+<li><p>Let&#39;s modify this script to be more useful. Given a file that contains a list of PMIDs, it would be ideal if, for each PMID, you could go to pubmed and download the article information. You will want to use the URL of the following form, where you will substitute each unique PMID, line by line, for the <q>########</q> section. Note that the report format here is <code>MEDLINE</code>:</p>
 
-<div><pre><code class="language-none">http://www.ncbi.nlm.nih.gov/pubmed/########?report=MEDLINE&amp;format=text</code></pre></div>
+<div><pre><code class="language-none">https://www.ncbi.nlm.nih.gov/pubmed/########?report=MEDLINE&amp;format=text</code></pre></div>
+
+<p>The <code>xml</code> report format can also be useful for the rest of the lab, so be sure to look at that one too:</p>
+
+<div><pre><code class="language-none">http://www.ncbi.nlm.nih.gov/pubmed/########?report=xml&amp;format=text</code></pre></div>
 
 <p>So your <code>parsePMIDs.sh</code> file  should read your <code>PMIDs.txt</code> file, grab the article information for each PMID, and append it to a new file, <code>Tsien_result.txt</code>.</p></li>
 </ol>
@@ -563,9 +570,15 @@ done &lt;tsien_PMIDs.txt</code></pre></div></li>
 
 <p>Now you should see where we are going with this... Pubmed allows us to query the database with a search term, such as <q>cancer</q>, and return a list of PMIDs. Retrieve text from the following link into a new file <code>cancer_refs.txt</code>:</p>
 
-<div><pre><code class="language-none">    http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&amp;term=cancer&amp;reldate=60&amp;datetype=edat</code></pre></div>
+<blockquote>
+<p><a href="https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&amp;term=cancer&amp;reldate=60&amp;datetype=edat&amp;retmode=text">https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&amp;term=cancer&amp;reldate=60&amp;datetype=edat&amp;retmode=text</a>    </p>
+</blockquote>
 
 <p><strong>NOTE:</strong> You will likely need to put this URL within quotes to get it to download correctly. Or a URL shortener website could help you.</p>
+
+<p>What command did you run to do this?</p>
+
+<div><pre><code class="language-none">$ </code></pre></div>
 
 <p>Check the contents of your file:</p>
 
@@ -591,7 +604,7 @@ Total number of UIDs from the retrieved set to be shown in the XML output (defau
 
 <div><pre><code class="language-none">: </code></pre></div>
 
-<p>You will want to take this <code>cancer_refs.txt</code> result file, and parse out the PMIDs into a new file, <code>cancer_PMIDs.txt</code>. Note that the PMIDs will have to be parsed out from between the <code>&lt;Id&gt;</code> and <code>&lt;/Id&gt;</code> tags.</p>
+<p>You will want to take this <code>cancer_refs.txt</code> result file, and parse out the PMIDs into a new file, <code>cancer_PMIDs.txt</code>. Note that the PMIDs will have to be parsed out from between the <code>&lt;Id&gt;</code> and <code>&lt;/Id&gt;</code> tags. You could also think about using a clever <q>find/replace</q> scheme – which command did we learn today that&#39;s great at find/replace?</p>
 
 <ol>
 <li><p>Generate a script called <code>PMID_query.sh</code>. We want the <strong>use case</strong> to be:</p>
@@ -602,37 +615,46 @@ Total number of UIDs from the retrieved set to be shown in the XML output (defau
 
 <div><pre><code class="language-none">AUTHORS LIST
 Nat Methods. 2005 Dec;2(12):905-9.
-ABSTRACT</code></pre></div></li>
+ABSTRACT</code></pre></div>
+
+<p>Recall: the <code>MEDLINE</code> and <code>xml</code> formats might each be useful for part of this formatting.</p></li>
 <li><p>Now, get it working for your <code>cancer_PMIDs.txt</code> file.</p></li>
 </ol>
 
-<h3 id="toc_6">Now, Let&#39;s apply this file for the following querys:</h3>
+<h3 id="toc_6">Now, Let&#39;s apply this file for the following query: GFP (Green Fluorescent Protein)</h3>
 
-<h4 id="toc_7">GFP</h4>
-
-<ol>
-<li><p>Design a URL to get the PMIDs of up to 1,000 publications for &#39;GFP&#39; in the last year. What URL did you come up with?</p>
-
-<div><pre><code class="language-none">:</code></pre></div></li>
-<li><p>Put the result of this query into the file <code>GFP-PMIDs.txt</code>.</p></li>
-<li><p>User your <code>PMID_query.sh</code> file to parse this file output formatted citations about GFP to <code>GFP_bibliography.txt</code>. What is the command you ran to do this?</p>
-
-<div><pre><code class="language-none">$</code></pre></div></li>
-</ol>
-
-<h4 id="toc_8">3D Print</h4>
+<blockquote>
+<p>via wikipedia.org:<br>
+The green fluorescent protein (GFP) is a protein composed of 238 amino acid residues (26.9 kDa) that exhibits bright green fluorescence when exposed to light in the blue to ultraviolet range ...<br>
+GFP can be introduced into animals or other species through transgenic techniques, and maintained in their genome and that of their offspring. To date, GFP has been expressed in many species, including bacteria, yeasts, fungi, fish and mammals, including in human cells. Scientists Roger Y. Tsien, Osamu Shimomura, and Martin Chalfie were awarded the 2008 Nobel Prize in Chemistry on 10 October 2008 for their discovery and development of the green fluorescent protein.</p>
+</blockquote>
 
 <ol>
-<li><p>Design a URL to get the PMIDs of up to 1,000 publications for &#39;3D Print&#39; in the last year. What URL did you come up with?</p>
+<li><p>Design a URL to get the PMIDs of up to 100 publications for &#39;GFP&#39; in the last year. What URL did you come up with?</p>
 
 <div><pre><code class="language-none">:</code></pre></div></li>
-<li><p>Put the result of this query into the file <code>3D_print-PMIDs.txt</code>.</p></li>
-<li><p>User your <code>PMID_query.sh</code> file to parse this file output formatted citations about GFP to <code>3D_print_bibliography.txt</code>. What is the command you ran to do this?</p>
+<li><p>Put the PMID results from this query into the file <code>GFP-PMIDs.txt</code> such that it can be called by <code>PMID_query.sh</code>. So, as above your results will need to be parsed for the PMIDs that are between the <code>&lt;Id&gt;</code> and <code>&lt;/Id&gt;</code> tags.</p></li>
+<li><p>Get a timer ready. Use your <code>PMID_query.sh</code> file to create formatted citations about &#39;GFP&#39; in <code>GFP_bibliography.txt</code>. While the script is running, time how long it takes to get each citation:</p>
 
-<div><pre><code class="language-none">$</code></pre></div></li>
+<div><pre><code class="language-none">____ seconds per citation</code></pre></div>
+
+<p>What is placing the speed limit on this script? How do you think you could you speed it up? Explain.</p>
+
+<div><pre><code class="language-none">:
+:
+:</code></pre></div></li>
+<li><p>Try some of these options to speed up your script:</p>
+
+<div><pre><code class="language-none">Now: ____ seconds per citation</code></pre></div>
+
+<p>Explain what you determined was slowing down your script:</p>
+
+<div><pre><code class="language-none">:
+:
+:</code></pre></div></li>
 </ol>
 
-<h3 id="toc_9">Homework Submission</h3>
+<h3 id="toc_7">Homework Submission</h3>
 
 <ol>
 <li><p>Zip up your folder from today to make a single .zip file</p>
@@ -644,7 +666,7 @@ $ zip -r Team09-Lab04.zip Team09-Lab04</code></pre></div></li>
 <div><pre><code class="language-none">$ scp Team09-Lab04.zip student@IP_ADDRESS:/home/student/</code></pre></div></li>
 </ol>
 
-<h2 id="toc_10">Shutdown Procedure</h2>
+<h2 id="toc_8">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>
