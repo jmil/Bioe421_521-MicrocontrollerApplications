@@ -14,7 +14,7 @@ _Adafruit's Circuit Playground:_
 ![circuit](circuit_playground.jpg)
 
 
-It's so purty! But, you ask, what's all that neato stuff all over the board?!?!?! From [Adafruit.com](Adafruit.com):
+It's so purty! But, you ask, what's all that neato stuff all over the board?!?!?! From [Adafruit.com](http://www.Adafruit.com):
 [http://www.adafruit.com/products/3000](http://www.adafruit.com/products/3000)
 
 >Would you like to learn electronics, with an all-in-one board that has sensors and LEDs built in? Circuit Playground is here - and it's the best way to practice programming on real hardware with no soldering or sewing required!
@@ -196,14 +196,13 @@ Work from the `Hello_CircuitPlayground` folder in the `examples` folder of the `
 
 The following descriptions are courtesy of the `README.md` file in this folder.
 
-A set of very basic example sketches to demonstrate the various components
-of the [Circuit Playground](https://www.adafruit.com/products/3000).
-These sketches were tested and verified with:
-* Circuit Playground Developer Edition
-* Ubuntu 16.04 LTS
-* Arduino IDE 1.6.11
-* Adafruit AVR Boards 1.4.9
-* Adafruit Circuit Playground Library 1.6.1
+>A set of very basic example sketches to demonstrate the various components of the [Circuit Playground](https://www.adafruit.com/products/3000).
+>These sketches were tested and verified with:
+>* Circuit Playground Developer Edition
+>* Ubuntu 16.04 LTS
+>* Arduino IDE 1.6.11
+>* Adafruit AVR Boards 1.4.9
+>* Adafruit Circuit Playground Library 1.6.1
 
 ### Hello_Blink
 Blinks the little red LED next to the micro USB connector once per second.
@@ -213,6 +212,7 @@ Blinks the little red LED next to the micro USB connector once per second.
 ### Hello_SlideSwitch
 The position (+ or -) of the slide switch is sent to the serial monitor once
 per second.
+
 ```
 Slide Switch: -
 Slide Switch: +
@@ -222,6 +222,7 @@ Slide Switch: +
 ### Hello_Buttons
 The position (UP or DOWN) of the two push buttons are sent to the serial
 monitor once per second.
+
 ```
 Left Button:   UP   Right Button:   UP
 Left Button: DOWN   Right Button:   UP
@@ -232,6 +233,7 @@ Left Button:   UP   Right Button: DOWN
 ### Hello_LightSensor
 The reading (0-1023) from the light sensor is sent to the serial monitor once
 per second.
+
 ```
 Light Sensor: 962
 Light Sensor: 954
@@ -242,6 +244,7 @@ Light Sensor: 688
 
 ### Hello_Temperature
 The temperature is sent to the serial monitor once per second.
+
 ```
 tempC: 28.25  tempF: 83.02
 tempC: 29.71  tempF: 85.64
@@ -252,6 +255,7 @@ tempC: 31.85  tempF: 89.32
 ### Hello_Accelerometer
 The readings (in m/s<sup>2</sup>) from the 3 axes of the accelerometer are sent
 to the serial monitor once per second. (1G ~= 9.8 m/s<sup>2</sup>)
+
 ```
 X: -0.33  Y: 2.41  Z: 9.40
 X: -1.25  Y: 4.20  Z: 1.86
@@ -263,6 +267,7 @@ X: -2.28  Y: 2.73  Z: 9.10
 ### Hello_SoundSensor
 The reading (0-1023) from the sound sensor (microphone) is sent to the serial
 monitor once per second.
+
 ```
 Sound Sensor: 339
 Sound Sensor: 339

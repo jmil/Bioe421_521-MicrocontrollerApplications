@@ -471,7 +471,7 @@ pre[class*="language-"] {
 <p><u>Adafruit&#39;s Circuit Playground:</u><br>
 <img src="circuit_playground.jpg" alt="circuit"></p>
 
-<p>It&#39;s so purty! But, you ask, what&#39;s all that neato stuff all over the board?!?!?! From <a href="Adafruit.com">Adafruit.com</a>:<br>
+<p>It&#39;s so purty! But, you ask, what&#39;s all that neato stuff all over the board?!?!?! From <a href="http://www.Adafruit.com">Adafruit.com</a>:<br>
 <a href="http://www.adafruit.com/products/3000">http://www.adafruit.com/products/3000</a></p>
 
 <blockquote>
@@ -634,14 +634,15 @@ void loop() {
 
 <p>The following descriptions are courtesy of the <code>README.md</code> file in this folder.</p>
 
-<p>A set of very basic example sketches to demonstrate the various components<br>
-of the <a href="https://www.adafruit.com/products/3000">Circuit Playground</a>.<br>
+<blockquote>
+<p>A set of very basic example sketches to demonstrate the various components of the <a href="https://www.adafruit.com/products/3000">Circuit Playground</a>.<br>
 These sketches were tested and verified with:<br>
 * Circuit Playground Developer Edition<br>
 * Ubuntu 16.04 LTS<br>
 * Arduino IDE 1.6.11<br>
 * Adafruit AVR Boards 1.4.9<br>
 * Adafruit Circuit Playground Library 1.6.1</p>
+</blockquote>
 
 <h3 id="toc_8">Hello_Blink</h3>
 
@@ -650,71 +651,65 @@ These sketches were tested and verified with:<br>
 <h3 id="toc_9">Hello_SlideSwitch</h3>
 
 <p>The position (+ or -) of the slide switch is sent to the serial monitor once<br>
-per second.<br>
-<code><br>
-Slide Switch: -<br>
-Slide Switch: +<br>
-Slide Switch: +<br>
-</code></p>
+per second.</p>
+
+<div><pre><code class="language-none">Slide Switch: -
+Slide Switch: +
+Slide Switch: +</code></pre></div>
 
 <h3 id="toc_10">Hello_Buttons</h3>
 
 <p>The position (UP or DOWN) of the two push buttons are sent to the serial<br>
-monitor once per second.<br>
-<code><br>
-Left Button:   UP   Right Button:   UP<br>
-Left Button: DOWN   Right Button:   UP<br>
-Left Button:   UP   Right Button:   UP<br>
-Left Button:   UP   Right Button: DOWN<br>
-</code></p>
+monitor once per second.</p>
+
+<div><pre><code class="language-none">Left Button:   UP   Right Button:   UP
+Left Button: DOWN   Right Button:   UP
+Left Button:   UP   Right Button:   UP
+Left Button:   UP   Right Button: DOWN</code></pre></div>
 
 <h3 id="toc_11">Hello_LightSensor</h3>
 
 <p>The reading (0-1023) from the light sensor is sent to the serial monitor once<br>
-per second.<br>
-<code><br>
-Light Sensor: 962<br>
-Light Sensor: 954<br>
-Light Sensor: 275<br>
-Light Sensor: 192<br>
-Light Sensor: 688<br>
-</code></p>
+per second.</p>
+
+<div><pre><code class="language-none">Light Sensor: 962
+Light Sensor: 954
+Light Sensor: 275
+Light Sensor: 192
+Light Sensor: 688</code></pre></div>
 
 <h3 id="toc_12">Hello_Temperature</h3>
 
-<p>The temperature is sent to the serial monitor once per second.<br>
-<code><br>
-tempC: 28.25  tempF: 83.02<br>
-tempC: 29.71  tempF: 85.64<br>
-tempC: 30.72  tempF: 87.30<br>
-tempC: 31.85  tempF: 89.32<br>
-</code></p>
+<p>The temperature is sent to the serial monitor once per second.</p>
+
+<div><pre><code class="language-none">tempC: 28.25  tempF: 83.02
+tempC: 29.71  tempF: 85.64
+tempC: 30.72  tempF: 87.30
+tempC: 31.85  tempF: 89.32</code></pre></div>
 
 <h3 id="toc_13">Hello_Accelerometer</h3>
 
 <p>The readings (in m/s<sup>2</sup>) from the 3 axes of the accelerometer are sent<br>
-to the serial monitor once per second. (1G ~= 9.8 m/s<sup>2</sup>)<br>
-<code><br>
-X: -0.33  Y: 2.41  Z: 9.40<br>
-X: -1.25  Y: 4.20  Z: 1.86<br>
-X: -7.95  Y: -3.50  Z: -2.47<br>
-X: 0.11  Y: -8.38  Z: 2.25<br>
-X: -2.28  Y: 2.73  Z: 9.10<br>
-</code></p>
+to the serial monitor once per second. (1G ~= 9.8 m/s<sup>2</sup>)</p>
+
+<div><pre><code class="language-none">X: -0.33  Y: 2.41  Z: 9.40
+X: -1.25  Y: 4.20  Z: 1.86
+X: -7.95  Y: -3.50  Z: -2.47
+X: 0.11  Y: -8.38  Z: 2.25
+X: -2.28  Y: 2.73  Z: 9.10</code></pre></div>
 
 <h3 id="toc_14">Hello_SoundSensor</h3>
 
 <p>The reading (0-1023) from the sound sensor (microphone) is sent to the serial<br>
-monitor once per second.<br>
-<code><br>
-Sound Sensor: 339<br>
-Sound Sensor: 339<br>
-Sound Sensor: 1023<br>
-Sound Sensor: 10<br>
-Sound Sensor: 15<br>
-Sound Sensor: 1023<br>
-Sound Sensor: 336<br>
-</code></p>
+monitor once per second.</p>
+
+<div><pre><code class="language-none">Sound Sensor: 339
+Sound Sensor: 339
+Sound Sensor: 1023
+Sound Sensor: 10
+Sound Sensor: 15
+Sound Sensor: 1023
+Sound Sensor: 336</code></pre></div>
 
 <h3 id="toc_15">Hello_Speaker</h3>
 
