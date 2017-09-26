@@ -25,7 +25,7 @@ Adafruit and friends have made some great informational pages and tutorials to b
 
 ### Modify the Example Sketches
 		
-1. Devise some clever/inventive/exciting/fund modifications of one of these awesome `.ino` files. For example, you could add music to a sketch that uses the LEDs, or add light output to a sketch that uses the speaker. There are many possibilities; you're only limited by your imagination.
+1. Devise some clever/inventive/exciting/fun modifications of one of these awesome `.ino` files. For example, you could add music to a sketch that uses the LEDs, or add light output to a sketch that uses the speaker. There are many possibilities; you're only limited by your imagination.
 
 1. You will want to **FIRST** copy the relevant folder out of the examples folder and into a folder for today's lab:
 
