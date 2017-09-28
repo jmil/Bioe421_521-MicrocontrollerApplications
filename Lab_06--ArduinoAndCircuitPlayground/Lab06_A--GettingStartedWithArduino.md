@@ -300,7 +300,7 @@ You can grab the `BlinkWithoutDelay.ino` file from:
 1. Make a **sketch** where the LED will appear to slowly and smoothly brighten, then dim again in a cycle. While we _could_ use the basic **blink** or **strobe** code above, we would benefit from a more advanced workflow. Read through the second example for `Throb` at:
 	http://playground.arduino.cc/Tutorials/Throb
 	
-1. Modify the `Throb.ino` sketch to make the LED slowly and smoothly brighten over 5 seconds, then dim again over 5 seconds. Test it out on your Arduino. Explain how this code works here:
+1. Test it out on your Arduino. Explain how this code works here:
 
 		:
 		:
