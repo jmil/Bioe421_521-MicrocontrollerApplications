@@ -462,11 +462,17 @@ pre[class*="language-"] {
 
 <h2 id="toc_2">Lab 7. Diving Deeper into the Circuit Playground</h2>
 
-<p>Adafruit and friends have made some great informational pages and tutorials to better explain Circuit Playground.</p>
+<h3 id="toc_3">Charge up your Circuit Playground Battery</h3>
+
+<p>You will want to be able to use Circuit Playground on battery power, so start today&#39;s lab by charging up your battery using the included USB charger.</p>
+
+<h3 id="toc_4">Review Circuit Playground Tutorials</h3>
+
+<p>Adafruit and friends have made some great informational pages and tutorials to better explain Circuit Playground and its potential.</p>
 
 <ol>
 <li><p>Read and discuss pp 1-56 of Circuit Playground Lesson # 0 (attached).</p></li>
-<li><p>Read and discuss all of the pages explaining Circuit Playground functions linked on:</p>
+<li><p>Read and discuss all of the pages explaining Circuit Playground functions -- <strong>see HANDOUT</strong> and here&#39;s the link FYI:</p>
 
 <p><a href="https://caternuson.github.io/Adafruit_CircuitPlayground/">https://caternuson.github.io/Adafruit_CircuitPlayground/</a></p></li>
 <li><p>Study and try all of the example sketches in the <code>Adafruit_CircuitPlayground</code> folder in your <code>github</code> folder. If you want to download them again, the instructions are:</p>
@@ -480,25 +486,67 @@ $ cd Adafruit_CircuitPlayground
 $ ls -la</code></pre></div></li>
 </ol>
 
-<h2 id="toc_3">Assignment</h2>
+<h2 id="toc_5">Assignment</h2>
 
-<h3 id="toc_4">Modify the Example Sketches</h3>
+<h3 id="toc_6">1. Modify the Example Sketches</h3>
 
 <ol>
 <li><p>Devise some clever/inventive/exciting/fun modifications of one of these awesome <code>.ino</code> files. For example, you could add music to a sketch that uses the LEDs, or add light output to a sketch that uses the speaker. There are many possibilities; you&#39;re only limited by your imagination.</p></li>
 <li><p>You will want to <strong>FIRST</strong> copy the relevant folder out of the examples folder and into a folder for today&#39;s lab:</p>
 
-<div><pre><code class="language-none">$ mkdir -p ~/Team09-Lab07</code></pre></div></li>
-<li><p>Discuss with your Instructor your intended modification and some ways you could make it happen.</p></li>
+<div><pre><code class="language-none">$ mkdir -p ~/Team09-Lab07/custom
+$ cd ~/Team09-Lab07/custom</code></pre></div></li>
+<li><p>Discuss with your Instructor your intended modification and some ways you could make it happen. What&#39;s your plan?</p>
+
+<div><pre><code class="language-none">:
+:
+:
+:
+:
+:</code></pre></div>
+
+<p>In which directory will you be working?</p>
+
+<div><pre><code class="language-none">:</code></pre></div></li>
 </ol>
 
-<h4 id="toc_5">You need to be sure to test and debug it on your Circuit Playground hardware!</h4>
+<h4 id="toc_7">You need to be sure to test and debug it on your Circuit Playground hardware!</h4>
 
 <p>Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn&#39;t introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your <code>for{}</code> or <code>while{}</code> loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: <a href="http://arduino.cc/en/Reference/HomePage">http://arduino.cc/en/Reference/HomePage</a></p>
 
-<h4 id="toc_6">Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Circuit Playground programming. Test early and often. You have been warned!!</h4>
+<h4 id="toc_8">Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Circuit Playground programming. Test early and often. You have been warned!!</h4>
 
-<h3 id="toc_7">Upload your work from today</h3>
+<h3 id="toc_9">2. Yo-Yo YOLO!</h3>
+
+<p>Circuit Playground is round, has a 3-axis accelerometer, 10 RGB LEDs, and a speaker built in. Round things can roll, but it&#39;s better if they don&#39;t roll tooooo far if you&#39;re trying to program and debug them. So, if we leashed our Circuit Playground, we could make... a dynamically lit yo-yo!</p>
+
+<p><img src="circuit_playground_hero-pink.jpg" alt="Circuit Playground Yo-Yo Lit Up" title="Circuit Playground Yo-Yo Lit Up"></p>
+
+<ol>
+<li>Your instructor has already 3D printed the parts for you. Choose one complete set for your team (feel free to mix colors):</li>
+</ol>
+
+<p><img src="circuit_playground_3d-parts.jpg" alt="Circuit Playground Yo-Yo Parts" title="Circuit Playground Yo-Yo Parts"></p>
+
+<ol>
+<li><p>Follow the Circuit Playground yo-yo assembly tutorial, with the following two caveats:</p>
+
+<ol>
+<li>You don&#39;t need to use the wiring switch, so just ignore that part.</li>
+<li>And <strong>DO NOT GLUE IT TOGETHER</strong>. You and your Instructor will need to be able to use your Circuit Playground for other stuff this semester. You may use glue sparingly <strong>ONLY</strong> to glue the plastic axle to the plastic bottom case piece.</li>
+</ol></li>
+<li><p>Now let&#39;s program! Work in the following directory:</p>
+
+<div><pre><code class="language-none">$ mkdir -p ~/Team09-Lab07/yoyo
+$ cd ~/Team09-Lab07/yoyo</code></pre></div>
+
+<p>Design, write, and copiously comment an appropriate Arduino sketch that uses the yo-yo&#39;s motion to light up the LEDs. Think creatively, e.g. note that you can use the Circuit Playground&#39;s speaker to add sound effects.</p>
+
+<p><strong>PRO-TIP:</strong> To work efficiently, think about which of the demo scripts best captures what you are trying to do. It&#39;s totally fine if your first prototype is a frankenstein-combination of several of the demo scripts we&#39;ve already tried out. This would allow you to quickly test early and often, and then spend time refining the code to precisely your specifications.</p></li>
+<li><p>Use your Raspberry Pi Camera to take ≥ 5 photos and ≥ 2 videos of your functional yo-yo in action. <strong>The team that makes the best yo-yo video will earn extra credit.</strong></p></li>
+</ol>
+
+<h3 id="toc_10">Upload your work from today</h3>
 
 <ol>
 <li><p>Zip up the arduino folder for Today&#39;s lab to make a single .zip file</p>
@@ -511,7 +559,7 @@ $ zip -r Team09-Lab07.zip Team09-Lab07</code></pre></div></li>
 $ scp Team09-Lab07.zip student@IP_ADDRESS:/home/student/</code></pre></div></li>
 </ol>
 
-<h2 id="toc_8">Shutdown Procedure</h2>
+<h2 id="toc_11">Shutdown Procedure</h2>
 
 <ol>
 <li><p>Shutdown your Pi properly:</p>
@@ -521,13 +569,13 @@ $ scp Team09-Lab07.zip student@IP_ADDRESS:/home/student/</code></pre></div></li>
 <p>Unplug everthing and restore the Windows desktop computer to a working state.</p></li>
 </ol>
 
-<h2 id="toc_9">APPENDIX</h2>
+<h2 id="toc_12">APPENDIX</h2>
 
-<h3 id="toc_10">Troubleshooting Circuit Playground</h3>
+<h3 id="toc_13">Troubleshooting Circuit Playground</h3>
 
 <p>During our work with Circuit Playground it may eventually get confused and stop being able to connect to a computer. Here&#39;s how to fix it:</p>
 
-<h4 id="toc_11">Symptoms:</h4>
+<h4 id="toc_14">Symptoms:</h4>
 
 <ul>
 <li><p>From: <a href="https://forums.adafruit.com/viewtopic.php?f=58&amp;t=102881">https://forums.adafruit.com/viewtopic.php?f=58&amp;t=102881</a><br>
@@ -543,7 +591,7 @@ $ scp Team09-Lab07.zip student@IP_ADDRESS:/home/student/</code></pre></div></li>
 <p>Nor will Circuit Playground be available in the <code>Ports</code> menu item in the Arduino IDE.</p></li>
 </ul>
 
-<h4 id="toc_12">Solution</h4>
+<h4 id="toc_15">Solution</h4>
 
 <ul>
 <li><p><code>adafruit_support_mike</code> responds:</p>

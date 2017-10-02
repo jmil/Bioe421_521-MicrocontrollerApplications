@@ -3,11 +3,17 @@
 
 ## Lab 7. Diving Deeper into the Circuit Playground
 
-Adafruit and friends have made some great informational pages and tutorials to better explain Circuit Playground.
+### Charge up your Circuit Playground Battery
+	
+You will want to be able to use Circuit Playground on battery power, so start today's lab by charging up your battery using the included USB charger.
+
+### Review Circuit Playground Tutorials
+
+Adafruit and friends have made some great informational pages and tutorials to better explain Circuit Playground and its potential.
 
 1. Read and discuss pp 1-56 of Circuit Playground Lesson # 0 (attached).
 
-1. Read and discuss all of the pages explaining Circuit Playground functions linked on:
+1. Read and discuss all of the pages explaining Circuit Playground functions -- **see HANDOUT** and here's the link FYI:
 
 	https://caternuson.github.io/Adafruit_CircuitPlayground/
 
@@ -23,21 +29,66 @@ Adafruit and friends have made some great informational pages and tutorials to b
 
 ## Assignment
 
-### Modify the Example Sketches
+### 1. Modify the Example Sketches
 		
 1. Devise some clever/inventive/exciting/fun modifications of one of these awesome `.ino` files. For example, you could add music to a sketch that uses the LEDs, or add light output to a sketch that uses the speaker. There are many possibilities; you're only limited by your imagination.
 
 1. You will want to **FIRST** copy the relevant folder out of the examples folder and into a folder for today's lab:
 
-		$ mkdir -p ~/Team09-Lab07
+		$ mkdir -p ~/Team09-Lab07/custom
+		$ cd ~/Team09-Lab07/custom
 	
-1. Discuss with your Instructor your intended modification and some ways you could make it happen.
+1. Discuss with your Instructor your intended modification and some ways you could make it happen. What's your plan?
+
+		:
+		:
+		:
+		:
+		:
+		:
+		
+	In which directory will you be working?
+	
+		:
+		
+
 
 #### You need to be sure to test and debug it on your Circuit Playground hardware!
 
 Remember, with microcontroller projects: test early and often. Each significant change you make to your .ino, you should be uploading it and testing to verify that 1) you didn't introduce syntax errors, 2) the software compiled and built correctly, and 3) the change you think you made actually got made. A common problem here is not properly closing your `for{}` or `while{}` loops with the proper syntax. Get to know the Arduino language reference we discussed in lecture if you have problems: http://arduino.cc/en/Reference/HomePage
 
 #### Do not spend 2 hrs straight editing the file and then upload it once to test. That is not a recommended use case for Circuit Playground programming. Test early and often. You have been warned!!
+
+
+### 2. Yo-Yo YOLO!
+
+Circuit Playground is round, has a 3-axis accelerometer, 10 RGB LEDs, and a speaker built in. Round things can roll, but it's better if they don't roll tooooo far if you're trying to program and debug them. So, if we leashed our Circuit Playground, we could make... a dynamically lit yo-yo!
+
+![Circuit Playground Yo-Yo Lit Up](circuit_playground_hero-pink.jpg "Circuit Playground Yo-Yo Lit Up")
+
+
+
+1. Your instructor has already 3D printed the parts for you. Choose one complete set for your team (feel free to mix colors):
+
+![Circuit Playground Yo-Yo Parts](circuit_playground_3d-parts.jpg "Circuit Playground Yo-Yo Parts")
+
+
+1. Follow the Circuit Playground yo-yo assembly tutorial, with the following two caveats:
+
+	1. You don't need to use the wiring switch, so just ignore that part.
+	1. And **DO NOT GLUE IT TOGETHER**. You and your Instructor will need to be able to use your Circuit Playground for other stuff this semester. You may use glue sparingly **ONLY** to glue the plastic axle to the plastic bottom case piece.
+
+
+1. Now let's program! Work in the following directory:
+	
+		$ mkdir -p ~/Team09-Lab07/yoyo
+		$ cd ~/Team09-Lab07/yoyo
+		
+	Design, write, and copiously comment an appropriate Arduino sketch that uses the yo-yo's motion to light up the LEDs. Think creatively, e.g. note that you can use the Circuit Playground's speaker to add sound effects.
+	
+	**PRO-TIP:** To work efficiently, think about which of the demo scripts best captures what you are trying to do. It's totally fine if your first prototype is a frankenstein-combination of several of the demo scripts we've already tried out. This would allow you to quickly test early and often, and then spend time refining the code to precisely your specifications.
+
+1. Use your Raspberry Pi Camera to take ≥ 5 photos and ≥ 2 videos of your functional yo-yo in action. **The team that makes the best yo-yo video will earn extra credit.**
 
 
 ### Upload your work from today
