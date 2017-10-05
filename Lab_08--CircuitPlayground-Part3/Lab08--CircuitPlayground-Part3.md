@@ -4,10 +4,14 @@
 
 ## Lab 8. Circuit Playground Part 3
 
-Use your knowledge of Circuit Playground to complete the following Challenge.
+### Charge up your Circuit Playground Battery
+	
+You will want to be able to use Circuit Playground on battery power, so start today's lab by charging up your battery using the included USB charger.
+
 
 
 ## Assignment
+Use your knowledge of Circuit Playground to complete the following Challenge.
 
 You should save your new or edited `.ino` file(s) in a new directory for today:
 
