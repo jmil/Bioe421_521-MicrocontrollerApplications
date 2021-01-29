@@ -1,5 +1,5 @@
 # Bioe 421/521: Microcontroller Applications
-#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+#### Instructor: Jordan Miller<br>TA: Adam Farsheed<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ## Lab 1A. Getting Started with Raspberry Pi
 
