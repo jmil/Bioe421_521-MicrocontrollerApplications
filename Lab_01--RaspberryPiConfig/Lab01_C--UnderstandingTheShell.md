@@ -1,5 +1,5 @@
 # Bioe 421/521: Microcontroller Applications
-#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+#### Instructor: Jordan Miller<br>TA: Adam Farsheed<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ## Lab 1C. Understanding the Shell
 
@@ -140,7 +140,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 			:
 
 
-	1. What is your IP Address?			
+	1. What command can you use to find your IP Address? Using this command, what is your inet?		
 
 			:
 
@@ -170,7 +170,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 			:
 
 
-	1. What is the serial number of your Pi? (hint: it's stored in the `/proc/cpuinfo` file)
+	1. What is the model name of your processor? (hint: it's stored in the `/proc/cpuinfo` file)
 			
 			:
 
@@ -178,7 +178,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 
 			:
 
-	1. You want your Pi to take a photograph every hour. What program could you use to take the photograph? What program could schedule this command?
+	1. You want to create an empty txt file called “ILoveRice.txt”. What command can you use to do this? You come out of a very hard midterm and want to delete this file. What command can you use to do so?
 
 			:
 
