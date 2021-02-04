@@ -4,7 +4,9 @@
 
 ## Lab 10. Git Workflows
 
-In class we learned about **Version Control Systems (VCS)**, also known as **Source Control** (i.e. source code control) and **Revision Control**. We want to store all your code, all your comments, all your documentation, and the entire history of all your files into an intergrity-verified library or **repository** **(repo)**. Recall: we will use the distributed VCS (DVCS) `git` to manage all the code for your final project.
+We've downloaded code from the Internets using `git`, but what is `git`, and what does it do? What is the philosophy behind it?
+
+Here we will dive deeper into **Version Control Systems (VCS)**, also known as **Source Control** (i.e. source code control) and **Revision Control**, a cryptographically secure set of tools to read, write, and distribute your source code. We want to store all your code, all your comments, all your documentation, and the entire history of all your files into an intergrity-verified library or **repository** **(repo)**. We will use the distributed VCS (DVCS) `git` to manage all the code for your final project.
 
 ### Learning `git`
 
@@ -182,8 +184,7 @@ Work on your final project in your **`~/421_521_final_project`** `git` repo. As 
 
 
 ## Final Project
-
-Work for the rest of lab class on your final project. Consult with your Instructor and TA, formulate ideas, make a working plan, and get to work!
+Use your remaining class time to work on your team final project and discuss the plan and upcoming milestones in detail with your Instructor and TA.
 
 
 ## Shutdown Procedure

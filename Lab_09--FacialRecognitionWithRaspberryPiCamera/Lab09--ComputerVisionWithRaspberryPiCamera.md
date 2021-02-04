@@ -250,6 +250,9 @@ http://picamera.readthedocs.io/en/release-1.12/recipes1.html
 		$ scp Team09-Lab09.zip student@IP_ADDRESS:/home/student/
 
 
+## Final Project
+Use your remaining class time to work on your team final project and discuss the plan and upcoming milestones in detail with your Instructor and TA.
+
 
 ## Shutdown Procedure
 
