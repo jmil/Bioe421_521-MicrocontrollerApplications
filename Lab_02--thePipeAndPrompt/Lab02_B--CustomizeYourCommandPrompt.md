@@ -1,5 +1,5 @@
 # Bioe 421/521: Microcontroller Applications
-#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+#### Instructor: Jordan Miller<br>TA: Adam Farsheed<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 
 ## Lab 2B. Customizing Your Command Prompt
@@ -57,9 +57,6 @@ Check that your backup file is there, and that it's contents are correct. What c
 	
 
 	The following shows some text we want to insert into our `.bashrc` file to make an awesome command prompt. And, hat-tip to the source Matthew Holt for this awesome command prompt code:
-http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
-
-	However, you may notice some characters that will be very difficult to type:
 
 		...
 		esac
@@ -80,6 +77,7 @@ http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
 		# enable color support of ls and also add handy aliases
 		...
 
+	However, you may notice some characters that will be very difficult to type:
 
 	So, here's a shortcut to do this a bit faster. Follow **carefully**: Let's use the `wget` command to grab this text snippet from the `.md` file on github **for this lab,**. **Hint:** You may want to use a URL shortener such as:
 
@@ -108,7 +106,7 @@ http://mwholt.blogspot.com/2013/08/how-to-customize-your-terminal-prompt.html
 
 		$
 
-1. Next, edit the command prompt and customize it to show your team name. write down what your new command prompt looks like:
+1. Next, edit the command prompt and customize it to show your name (or a creative name). write down what your new command prompt looks like:
 
 		:
 		:
