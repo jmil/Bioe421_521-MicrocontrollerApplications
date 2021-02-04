@@ -1,5 +1,5 @@
 # Bioe 421/521: Microcontroller Applications
-#### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
+#### Instructor: Jordan Miller<br>TA: Adam Farsheed<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
 ## Lab 2A. Redirecting Streams of Data
 
@@ -197,8 +197,7 @@ Often it's helpful to have a way to save some of these data streams along the wa
 		:
 	
 
-1. Making use of `ifconfig`, write a single-line program to output a line of text containing your "inet addr" (this is your **i**nter**net** **addr**ess, or IP (**I**nternet **P**rotocol) address). **Hint:** use quotes to pass a longer search string to the `grep` command.
-	
+1. Making use of `ifconfig`, write a single-line program to output a line of text containing your "broadcast". **Hint:** use quotes to pass a longer search string to the `grep` command.	
 		$
 
 	What was the output?
