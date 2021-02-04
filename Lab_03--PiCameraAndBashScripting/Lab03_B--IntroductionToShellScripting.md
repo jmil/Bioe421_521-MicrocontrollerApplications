@@ -49,6 +49,8 @@ Grab the template file and run it. You will have to change permissions on the fi
 
 What happened when you ran the script?
 
+	: 
+	
 ### Your `$PATH` to Success
 
 If you look at the sample `bash-script.sh` you will notice a lot is going on:
@@ -174,40 +176,11 @@ Let's get started. I put a script template you should use at:
 
 
 ### weather.sh
-1. Use `nano` to write a `bash` script that grabs the current local weather. You will need to install the `weather-util` command:
+1. Use `nano` to write a `bash` script that grabs the current local weather. 
 
-		$ sudo apt-get install weather-util
-		
-	**NOTE:** As of August 23rd, 2016 the NOAA WX weather products URLs were deprecated. This means `weather-util` won't work out of the box. e.g. if we use the 4-character code location for Houston Hobby Airport and run `weather KHOU` you may see an error like:
-	
+Using the airport code location for Houston Hobby Airport you can run something like:
+
 		$ weather KHOU
-		Searching via station...
-		[caching result Houston Hobby Airport, TX, United States]
-		weather error: failed to retrieve
-		   http://weather.noaa.gov/pub/data/observations/metar/decoded/KHOU.TXT
-		   HTTPError: HTTP Error 404: Not Found
-	
-	
-	But, an updated file has been created by the developer, so we next need to get the latest files with `git` and overwrite the files that were installed with the `weather-util` package:
-	
-		$ cd ~
-		$ mkdir weather-pkg
-		$ cd weather-pkg
-		$ git clone http://www.yuggoth.org/git/weather.git
-		$ cd weather
-		$ ls -la
-		
-	Make sure you have a `stations` file. We next need to copy this file to `/usr/share/weather/`:
-	
-		$ sudo cp stations /usr/share/weather-util/
-		
-	Check that it's there with:
-	
-		$ ls -la /usr/share/weather-util/
-	
-	Now, using the airport code location for Houston Hobby Airport you can run something like:
-
-		$ weather hou
 		Searching via airport...
 		[caching result Houston Hobby Airport, TX, United States]
 		Current conditions at Houston Hobby Airport, TX
@@ -221,7 +194,7 @@ Let's get started. I put a script template you should use at:
 
 	This may take some time. Be patient! Recall that you can use `grep` to parse this text a bit (remember that text given to `grep` is case-sensitive):
 	
-		$ weather hou | grep Temperature
+		$ weather KHOU | grep Temperature
 		   Temperature: 77.0 F (25.0 C)
 	
 	
@@ -243,9 +216,9 @@ Let's get started. I put a script template you should use at:
 2. Modify your script to take input from the user, and use this user input as the pattern used by the `grep` command to find a match.
 
 ### selfie.sh
-1. Use `nano` to write a `bash` script that uses the RaspberryPi Camera to take a selfie of you and your teammate. Name the image after your team name. You will want to hardcode the location where images should be stored to be `/home/pi/raspicam/`.
+1. Use `nano` to write a `bash` script that uses the skicam to take a picture of the slopes. Name the image something creative (like a pun!). You will want to hardcode the location where images should be stored to be `/home/pi/raspicam/`.
 	**HINT:** You likely want to use the `-p` flag of the `mkdir` command.
-1. To have good camera functionality, you won't want to overwrite your previous images every time a photo is taken. Modify your `selfie.sh` script to append the current timestamp to your filename so they won't be overwritten.
+1. To have good camera functionality, you won't want to overwrite your previous images every time a photo is taken. Modify your `skipics.sh` script to append the current timestamp to your filename so they won't be overwritten.
 
 
 
