@@ -246,4 +246,4 @@ Using the airport code location for Houston Hobby Airport you can run something 
 
 		$ sudo shutdown -h now
 
- Unplug everthing and restore the Windows desktop computer to a working state.
+ Unplug everything and restore the Windows desktop computer to a working state.
