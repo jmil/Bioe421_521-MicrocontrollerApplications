@@ -3,6 +3,14 @@
 
 ## Lab 3A. The Ski Resort Camera
 
+Instead of using `man`, you can also see a list of all commands by running `raspistill` with no options. It will scroll by fast, and you won't be able to **pipe** it to `more`:
+
+	$ raspistill | more
+
+What's going on? `raspistill` returns an error if you run it with no options, and by default `raspistill` is setup to print it's helpfile *as* the error message. Error messages are pretty necessary, as you might imagine. So this is actully known as **STDERR** (**st**an**d**ard **err**or). We need to redirect **STDERR** (called simply with the integer `2`) to **STDOUT** (called simply with the integer `1`) before we can **pipe** it to `more`:
+
+	$ raspistill 2>&1 | more
+
 Usually you would be using a physical camera attached to a Raspberry Pi board, but in this assignment I found a fun workaround to learn the same concepts. The Kelly Canyon Ski Resort provides a website that when visited, take a picture at a location on the mountain. 
 
 Before we start downloading these pictures lets create a directory to store the images in:
