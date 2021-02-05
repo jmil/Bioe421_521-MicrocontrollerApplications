@@ -36,7 +36,7 @@ One of the most important aspects of the shell, especially for new users, is tha
 1. Read some more man pages (for the programs listed below), and take detailed notes. **DO NOT** copy the man pages verbatim; instead, use your own words. Use the Markdown format since it can be read easily by humans and easily converted into HTML by computers for nice rendered viewing online.
 
 	On the Windows computer next to your Raspberry Pi, have your lab partner use the free editor with live rendering at:
-	http://dillinger.io
+	http://dillinger.io. Alternatively you can download "Typora" for Windows or Macdown for Mac!
 	You can link it to google drive, dropbox, and github. Or you can edit and download the file.
 	### CRITICAL NOTE: Anything you save to the desktop on the Windows computer will be deleted after you logout (Rice IT default setup for the Windows computers). So it's best to use online text editing to save your file. Email it to yourself for now so that you have a backup.
 	
