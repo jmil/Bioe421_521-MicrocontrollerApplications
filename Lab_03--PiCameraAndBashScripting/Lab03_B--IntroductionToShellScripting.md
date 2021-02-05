@@ -238,10 +238,7 @@ Using the airport code location for Houston Hobby Airport you can run something 
 		$ sudo apt-get install zip
 		$ zip -r Team09-Lab03.zip Team09-Lab03
 
-1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
-
-		$ man scp
-		$ scp Team09-Lab03.zip student@IP_ADDRESS:/home/student/
+1. Follow the instructions to install FileZilla so you can access this zip file. Finally upload this zip file on canvas along with the md file of this lab.
 
 ## Shutdown Procedure
 
