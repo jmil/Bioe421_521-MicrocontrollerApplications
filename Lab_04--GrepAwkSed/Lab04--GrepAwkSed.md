@@ -37,7 +37,7 @@ From [Wikipedia, Roger Y. Tsien:](https://en.wikipedia.org/wiki/Roger_Y._Tsien)
 	
 		$ mkdir Team09-Lab04
 		$ cd Team09-Lab04
-		$ wget -O tsien.txt "http://www.ncbi.nlm.nih.gov/pubmed/16299475,15558047,18454154,19423828?report=MEDLINE&format=text" 
+		$ wget -O tsien.txt "https://pubmed.ncbi.nlm.nih.gov/?term=16299475%2C15558047%2C18454154%2C19423828&format=pubmed" 
 
 
 Let's look at the file you created:
@@ -45,12 +45,9 @@ Let's look at the file you created:
 	$ cat tsien.txt | less
 
 
-You should see the following file:
+Towards the end of the file you should see the following:
 
-		<?xml version="1.0" encoding="utf-8"?>
-		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-		<pre>
-		PMID- 16299475
+			<pre class="search-results-chunk">PMID- 16299475
 		OWN - NLM
 		...
 		AID - 324/5928/804 [pii]
@@ -96,11 +93,12 @@ You should see the following file:
 
 1. Let's modify this script to be more useful. Given a file that contains a list of PMIDs, it would be ideal if, for each PMID, you could go to pubmed and download the article information. You will want to use the URL of the following form, where you will substitute each unique PMID, line by line, for the "########" section. Note that the report format here is `MEDLINE`:
 
-		https://www.ncbi.nlm.nih.gov/pubmed/########?report=MEDLINE&format=text
+		https://pubmed.ncbi.nlm.nih.gov/?term=########&format=pubmed
+		(multiple PMIDs: https://pubmed.ncbi.nlm.nih.gov/?term=########%2C########%2C########&format=pubmed)
 		
 	The `xml` report format can also be useful for the rest of the lab, so be sure to look at that one too:
 	
-		http://www.ncbi.nlm.nih.gov/pubmed/########?report=xml&format=text
+		https://pubmed.ncbi.nlm.nih.gov/########/
 
 
 	So your `parsePMIDs.sh` file  should read your `PMIDs.txt` file, grab the article information for each PMID, and append it to a new file, `Tsien_result.txt`.
