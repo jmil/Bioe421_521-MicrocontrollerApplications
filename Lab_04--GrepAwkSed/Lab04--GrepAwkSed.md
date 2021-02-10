@@ -93,7 +93,7 @@ Towards the end of the file you should see the following:
 
 1. Let's modify this script to be more useful. Given a file that contains a list of PMIDs, it would be ideal if, for each PMID, you could go to pubmed and download the article information. You will want to use the URL of the following form, where you will substitute each unique PMID, line by line, for the "########" section. Note that the report format here is `MEDLINE`:
 
-		https://pubmed.ncbi.nlm.nih.gov/?term=########&format=pubmed
+		https://pubmed.ncbi.nlm.nih.gov/########/?format=pubmed
 		(multiple PMIDs: https://pubmed.ncbi.nlm.nih.gov/?term=########%2C########%2C########&format=pubmed)
 		
 	The `xml` report format can also be useful for the rest of the lab, so be sure to look at that one too:
