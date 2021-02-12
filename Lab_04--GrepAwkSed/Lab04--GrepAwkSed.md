@@ -196,9 +196,7 @@ You will want to take this `cancer_refs.txt` result file, and parse out the PMID
 		$ cd ~
 		$ zip -r Team09-Lab04.zip Team09-Lab04
 
-1. `scp` your team's homework .zip file to your Instructor's RaspberryPi. Your Instructor will provide you with the value to enter for **IP_ADDRESS**. Use your same `raspberry` password (note that you are logging in as user `student`):
-
-		$ scp Team09-Lab04.zip student@IP_ADDRESS:/home/student/
+1. Access the zip file via filezilla and upload to canvas along with an MD/word/text file with your answers to this lab.
 
 
 ## Shutdown Procedure
@@ -206,5 +204,4 @@ You will want to take this `cancer_refs.txt` result file, and parse out the PMID
 1. Shutdown your Pi properly:
 
 		$ sudo shutdown -h now
-
- Unplug everthing and restore the Windows desktop computer to a working state.
+		
