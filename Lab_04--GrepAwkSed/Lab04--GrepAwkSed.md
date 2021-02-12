@@ -140,7 +140,7 @@ Can you identify the delimiter for these fields in the URL? Write it here:
 	
 You will want to take this `cancer_refs.txt` result file, and parse out the PMIDs into a new file, `cancer_PMIDs.txt`. Note that the PMIDs will have to be parsed out from between the `<Id>` and `</Id>` tags. You could also think about using a clever "find/replace" scheme – which command did we learn today that's great at find/replace?
 	
-1. (CHALLENGE PROBLEMG try to get as close as possible to this end goal): Generate a script called `PMID_query.sh`. We want the **use case** to be:
+1. (CHALLENGE PROBLEM try to get as close as possible to this end goal): Generate a script called `PMID_query.sh`. We want the **use case** to be:
 
 		$ ./PMID_query.sh cancer_PMIDs.txt cancer_bibliography.txt
 
