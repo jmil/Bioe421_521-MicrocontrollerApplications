@@ -1,6 +1,8 @@
 # Bioe 421/521: Microcontroller Applications
 #### Instructor: Jordan Miller<br>TA: Madeleine Gomel<br>github.com/jmil/Bioe421_521-MicrocontrollerApplications
 
+## NOTE FOR 2021: Try to complete as much of the lab as you can and replace using the Pi camera with taking photos from the ski resort camera URL.
+
 ## Lab 5C. Python and the Raspberry Pi Camera
 
 We've previously used the Raspberry Pi Camera by calling the `raspistill` command to take pictures and `raspivid` command to take a video. We could add these into bash shell scripts for more automated handling. However, `python` on Raspberry Pi has some special constructs which allow more flexible use of the Raspberry Pi Camera. Let's take a look.
