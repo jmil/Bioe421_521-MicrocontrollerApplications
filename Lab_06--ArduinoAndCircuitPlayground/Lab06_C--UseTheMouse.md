@@ -88,7 +88,7 @@ https://processing.org/download/install-arm.sh
 		$ reboot
 
 
-#### Processing
+#### Processing (if on virtual computer do this on your actual computer)
 
 1. In the GUI, open `Processing` (`Start Menu` -> `Programming` -> `Processing`), and get familiar with the GUI version of the application. Try out some of the example programs via `File` -> `Examples...`. Run and play with the following demos. You can quit a running processing program using the `<esc>` key.
 
