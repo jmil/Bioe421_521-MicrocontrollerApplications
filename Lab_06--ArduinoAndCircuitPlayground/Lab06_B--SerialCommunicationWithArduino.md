@@ -19,7 +19,7 @@ Although currently connected by USB, Arduino is an independent computer. So we c
 	
 1. Use `wget` to grab this file and replace the contents of `~/arduino/ascii/src/sketch.ino`:
  
-	http://arduino.cc/en/Tutorial/ASCIITable?action=sourceblock&num=1
+	https://raw.githubusercontent.com/jmil/Bioe421_521-MicrocontrollerApplications/master/Lab_06--ArduinoAndCircuitPlayground/ascii_table_sketch.ino
 	
 	What is the command you used to download this text file and overwrite your `sketch.ino` file?
 	
