@@ -55,31 +55,6 @@ Wow, that's a lot of stuff! Let's get setup to connect and program your Circuit 
 
 ### Install the latest Arduino
 
-
-1. To program the Circuit Playground, we just load another Arduino sketch. Yay! But first we have to give `arduino` the proper library files so it can understand Circuit Playground. This is easiest to do in the latest version of `arduino`, which is not yet part of the lastest build of Raspbian OS. Let's first uninstall the default `arduino` environment and then manually grab and install a later version. Let's do this on a fresh boot to make sure we are ready for the install:
-		
-		$ sudo shutdown -r now
-		$ sudo apt-get remove arduino
-		$ cd ~/Downloads
-		$ wget https://downloads.arduino.cc/arduino-1.6.11-linuxarm.tar.xz
-		$ tar -xvf arduino-1.6.11-linuxarm.tar.xz
-		$ ls -la
-		$ cd arduino-1.6.11
-		$ sudo ./install.sh
-		
-	When you call `sudo ./install.sh`, which program is actually used to process the `install.sh` file? How do you know?
-	
-		program:
-		explanation:
-		
-	**TROUBLESHOOTING:** If you have errors during the install, you can try to uninstall and then reboot and reinstall again:
-	
-		$ cd ~/Downloads/arduino-1.6.11
-		$ sudo ./uninstall.sh
-		$ sudo shutdown -r now
-		$ cd ~/Downloads/arduino-1.6.11
-		$ sudo ./install.sh
-		
 1. Connect your Circuit Playground to your Raspberry Pi with the included micro USB cable. It should light up with the default sketch. But we still need to configure your Raspberry Pi to program it!
 
 
